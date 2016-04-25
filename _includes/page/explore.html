@@ -1,0 +1,19 @@
+<div class="explore">
+    <div class="explore__devider">*****</div>
+    <div class="explore__label">Yazdığım farklı kategorileri veya yazmayı planladığım yazıları keşfedin.</div>
+    <ul class="categories">
+        {% for category in site.data.categories %}
+            {% assign category_size = 0 %}
+            {% for post in site.posts %}
+                {% if post.categories contains category.slug %}
+                {% assign category_size = category_size | plus: 1 %}
+                {% endif %}
+            {% endfor %}
+            {% if category_size == 0 %}
+            {% else %}
+                <li class="categories__item"><a href="{{ '/kategori/' | append: category.slug | prepend: site.baseurl }}">{{ category.name }} ({{ category_size }})</a></li>
+            {% endif %}
+        {% endfor %}
+		<li class="categories__item"><a href="{{ '/' | prepend: site.baseurl }}">Tüm Yazılar <span>({{ site.posts | size }})</span></a></li>
+    </ul>
+</div>

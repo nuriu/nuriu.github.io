@@ -1,0 +1,25 @@
+{% for category in site.data.categories %}
+  {% if category.slug == page.category %}
+    {% assign category_name =  category.name %}
+  {% endif %}
+{% endfor %}
+
+{% assign category_size = 0 %}
+{% for post in site.posts %}
+    {% if post.categories contains page.category %}
+    {% assign category_size = category_size | plus: 1 %}
+    {% endif %}
+{% endfor %}
+
+<h1 class="page-title">
+    {% include page/cat.html %}
+
+    <div class="page-title__text">{{ category_name }}</div>
+    <div class="page-title__subtitle"><strong>‘{{ category_name }}’</strong> kategorisinde 
+    {% if category_size == 0 %}
+        henüz hiç yazı yayınlamadım.
+    {% else %}
+        {{ category_size }} yazı yayınladım.
+    {% endif %}
+    </div>
+</h1>

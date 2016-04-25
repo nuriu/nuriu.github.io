@@ -1,0 +1,34 @@
+---
+layout: default
+---
+{% include category/title.html %}
+
+<ul class="list-posts">
+    {% assign empty_category = true %}
+    {% for post in site.posts %}
+        {% if post.categories contains page.category %}
+            <li class="post-teaser">
+                <a href="{{ post.url | prepend: site.baseurl }}">
+                    <span class="post-teaser__title">{{ post.title }}</span>
+                    {% if post.subtitle %}
+                    <span class="yazi_altBaslik">
+                     - {{ post.subtitle }}
+                     </span>
+                    {% endif %}
+                    <span class="post-teaser__date">{% include tarih.html date=post.date %}</span>
+                </a>
+            </li>
+            {% assign empty_category = false %}
+        {% endif %}
+    {% endfor %}
+
+    {% if empty_category %}
+        <li class="empty-post-list">
+            Bu kategoride henüz yazı yayınlamadım,
+            yayınlanan tüm yazıları görmek için <a href="/">anasayfaya</a> gidebilirsiniz.
+        </li>
+        <br/>
+    {% endif %}
+</ul>
+
+{% include page/explore.html %}

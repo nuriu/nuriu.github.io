@@ -1,0 +1,26 @@
+---
+layout: page
+title: Blog
+subtitle: Tüm Yazılar
+sitemap:
+  priority: 0.9
+---
+
+<ul class="list-posts">
+    {% for post in site.posts %}
+    <li class="post-teaser">
+        <a href="{{ post.url | prepend: site.baseurl }}">
+            <span class="post-teaser__title">{{ post.title }}
+                {% if post.subtitle %}
+                <span class="yazi_altBaslik">
+                 - {{ post.subtitle }}
+                 </span>
+                {% endif %}
+            </span>
+            <span class="post-teaser__date">
+                {% include tarih.html date=post.date %}
+            </span>
+        </a>
+    </li>
+    {% endfor %}
+</ul>

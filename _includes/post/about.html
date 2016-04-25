@@ -1,0 +1,17 @@
+<div class="about">
+    <div class="about__devider">*****</div>
+    <div class="about__text">
+        <strong>
+            {% if page.author.fullname %}
+                {{ page.author.fullname }}
+            {% else %}
+                {{ site.author.fullname }}
+            {% endif %}
+        </strong>
+        tarafından
+        <strong>
+            {% include tarih.html date=page.date %}
+        </strong>
+        tarihinde yayınlandı.
+    </div>
+</div>
