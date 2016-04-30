@@ -16,14 +16,14 @@ permalink: /plan/
 Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıklar ve içerikler, küçük değişiklikler gösterebilir.  
 
 👌: Yazıldı.  
-&nbsp;➟: Yazılıyor.      
+&nbsp;➟: Yazılıyor.  
 
 > İLKBAHAR 2016
 
 👌 [typescript][cTS] >> TypeScript - 1. Bölüm: Giriş, Temel Türler  
 👌 [typescript][cTS] >> TypeScript - 2. Bölüm: Fonksiyonlar  
-➟ [typescript][cTS] >> TypeScript - 3. Bölüm: Arayüzler  
-[typescript][cTS] >> TypeScript - 4. Bölüm: Sınıflar  
+➟ [typescript][cTS] >> TypeScript - 3. Bölüm: Sınıflar  
+[typescript][cTS] >> TypeScript - 4. Bölüm: Arayüzler  
 [typescript][cTS] >> TypeScript - 5. Bölüm: Modüller  
 [typescript][cTS] >> TypeScript - 6. Bölüm: Genelleyiciler  
 [typescript][cTS] >> TypeScript - 7. Bölüm: Katmalar  

@@ -40,7 +40,7 @@ Burası haricinde bana [Twitter][Twitter] üzerinden ulaşabilirsiniz.
     <td>Vulkan / OpenGL</td>
   </tr>
   <tr>
-    <td>➟ HaxeFlixel</td>
+    <td>👌 HaxeFlixel</td>
     <td>Ionic 2</td>
     <td>Y. Z.</td>
   </tr>
