@@ -5,3 +5,4 @@ _site
 .directory
 _drafts
 .sh
+.vscode
