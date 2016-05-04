@@ -60,21 +60,6 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Visitor   
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: MVC  
 
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 1: Giriş, Geliştirme Ortamı  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 2: İlk Projenin Oluşturulması  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 3: Koordinat Sistemi, Kaplama Yüklenmesi  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 4: Font (Yazı Tipi) Kullanımı  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 5: Girdi Yönetimi  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 6: Ses Programlama  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 7: Kameralar, Çoklu Çözünürlük Desteği  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 8: Dokunmatik Kontroller (Gestures)  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 9: Sprite Kağıdı (Spritesheet) Oluşturma ve Kullanma  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 10: Scene2D Bölüm 1: Kütüphaneye Giriş  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 11: Scene2D Bölüm 2: Aktörler ve Eylemler  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 12: Scene2D Bölüm 3: Aktör Yönetimi  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 13: Scene2D Bölüm 4: Arayüz  
-[java][cJAVA] - [libgdx][cLIBGDX] >> libgdx - Bölüm 14: Sprite Animasyonları  
-
 > YAZ 2016
 
 [lua][cLUA] >> Temel Lua - 1. Gün:  
