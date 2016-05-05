@@ -101,4 +101,8 @@ let isim2 = ismiYaz("Hızır", "Barbaros", "Hayrettin");  // hatalı. parametre 
 let isim3 = ismiYaz(undefined, "Yılmazer");             // doğru. Çıktı: "Yavuz Yılmazer"
 {% endhighlight %}
 
-İkinci bölümümüzden bu kadar. Üçüncü bölümde görüşmek üzere.
+İkinci bölümümüzden bu kadar.
+
+Sonraki bölüm: [TypeScript - 3. Bölüm: Sınıflar][1]
+
+[1]: /typescript/2016/05/05/typescript-ucuncu-bolum-siniflar.html

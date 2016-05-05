@@ -139,4 +139,8 @@ function fonksiyonAdi(): void {
 }
 {% endhighlight %}
 
-İlk bölümümüzden bu kadar. İkinci bölümde görüşmek üzere.
+İlk bölümümüzden bu kadar.
+
+Sonraki bölüm: [TypeScript - 2. Bölüm: Fonksiyonlar][1]
+
+[1]: /typescript/2016/04/27/typescript-ikinci-bolum-fonksiyonlar.html
