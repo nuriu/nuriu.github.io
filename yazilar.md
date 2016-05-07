@@ -62,56 +62,6 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 
 > YAZ 2016
 
-[lua][cLUA] >> Temel Lua - 1. Gün:  
-[lua][cLUA] >> Temel Lua - 2. Gün:  
-[lua][cLUA] >> Temel Lua - 3. Gün:  
-[lua][cLUA] >> Temel Lua - 4. Gün:  
-[lua][cLUA] >> Temel Lua - 5. Gün:  
-[lua][cLUA] >> Temel Lua - 6. Gün:  
-[lua][cLUA] >> Temel Lua - 7. Gün:  
-
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 1: Giriş  
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 2: İlk Proje  
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 3: Ortak Modül  
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 4: Çarpışmalar  
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 5: Dinamikler  
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 6: Fikstürler  
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 7: Bedenler  
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 8: Eklemler  
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 9: İletişimler  
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 10: Dünya  
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 11: Yarım Kalan İşler  
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 12: Debug Görselleri  
-[c++][cCPP] - [fizik][cFIZ] - [box2d][cBOX2D] >> Box2D Fizik Motoru - Bölüm 13: Kısıtlamalar  
-
-[c++][cCPP] - [cocos2d-x][cCOCOS] >> Cocos2d-x - Bölüm 1: Giriş, Kurulum, İlk Proje  
-[c++][cCPP] - [cocos2d-x][cCOCOS] >> Cocos2d-x - Bölüm 2: Konseptler  
-[c++][cCPP] - [cocos2d-x][cCOCOS] >> Cocos2d-x - Bölüm 3: Spritelar  
-[c++][cCPP] - [cocos2d-x][cCOCOS] >> Cocos2d-x - Bölüm 4: Aksiyonlar  
-[c++][cCPP] - [cocos2d-x][cCOCOS] >> Cocos2d-x - Bölüm 5: Sahneler  
-[c++][cCPP] - [cocos2d-x][cCOCOS] >> Cocos2d-x - Bölüm 6: Arayüz  
-[c++][cCPP] - [cocos2d-x][cCOCOS] >> Cocos2d-x - Bölüm 7: Haritalar (Tilemaps)  
-[c++][cCPP] - [cocos2d-x][cCOCOS] >> Cocos2d-x - Bölüm 8: Partikül Sistemi (Particles)  
-[c++][cCPP] - [cocos2d-x][cCOCOS] >> Cocos2d-x - Bölüm 9: Parallax  
-[c++][cCPP] - [cocos2d-x][cCOCOS] >> Cocos2d-x - Bölüm 10: Olaylar (Event Dispatcher)  
-[c++][cCPP] - [cocos2d-x][cCOCOS] >> Cocos2d-x - Bölüm 11: Fizikler  
-[c++][cCPP] - [cocos2d-x][cCOCOS] >> Cocos2d-x - Bölüm 12: Ses  
-
-[d][cD] >> Temel D - 1. Gün:  
-[d][cD] >> Temel D - 2. Gün:  
-[d][cD] >> Temel D - 3. Gün:  
-[d][cD] >> Temel D - 4. Gün:  
-[d][cD] >> Temel D - 5. Gün:  
-[d][cD] >> Temel D - 6. Gün:  
-[d][cD] >> Temel D - 7. Gün:  
-[d][cD] >> Temel D - 8. Gün:  
-[d][cD] >> Temel D - 9. Gün:  
-[d][cD] >> Temel D - 10. Gün:  
-[d][cD] >> Temel D - 11. Gün:  
-[d][cD] >> Temel D - 12. Gün:  
-[d][cD] >> Temel D - 13. Gün:  
-[d][cD] >> Temel D - 14. Gün:  
-
 [cvy]: /kategori/veriyapilari
 [cmt]: /kategori/mimari&tasarim
 [cd]: /kategori/d
