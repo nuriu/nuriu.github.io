@@ -50,7 +50,7 @@ Burası haricinde bana [Twitter][Twitter] üzerinden ulaşabilirsiniz.
     <td></td>
   </tr>
   <tr>
-    <td>libgdx</td>
+    <td>Godot</td>
     <td>D</td>
     <td></td>
   </tr>
