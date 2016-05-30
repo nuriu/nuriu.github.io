@@ -8,9 +8,7 @@ permalink: /plan/
 <br/>
 <h1 class="page-title">
     <div class="page-title__text">Yol Haritası</div>
-    <div class="page-title__subtitle">
-    Yazılması planlanmış yazılar
-    </div>
+    <div class="page-title__subtitle">Yazılması planlanmış yazılar</div>
 </h1>
 
 Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıklar ve içerikler, küçük değişiklikler gösterebilir.  
@@ -18,17 +16,13 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 👌: Yazıldı.  
 &nbsp;➟: Yazılıyor.  
 
-> İLKBAHAR 2016
+> YAZ 2016
 
-👌 [typescript][cTS] >> TypeScript - 1. Bölüm: Giriş, Temel Türler  
-👌 [typescript][cTS] >> TypeScript - 2. Bölüm: Fonksiyonlar  
-👌 [typescript][cTS] >> TypeScript - 3. Bölüm: Sınıflar  
 ➟ [typescript][cTS] >> TypeScript - 4. Bölüm: Arayüzler  
 [typescript][cTS] >> TypeScript - 5. Bölüm: Modüller  
 [typescript][cTS] >> TypeScript - 6. Bölüm: Genelleyiciler  
 [typescript][cTS] >> TypeScript - 7. Bölüm: Katmalar  
 
-👌 [c++][cCPP] - [veri yapıları][cVY] >> Veri Yapıları: İkili Arama Ağacı (Binary Search Tree)  
 ➟ [c++][cCPP] - [veri yapıları][cVY] >> Veri Yapıları: Öbek (Heap)  
 
 ➟ [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Giriş  
@@ -60,7 +54,6 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Visitor   
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: MVC  
 
-> YAZ 2016
 
 [cvy]: /kategori/veriyapilari
 [cmt]: /kategori/mimari&tasarim
