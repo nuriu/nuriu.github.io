@@ -9,16 +9,15 @@ permalink: /hakkimda/
 <h1 class="page-title">
 
     <div class="page-title__text">Hakkımda</div>
-    <div class="page-title__subtitle">
-    Founder & Jr. Software Engineer @ I.O.
-    </div>
+    <div class="page-title__subtitle">Founder & Jr. Software Engineer @ I.S.</div>
+
 </h1>
 
-Ben yazılım mühendisliği mesleği öğrencisiyim.
+Ben yazılım mühendisliği <b><u>mesleği</u></b> öğrencisiyim.
 Işık Oyun ve Işık Sistem isimleriyle iki girişim hedefim var.
-Burada, fırsat buldukça öğrenmekte olduğum konular hakkında yazılar yazmaya çalışacağım.  
+Burada, fırsat buldukça, kendi iradem ile öğrenmekte fayda bulduğum, bu yüzden öğrenmeye çalıştığım konular hakkında yazılar yazmaya çalışacağım.  
 
-Burası haricinde bana [Twitter][Twitter] üzerinden ulaşabilirsiniz.  
+Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşabilirsiniz.  
 
 > Hedefler
 
@@ -45,12 +44,12 @@ Burası haricinde bana [Twitter][Twitter] üzerinden ulaşabilirsiniz.
     <td>Y. Z.</td>
   </tr>
   <tr>
-    <td>➟ Ruby on Rails</td>
+    <td>👌 Ruby on Rails</td>
     <td>Electron</td>
     <td></td>
   </tr>
   <tr>
-    <td>Godot</td>
+    <td>➟ Godot</td>
     <td>D</td>
     <td></td>
   </tr>
@@ -61,8 +60,7 @@ Burası haricinde bana [Twitter][Twitter] üzerinden ulaşabilirsiniz.
   </tr>
 </table>
 
-> Projeler  
-
+> Aktif Projeler  
 
 * CN Weishaupt: Işık Oyun oluşum amacı.  
 ⋅⋅⋅ Tasarım dönemi (8 Ekim 2010 - Q1 2018)  
@@ -75,6 +73,11 @@ Burası haricinde bana [Twitter][Twitter] üzerinden ulaşabilirsiniz.
 ⋅⋅⋅ RC3 (Q2 2023)  
 ⋅⋅⋅ Tahmini çıkış zamanı (30 Ekim 2023)  
 
+0. Blöf  
+⋅⋅⋅ Tasarım dönemi (Q3 2016)  
+⋅⋅⋅ Yapım aşaması (Q3 2016)  
+⋅⋅⋅ Tahmini çıkış zamanı (Q3 2016) (Linux, Android, Web)  
+
 1. CFT: ilk Işık Oyun projesi.  
 ⋅⋅⋅ Tasarım dönemi (Q3 2016 - Q4 2016)  
 ⋅⋅⋅ Yapım aşaması (Q4 2016 - Q4 2017)  
@@ -82,11 +85,5 @@ Burası haricinde bana [Twitter][Twitter] üzerinden ulaşabilirsiniz.
 ⋅⋅⋅ Beta safhası (Q4 2017)  
 ⋅⋅⋅ Tahmini çıkış zamanı (Q1 2018)  
 
-2. D: ilk mobil Işık Oyun projesi.  
-⋅⋅⋅ Tasarım dönemi (Q1 2016 - Q2 2016)  
-⋅⋅⋅ Yapım aşaması (Q2 2016 - Q3 2016)  
-⋅⋅⋅ Alfa sürümü (Q3 2016)  
-⋅⋅⋅ Beta safhası (Q4 2016)  
-⋅⋅⋅ Tahmini çıkış zamanı (Q1 2017)  
-
+[GitHub]:   https://github.com/nuriu
 [Twitter]:	https://twitter.com/ezhoikam
