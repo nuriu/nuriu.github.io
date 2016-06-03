@@ -16,7 +16,7 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 👌: Yazıldı.  
 &nbsp;➟: Yazılıyor.  
 
-> YAZ 2016
+> HAZİRAN 2016
 
 ➟ [typescript][cTS] >> TypeScript - 4. Bölüm: Arayüzler  
 [typescript][cTS] >> TypeScript - 5. Bölüm: Modüller  
@@ -24,6 +24,8 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 [typescript][cTS] >> TypeScript - 7. Bölüm: Katmalar  
 
 ➟ [c++][cCPP] - [veri yapıları][cVY] >> Veri Yapıları: Öbek (Heap)  
+
+> TEMMUZ 2016
 
 ➟ [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Giriş  
 ➟ [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Singleton  
@@ -54,26 +56,20 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Visitor   
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: MVC  
 
+> PLANLANAN
 
-[cvy]: /kategori/veriyapilari
-[cmt]: /kategori/mimari&tasarim
-[cd]: /kategori/d
+[rails][cRails] >> Ruby on Rails ile Kişisel Blog Geliştirme Serisi
+
+[angular]: /kategori/angular
 [ccpp]: /kategori/cpp
-[cpython]: /kategori/python
-[cjava]: /kategori/java
-[clua]: /kategori/lua
-[cgenel]: /kategori/genel
-[ccocos]: /kategori/cocos
-[cbox2d]: /kategori/box2d
-[csfml]: /kategori/sfml
-[cjekyll]: /kategori/jekyll
-[cemacs]: /kategori/emacs
-[cmat]: /kategori/matematik
-[cyz]: /kategori/yapayzeka
-[clibgdx]: /kategori/libgdx
 [ccsharp]: /kategori/csharp
-[cwpf]: /kategori/wpf
-[cfiz]: /kategori/fizik
-[cdx12]: /kategori/directx
-[cvulkan]: /kategori/vulkan
+[cd]: /kategori/d
+[cgenel]: /kategori/genel
+[cjava]: /kategori/java
+[cjekyll]: /kategori/jekyll
+[clua]: /kategori/lua
+[cmt]: /kategori/mimari&tasarim
+[cpython]: /kategori/python
+[crails]: /kategori/rails
 [cts]: /kategori/typescript
+[cvy]: /kategori/veriyapilari
