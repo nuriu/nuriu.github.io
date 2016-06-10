@@ -50,12 +50,12 @@ Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşab
   </tr>
   <tr>
     <td>➟ Electron</td>
-    <td>D</td>
+    <td>Spring</td>
     <td>box2d</td>
   </tr>
   <tr>
-    <td>➟ Phalcon</td>
-    <td></td>
+    <td>➟ Dart</td>
+    <td>D</td>
     <td></td>
   </tr>
 </table>
