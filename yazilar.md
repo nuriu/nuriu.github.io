@@ -13,15 +13,11 @@ permalink: /plan/
 
 Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıklar ve içerikler, küçük değişiklikler gösterebilir.  
 
-&nbsp;➟: Yazılıyor.  
+➟: Yazılıyor.  
 
 > HAZİRAN 2016
 
-➟ [typescript][cTS] >> TypeScript - 5. Bölüm: Modüller  
-➟ [typescript][cTS] >> TypeScript - 6. Bölüm: Genelleyiciler  
-➟ [typescript][cTS] >> TypeScript - 7. Bölüm: Katmalar  
-
-[c++][cCPP] - [veri yapıları][cVY] >> Veri Yapıları: Öbek (Heap)  
+➟ [c++][cCPP] - [veri yapıları][cVY] >> Veri Yapıları: Öbek (Heap)  
 
 > TEMMUZ 2016
 
