@@ -25,9 +25,9 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 
 > TEMMUZ 2016
 
-➟ [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Giriş  
-➟ [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Singleton  
-➟ [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Factory & Abstract Factory  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Giriş  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Singleton  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Factory & Abstract Factory  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Builder  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Prototype  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Adapter  

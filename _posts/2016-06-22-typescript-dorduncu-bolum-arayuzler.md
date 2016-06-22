@@ -72,12 +72,12 @@ metinAra = function(kaynak: string, aranan: string) {
 
     let durum = kaynak.search(aranan);
 
-    // kaynak aranan metni içeriyor ise
+    // kaynak aranan metni içermiyor ise
     if (durum == -1) {
         return false;
     }
 
-    // kaynak aranan metni içermiyor ise
+    // kaynak aranan metni içeriyor ise
     else {
         return true;
     }
