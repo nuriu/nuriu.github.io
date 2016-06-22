@@ -9,7 +9,8 @@ categories:
 # Sınıflar
 ----------
 
-JavaScript fonksiyonlara ve prototip bazlı kalıtımlara odaklandığından dolayı ben dahil olmak üzere nesne tabanlı programlamayla daha haşır neşir olmuş olan çoğu kişiye bir miktar garip gelmiştir.
+JavaScript fonksiyonlara ve prototip bazlı kalıtımlara odaklandığından dolayı ben dahil olmak üzere nesne tabanlı programlamayla daha haşır neşir olmuş olan çoğu kişiye bir miktar garip gelmiştir.  
+
 JavaScript nesne tabanlı yaklaşıma ECMAScript 6 ile geçmeye başlasa da TypeScript bu yönteme şimdiden olanak tanıyor.
 
 Buradaki sınıflar temel olarak diğer nesne tabanlı dillerdeki çeşitleriyle aynı. Basit bir örnek ile inceleyelim;
@@ -112,3 +113,7 @@ Yavuz 16 metre hareket etti.
 {% endhighlight %}
 
 Böylece TypeScript üzerinde sınıf ve kalıtım konseptleri ve yazılımları üzerinden yüzeysel olarak da olsa geçmiş olduk.
+
+Sonraki bölüm: [TypeScript - 4. Bölüm: Arayuzler][1]
+
+[1]: /typescript/2016/06/22/typescript-dorduncu-bolum-arayuzler.html
