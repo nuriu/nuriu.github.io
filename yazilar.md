@@ -15,12 +15,9 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 
 ➟: Yazılıyor.  
 
-> HAZİRAN 2016
+> YAZ 2016
 
 ➟ [c++][cCPP] - [veri yapıları][cVY] >> Veri Yapıları: Öbek (Heap)  
-
-> TEMMUZ 2016
-
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Giriş  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Singleton  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Factory & Abstract Factory  
