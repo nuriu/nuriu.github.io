@@ -11,14 +11,13 @@ permalink: /plan/
     <div class="page-title__subtitle">Yazılması planlanmış yazılar</div>
 </h1>
 
-Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıklar ve içerikler, küçük değişiklikler gösterebilir.  
+Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıklar ve içerikler bazı değişiklikler gösterebilir.  
 
 ➟: Yazılıyor.  
 
 > YAZ 2016
 
-➟ [c++][cCPP] - [veri yapıları][cVY] >> Veri Yapıları: Öbek (Heap)  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Giriş  
+➟ [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Giriş  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Singleton  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Factory & Abstract Factory  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Builder  
