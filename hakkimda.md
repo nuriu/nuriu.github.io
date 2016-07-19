@@ -5,6 +5,12 @@ subtitle: Founder & Jr. Software Engineer @ I.O.
 permalink: /hakkimda/
 ---
 
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;width:100%;}
+.tg td{padding:10px 5px;word-break:normal;}
+.tg th{padding:10px 5px;word-break:normal;text-align:left;border-bottom:1px solid;}
+</style>
+
 <br/>
 <h1 class="page-title">
 
@@ -19,13 +25,60 @@ Burada, fırsat buldukça, kendi iradem ile öğrenmekte fayda bulduğum, bu yü
 
 Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşabilirsiniz.  
 
-> Hedefler
+> Tecrübeler
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;width:100%;}
-.tg td{padding:10px 5px;word-break:normal;}
-.tg th{padding:10px 5px;word-break:normal;text-align:left;border-bottom:1px solid;}
-</style>
+<table class="tg">
+  <tr>
+    <th>Programlama Dilleri<br></th>
+    <th>Kütüphaneler<br></th>
+    <th>Diğer Teknolojiler<br></th>
+  </tr>
+
+  <tr>
+    <td>C / C++</td>
+    <td>wxWidgets, SFML</td>
+    <td>Linux</td>
+  </tr>
+
+  <tr>
+    <td>C#</td>
+    <td>WPF</td>
+    <td>SQL</td>
+  </tr>
+
+  <tr>
+    <td>Java</td>
+    <td>libGDX</td>
+    <td>CMake</td>
+  </tr>
+
+  <tr>
+    <td>Python</td>
+    <td>Django</td>
+  </tr>
+  
+  <tr>
+    <td>HTML5 / CSS3</td>
+    <td>SASS</td>
+  </tr>
+
+  <tr>
+    <td>JavaScript</td>
+    <td>jQuery, AngularJS</td>
+  </tr>
+
+  <tr>
+    <td>TypeScript</td>
+    <td>Electron</td>
+  </tr>
+
+  <tr>
+    <td>Haxe</td>
+    <td>HaxeFlixel</td>
+  </tr>
+</table>
+
+> Hedefler
 
 <table class="tg">
   <tr>
@@ -62,21 +115,20 @@ Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşab
 
 > Aktif Projeler  
 
-0. Blöf (IO)  
-⋅⋅⋅ Tasarım dönemi (Q3 2016)  
-⋅⋅⋅ Yapım aşaması (Q3 2016)  
-⋅⋅⋅ Tahmini çıkış zamanı (Q3 2016) (Linux, Android, Web)  
+1. CFT: ilk Işık Oyun projesi. (IO)  
+⋅⋅⋅ Tasarım dönemi (Q3 2016 - Q4 2016)  
+⋅⋅⋅ Yapım aşaması (Q4 2016 - Q3 2017)  
+⋅⋅⋅ Alfa sürümü (Q2 2017)  
+⋅⋅⋅ Beta safhası (Q3 2017)  
+⋅⋅⋅ Tahmini çıkış zamanı (Q4 2017)  
 
-1. Samanyolu: ilk Işık Sistem projesi. (IS)  
-⋅⋅⋅ Tasarım dönemi (Q3 2016 - Q3 2016)  
-⋅⋅⋅ Yapım aşaması (Q3 2016 - Q4 2016)  
-⋅⋅⋅ Alfa sürümü (Q4 2016)  
-⋅⋅⋅ Beta safhası (Q4 2016)  
-⋅⋅⋅ Tahmini çıkış zamanı (Q1 2017)  
-
-2. Ajanda: ilk açık kaynaklı proje. (IS)  
+2. [**Ajanda**][Ajanda]: ilk açık kaynaklı proje. (IS)  
 ⋅⋅⋅ Yapım aşaması (Q3 2016 - Q4 2016)  
 ⋅⋅⋅ İlk sürüm çıkış zamanı (Q4 2016)  
+
+3. İsimsiz: ilk mobil uygulama. (IS)  
+⋅⋅⋅ Yapım aşaması (Q4 2016 - Q1 2017)  
+⋅⋅⋅ İlk sürüm çıkış zamanı (Q1 2017)  
 
 > Pasif Projeler  
 
@@ -95,3 +147,4 @@ Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşab
 
 [GitHub]:   https://github.com/nuriu
 [Twitter]:	https://twitter.com/ezhoikam
+[Ajanda]:   https://github.com/nuriu/ajanda
