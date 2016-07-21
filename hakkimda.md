@@ -48,7 +48,7 @@ Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşab
 
   <tr>
     <td>Java</td>
-    <td>libGDX</td>
+    <td>JavaFX, libGDX</td>
     <td>CMake</td>
   </tr>
 
@@ -115,14 +115,14 @@ Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşab
 
 > Aktif Projeler  
 
-1. CFT: ilk Işık Oyun projesi. (IO)  
+1. M.A.: ilk Işık Oyun projesi. (IO) (Windows, Linux, Android)  
 ⋅⋅⋅ Tasarım dönemi (Q3 2016 - Q4 2016)  
 ⋅⋅⋅ Yapım aşaması (Q4 2016 - Q3 2017)  
 ⋅⋅⋅ Alfa sürümü (Q2 2017)  
 ⋅⋅⋅ Beta safhası (Q3 2017)  
 ⋅⋅⋅ Tahmini çıkış zamanı (Q4 2017)  
 
-2. [**Ajanda**][Ajanda]: ilk açık kaynaklı proje. (IS)  
+2. [**Ajanda**][Ajanda]: ilk açık kaynaklı proje. (IS) (Linux, Windows, Mac)  
 ⋅⋅⋅ Yapım aşaması (Q3 2016 - Q4 2016)  
 ⋅⋅⋅ İlk sürüm çıkış zamanı (Q4 2016)  
 
