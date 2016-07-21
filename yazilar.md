@@ -17,34 +17,33 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 
 > YAZ 2016
 
-➟ [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Giriş  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Singleton  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Factory & Abstract Factory  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Builder  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Prototype  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Adapter  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Bridge  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Filter  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Composite  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Decorator  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Facade  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Flyweight  
+➟ [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Yegâne (Singleton)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Fabrika & Soyut Fabrika (Factory & Abstract Factory)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Yapıcı (Builder)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Örnek (Prototype)  
 
 [c++][cCPP] - [veri yapıları][cVY] >> Veri Yapıları: Hash Tablosu (Hash Table)  
+
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Uyarlayıcı (Adapter)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Köprü (Bridge)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Bileşik (Composite)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Dekoratör (Decorator)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Cephe (Facade)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Sineksiklet (Flyweight)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Vekil (Proxy)   
+
 [c++][cCPP] - [veri yapıları][cVY] >> Veri Yapıları: Graflar (Graph)  
 
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Proxy   
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Command  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Interpreter  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Iterator  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Mediator  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Memento   
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Observer  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: State  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Strategy  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Template  
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Visitor   
-[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: MVC  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Komut (Command)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Yorumlayıcı (Interpreter)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Yineleyici (Iterator)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Arabulucu (Mediator)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Yadigâr (Memento)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Gözlemci (Observer)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Durum (State)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Strateji (Strategy)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Şablon (Template)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Ziyaretçi (Visitor)  
 
 > PLANLANAN
 

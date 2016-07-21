@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Veri Yapıları
-subtitle: 'Öbek (Heap)'
+subtitle: "Öbek (Heap)"
 categories:
   - cpp
   - veriyapilari
