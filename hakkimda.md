@@ -84,32 +84,27 @@ Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşab
   <tr>
     <th>Kısa (Ağustos 2016)<br></th>
     <th>Orta (Ocak 2017)<br></th>
-    <th>Uzun (Haziran 2018)<br></th>
+    <th>Uzun (Ağustos 2018)<br></th>
   </tr>
   <tr>
     <td>☑ TypeScript</td>
-    <td>Angular 2</td>
-    <td>Vulkan / OpenGL</td>
+    <td>➟ OpenGL / Vulkan</td>
+    <td>DirectX 11 / DirectX 12</td>
   </tr>
   <tr>
     <td>☑ HaxeFlixel</td>
-    <td>Ionic 2</td>
+    <td>Angular 2</td>
     <td>Y. Z.</td>
   </tr>
   <tr>
     <td>☑ Ruby on Rails</td>
-    <td>Godot</td>
+    <td>Ionic 2</td>
     <td>Cocos2d-x</td>
   </tr>
   <tr>
     <td>☑ Electron</td>
     <td>Spring</td>
     <td>box2d</td>
-  </tr>
-  <tr>
-    <td>➟ Dart</td>
-    <td>D</td>
-    <td></td>
   </tr>
 </table>
 
