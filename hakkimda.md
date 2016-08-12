@@ -93,7 +93,7 @@ Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşab
   </tr>
   <tr>
     <td>☑ HaxeFlixel</td>
-    <td>Angular 2</td>
+    <td>➟ Angular 2</td>
     <td>Y. Z.</td>
   </tr>
   <tr>
