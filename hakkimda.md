@@ -93,12 +93,12 @@ Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşab
   </tr>
   <tr>
     <td>☑ HaxeFlixel</td>
-    <td>➟ Angular 2</td>
+    <td>➟ Go / Gin</td>
     <td>Y. Z.</td>
   </tr>
   <tr>
     <td>☑ Ruby on Rails</td>
-    <td>Ionic 2</td>
+    <td>Angular 2 / Ionic 2</td>
     <td>Cocos2d-x</td>
   </tr>
   <tr>
@@ -110,16 +110,15 @@ Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşab
 
 > Aktif Projeler  
 
-1. M.A.: ilk Işık Oyun projesi. (IO) (Windows, Linux, Android)  
-⋅⋅⋅ Tasarım dönemi (Q3 2016 - Q4 2016)  
-⋅⋅⋅ Yapım aşaması (Q4 2016 - Q3 2017)  
-⋅⋅⋅ Alfa sürümü (Q2 2017)  
-⋅⋅⋅ Beta safhası (Q3 2017)  
-⋅⋅⋅ Tahmini çıkış zamanı (Q4 2017)  
-
-2. [**Ajanda**][Ajanda]: ilk açık kaynaklı proje. (IS) (Linux, Windows, Mac)  
+1. [**Ajanda**][Ajanda]: ilk açık kaynaklı proje. (IS) (Linux, Windows, Mac)  
 ⋅⋅⋅ Yapım aşaması (Q3 2016 - Q4 2016)  
 ⋅⋅⋅ İlk sürüm çıkış zamanı (Q4 2016)  
+
+2. İsimsiz: ilk Işık Sistem girişimi. (IS) (Web)  
+⋅⋅⋅ Tasarım ve prototipleme dönemi (Q3 2016 - Q4 2016)  
+⋅⋅⋅ Yapım aşaması (Q4 2016 - Q3 2017)  
+⋅⋅⋅ Beta safhası (Q3 2017)  
+⋅⋅⋅ Tahmini çıkış zamanı (Q4 2017)  
 
 3. İsimsiz: ilk mobil uygulama. (IS)  
 ⋅⋅⋅ Yapım aşaması (Q4 2016 - Q1 2017)  

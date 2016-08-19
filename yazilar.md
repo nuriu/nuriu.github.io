@@ -15,7 +15,7 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 
 ➟: Yazılıyor.  
 
-> YAZ 2016
+> SONBAHAR 2016
 
 ➟ [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Yegâne (Singleton)  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Fabrika & Soyut Fabrika (Factory & Abstract Factory)  
