@@ -23,7 +23,7 @@ Ben yazılım mühendisliği <b><u>mesleği</u></b> öğrencisiyim.
 Işık Oyun ve Işık Sistem isimleriyle iki girişim hedefim var.
 Burada, fırsat buldukça, kendi iradem ile öğrenmekte fayda bulduğum, bu yüzden öğrenmeye çalıştığım konular hakkında yazılar yazmaya çalışacağım.  
 
-Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşabilirsiniz.  
+Burası haricinde bana [GitHub][GitHub] üzerinden ulaşabilirsiniz.  
 
 > Tecrübeler
 
@@ -93,7 +93,7 @@ Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşab
   </tr>
   <tr>
     <td>☑ HaxeFlixel</td>
-    <td>➟ Go / Gin</td>
+    <td>Go / Gin</td>
     <td>Y. Z.</td>
   </tr>
   <tr>
@@ -114,31 +114,23 @@ Burası haricinde bana [GitHub][GitHub] ve [Twitter][Twitter] üzerinden ulaşab
 ⋅⋅⋅ Yapım aşaması (Q3 2016 - Q4 2016)  
 ⋅⋅⋅ İlk sürüm çıkış zamanı (Q4 2016)  
 
-2. İsimsiz: ilk Işık Sistem girişimi. (IS) (Web)  
+2. Middle Age: ilk Işık Oyun girişimi. (IO) (Linux, Windows)  
 ⋅⋅⋅ Tasarım ve prototipleme dönemi (Q3 2016 - Q4 2016)  
 ⋅⋅⋅ Yapım aşaması (Q4 2016 - Q3 2017)  
 ⋅⋅⋅ Beta safhası (Q3 2017)  
 ⋅⋅⋅ Tahmini çıkış zamanı (Q4 2017)  
 
-3. İsimsiz: ilk mobil uygulama. (IS)  
+3. [**Haber**][Haber]:  Hürriyet için açık kaynaklı Masaüstü haber uygulaması. (IS)  
 ⋅⋅⋅ Yapım aşaması (Q4 2016 - Q1 2017)  
 ⋅⋅⋅ İlk sürüm çıkış zamanı (Q1 2017)  
 
-> Pasif Projeler  
+> Project Euler
 
-* CN Weishaupt: Işık Oyun oluşum amacı. (IS, IO)  
-⋅⋅⋅ Tasarım dönemi (8 Ekim 2010 - Q1 2018)  
-⋅⋅⋅ Yapım aşaması (Q1 2018 - Q4 2022)  
-⋅⋅⋅ Alfa sürümü (Q4 2019)  
-⋅⋅⋅ Beta safhası (Q4 2020)  
-⋅⋅⋅ İyileştirme safhası (Q4 2021 - Q3 2023)  
-⋅⋅⋅ RC1 (Q4 2021)  
-⋅⋅⋅ RC2 (Q3 2022)  
-⋅⋅⋅ RC3 (Q2 2023)  
-⋅⋅⋅ Tahmini çıkış zamanı (30 Ekim 2023)  
+Kendimi geliştirme amacıyla çözmeye yeni başladığım Project Euler problemlerindeki durumum.
 
+![Project Euler Durumum](https://projecteuler.net/profile/ezhoikam.png)
 
 
 [GitHub]:   https://github.com/nuriu
-[Twitter]:	https://twitter.com/ezhoikam
 [Ajanda]:   https://github.com/nuriu/ajanda
+[Haber]:    https://github.com/nuriu/Haber
