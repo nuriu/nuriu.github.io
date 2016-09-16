@@ -56,7 +56,7 @@ Burası haricinde bana [GitHub][GitHub] üzerinden ulaşabilirsiniz.
     <td>Python</td>
     <td>Django</td>
   </tr>
-  
+
   <tr>
     <td>HTML5 / CSS3</td>
     <td>SASS</td>
@@ -88,7 +88,7 @@ Burası haricinde bana [GitHub][GitHub] üzerinden ulaşabilirsiniz.
   </tr>
   <tr>
     <td>☑ TypeScript</td>
-    <td>➟ OpenGL / Vulkan</td>
+    <td>➟ U++</td>
     <td>DirectX 11 / DirectX 12</td>
   </tr>
   <tr>
