@@ -88,7 +88,7 @@ Burası haricinde bana [GitHub][GitHub] üzerinden ulaşabilirsiniz.
   </tr>
   <tr>
     <td>☑ TypeScript</td>
-    <td>➟ U++</td>
+    <td>➟ Phalcon</td>
     <td>DirectX 11 / DirectX 12</td>
   </tr>
   <tr>
