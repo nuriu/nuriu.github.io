@@ -15,9 +15,9 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 
 ➟: Yazılıyor.  
 
-> SONBAHAR 2016
+> PLANLANAN (2017)
 
-➟ [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Yegâne (Singleton)  
+[java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Yegâne (Singleton)  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Fabrika & Soyut Fabrika (Factory & Abstract Factory)  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Yapıcı (Builder)  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Örnek (Prototype)  
@@ -45,9 +45,9 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Şablon (Template)  
 [java][cJAVA] - [mimari & tasarım][cMT] >> Tasarım Kalıpları: Ziyaretçi (Visitor)  
 
-> PLANLANAN
+[python][cPython] >> Django ile Kişisel Blog Geliştirme Serisi  
+[typescript][cts] >> Uygulama Serisi (Ocak - Şubat 2017)  
 
-[rails][cRails] >> Ruby on Rails ile Kişisel Blog Geliştirme Serisi
 
 [angular]: /kategori/angular
 [ccpp]: /kategori/cpp
