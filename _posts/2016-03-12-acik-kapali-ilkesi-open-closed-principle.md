@@ -1,10 +1,14 @@
 ---
 layout: post
-title: (O) Açık/Kapalı İlkesi 
-subtitle: '(Open/closed principle)'
+title: "(O) Açık/Kapalı İlkesi (Open/closed principle)"
 date: 2016-03-12 18:00:00 +0200
+tags:
+- mimari & tasarım
+- solid ilkeleri
+- tasarım ilkeleri
 categories:
-  - mimari&tasarim
+- mimari & tasarım
+series: mimari & tasarım
 ---
 
 # Açık/Kapalı İlkesi
@@ -71,4 +75,4 @@ Umarım faydalı olabilmişimdir.
 
 Sonraki bölüm: [Liskov’un Yer Değiştirme İlkesi][1]
 
-[1]: /mimari&tasarim/2016/03/13/liskovun-yer-degistirme-ilkesi-liskov-substitution-principle.html
+[1]: /liskovun-yer-degistirme-ilkesi-liskov-substitution-principle/

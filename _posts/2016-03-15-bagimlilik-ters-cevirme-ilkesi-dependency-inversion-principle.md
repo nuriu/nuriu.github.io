@@ -1,10 +1,14 @@
 ---
 layout: post
-title: (D) Bağımlılık Ters Çevirme İlkesi
-subtitle: '(Dependency inversion principle)'
+title: "(D) Bağımlılık Ters Çevirme İlkesi (Dependency inversion principle)"
 date: 2016-03-15 22:30:00 +0200
+tags:
+- mimari & tasarım
+- solid ilkeleri
+- tasarım ilkeleri
 categories:
-  - mimari&tasarim
+- mimari & tasarım
+series: mimari & tasarım
 ---
 
 # Bağımlılık Ters Çevirme İlkesi

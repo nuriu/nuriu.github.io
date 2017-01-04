@@ -1,9 +1,13 @@
 ---
 layout: post
-title: (I) Arayüz Ayrımı İlkesi
-subtitle: '(Interface segregation principle)'
+title: "(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"
+tags:
+- mimari & tasarım
+- solid ilkeleri
+- tasarım ilkeleri
 categories:
-  - mimari&tasarim
+- mimari & tasarım
+series: mimari & tasarım
 ---
 
 # Arayüz Ayrımı İlkesi
@@ -50,4 +54,4 @@ Bu basit ama önemli ilkeyi aklımızda bulundurup tasarımımızı özelleştir
 
 Sonraki bölüm: [Bağımlılık Ters Çevirme İlkesi][1]
 
-[1]: /mimari&tasarim/2016/03/15/bagimlilik-ters-cevirme-ilkesi-dependency-inversion-principle.html
+[1]: /bagimlilik-ters-cevirme-ilkesi-dependency-inversion-principle/

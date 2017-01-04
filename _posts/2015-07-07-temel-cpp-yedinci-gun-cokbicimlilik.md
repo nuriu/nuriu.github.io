@@ -1,13 +1,16 @@
 ---
 layout: post
-title: Temel C++
-subtitle: "7. Gün: Çokbiçimlilik"
+title: "Temel C++ 7. Gün: Çokbiçimlilik"
+tags:
+- c++
+- çokbiçimlilik
 categories:
-- cpp
+- c++
+series: c++
 ---
 
-# **Çokbiçimlilik**  
-------------------------
+Çokbiçimlilik
+-------------
 Çokbiçimlilik dün bahsettiğimiz sanal fonksiyonlar kullanılarak, aynı fonksiyonun farklı biçimlerde kullanılmasıyla oluşur. Böylece fonksiyonun bulunduğu sınıfın türünü bilmek zorunda kalmayız. Dünkü sanal fonksiyon örneğimiz aynı zamanda çokbiçimlilik örneğidir. Aynı örneğin sadeleştirilmiş halini tekrar paylaşacağım. Çünkü gösterebileceğim en basit örnek sanırım bu.  
 
 Örneğimiz:  

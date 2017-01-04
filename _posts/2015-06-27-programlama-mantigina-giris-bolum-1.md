@@ -1,26 +1,28 @@
 ---
 layout: post
-title: Programlama Mantığına Giriş
-subtitle: Bölüm 1
+title: "Programlama Mantığına Giriş Bölüm 1"
+tags:
+- genel
 categories:
 - genel
+series: genel
 ---
 
-Porgramlama mantığı konusu hakkında iki bölüm yazacağım. İlk bölümde program dünyasına teorik giriş yapacağız. İkinci bölümde ise programların nasıl yapıldıklarıyla ilgileneceğiz.  
+Programlama mantığı konusu hakkında iki bölüm yazacağım. İlk bölümde program dünyasına teorik giriş yapacağız. İkinci bölümde ise programların nasıl yapıldıklarıyla ilgileneceğiz.  
 
 Teorik bölümle ilgilenmiyorsanız ikinci bölüme şuradan ulaşabilirsiniz;  
 [Programlama Mantığına Giriş - Bölüm 2][PMGB2]
 
 Teori bölümü olan ilk bölümde cevabını vermeye çalışacağım sorular şunlar;  
 
-# 1 - Program Nedir?
---------------
+1 - Program Nedir?
+------------------
 Genel olarak programlar, bilgisayara kullanıcısıyla ve donanımıyla nasıl etkileşimde bulunacağını, veriyi/verileri nasıl işleyeceğini söylediğimiz adımlar topluluğudur. Programlama dilleri kullanılarak geliştirilirler. Bu diller ise yüksek, orta ve düşük seviyeli diller olmak üzere üçe ayrılır.
 
 Programları yazmak çoğu zaman programcıların işidir. Programlamayı mühendislik disiplini çerçevesinde ele alan meslek ise ülkemizde 'gerçek' örneklerine ender rastladığımız 'Yazılım Mühendisliği' dir.
 
-# 2 - Programlama Nasıl Yapılır?
---------------------------
+2 - Programlama Nasıl Yapılır?
+------------------------------
 Bir bilgisayar ile konuşmak, bir insan ile mektuplaşmanın hızlı versiyonu gibidir. Fark, bilgisayarın hızlı cevap verip, yorulmamasıdır.
 
 Örneğim biraz farklı gelmiş olabilir fakat durum örnekteki eyleme çok benzer. Bilgisayarlarla konuşmak yazılar aracılığıyla yapılır ve bunun amacı genellikle onlara bir şeyler yaptırtmaktır.  
@@ -75,4 +77,4 @@ Bu konuda daha detaylı ve teknik bilgiyi ikinci bölümden edinebilirsiniz;
 
 
 
-[PMGB2]: ../28/programlama-mantigina-giris-bolum-2.html
+[PMGB2]: /programlama-mantigina-giris-bolum-2/

@@ -1,12 +1,16 @@
 ---
 layout: post
-title: Temel Python
-subtitle: "7. Gün: Kalıtım"
+title: "Temel Python 7. Gün: Kalıtım"
+tags:
+- python
+- kalıtım
 categories:
 - python
+series: python
 ---
 
-# **Kalıtım**  
+Kalıtım
+-------
 Kabaca bir sınıftan başka bir sınıf oluşturma işlemidir. Tanımlanması şu şekildedir;  
 
 {% highlight python %}

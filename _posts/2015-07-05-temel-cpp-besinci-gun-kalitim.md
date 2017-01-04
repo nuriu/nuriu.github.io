@@ -1,13 +1,16 @@
 ---
 layout: post
-title: Temel C++
-subtitle: "5. Gün: Kalıtım"
+title: "Temel C++ 5. Gün: Kalıtım"
+tags:
+- c++
+- kalıtım
 categories:
-- cpp
+- c++
+series: c++
 ---
 
-# **Kalıtım**  
------------------
+Kalıtım
+-------
 Bir önceki bölümde sınıflar ve nesneler ile ilgilendik. Kedi isimli bir sınıf tanımlayıp, o sınıftan Tekir isimli bir nesne oluşturduk.  
 
 Şimdi, düşünelim ki birden fazla hayvan cinsimiz var. Örneğin kedi ve köpek olmak üzere iki cinsimiz olsun. Eğer bu iki tür için iki farklı sınıf tanımlarsak gereksiz yere kod tekrarı yapmış oluruz çünkü bu iki türünde sahip oldukları ortak özellikler var. Dünkü örneğin üzerinden devam edelim;  
@@ -134,4 +137,4 @@ int main()
 Sonraki Bölüm: Kalıtım:  
 [Temel C++ - 6. Gün: Sanal Fonksiyonlar][1]
 
-[1]: /cpp/2015/07/06/temel-cpp-altinci-gun-sanal-fonksiyonlar.html
+[1]: /temel-cpp-altinci-gun-sanal-fonksiyonlar/

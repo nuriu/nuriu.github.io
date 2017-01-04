@@ -1,9 +1,12 @@
 ---
 layout: post
-title: TypeScript 
-subtitle: "3. Bölüm: Sınıflar"
+title: "TypeScript 3. Bölüm: Sınıflar"
+tags:
+- typescript
+- sınıflar
 categories:
 - typescript
+series: typescript
 ---
 
 # Sınıflar
@@ -116,4 +119,4 @@ Böylece TypeScript üzerinde sınıf ve kalıtım konseptleri ve yazılımları
 
 Sonraki bölüm: [TypeScript - 4. Bölüm: Arayuzler][1]
 
-[1]: /typescript/2016/06/22/typescript-dorduncu-bolum-arayuzler.html
+[1]: /typescript-dorduncu-bolum-arayuzler/

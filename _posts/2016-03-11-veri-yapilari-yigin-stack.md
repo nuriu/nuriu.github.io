@@ -1,11 +1,16 @@
 ---
 layout: post
-title: Veri Yapıları
-subtitle: 'Yığın (Stack)'
+title: "Veri Yapıları: Yığın (Stack)"
 date: 2016-03-11 02:00:00 +0200
+tags:
+- java
+- veri yapıları
+- yığınlar
+- stack
 categories:
-  - java
-  - veriyapilari
+- java
+- veri yapıları
+series: veri yapıları
 ---
 
 # Giriş

@@ -1,12 +1,17 @@
 ---
 layout: post
-title: Temel Python
-subtitle: "5. Gün: Fonksiyonlar, Dosyalama İşlemleri"
+title: "Temel Python 5. Gün: Fonksiyonlar, Dosyalama İşlemleri"
+tags:
+- python
+- fonksiyonlar
+- dosyalama
 categories:
 - python
+series: python
 ---
 
-# **Fonksiyonlar**  
+Fonksiyonlar
+------------
 Python'da fonksiyonlar diğer geleneksel dillere göre oldukça farklı şekilde tanımlanırlar. Basitçe, fonksiyon tanımlama sentaksı şu şekildedir;  
 
 {% highlight python %}
@@ -26,7 +31,8 @@ yazdir("Yazdırılacak Metin")
 
 Girintilere (global ve lokal değişkenlere) biraz daha dikkat etmekte fayda var.  
 
-# **Dosyalama İşlemleri**  
+Dosyalama İşlemleri
+-------------------
 
 **Dosya Açma İşlemi**  
 Dosya açma işlemi open fonksiyonu ile yapılır. open fonksiyonuna dosya adı ve açma modu parametleri girilerek basitçe dosya açma işlemi gerçekleştirilir. Örnek;  
@@ -107,4 +113,4 @@ os.remove("dosya2.txt")
 Sonraki Bölüm: Nesneler ve Sınıflar:  
 [Temel Python - 6. Gün: Nesneler ve Sınıflar][1]  
 
-[1]: /python/2015/10/15/temel-python-altinci-gun-nesneler-ve-siniflar.html
+[1]: /temel-python-altinci-gun-nesneler-ve-siniflar/

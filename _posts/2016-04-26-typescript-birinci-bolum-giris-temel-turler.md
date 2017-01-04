@@ -1,10 +1,14 @@
 ---
 layout: post
-title: TypeScript 
-subtitle: "1. Bölüm: Giriş, Temel Türler"
+title: "TypeScript 1. Bölüm: Giriş, Temel Türler"
 date: 2016-04-26 00:00:00 +0200
+tags:
+- typescript
+- giriş
+- veri tipleri
 categories:
 - typescript
+series: typescript
 ---
 
 # Giriş
@@ -143,4 +147,4 @@ function fonksiyonAdi(): void {
 
 Sonraki bölüm: [TypeScript - 2. Bölüm: Fonksiyonlar][1]
 
-[1]: /typescript/2016/04/27/typescript-ikinci-bolum-fonksiyonlar.html
+[1]: /typescript-ikinci-bolum-fonksiyonlar/

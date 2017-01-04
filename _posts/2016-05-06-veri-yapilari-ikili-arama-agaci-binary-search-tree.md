@@ -1,10 +1,16 @@
 ---
 layout: post
-title: Veri Yapıları
-subtitle: 'İkili Arama Ağacı (Binary Search Tree)'
+title: "Veri Yapıları: İkili Arama Ağacı (Binary Search Tree)"
+tags:
+- c++
+- veri yapıları
+- arama ağaçları
+- ikili arama ağacı
+- binary search tree
 categories:
-  - cpp
-  - veriyapilari
+- c++
+- veri yapıları
+series: veri yapıları
 ---
 
 # İkili Ağaç Yapısı

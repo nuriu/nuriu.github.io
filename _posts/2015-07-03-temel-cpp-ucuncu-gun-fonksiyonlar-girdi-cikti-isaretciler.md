@@ -1,13 +1,18 @@
 ---
 layout: post
-title: Temel C++
-subtitle: "3. Gün: Fonksiyonlar, Girdi/Çıktı, İşaretçiler"
+title: "Temel C++ 3. Gün: Fonksiyonlar, Girdi/Çıktı, İşaretçiler"
+tags:
+- c++
+- fonksiyonlar
+- girdi / çıktı
+- işaretçiler
 categories:
-- cpp
+- c++
+series: c++
 ---
 
-# **Fonksiyonlar**  
-------------------------
+**Fonksiyonlar**  
+----------------
 
 Fonksiyonlar (Diğer adıyla metodlar) programları bölümlere ayırmaya yarar. Böylelikle  proje büyükte sorun çıkarmaya başlayacak olan kod tekrarlarını da minimuma indirir. Yine de projenizi iyi tasarlamalısınız, aksi halde yararından çok zararı olur. Fonksiyonlar;  
 
@@ -125,8 +130,8 @@ int main()
 {% endhighlight %}
 
 
-# **Girdi / Çıktı İşlemleri (Dosyalar)**  
------------------------------------------------
+**Girdi / Çıktı İşlemleri (Dosyalar)**  
+----------------------------------------
 
 Ufak programlar dışındaki çoğu program dosyalar ile çalışır. Dolayısıyla dosya oluşturmak, okumak ve yazmak için belirli fonksiyonlara ihtiyaç vardır. Burada devreye `fstream` kütüphanesi devreye giriyor. Vektörleri kullanmak için nasıl `vector` kütüphanesini kullandıysak burada da aynı şekilde `fstream` kütüphanesini kullanacağız.  
 
@@ -198,8 +203,8 @@ cout << okunanAd << " " << okunanSoyad << endl;
 dOku.close();
 {% endhighlight %}
 
-# **İşaretçiler (Pointers)**  
----------------------------------
+**İşaretçiler (Pointers)**  
+----------------------------
 
 İşaretçiler, değişkenlerin aksine değer yerine değerin adresini saklarlar. Bellek yönetimi açısından çok önemlidirler. İşletim sistemleri ve oyunlar gibi yazılımlarda çok fazla kullanılırlar. Aynı değişkenler gibi tanımlanırlar tek farkları başlarına `*` getirilmesidir. Tanımlama örneği;  
 `int *sayi;`  
@@ -237,4 +242,4 @@ Bu örnekten sonra neden işaretçilere gerek olduğu konusunda akılda bir soru
 Sonraki Bölüm: Sınıflar, Nesneler:  
 [Temel C++ - 4. Gün: Sınıflar, Nesneler][1]
 
-[1]: /cpp/2015/07/04/temel-cpp-dorduncu-gun-siniflar-nesneler.html
+[1]: /temel-cpp-dorduncu-gun-siniflar-nesneler/

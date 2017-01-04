@@ -1,0 +1,76 @@
+<header class="header-site" role="banner">
+    <div class="content">
+
+        <div class="person">
+            <img src="/assets/img/profile.jpg" alt="">
+        </div>
+
+        <h1>
+            <span class="site-title">{{site.username}}</span>
+        </h1>
+
+        <div class="icons-home">
+
+            <a aria-label="Eposta yolla" href="mailto:{{site.email}}">
+                <svg class="icon icon-email">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            </a>
+
+            <a aria-label="Github Profilim" target="_blank" href="https://github.com/{{site.github_username}}">
+                <svg class="icon icon-github-alt">
+                    <use xlink:href="#icon-github-alt"></use>
+                </svg>
+            </a>
+
+            <a aria-label="HackerRank Profilim" target="_blank" href="https://www.hackerrank.com/{{site.hackerrank_username}}">
+                <svg class="icon icon-hackerrank">
+                    <use xlink:href="#icon-hackerrank"></use>
+                </svg>
+            </a>
+
+            <a aria-label="LinkedIn Profilim" target="_blank" href="https://linkedin.com/in/{{site.linkedin_username}}">
+                <svg class="icon icon-linkedin">
+                    <use xlink:href="#icon-linkedin"></use>
+                </svg>
+            </a>
+
+            <a aria-label="StackOverflow Profilim" target="_blank" href="https://stackoverflow.com/users/{{site.stackoverflow_userid}}">
+                <svg class="icon icon-stackoverflow">
+                    <use xlink:href="#icon-stackoverflow"></use>
+                </svg>
+            </a>
+
+            <a aria-label="RSS" target="_blank" href="{{ " /feed.xml " | prepend: site.baseurl }}">
+                <svg class="icon icon-rss">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            </a>
+
+        </div>
+
+        <ul class="recent">
+            <p>Son 8 yazı:</p>
+            {% for post in site.posts limit:8%}
+            <li>
+                <a href="{{ post.url | prepend: site.baseurl }}">
+                    <h2 class="post-title" itemprop="name">{{ post.title }}</h2>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <ul class="recent">
+            <p>Son 5 proje:</p>
+            {% for project in site.projects limit:5%}
+            <li>
+                <a href="{{ project.url}}">
+                    <h2 class="post-title" itemprop="name">{{ project.name }}</h2>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+    {% include menu-search.html %}
+</header>

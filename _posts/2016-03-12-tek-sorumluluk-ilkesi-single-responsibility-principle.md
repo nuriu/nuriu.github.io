@@ -1,10 +1,14 @@
 ---
 layout: post
-title: (S) Tek Sorumluluk İlkesi
-subtitle: '(Single responsibility principle)'
+title: "(S) Tek Sorumluluk İlkesi (Single responsibility principle)"
 date: 2016-03-12 03:00:00 +0200
+tags:
+- mimari & tasarım
+- solid ilkeleri
+- tasarım ilkeleri
 categories:
-  - mimari&tasarim
+- mimari & tasarım
+series: mimari & tasarım
 ---
 
 # Giriş
@@ -99,4 +103,4 @@ Umarım anlaşılabilir/yeterli düzeyde bir anlatım/açıklama yapabilmişimdi
 
 Sonraki bölüm: [Açık/Kapalı İlkesi][1]
 
-[1]: /mimari&tasarim/2016/03/12/acik-kapali-ilkesi-open-closed-principle.html
+[1]: /acik-kapali-ilkesi-open-closed-principle/

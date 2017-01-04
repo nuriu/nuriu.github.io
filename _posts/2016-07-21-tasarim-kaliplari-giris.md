@@ -1,10 +1,12 @@
 ---
 layout: post
-title: Tasarım Kalıpları
-subtitle: "Giriş"
+title: "Tasarım Kalıpları: Giriş"
+tags:
+- mimari & tasarım
+- tasarım kalıpları
 categories:
-   - java
-   - mimari&tasarim
+- mimari & tasarım
+series: mimari & tasarım
 ---
 
 # Nedir?

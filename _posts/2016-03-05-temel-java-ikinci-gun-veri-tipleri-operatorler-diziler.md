@@ -1,9 +1,14 @@
 ---
 layout: post
-title: Temel Java 
-subtitle: "2. Gün: Veri Tipleri, Operatörler, Diziler"
+title: "Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"
+tags:
+- java
+- veri tipleri
+- operatörler
+- diziler
 categories:
 - java
+series: java
 ---
 
 # **Veri Tipleri (devamı)**
@@ -157,8 +162,8 @@ int[] sayilar = new int[8]; //int tipinde bir dizi oluşturduk ve 10 elemanlık 
 Elemanlara erişim;  
 {% highlight java %}
 String[] doksanAltililar =  { "Mehmet Emekli",
-                              "Ahmet Urgancı",
-                              "Şevket Keyifsiz" };
+                            "Ahmet Urgancı",
+                            "Şevket Keyifsiz" };
 
 // indis değerlerimizin 0'dan başladığını gözden kaçırmayalım.
 System.out.println(doksanAltililar[0]);
@@ -179,4 +184,4 @@ Sonraki Bölüm: Karar Yapıları, Döngüler, Metodlar:
 [Temel Java - 3. Gün: Karar Yapıları, Döngüler, Metodlar][1]  
 
 
-[1]: /java/2016/03/06/temel-java-ucuncu-gun-karar-yapilari-donguler-metodlar.html
+[1]: /temel-java-ucuncu-gun-karar-yapilari-donguler-metodlar/

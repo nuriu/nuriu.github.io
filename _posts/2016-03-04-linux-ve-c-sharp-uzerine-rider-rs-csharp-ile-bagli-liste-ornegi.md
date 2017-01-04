@@ -1,11 +1,19 @@
 ---
 layout: post
-title: Linux & C# Üzerine
-subtitle: Rider RS (C#) ile Bağlı Liste Örneği
+title: "Linux & C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"
 date: 2016-03-04 19:00:00 +0200
-categories:
-- csharp
+tags:
+- c#
 - genel
+- linux
+- Rider RS
+- veri yapıları
+- bağlı listeler
+categories:
+- c#
+- genel
+- linux
+series: genel
 ---
 
 **Giriş**  

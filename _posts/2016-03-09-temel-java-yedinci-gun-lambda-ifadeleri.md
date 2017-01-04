@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Temel Java 
-subtitle: "7. Gün: Lambda İfadeleri"
+title: "Temel Java 7. Gün: Lambda İfadeleri"
+tags:
+- java
+- lambda
+- lambda ifadeleri
 categories:
 - java
+series: java
 ---
 
 

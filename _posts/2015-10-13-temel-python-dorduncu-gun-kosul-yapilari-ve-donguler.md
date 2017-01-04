@@ -1,12 +1,17 @@
 ---
 layout: post
-title: Temel Python
-subtitle: "4. Gün: Koşul Yapıları ve Döngüler"
+title: "Temel Python 4. Gün: Koşul Yapıları ve Döngüler"
+tags:
+- python
+- koşul yapıları
+- döngüler
 categories:
 - python
+series: python
 ---
 
-# **If, Elif, Else**  
+If, Elif, Else
+--------------
 Karar verme yapılarından olan if yapısının diğer dillerdeki versiyonlarından tek farkı yazım biçimindedir. (sentaks) Bu yapıları kullanırken girintilere biraz daha fazla dikkat etmelisiniz. Örnek;  
 
 {% highlight python %}
@@ -23,8 +28,8 @@ else:
     print("Yasiniz 20'den buyuktur.")
 {% endhighlight %}  
 
-
-# **For**  
+For
+---
 For döngüsünün kullanım şekli C ailesindeki şeklinden biraz farklıdır. Örneğin sayı aralıklarıyla ilgili basit bir örnek;  
 
 {% highlight python %}
@@ -47,7 +52,8 @@ for indis in range(len(kisiler)):
 {% endhighlight %}
 
 
-# **While**    
+While
+-----
 While döngüsü mantık olarak en kolay döngü sistemidir. Belirli bir koşul gerçekleşmediği sürece tekrar eden kod bloğundan oluşur. Örnek;  
 
 {% highlight python %}
@@ -63,4 +69,4 @@ Sonraki Bölüm: Fonksiyonlar, Dosyalama İşlemleri:
 [Temel Python - 5. Gün: Fonksiyonlar, Dosyalama İşlemleri][1]  
 
 
-[1]: /python/2015/10/14/temel-python-besinci-gun-fonksiyonlar-dosyalama-islemleri.html
+[1]: /temel-python-besinci-gun-fonksiyonlar-dosyalama-islemleri/

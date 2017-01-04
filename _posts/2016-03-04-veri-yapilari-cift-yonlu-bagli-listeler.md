@@ -1,10 +1,15 @@
 ---
 layout: post
-title: Veri Yapıları
-subtitle: 'Çift Yönlü Bağlı Listeler'
+title: "Veri Yapıları: Çift Yönlü Bağlı Listeler"
+tags:
+- c++
+- veri yapıları
+- bağlı listeler
+- çift yönlü bağlı listeler
 categories:
-  - cpp
-  - veriyapilari
+- c++
+- veri yapıları
+series: veri yapıları
 ---
 
 **Çift Yönlü Bağlı Listeler**

@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Temel C#
-subtitle: "6. Gün: Kalıtım & Çokbiçimlilik"
+title: "Temel C# 6. Gün: Kalıtım & Çokbiçimlilik"
+tags:
+- c#
+- kalıtım
+- çokbiçimlilik
 categories:
-- csharp
+- c#
+series: c#
 ---
 
 # **Kalıtım**  

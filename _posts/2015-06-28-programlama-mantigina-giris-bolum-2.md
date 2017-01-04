@@ -1,12 +1,14 @@
 ---
 layout: post
-title: Programlama Mantığına Giriş
-subtitle: Bölüm 2
+title: "Programlama Mantığına Giriş Bölüm 2"
+tags:
+- genel
 categories:
 - genel
+series: genel
 ---
 
-# Programlar Nelerden Oluşur?
+Programlar Nelerden Oluşur?
 ---------------------------
 Kaba tabirle programlar modüllerden, modüller algoritmalardan, algoritmalar ise kod bloklarından oluşur. Modülleri kabaca kaynak kod doslayarı olarak düşünebilirsiniz. Algoritmalar ise hepimizin farkında olmadan kullandığı şeydir; sıralanmış iş adımları.
 
@@ -50,14 +52,14 @@ Programın yaptıkları sırasıyla şunlar;
 
 Basit bir programın nelerden oluştuğunu gösterdiğimize göre bu kodların nereye yazıldığını ve nasıl programa dönüştüğünden bahsedebiliriz.  
 
-# Programlar Nasıl Oluşur?
----------------------------
+Programlar Nasıl Oluşur?
+------------------------
 
 Yukarıdaki örnekteki kaynak kodu bir metin belgesine yazıp dosya uzantısını `.c` yapıp kaydetseniz bile tek başına bir işe yaramaz.  
 
 Kodların programa dönüşebilmesi için kodların bir derleyici tarafından derlenmesi gerekir. Bu konuyu anlatmak için genelde derleyici, bağlayıcı gibi unsurlar ayrı ayrı anlatılır fakat konu oldukça uzamaya ve karışıklaşmaya müsait olduğundan ben sadece, bunların birleştirilmiş halleri olaran IDE (integrated development environment) 'nin tanımını yapacağım.  
 
-# IDE nedir?
+IDE nedir?
 ----------
 
 IDE, kodların yazıldığı ve derlendiği yazılımlardır. Visual Studio (C++, C#, F#, Python), Eclipse(Java, C, C++), Code::Blocks(C, C++, D) gibi bir çok örnekleri vardır. Bu yazılımlar hakkında daha detaylı bilgiyi ve ekran görüntülerini internetten bulabilirsiniz.  

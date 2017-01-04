@@ -1,12 +1,17 @@
 ---
 layout: post
-title: Temel Python
-subtitle: "6. Gün: Nesneler ve Sınıflar"
+title: "Temel Python 6. Gün: Nesneler ve Sınıflar"
+tags:
+- python
+- sınıflar
+- nesneler
 categories:
 - python
+series: python
 ---
 
-# **Sınıf Oluşturma**  
+Sınıf Oluşturma
+---------------
 Python'da sınıf oluşturma işlemi diğer dillerdeki gibi class ifadesi ile gerçekleştirilir. Tanım sentaksı aşağıdaki gibidir;  
 
 {% highlight python %}
@@ -43,7 +48,8 @@ class Oyuncu:
         print("İsim: ", self.isim,  "\nYaş: ", self.yas, "\n")
 {% endhighlight %}
 
-# **Nesne Oluşturma**  
+Nesne Oluşturma
+---------------
 Nesne oluşturma işlemi sınıf oluşturma işleminden çok daha kolaydır. Yapmamız gereken tek şey sınıfımızı önceden belirlediğimiz parametreleri alan bir fonksiyon gibi çağırmak. Örnek olarak iki yeni oyuncu ekleyelim;  
 {% highlight python %}
 # Oyuncu sınıfımızın ilk nesnesini oluşturuyoruz.
@@ -54,7 +60,8 @@ oyuncu1 = Oyuncu("Ahmet", 18)
 oyuncu2 = Oyuncu("Mehmet", 21)
 {% endhighlight %}
 
-# **Nesneler Aracılığıyla Fonksiyonları Çağırma**  
+Nesneler Aracılığıyla Fonksiyonları Çağırma
+-------------------------------------------
 Şimdi de oluşturduğumuz nesnelerin ve sınıfımızın bilgilerini ekrana yazdıralım;  
 
 {% highlight python %}
@@ -70,4 +77,4 @@ print("Toplam Oyuncu Sayısı: %d" % Oyuncu.oyuncuSayisi)
 Sonraki Bölüm: Kalıtım:  
 [Temel Python - 7. Gün: Kalıtım][1]  
 
-[1]: /python/2015/10/16/temel-python-yedinci-gun-kalitim.html
+[1]: /temel-python-yedinci-gun-kalitim/

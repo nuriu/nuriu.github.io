@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Temel Java 
-subtitle: "4. Gün: Sınıflar, Nesneler"
+title: "Temel Java 4. Gün: Sınıflar, Nesneler"
+tags:
+- java
+- sınıflar
+- nesneler
 categories:
 - java
+series: java
 ---
 
 # Sınıflar
@@ -135,7 +139,7 @@ Sonraki Bölüm: Paketler, Kalıtım, Arayüzler:
 [Temel Java - 5. Gün: Paketler, Kalıtım, Arayüzler][4]  
 
 
-[1]: /cpp/2015/07/04/temel-cpp-dorduncu-gun-siniflar-nesneler.html
-[2]: /python/2015/10/15/temel-python-altinci-gun-nesneler-ve-siniflar.html
-[3]: /csharp/2015/10/21/temel-csharp-besinci-gun-siniflar.html
-[4]: /java/2016/03/08/temel-java-besinci-gun-paketler-kalitim-arayuzler.html
+[1]: /temel-cpp-dorduncu-gun-siniflar-nesneler/
+[2]: /temel-python-altinci-gun-nesneler-ve-siniflar/
+[3]: /temel-csharp-besinci-gun-siniflar/
+[4]: /temel-java-besinci-gun-paketler-kalitim-arayuzler/

@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Temel C#
-subtitle: "3. Gün: Karar Verme Yapıları & Döngüler"
+title: "Temel C# 3. Gün: Karar Verme Yapıları & Döngüler"
+tags:
+- c#
+- karar verme yapıları
+- döngüler
 categories:
-- csharp
+- c#
+series: c#
 ---
 
 # **Karar Verme Yapıları**  
@@ -279,4 +283,4 @@ namespace Donguler
 Sonraki Bölüm: Metodlar:  
 [Temel C# - 4. Gün: Metodlar][1]  
 
-[1]: /csharp/2015/10/20/temel-csharp-dorduncu-gun-metodlar.html
+[1]: /temel-csharp-dorduncu-gun-metodlar/

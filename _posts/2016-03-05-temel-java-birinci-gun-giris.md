@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Temel Java 
-subtitle: "1. Gün: Giriş, Temel Veri Tipleri"
+title: "Temel Java 1. Gün: Giriş, Temel Veri Tipleri"
+tags:
+- java
+- giriş
+- veri tipleri
 categories:
 - java
+series: java
 ---
 
 **Giriş**
@@ -93,4 +97,4 @@ Sonraki Bölüm: Veri Tipleri, Operatörler, Diziler:
 [IDEA]: https://www.jetbrains.com/idea/
 [Eclipse]: https://www.eclipse.org/ 
 [JDK]: https://www.oracle.com/technetwork/java/javase/downloads/index.html
-[1]: /java/2016/03/05/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler.html
+[1]: /temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/

@@ -1,10 +1,15 @@
 ---
 layout: post
-title: Veri Yapıları
-subtitle: "Öbek (Heap)"
+title: "Veri Yapıları: Öbek (Heap)"
+tags:
+- c++
+- veri yapıları
+- öbekler
+- Heap
 categories:
-  - cpp
-  - veriyapilari
+- c++
+- veri yapıları
+series: veri yapıları
 ---
 
 # Öbek

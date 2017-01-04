@@ -1,9 +1,14 @@
 ---
 layout: post
-title: Temel C++
-subtitle: "1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"
+title: "Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"
+tags:
+- c++
+- veri tipleri
+- kontrol yapıları
+- diziler
 categories:
-- cpp
+- c++
+series: c++
 ---
 
 Daha önce, programlama dünyasına iki bölümlük bir teorik giriş yapmıştık. Şimdi ise C++'ın ilk yazısıyla temel dil serilerine başlayacağız.  
@@ -260,4 +265,4 @@ Sonraki Bölüm: Döngüler, Metinler, Vektörler:
 
 [cl]: http://downloads.codelite.org/
 [cb]: http://www.codeblocks.org/downloads/26
-[2]: /cpp/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler.html
+[2]: /temel-cpp-ikinci-gun-donguler-metinler-vektorler/

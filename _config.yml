@@ -1,94 +1,49 @@
-title: Nuri Uzunoğlu
-email: crimeemperor@gmail.com
-description: Founder & Jr. Software Engineer @ I.S.
-
+title: Blog - Nuri Uzunoğlu
+description: "Kişisel web sayfası."
 baseurl: ""
 url: "http://nuriuzunoglu.com"
 
-author:
-  fullname: Nuri Uzunoğlu
-  github: nuriu
-  twitter: ezhoikam
-  stackoverflow: 6423537
-  linkedin: nuriuzunoglu
-  # disqus: ezhoikam
+username: Nuri Uzunoğlu
+user_title: Yazılım Mühendisi
+email: dev@nuriuzunoglu.com
+github_username: nuriu
+hackerrank_username: nuriu
+linkedin_username: nuriuzunoglu
+stackoverflow_userid: 6423537
+disqus_username: Ezhoikam
 
-google_analytics: 'UA-64801555-1'
-
-# Syntax highlighting
-highlightstyle: 'monokai-sublime'
-styles: [agate,
-        androidstudio,
-        arduino-light,
-        arta,
-        ascetic,
-        atelier-cave-dark,
-        atelier-cave-light,
-        atelier-dune-dark,
-        atelier-dune-light,
-        atelier-estuary-dark,
-        atelier-estuary-light,
-        atelier-forest-dark,
-        atelier-forest-light,
-        atelier-heath-dark,
-        atelier-heath-light,
-        atelier-lakeside-dark,
-        atelier-lakeside-light,
-        atelier-plateau-dark,
-        atelier-plateau-light,
-        atelier-savanna-dark,
-        atelier-savanna-light,
-        atelier-seaside-dark,
-        atelier-seaside-light,
-        atelier-sulphurpool-dark,
-        atelier-sulphurpool-light,
-        codepen-embed,
-        color-brewer,
-        dark,
-        darkula,
-        default,
-        docco,
-        far,
-        foundation,
-        github,
-        github-gist,
-        googlecode,
-        grayscale,
-        gruvbox-dark,
-        gruvbox-light,
-        hopscotch,
-        hybrid,
-        idea,
-        ir_black,
-        kimbie.dark,
-        kimbie.light,
-        magula,
-        mono-blue,
-        monokai,
-        monokai-sublime,
-        obsidian,
-        paraiso-dark,
-        paraiso-light,
-        pojoaque,
-        purebasic,
-        qtcreator_dark,
-        qtcreator_light,
-        railscast,
-        rainbow,
-        school-book,
-        solarized-dark,
-        solarized-light,
-        sunburst,
-        tomorrow,
-        tomorrow-night,
-        tomorrow-night-blue,
-        tomorrow-night-bright,
-        tomorrow-night-eightie,
-        vs,
-        xcode,
-        xt256,
-        zenburn]
-
-# Build settings
-highlighter: null
 markdown: kramdown
+highlighter: rouge
+permalink: /:title/
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: []
+  profile: false
+
+links:
+  - title: anasayfa
+    url: /
+  - title: yazılar
+    url: /yazilar
+  - title: seriler
+    url: /seriler
+  - title: etiketler
+    url: /etiketler
+  - title: hakkımda
+    url: /hakkimda
+
+projects:
+  - name: ajanda (2017 Ç1)
+    url: https://github.com/nuriu/ajanda
+  - name: docendodiscimus (2016 Ç4)
+    url: https://github.com/nuriu/docendodiscimus
+  - name: mezbele (2016 Ç4)
+    url: https://github.com/nuriu/mezbele
+  - name: filmoneri (2016 Ç4)
+    url: https://github.com/nuriu/filmoneri
+  - name: haber
+    url: https://github.com/nuriu/haber
+  - name: blog
+    url: https://github.com/nuriu/nuriu.github.io

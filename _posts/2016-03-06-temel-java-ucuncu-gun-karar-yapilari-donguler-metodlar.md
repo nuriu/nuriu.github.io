@@ -1,9 +1,14 @@
 ---
 layout: post
-title: Temel Java 
-subtitle: "3. Gün: Karar Yapıları, Döngüler, Metodlar"
+title: "Temel Java 3. Gün: Karar Yapıları, Döngüler, Metodlar"
+tags:
+- java
+- karar yapıları
+- döngüler
+- metodlar
 categories:
 - java
+series: java
 ---
 
 # Karar Yapıları
@@ -467,4 +472,4 @@ Sonraki Bölüm: Sınıflar, Nesneler:
 [Temel Java - 4. Gün: Sınıflar, Nesneler][1]  
 
 
-[1]: /java/2016/03/07/temel-java-dorduncu-gun-siniflar-nesneler.html
+[1]: /temel-java-dorduncu-gun-siniflar-nesneler/

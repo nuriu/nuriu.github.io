@@ -1,11 +1,16 @@
 ---
 layout: post
-title: Veri Yapıları
-subtitle: 'Kuyruk (Queue)'
+title: "Veri Yapıları: Kuyruk (Queue)"
 date: 2016-03-11 19:00:00 +0200
+tags:
+- java
+- veri yapıları
+- kuyruklar
+- queue
 categories:
-  - java
-  - veriyapilari
+- java
+- veri yapıları
+series: veri yapıları
 ---
 
 # Giriş

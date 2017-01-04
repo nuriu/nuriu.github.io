@@ -1,10 +1,15 @@
 ---
 layout: post
-title: Veri Yapıları
-subtitle: 'Dairesel Bağlı Listeler'
+title: "Veri Yapıları: Dairesel Bağlı Listeler"
+tags:
+- c++
+- veri yapıları
+- bağlı listeler
+- dairesel bağlı listeler
 categories:
-  - cpp
-  - veriyapilari
+- c++
+- veri yapıları
+series: veri yapıları
 ---
 
 **Dairesel Bağlı Listeler**

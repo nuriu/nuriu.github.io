@@ -1,10 +1,15 @@
 ---
 layout: post
-title: Veri Yapıları
-subtitle: 'Tek Yönlü Bağlı Listeler'
+title: "Veri Yapıları: Tek Yönlü Bağlı Listeler"
+tags:
+- c++
+- veri yapıları
+- bağlı listeler
+- tek yönlü bağlı listeler
 categories:
-  - cpp
-  - veriyapilari
+- c++
+- veri yapıları
+series: veri yapıları
 ---
 
 **Giriş**  

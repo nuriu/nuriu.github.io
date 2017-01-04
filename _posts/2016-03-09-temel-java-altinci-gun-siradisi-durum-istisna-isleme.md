@@ -1,9 +1,14 @@
 ---
 layout: post
-title: Temel Java 
-subtitle: "6. Gün: Sıradışı Durum (İstisna) İşleme"
+title: "Temel Java 6. Gün: Sıradışı Durum (İstisna) İşleme"
+tags:
+- java
+- istisnalar
+- istisna işleme
+- hata işleme
 categories:
 - java
+series: java
 ---
 
 # Giriş
@@ -102,4 +107,4 @@ Sonraki Bölüm: Lambda İfadeleri:
 [Temel Java - 7. Gün: Lambda İfadeleri][1]  
 
 
-[1]: /java/2016/03/09/temel-java-yedinci-gun-lambda-ifadeleri.html
+[1]: /temel-java-yedinci-gun-lambda-ifadeleri/

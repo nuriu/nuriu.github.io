@@ -1,19 +1,25 @@
 ---
 layout: post
-title: Temel C++
-subtitle: "2. Gün: Döngüler, Metinler, Vektörler"
+title: "Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"
+tags:
+- c++
+- döngüler
+- metinler
+- vektörler
 categories:
-- cpp
+- c++
+series: c++
 ---
 
 Temel C++ serisinin ilk bölümüne aşağıdaki linkten ulaşabilirsiniz:  
 [Temel C++ - 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler][1]
 
-# **Döngüler**  
+Döngüler
+--------
 
 Döngüler tekrarlanacak işlemler/kod blokları için bir çözümdür. Kod tekrarından ve okunabilirlik sorunlarından kurtulmamızı sağlar.  
 
-# 1- For Döngüsü
+1- For Döngüsü
 --------------
 
 `for(karşılaştırılacak değer, koşul, döngü işlemi)` şeklinde tanımlanırlar.
@@ -39,7 +45,7 @@ int main()
 }
 {% endhighlight %}
 
-# 2- While Döngüsü
+2- While Döngüsü
 ----------------
 
 While ve Do-While döngülerinde tanımlama `while(koşul)` şeklinde yapılır. For örneği ile aynı işleve sahip olan While döngüsü aşağıdaki gibidir.  
@@ -56,8 +62,9 @@ while(yas <= 18)
 }
 {% endhighlight %}
 
-# 3- Do-While Döngüsü
-----------------
+3- Do-While Döngüsü
+-------------------
+
 While döngüsünün tersi gibi düşünebilirsiniz. Her koşulda döngüye en az 1 kere girmesi istenilen durumlarda bu yapı kullanılır. Aşağıdaki örnekte yaş değişkenini 18'e eşitleyip döngü koşulunu 18'den küçük olduğu sürece geçerli olacak şekilde ayarladık. Fakat kodu derlediğinizde ekranda `yas degiskeninin yeni degeri: 18` yazısını göreceksiniz. Bunun sebebi daha önceden söylediğimiz gibi döngü içindeki kodların en az bir kez çalıştırılmasıdır.
 
 Do-While örnek:
@@ -155,8 +162,8 @@ do{
 {% endhighlight %}
 
 
-# **Metinler (Strings)**  
------------------------------
+Metinler (Strings)
+------------------
 
 C dilinde metinleri kullanabilmek için `char` tipinde diziler tanımlamak zorundasınız. Fakat C dilinden etkilenerek oluşturulan C++ dilinde metinleri, değişken tanımlarmış gibi `string` tipiyle tanımlayıp kullanabilirsiniz. Küçük bir örnek vermek gerekirse:  
 
@@ -178,8 +185,8 @@ cout << "Merhaba " << ad << " " << soyad << endl;
 {% endhighlight %}
 
 
-# **Vektörler**  
--------------------
+Vektörler
+---------
 
 Vektörler aynı diziler gibidir. Farklı boyutlarının değişebilmesidir.  
 `vector <veri tipi> vektör adı(boyutu)` şeklinde tanımlanırlar. Vektörleri kullanabilmek için dosyanızın başına `#include <vector>` komutunu eklemelisiniz.
@@ -217,6 +224,6 @@ Sonraki Bölüm: Fonksiyonlar, Girdi/Çıktı, İşaretçiler:
 [Temel C++ - 3. Gün: Fonksiyonlar, Girdi/Çıktı, İşaretçiler][3]
 
 
-[1]: /cpp/2015/07/01/temel-cpp-birinci-gun-giris.html
+[1]: /temel-cpp-birinci-gun-giris/
 [2]: http://sanalkurs.net/vektorleri-kullanmak-6551.html
-[3]: /cpp/2015/07/03/temel-cpp-ucuncu-gun-fonksiyonlar-girdi-cikti-isaretciler.html
+[3]: /temel-cpp-ucuncu-gun-fonksiyonlar-girdi-cikti-isaretciler/

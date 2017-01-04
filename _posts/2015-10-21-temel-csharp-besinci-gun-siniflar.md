@@ -1,9 +1,12 @@
 ---
 layout: post
-title: Temel C#
-subtitle: "5. Gün: Sınıflar"
+title: "Temel C# 5. Gün: Sınıflar"
+tags:
+- c#
+- sınıflar
 categories:
-- csharp
+- c#
+series: c#
 ---
 
 # **Sınıflar**  
@@ -124,4 +127,4 @@ Sonraki Bölüm: Kalıtım, Çokbiçimlilik:
 [Temel C# - 6. Gün: Kalıtım, Çokbiçimlilik][1]  
 
 
-[1]: /csharp/2015/10/22/temel-csharp-altinci-gun-kalitim-cokbicimlilik.html
+[1]: /temel-csharp-altinci-gun-kalitim-cokbicimlilik/

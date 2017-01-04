@@ -1,14 +1,16 @@
 ---
 layout: post
-title: Temel Python
-subtitle: "3. Gün: Veri Tipleri"
+title: "Temel Python 3. Gün: Veri Tipleri"
 tags:
 - python
+- veri tipleri
 categories:
 - python
+series: python
 ---
 
-# **Listeler**  
+Listeler
+--------
 Listeleri temel olarak veri kümeleri olarak açıklamak mümkün. C ailesindeki dizilere benzemelerine rağmen listelerdeki verilerin aynı türde olmasına gerek yoktur. Yani metinlerle sayıları aynı listede tutmak istiyorsanız, bunu yapabilirsiniz. Örnek tanımlamalar;  
 
 {% highlight python %}
@@ -19,7 +21,8 @@ tekElemanliListe = ["a"]
 
 Yukarıda gördüğünüz gibi karisikListe, ahmet ve kadir isimlerinin yanı sıra 1996 ve 1994 sayılarını da içermektedir.  
 
-**Verilere Erişim**  
+Verilere Erişim
+-----------------
 Listelerde verilere erişim dizi mantığındaki gibidir. Yani 0'dan başlayan indis numaraları kullanılır. Örneğin yukardaki örnekteki karisikListe'nin elemanlarına aşağıdaki gibi ulaşabiliriz;  
 
 {% highlight python %}
@@ -72,7 +75,8 @@ liste1.sort()        # liste1'i siralar
 liste1.reverse()     # liste1'i tersten siralar
 {% endhighlight %}  
 
-# **Demetler (Değişkenler Grubu) (Tuples)**  
+Demetler (Değişkenler Grubu) (Tuples)
+-------------------------------------
 Demetleri verileri değiştirilemeyen listeler gibi düşünebiliriz. Demetler listelere listeler de demetlere dönüştürülebilirler. Örneğin;  
 
 {% highlight python %}
@@ -82,7 +86,8 @@ liste2 = list(demet1) # demet1 degiskenini liste tipine donusturerek liste2'yi o
 demet2 = tuple(liste1) # liste1 degiskenini demet tipine donusturerek demet2'yi olusturur.
 {% endhighlight %}  
 
-# **Sözlükler (Dictionary)**  
+Sözlükler (Dictionary)
+----------------------
 Anahtarlar ve değerler olmak üzere ikili veri kümelerinden oluşan veri yapılarıdır. Örnek;  
 
 {% highlight python %}
@@ -106,4 +111,4 @@ intikamcilar.clear() # sozlugu temizler.
 Sonraki Bölüm: Koşul Yapıları ve Döngüler:  
 [Temel Python - 4. Gün: Koşul Yapıları ve Döngüler][1]  
 
-[1]: /python/2015/10/13/temel-python-dorduncu-gun-kosul-yapilari-ve-donguler.html
+[1]: /temel-python-dorduncu-gun-kosul-yapilari-ve-donguler/

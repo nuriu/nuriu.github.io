@@ -1,9 +1,13 @@
 ---
 layout: post
-title: (L) Liskov’un Yer Değiştirme İlkesi
-subtitle: '(Liskov substitution principle)'
+title: "(L) Liskov’un Yer Değiştirme İlkesi (Liskov substitution principle)"
+tags:
+- mimari & tasarım
+- solid ilkeleri
+- tasarım ilkeleri
 categories:
-  - mimari&tasarim
+- mimari & tasarım
+series: mimari & tasarım
 ---
 
 # Giriş
@@ -45,4 +49,4 @@ Bu adımla birlikte *klimayiAc* metodumuzu sadece *luks* sınıfının nesneleri
 
 Sonraki bölüm: [Arayüz Ayrımı İlkesi][1]
 
-[1]: /mimari&tasarim/2016/03/15/arayuz-ayrimi-ilkesi-interface-segregation-principle.html
+[1]: /arayuz-ayrimi-ilkesi-interface-segregation-principle/

@@ -1,9 +1,12 @@
 ---
 layout: post
-title: TypeScript 
-subtitle: "4. Bölüm: Arayüzler"
+title: "TypeScript 4. Bölüm: Arayüzler"
+tags:
+- typescript
+- arayüzler
 categories:
 - typescript
+series: typescript
 ---
 
 # Arayüzler

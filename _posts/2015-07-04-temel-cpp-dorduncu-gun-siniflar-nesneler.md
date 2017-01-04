@@ -1,13 +1,17 @@
 ---
 layout: post
-title: Temel C++
-subtitle: "4. Gün: Sınıflar, Nesneler"
+title: "Temel C++ 4. Gün: Sınıflar, Nesneler"
+tags:
+- c++
+- sınıflar
+- nesneler
 categories:
-- cpp
+- c++
+series: c++
 ---
 
-# **Sınıflar / Nesneler**  
-------------------------------
+Sınıflar / Nesneler
+-------------------
 
 Sınıflar, veriler (nitelikler) ile kodların (davranışlar) anlamlı bir şekilde bir araya gelmesiyle oluşur. Nesnelerin nasıl inşa edileceklerini tanımlarlar. Genellikle başlık (header) dosyalarında tanımlanırlar. Böylelikle sınıf kodları diğer kodlardan ayrılmış olur.  
 
@@ -91,4 +95,4 @@ int main()
 Sonraki Bölüm: Kalıtım:  
 [Temel C++ - 5. Gün: Kalıtım][1]
 
-[1]: /cpp/2015/07/05/temel-cpp-besinci-gun-kalitim.html
+[1]: /temel-cpp-besinci-gun-kalitim/

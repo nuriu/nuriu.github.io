@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Temel C#
-subtitle: "1. Gün: Geliştirme Ortamının Hazırlanması"
+title: "Temel C# 1. Gün: Geliştirme Ortamının Hazırlanması"
+tags:
+- c#
+- giriş
+- geliştirme ortamı
 categories:
-- csharp
+- c#
+series: c#
 ---
 
 # **Giriş**  
@@ -34,7 +38,7 @@ Herhangi bir .Net teknolojisi ile geliştirme yapacaksanız en iyi ve en mantık
 Sonraki Bölüm: Giriş, Veri Tipleri, Tip Dönüşümleri:  
 [Temel C# - 2. Gün: Giriş, Veri Tipleri, Tip Dönüşümleri][1]  
 
-[1]: /csharp/2015/10/18/temel-csharp-ikinci-gun-giris-veri-tipleri-tip-donusumleri.html
+[1]: /temel-csharp-ikinci-gun-giris-veri-tipleri-tip-donusumleri/
 
 [VS2015]: https://www.visualstudio.com/tr-tr/downloads/download-visual-studio-vs.aspx
 [Vikipedi]: https://tr.wikipedia.org/wiki/C_Sharp

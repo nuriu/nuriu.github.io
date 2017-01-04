@@ -1,13 +1,16 @@
 ---
 layout: post
-title: Temel C++
-subtitle: "6. Gün: Sanal Fonksiyonlar"
+title: "Temel C++ 6. Gün: Sanal Fonksiyonlar"
+tags:
+- c++
+- sanal fonksiyonlar
 categories:
-- cpp
+- c++
+series: c++
 ---
 
-# **Sanal Fonksiyonlar**  
--------------------------------
+Sanal Fonksiyonlar
+------------------
 Sanal fonksiyonlar, miras alınan sınıfın bir fonksiyonunu miras alan sınıfta farklı bir şekilde kullanmamıza yarayan fonksiyonlardır. Fonksiyon tanımlarken başına `virtual` eklemek yeterlidir. Örnek;  
 
 Dünkü örneğimizin geliştirilmiş hali:
@@ -120,4 +123,4 @@ Sanal fonksiyonlar daha çok pointer aracılığıyla kullanılır fakat ben man
 Sonraki Bölüm: Kalıtım:  
 [Temel C++ - 7. Gün: Çokbiçimlilik][1]
 
-[1]: /cpp/2015/07/07/temel-cpp-yedinci-gun-cokbicimlilik.html
+[1]: /temel-cpp-yedinci-gun-cokbicimlilik/

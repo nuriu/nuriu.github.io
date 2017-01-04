@@ -1,9 +1,14 @@
 ---
 layout: post
-title: Temel C#
-subtitle: "2. Gün: Giriş, Veri Tipleri, Tip Dönüşümleri"
+title: "Temel C# 2. Gün: Giriş, Veri Tipleri, Tip Dönüşümleri"
+tags:
+- c#
+- giriş
+- veri tipleri
+- tip dönüşümleri
 categories:
-- csharp
+- c#
+series: c#
 ---
 
 # **Giriş**  
@@ -92,4 +97,4 @@ Diğer yöntem ise methodlar ile dönüştürmedir. Dönüştürme yapacağını
 Sonraki Bölüm: Karar Verme Yapıları & Döngüler:  
 [Temel C# - 3. Gün: Karar Verme Yapıları & Döngüler][1]  
 
-[1]: /csharp/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler.html
+[1]: /temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/

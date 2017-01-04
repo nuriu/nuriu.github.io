@@ -1,9 +1,12 @@
 ---
 layout: post
-title: Temel C#
-subtitle: "4. Gün: Metodlar"
+title: "Temel C# 4. Gün: Metodlar"
+tags:
+- c#
+- metodlar
 categories:
-- csharp
+- c#
+series: c#
 ---
 
 # **Metodlar**  
@@ -507,4 +510,4 @@ Sonraki Bölüm: Sınıflar:
 [Temel C# - 5. Gün: Sınıflar][1]  
 
 
-[1]: /csharp/2015/10/21/temel-csharp-besinci-gun-siniflar.html
+[1]: /temel-csharp-besinci-gun-siniflar/

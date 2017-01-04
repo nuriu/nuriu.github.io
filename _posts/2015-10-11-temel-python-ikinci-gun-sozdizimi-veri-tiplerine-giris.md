@@ -1,12 +1,17 @@
 ---
 layout: post
-title: Temel Python
-subtitle: "2. Gün: Sözdizimi, Veri Tiplerine Giriş"
+title: "Temel Python 2. Gün: Sözdizimi, Veri Tiplerine Giriş"
+tags:
+- python
+- sözdizimi
+- veri tipleri
 categories:
 - python
+series: python
 ---
 
-# **Python'a Giriş - Sözdizimi**  
+Python'a Giriş - Sözdizimi
+--------------------------
 
 Python'u diğer programlama dillerinden ayıran özelliklerin içindeki en görünür olanı sözdizimi farklılıklarıdır. Python C ailesi gibi parantezler ve noktalı virgüller yerine girintili yapıyı kullanır. Böylelikle sadelik ve okunabilirlik artar. Python ile yazılmış basit bir program örneği;  
 
@@ -18,7 +23,8 @@ Yukarıdaki örnek ekrana Merhaba yazdıracaktır. Görüldüğü üzere kod di�
 
 Bu seri ile birlikte programlama mantığını öğrenmiş kişileri hedef kitlesi olarak düşünüp ona uygun, kısa ve öz şekilde yazmaya çalışacağım.  
 
-# **Önişlem Komutları**  
+Önişlem Komutları
+-----------------
 Kaynak kodu dosyalarının en başında bulunurlar. Yazılımınıza ek fonksiyonları/kütüphaneleri kazandırmak için kullanılırlar. Kullanımları oldukça basittir. Örnek;  
 
 {% highlight python %}
@@ -27,7 +33,8 @@ from django.db import models
 
 Tek satırlık örneğimiz iki kısımdan oluşmaktadır. İngilizce bilen kişiler için basitçe anlaşılabileceği gibi yapı from "modül adı" import "fonksiyon/değişken adı" şeklindedir. "modül adı"" kısmında adı yazan modülden "fonksiyon/değişken adı" kısmında yazan fonksiyon(ları)/değişken(leri) kaynak kodumuza eklememizi sağlar. İlerleyen örneklerde daha iyi anlaşılacaktır.  
 
-# **Veri Tiplerine Giriş**  
+Veri Tiplerine Giriş
+--------------------
 Python dili de diğer programlama dilleri gibi standartlaşmış veri tiplerine ve değişken tanımlama kurallarına sahiptir. Benzerlik oldukça fazladır fakat bu tamamen aynı deneyim ve/veya kullanım şekli anlamına gelmez.  
 
 **Numaralar**  
@@ -54,4 +61,4 @@ metinIcindeTirnak = "\"Alinti yapmak isterseniz bu sekilde tirnak isaretlerini k
 Sonraki Bölüm: Veri Tipleri:  
 [Temel Python - 3. Gün: Veri Tipleri][1]  
 
-[1]: /python/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types.html
+[1]: /temel-python-ucuncu-gun-veri-tipleri-data-types/

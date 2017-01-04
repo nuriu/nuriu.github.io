@@ -1,9 +1,14 @@
 ---
 layout: post
-title: Temel Java 
-subtitle: "5. Gün: Paketler, Kalıtım, Arayüzler"
+title: "Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"
+tags:
+- java
+- paketler
+- kalıtım
+- arayüzler
 categories:
 - java
+series: java
 ---
 
 # Paketler
@@ -318,4 +323,4 @@ Sonraki Bölüm: Sıradışı Durum (İstisna) İşleme:
 [Temel Java - 6. Gün: Sıradışı Durum (İstisna) İşleme][1]  
 
 
-[1]: /java/2016/03/09/temel-java-altinci-gun-siradisi-durum-istisna-isleme.html
+[1]: /temel-java-altinci-gun-siradisi-durum-istisna-isleme/

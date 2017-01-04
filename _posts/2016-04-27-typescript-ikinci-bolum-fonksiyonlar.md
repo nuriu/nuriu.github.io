@@ -1,9 +1,12 @@
 ---
 layout: post
-title: TypeScript 
-subtitle: "2. Bölüm: Fonksiyonlar"
+title: "TypeScript 2. Bölüm: Fonksiyonlar"
+tags:
+- typescript
+- fonksiyonlar
 categories:
 - typescript
+series: typescript
 ---
 
 # Fonksiyonlar
@@ -105,4 +108,4 @@ let isim3 = ismiYaz(undefined, "Yılmazer");             // doğru. Çıktı: "Y
 
 Sonraki bölüm: [TypeScript - 3. Bölüm: Sınıflar][1]
 
-[1]: /typescript/2016/05/05/typescript-ucuncu-bolum-siniflar.html
+[1]: /typescript-ucuncu-bolum-siniflar/
