@@ -1,5 +1,5 @@
 title: Blog - Nuri Uzunoğlu
-description: "Kişisel web sayfası."
+description: "Nuri Uzunoğlu // Yazılım Mühendisliği Öğrencisi Kişisel Web Sayfası."
 baseurl: ""
 url: "http://nuriuzunoglu.com"
 
@@ -11,6 +11,8 @@ hackerrank_username: nuriu
 linkedin_username: nuriuzunoglu
 stackoverflow_userid: 6423537
 disqus_username: Ezhoikam
+
+google_analytics: UA-64801555-1
 
 markdown: kramdown
 highlighter: rouge
