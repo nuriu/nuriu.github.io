@@ -37,15 +37,21 @@ links:
     url: /hakkimda
 
 projects:
-  - name: ajanda (2017 Ç1)
+  - name: (kod ad) Yavuz (2017 Ç4) (c++, urho3d, cmake)
+    url: https://github.com/nuriu/yavuz
+  - name: ajanda-web (2017 Ç2) (python, django, sqlite)
+    url: https://github.com/nuriu/ajanda-web
+  - name: CarCompanyTycoon (2017 Ç1) (haxe, haxeflixel)
+    url: https://github.com/nuriu/CarCompanyTycoon
+  - name: ajanda (2017 Ç1) (typescript, angular 2, electron)
     url: https://github.com/nuriu/ajanda
-  - name: docendodiscimus (2016 Ç4)
+  - name: docendodiscimus (2016 Ç4) (c#, asp.net mvc, wcf)
     url: https://github.com/nuriu/docendodiscimus
-  - name: mezbele (2016 Ç4)
+  - name: mezbele (2016 Ç4) (c#, asp.net mvc, materialize)
     url: https://github.com/nuriu/mezbele
-  - name: filmoneri (2016 Ç4)
+  - name: filmoneri (2016 Ç4) (typescript, electron, sqlite)
     url: https://github.com/nuriu/filmoneri
-  - name: haber
+  - name: haber (typescript, electron, semantic ui)
     url: https://github.com/nuriu/haber
-  - name: blog
+  - name: blog (ruby, ruby on rails)
     url: https://github.com/nuriu/nuriu.github.io

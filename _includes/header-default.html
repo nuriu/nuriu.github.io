@@ -61,8 +61,8 @@
         </ul>
 
         <ul class="recent">
-            <p>Son 5 proje:</p>
-            {% for project in site.projects limit:5%}
+            <p>Son 10 proje:</p>
+            {% for project in site.projects limit:10%}
             <li>
                 <a href="{{ project.url}}">
                     <h2 class="post-title" itemprop="name">{{ project.name }}</h2>
