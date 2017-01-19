@@ -45,6 +45,8 @@ projects:
     url: https://github.com/nuriu/CarCompanyTycoon
   - name: ajanda (2017 Ç1) (typescript, angular 2, electron)
     url: https://github.com/nuriu/ajanda
+  - name: hapicpp (2017 Ç1) (c++, jsoncpp, restclient-cpp, cmake)
+    url: https://github.com/nuriu/hapicpp
   - name: docendodiscimus (2016 Ç4) (c#, asp.net mvc, wcf)
     url: https://github.com/nuriu/docendodiscimus
   - name: mezbele (2016 Ç4) (c#, asp.net mvc, materialize)
