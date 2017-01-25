@@ -41,8 +41,6 @@ projects:
     url: https://github.com/nuriu/yavuz
   - name: ajanda-web (2017 Ç2) (python, django, sqlite)
     url: https://github.com/nuriu/ajanda-web
-  - name: CarCompanyTycoon (2017 Ç1) (haxe, haxeflixel)
-    url: https://github.com/nuriu/CarCompanyTycoon
   - name: ajanda (2017 Ç1) (typescript, angular 2, electron)
     url: https://github.com/nuriu/ajanda
   - name: hapicpp (2017 Ç1) (c++, jsoncpp, restclient-cpp, cmake)
