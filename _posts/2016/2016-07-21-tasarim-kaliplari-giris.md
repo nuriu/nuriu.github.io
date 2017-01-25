@@ -9,8 +9,7 @@ categories:
 - mimari & tasarım
 ---
 
-# Nedir?
---------
+## Nedir?
 
 Tecrübeli, nesne-tabanlı yazılım geliştirenler tarafından yazılım geliştirme sürecinde ortaya çıkan genel problemleri çözme amacıyla geliştirilen/düşünülen çözüm ve/veya çözüm yöntemi bütünleri tasarım kalıpları, tasarım desenleri, tasarım örüntüleri gibi isimler ile adlandırılır.
 
