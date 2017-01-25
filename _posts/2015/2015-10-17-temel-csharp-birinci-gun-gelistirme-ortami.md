@@ -7,7 +7,6 @@ tags:
 - geliştirme ortamı
 categories:
 - c#
-series: c#
 ---
 
 # **Giriş**  

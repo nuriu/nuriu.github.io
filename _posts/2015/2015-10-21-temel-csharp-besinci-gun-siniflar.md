@@ -6,7 +6,6 @@ tags:
 - sınıflar
 categories:
 - c#
-series: c#
 ---
 
 # **Sınıflar**  

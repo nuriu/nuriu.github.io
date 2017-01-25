@@ -7,7 +7,6 @@ tags:
 - lambda ifadeleri
 categories:
 - java
-series: java
 ---
 
 

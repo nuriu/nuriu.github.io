@@ -6,12 +6,11 @@ tags:
 - jekyll
 categories:
 - jekyll
-series: jekyll
 ---
 
 **Problem**
 
-Jekyll tabanlı sistem kullanmaya başladığımdan beri eksikliğini hissettiğim birkaç konudan biriydi sosyal paylaşım. Bugün, çözümünün ne kadar basit olduğunu gördükten sonra, siteme neden daha önce eklemediğimi düşündürmedi değil. Jekyll ve GH Pages sağladığı hız ve kolaylığın yanı sıra varsayılan olarak kullanıldığında wordpress joomla gibi hazır içerik sistemlerinden ziyaretçi ile etkileşim, seo gibi bazı konularda daha geride kalıyor. Bunun çözümü de biz geliştiricilere kalıyor. 
+Jekyll tabanlı sistem kullanmaya başladığımdan beri eksikliğini hissettiğim birkaç konudan biriydi sosyal paylaşım. Bugün, çözümünün ne kadar basit olduğunu gördükten sonra, siteme neden daha önce eklemediğimi düşündürmedi değil. Jekyll ve GH Pages sağladığı hız ve kolaylığın yanı sıra varsayılan olarak kullanıldığında wordpress joomla gibi hazır içerik sistemlerinden ziyaretçi ile etkileşim, seo gibi bazı konularda daha geride kalıyor. Bunun çözümü de biz geliştiricilere kalıyor.
 
 **Çözüm**
 

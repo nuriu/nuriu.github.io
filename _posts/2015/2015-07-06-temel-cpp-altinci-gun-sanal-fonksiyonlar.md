@@ -6,7 +6,6 @@ tags:
 - sanal fonksiyonlar
 categories:
 - c++
-series: c++
 ---
 
 Sanal Fonksiyonlar

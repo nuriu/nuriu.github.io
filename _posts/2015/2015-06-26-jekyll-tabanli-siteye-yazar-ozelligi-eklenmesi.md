@@ -5,7 +5,6 @@ tags:
 - jekyll
 categories:
 - jekyll
-series: jekyll
 ---
 
 Jekyll bazlı blog sitenizi birden fazla kişiyle birlikte kullanıyor ve yazar özelliği eklemek istiyorsanız aşağıdaki adımları uygulayabilirsiniz.

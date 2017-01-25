@@ -5,7 +5,6 @@ tags:
 - genel
 categories:
 - genel
-series: genel
 ---
 
 Programlar Nelerden Oluşur?

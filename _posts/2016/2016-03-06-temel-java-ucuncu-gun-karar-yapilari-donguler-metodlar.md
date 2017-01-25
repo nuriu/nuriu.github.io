@@ -8,7 +8,6 @@ tags:
 - metodlar
 categories:
 - java
-series: java
 ---
 
 # Karar Yapıları
@@ -301,7 +300,7 @@ Yapacağımız işlemler;  (diğer deyişle metodlarımız;)
 3. Çarpma ( public static int carp(int birinciSayi, int ikinciSayi) )
 4. Bölme ( public static int bol(int birinciSayi, int ikinciSayi) )
 
-Not: Java'da derleyici içinde girdi almak uğraştırıcı ve şu an ki seviyeye göre zor olduğu için girdimizi sadece kendimiz için amatörce yapacağız. 
+Not: Java'da derleyici içinde girdi almak uğraştırıcı ve şu an ki seviyeye göre zor olduğu için girdimizi sadece kendimiz için amatörce yapacağız.
 
 Önce metodlarımızı yazalım;  
 {% highlight java %}
@@ -460,7 +459,7 @@ Bu örneği derleyip çalıştırdığımızda çıktımız şu şekilde oluyor;
 22
 {% endhighlight %}
 
-sayi = 20 ve 
+sayi = 20 ve
 sayi2 = 2 olduğundan toplamları 20 + 2 = 22 oldu. Diğer fonksiyonları test etmeyi de size bırakıyorum.  
 
 Ben testlerde bir soruna rastlamadım fakat gözden kaçırdığım şeyler olabilir.

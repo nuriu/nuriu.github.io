@@ -5,7 +5,6 @@ tags:
 - genel
 categories:
 - genel
-series: genel
 ---
 
 Programlama mantığı konusu hakkında iki bölüm yazacağım. İlk bölümde program dünyasına teorik giriş yapacağız. İkinci bölümde ise programların nasıl yapıldıklarıyla ilgileneceğiz.  

@@ -8,7 +8,6 @@ tags:
 - veri tipleri
 categories:
 - typescript
-series: typescript
 ---
 
 # Giriş

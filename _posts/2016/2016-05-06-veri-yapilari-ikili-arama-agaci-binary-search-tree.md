@@ -10,7 +10,6 @@ tags:
 categories:
 - c++
 - veri yapıları
-series: veri yapıları
 ---
 
 # İkili Ağaç Yapısı
@@ -43,7 +42,7 @@ Kod kısmında ise bir düğüm kendi verisini içermenin yanı sıra sağ ve so
 C++ düğüm kodu örneği;
 
 {% highlight cpp %}
-struct dugum 
+struct dugum
 {
    int veri;
    struct dugum *sol;
@@ -112,7 +111,7 @@ Bu yazıda ikili arama ağacı yapısında aşağıdaki temel işlemleri adım a
 
 {% highlight cpp %}
 // elemanımız için kullanacağımız düğüm yapımız
-struct dugum 
+struct dugum
 {
     int veri;
     dugum * sol;
@@ -301,7 +300,7 @@ eleman* sil(eleman* agac, int silinecekDeger)
             // kökün sol alt ağacındaki en büyük değeri buluyoruz
             // ve yer değiştirme yapıyoruz
             agac->veri = enBuyukDegeriBul(agac->sol);
-            
+
             // sonrasında o değeri siliyoruz
             agac->sol = sil(agac->sol, enBuyukDegeriBul(agac->sol));
             return agac;

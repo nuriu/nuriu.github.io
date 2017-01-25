@@ -6,7 +6,6 @@ tags:
 - veri tipleri
 categories:
 - python
-series: python
 ---
 
 Listeler

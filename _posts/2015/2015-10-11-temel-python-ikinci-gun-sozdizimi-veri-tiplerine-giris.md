@@ -7,7 +7,6 @@ tags:
 - veri tipleri
 categories:
 - python
-series: python
 ---
 
 Python'a Giriş - Sözdizimi

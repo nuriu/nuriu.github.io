@@ -8,7 +8,6 @@ tags:
 - arayüzler
 categories:
 - java
-series: java
 ---
 
 # Paketler
@@ -19,7 +18,7 @@ Paketler Java'da genellikle isim çatışmalarını engellemek ve sınıfların,
 Uzun lafın kısası; paket ilişkili yapıların (ki bunlar sınıflar, arayüzler vb. yapılar) kümelendirilmesi/gruplandırılması olarak tanımlanabilir.
 Bu kümelendirme/gruplandırma ile birlikte bir nevi erişim üzerinde koruma da sağlanmış olur.  
 
-**Paket Oluşturmak** 
+**Paket Oluşturmak**
 
 Geliştirme aracı (IDE) kullanmasaydık paket oluşturma işlemi için komut satırına;  
 {% highlight java %}
@@ -185,7 +184,7 @@ erisimBelirteci interface arayuzAdi {
 Kullanılma mantığını göstermek üzere yukarıdaki örneğimize basit bir arayüz ekliyorum;  
 
 > **hareketEdebilen.java**
-  
+
 {% highlight java %}
 package com.isiksistem;
 
@@ -315,7 +314,7 @@ Bir kedi nesnesi hareket etti.
 Bir köpek nesnesi hareket etti.
 {% endhighlight %}
 
-Bu bölümle birlikte temel java serimizdeki ağır konuları bitirmiş sayılırız. Şimdilik bu kadar. 
+Bu bölümle birlikte temel java serimizdeki ağır konuları bitirmiş sayılırız. Şimdilik bu kadar.
 
 **Dipnot:** Bir sınıftan başka bir sınıf türetilebildiği (diğer bir deyişle bir sınıf başka bir sınıfı genişletebildiği gibi) arayüzler arasında da bu işlem mümkündür ve yine extends ifadesi ile gerçekleştirilir.  
 

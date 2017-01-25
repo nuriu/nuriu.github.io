@@ -6,8 +6,8 @@ tags:
 - solid ilkeleri
 - tasarım ilkeleri
 categories:
+- solid ilkeleri
 - mimari & tasarım
-series: mimari & tasarım
 ---
 
 # Arayüz Ayrımı İlkesi
@@ -41,7 +41,7 @@ Peki iyi mi yaptık? Buradaki sorun nerede?
 Dikkat ederseniz arayüzümüz doğrudan *luks* sınıfına bağlı.
 Yani *luks* sınıfından türetilen her sınıfa ait tüm nesneler bu yeteneklere sahip olacak/olmalı.
 *spor* sınıfına ait tüm araçların üstü açılabilen olduğunu varsayalım.
-Peki ya *suv* sınıfına ait olanlar? Sorunumuz işte burada başlıyor. 
+Peki ya *suv* sınıfına ait olanlar? Sorunumuz işte burada başlıyor.
 
 **Çözüm**
 

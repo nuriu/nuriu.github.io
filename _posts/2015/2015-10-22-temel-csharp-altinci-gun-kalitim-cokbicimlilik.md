@@ -7,7 +7,6 @@ tags:
 - çokbiçimlilik
 categories:
 - c#
-series: c#
 ---
 
 # **Kalıtım**  

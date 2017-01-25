@@ -7,9 +7,8 @@ tags:
 - öbekler
 - Heap
 categories:
-- c++
 - veri yapıları
-series: veri yapıları
+- c++
 ---
 
 # Öbek

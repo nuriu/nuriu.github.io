@@ -6,7 +6,6 @@ tags:
 - kalıtım
 categories:
 - c++
-series: c++
 ---
 
 Kalıtım

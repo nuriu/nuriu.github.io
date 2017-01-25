@@ -7,7 +7,6 @@ tags:
 - döngüler
 categories:
 - c#
-series: c#
 ---
 
 # **Karar Verme Yapıları**  

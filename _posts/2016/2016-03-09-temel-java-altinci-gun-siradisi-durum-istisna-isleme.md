@@ -8,13 +8,12 @@ tags:
 - hata işleme
 categories:
 - java
-series: java
 ---
 
 # Giriş
 ---------
 
-Sıradışı durumlar veya istisnalar (yabancı kaynaklarda exceptions olarak geçer) programın çalıştırıldığı sırada açığa çıkan problemlerdir. 
+Sıradışı durumlar veya istisnalar (yabancı kaynaklarda exceptions olarak geçer) programın çalıştırıldığı sırada açığa çıkan problemlerdir.
 Bu tip problemlerin ortaya çıkması dolayısıyla programın çalışması/akışı anormal biçimde sonlanabilir/bozulabilir.
 Kimse programında bu tip problemlerin oluşmasını istemeyeceği için sıradışı durum işlemeyi kullanıyoruz.  
 
@@ -40,30 +39,30 @@ Konu her ne kadar sıradışı durum işleme (bahsettiğim konu da her ne kadar 
 Ben başka bir iş yapabileceğimi sanmıyorum, yani ülkeme, ülkeden ziyade vatanıma daha faydalı olabileceğim bir işte becerikli/başarılı/faydalı olabileceğimi sanmıyorum.
 Dolayısıyla eğer bu işi yapacaksam da elimden geleni yapmalıyım. Çünkü ömrüm yeterse uzun yıllar sonrasını görebilirsem ülkemde en azından kendi adıma kendi meslek grubumda çalışan kişilerin yukarıda bahsettiğim dili kullanmalarını görmeyi istemiyorum ve bunu can acıtıcı buluyorum.
 Basit bir konuya çok takılmış gibi gözükebilirim ama dil demek kültür demektir. Özel günlerde/bayramlarda, şu an biz rahat nefes alalım diye zamanında can vermiş/vermeyi göze almış kişileri anmayı/övmeyi/sevmeyi biliyoruz.
-Ancak bu kolay iş, herkes bunu yapabilir ki çoğu yapıyor da. Zor olan bunu göstermek değil bunu eyleme dökmek. 
- 
+Ancak bu kolay iş, herkes bunu yapabilir ki çoğu yapıyor da. Zor olan bunu göstermek değil bunu eyleme dökmek.
+
 Ben kendi adıma her ne kadar hatalarım olsa da kullandığım kelimelere dikkat etmeye çalışıyorum. Lütfen siz de edin. Siz de kültürünüzü/dilinizi koruyun, korutun. Bilgi öğrendiğiniz gibi değil, sizin paylaştığınız gibi yayılır.  
 
 Bu satıra kadar okuyarak geldiyseniz öncelikle hala konunun özünü görmediğiniz için özür dilerim ve daha fazla uzatmayarak kod örneğimize geçelim;  
 
 {% highlight java %}
 try {
-    
+
    // korunan kod bloğu olarak da adlandırılan
    // sıradışı durumun oluşabileceği kodlar.
-   
+
 } catch (siradisiDurumTuru bilgiDegiskenimiz) {
-    
+
    // uygulanacak kodlar
-   
+
 } catch (siradisiDurumTuru2 bilgiDegiskenimiz2) {
-    
+
    // uygulanacak kodlar
-   
+
 } catch (siradisiDurumTuru3 bilgiDegiskenimiz3) {
-    
+
    // uygulanacak kodlar
-   
+
 } // try ifadesinden sonra istediğiniz kadar catch fonksiyonunu kullanabilirsiniz.
 {% endhighlight %}
 

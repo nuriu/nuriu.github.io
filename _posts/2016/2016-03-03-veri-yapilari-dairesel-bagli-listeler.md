@@ -7,9 +7,8 @@ tags:
 - bağlı listeler
 - dairesel bağlı listeler
 categories:
-- c++
 - veri yapıları
-series: veri yapıları
+- c++
 ---
 
 **Dairesel Bağlı Listeler**
@@ -138,7 +137,7 @@ oge* Sil(oge* ilkEleman, int silinecekDeger)
 }
 {% endhighlight %}
 
-Önceki örnekte olduğu gibi bu örneği de belirli testlerden geçirdim. Herhangi bir sorunla karşılaşmadım. Kaynak kodun tamamı şu şekilde: 
+Önceki örnekte olduğu gibi bu örneği de belirli testlerden geçirdim. Herhangi bir sorunla karşılaşmadım. Kaynak kodun tamamı şu şekilde:
 
 {% highlight cpp %}
 #include <iostream>

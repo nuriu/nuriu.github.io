@@ -6,7 +6,6 @@ tags:
 - metodlar
 categories:
 - c#
-series: c#
 ---
 
 # **Metodlar**  

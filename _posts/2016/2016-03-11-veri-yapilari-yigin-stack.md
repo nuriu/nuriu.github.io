@@ -8,9 +8,8 @@ tags:
 - yığınlar
 - stack
 categories:
-- java
 - veri yapıları
-series: veri yapıları
+- java
 ---
 
 # Giriş
@@ -18,7 +17,7 @@ series: veri yapıları
 
 Temel Java serisi için verdiğim aranın ardından, veri yapılarına, java dilini kullanarak devam ediyoruz.
 Sıradaki yapımız yığınlar, yabancı kaynaklarda stack olarak geçer/bilinir.
-Son giren ilk çıkar (lifo) diye adlandırılan bir işleyişe sahiptirler. 
+Son giren ilk çıkar (lifo) diye adlandırılan bir işleyişe sahiptirler.
 Hepimizin bildiği geri al (ctrl + z) gibi popüler işlevlerde kullanılabilirler.  
 
 Bağlı listeleri yatay olarak modellemiştik.
@@ -48,8 +47,8 @@ Fakat yığın yapımızı sınıf olarak tanımlayacağız böylece istediğimi
 
 Uygulamamız *yigin.java* ve *Main.java* olmak üzere iki dosyadan oluşan bir konsol uygulaması olacak.
 
-Sınıfımız; 
- 
+Sınıfımız;
+
 > yigin.java  
 
 {% highlight java %}
@@ -188,12 +187,12 @@ public class Main {
 
 Nihai çıktımız şu şekilde oluyor;  
 {% highlight java %}
-Ekleme ve Gözatma Testleri: 
+Ekleme ve Gözatma Testleri:
 Tepedeki eleman: 1
 Tepedeki eleman: 2
 Tepedeki eleman: 3
 
-Çıkartma Testleri: 
+Çıkartma Testleri:
 Silinen eleman: 3
 Tepedeki eleman: 2
 Silinen eleman: 2

@@ -8,7 +8,6 @@ tags:
 - diziler
 categories:
 - java
-series: java
 ---
 
 # **Veri Tipleri (devamı)**
@@ -81,7 +80,7 @@ System.out.println(ad.concat(ikinciAd).concat(soyad));
 KadirSefaÜNAL
 {% endhighlight %}
 
-concat metodundan ziyade birleştirme işlemi için genelde + operatörü kullanılır. 
+concat metodundan ziyade birleştirme işlemi için genelde + operatörü kullanılır.
 
 Örnek;  
 {% highlight java %}
@@ -98,7 +97,7 @@ Kadir Sefa ÜNAL
 # **Operatörler**  
 ------------------  
 
-Operatörler verileri işlemek için kullanılan araçlardır. 
+Operatörler verileri işlemek için kullanılan araçlardır.
 Temel operatörleri aritmetik, mantıksal ve atama olarak dört grup içerisinde inceleyebiliriz.  
 
 **Aritmetik Operatörler**
@@ -149,7 +148,7 @@ Yarın yazmayı düşündüğüm karar verme yapıları konusundaki basit hesap 
 # **Diziler**  
 ---------------  
 
-Diziler, daha önceden belirlenmiş bir boyutta aynı tip verileri saklamaya yarar. Aynı tip verilerin koleksiyonu olarak da açıklanabilir. 
+Diziler, daha önceden belirlenmiş bir boyutta aynı tip verileri saklamaya yarar. Aynı tip verilerin koleksiyonu olarak da açıklanabilir.
 
 Tanımlanışları;  
 {% highlight java %}

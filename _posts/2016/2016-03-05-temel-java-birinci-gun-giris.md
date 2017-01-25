@@ -7,12 +7,11 @@ tags:
 - veri tipleri
 categories:
 - java
-series: java
 ---
 
 **Giriş**
 
-Java, ilk sürümü 1995 yılında çıkmış, açık kodlu, nesneye yönelik, zeminden bağımsız, yüksek verimli, çok işlevli, yüksek seviye, adım adım işletilen bir dildir. 
+Java, ilk sürümü 1995 yılında çıkmış, açık kodlu, nesneye yönelik, zeminden bağımsız, yüksek verimli, çok işlevli, yüksek seviye, adım adım işletilen bir dildir.
 Milyarlarca cihazda halihazırda çalıştığı için mobil dünyada en çok kullanılan dil/teknoloji dersek yanlış bir tespit olmaz.  
 
 Ayrıntılı teorik bilgi için vikipedi sayfasına göz atabilirsiniz;  
@@ -26,7 +25,7 @@ Java için Eclipse ve Intellij IDEA gibi popüler geliştirme araçları mevcut.
 
 Geliştirme araçlarının yanı sıra Java ile geliştirme yapmak için Java Development Kit'e ihtiyacınız olacak. Ona da bu bağlantıdan ulaşabilirsiniz;  
 
-[The Java Development Kit][JDK] 
+[The Java Development Kit][JDK]
 
 # **Temel Veri Tipleri**
 ------------------------
@@ -95,6 +94,6 @@ Sonraki Bölüm: Veri Tipleri, Operatörler, Diziler:
 
 [Vikipedi]: https://tr.wikipedia.org/wiki/Java_%28programlama_dili%29
 [IDEA]: https://www.jetbrains.com/idea/
-[Eclipse]: https://www.eclipse.org/ 
+[Eclipse]: https://www.eclipse.org/
 [JDK]: https://www.oracle.com/technetwork/java/javase/downloads/index.html
 [1]: /temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/

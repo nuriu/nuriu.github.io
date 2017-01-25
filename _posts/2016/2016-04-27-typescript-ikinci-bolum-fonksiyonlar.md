@@ -6,7 +6,6 @@ tags:
 - fonksiyonlar
 categories:
 - typescript
-series: typescript
 ---
 
 # Fonksiyonlar
@@ -50,7 +49,7 @@ function topla(birinciSayi: number, ikinciSayi: number): number {
 
 // Anonim Fonksiyon
 var topla = function(birinciSayi: number, ikinciSayi: number): number {
-    return birinciSayi + ikinciSayi; 
+    return birinciSayi + ikinciSayi;
 };
 
 {% endhighlight %}
@@ -59,7 +58,7 @@ Görüldüğü üzere parametrelerimiz ve fonksiyonumuz için türlerimizi yani 
 
 Önceki bölümde tanıttığımız türleri fonksiyonlarda da kullanabilirsiniz.
 
-# İsteğe Bağlı ve Varsayılan Parametreler 
+# İsteğe Bağlı ve Varsayılan Parametreler
 
 TypeScript fonksiyonlarında belirtilen her parametre gerekli olarak kabul edilir.
 Yani her fonksiyon çağrıldığında, derleyici kullanıcının o fonksiyonun her parametresi için değer verip mermediğini kontrol eder. (*null* ve *undefined* da geçerli değerlerdir.)

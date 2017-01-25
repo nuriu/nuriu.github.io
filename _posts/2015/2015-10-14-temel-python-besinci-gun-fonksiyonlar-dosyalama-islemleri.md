@@ -7,7 +7,6 @@ tags:
 - dosyalama
 categories:
 - python
-series: python
 ---
 
 Fonksiyonlar

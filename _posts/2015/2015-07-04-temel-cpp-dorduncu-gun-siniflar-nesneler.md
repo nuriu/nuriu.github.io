@@ -7,7 +7,6 @@ tags:
 - nesneler
 categories:
 - c++
-series: c++
 ---
 
 Sınıflar / Nesneler

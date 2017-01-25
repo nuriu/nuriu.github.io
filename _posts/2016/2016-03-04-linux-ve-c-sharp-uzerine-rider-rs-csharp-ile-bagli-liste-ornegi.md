@@ -13,7 +13,6 @@ categories:
 - c#
 - genel
 - linux
-series: genel
 ---
 
 **Giriş**  
@@ -23,8 +22,8 @@ Benim de Microsoft politikalarına ve teknolojilerine (şu an bunu yazmak için 
 
 Bu teknolojilerle ilk olarak yanlış hatırlamıyorsam orta okul zamanlarında hobi olarak dahil olduğum oyun sunucuları sayesinde tanışmıştım.
 Ms SQL Server 2003 üzerinde binlerce veriye sahip 20-30 tablodan oluşan veritabanı ve genel olarak kullanıcı yönetimi üzerine yoğunlaşmış prosedürler ile ilgileniyordum.
-Açıkçası uğraşım tamamen amatörce olduğundan ne yaptığımın tam olarak farkında değildim ama oldukça keyifliydi. 
-Veritabanındaki birkaç sütun verisini değiştirip oyuna girdiğimde değişikliklerin daha görsel şeylere dönüştüğünü görmek mutlu etmişti. 
+Açıkçası uğraşım tamamen amatörce olduğundan ne yaptığımın tam olarak farkında değildim ama oldukça keyifliydi.
+Veritabanındaki birkaç sütun verisini değiştirip oyuna girdiğimde değişikliklerin daha görsel şeylere dönüştüğünü görmek mutlu etmişti.
 Öylesine mutlu etmiş olacak ki hayatım boyunca benzer şeyler ile uğraşmayı seçtim. Doğru bir seçim yapıp yapmadığımı son nefeste öğrenecek olsam da hala pişman olmadım.
 
 Neyse sonrasında anadolu teknik lisesinde bilişim teknolojileri bölümünde Visual Basic ve C# ile tanıştım.
@@ -36,7 +35,7 @@ Veri tabanlı windows form uygulamaları, raporlamaları vesaire ile uğraşıp 
 İki dile de aşina olduğum için genel hatırlama ve güzel ipuçları dışında teknik yönden çok fazla yeni şey öğrenmedim. (İlk defa gördüğüm mühendislik teorik eğitiminden bahsetmiyorum.)
 
 Bu yüzden kendi zamanımda daha farklı konulara yöneldim. Önceki dönemdeki uygulamaların, ödevlerin, projelerin C# üzerinden yürümesi ve mono teknolojisinin iş görüp görmeyeceğinden emin olmamam gibi sebeplerden dolayı kalıcı olarak Linux'a geçememiştim.
-Şu anda dönem arasında deneme/keşfetme amaçlı kurduğum arch tabanlı manjaro dağıtımını kullanıyorum. 
+Şu anda dönem arasında deneme/keşfetme amaçlı kurduğum arch tabanlı manjaro dağıtımını kullanıyorum.
 Her ne kadar konunun uzmanı olmasam da şu düşüncemi rahatlıkla söyleyebilirim ki linux politikaları açısından normal kullanıcılar için diğer tüm açılardan ise yazılım geliştiriciler için mükemmel.
 Gerek tasarımcılar gerek web tabanlı geliştirmeler yapan kişilerin unix tabanlı işletim sistemli bilgisayarları kullanmaları boşuna değilmiş.  
 
@@ -102,7 +101,7 @@ namespace BagliListeOrnek
     public abstract void Listele();
   }
 }
-{% endhighlight %} 
+{% endhighlight %}
 
 **TekYonluBagliListe.cs**
 {% highlight csharp %}
@@ -131,7 +130,7 @@ namespace BagliListeOrnek
     }
   }
 }
-{% endhighlight %} 
+{% endhighlight %}
 
 **Program.cs**
 {% highlight csharp %}
@@ -160,7 +159,7 @@ namespace BagliListeOrnek
     }
   }
 }
-{% endhighlight %} 
+{% endhighlight %}
 
 **Listele()**
 
@@ -177,7 +176,7 @@ public override void Listele()
     }
     Console.WriteLine();
 }
-{% endhighlight %} 
+{% endhighlight %}
 
 **Ekle()**
 
@@ -219,7 +218,7 @@ public override void Ekle(int eklenecekDeger)
     }
     Boyut++; // bir eleman ekledik.
 }
-{% endhighlight %} 
+{% endhighlight %}
 
 **Sil()**
 
@@ -257,7 +256,7 @@ public override void Sil(int silinecekDeger)
         }
     }
 }
-{% endhighlight %} 
+{% endhighlight %}
 
 Fonksiyonlarımızı yukarıdaki şekilde yazıp programımızı çalıştırdığımızda çıktımız şu şekilde olacaktır;  
 {% highlight csharp %}
@@ -274,7 +273,7 @@ Fonksiyonlarımızı yukarıdaki şekilde yazıp programımızı çalıştırdı
 2. Eleman: 4
 
 1. Eleman: 2
-{% endhighlight %} 
+{% endhighlight %}
 
 Böylelikle linux üzerinde ilk c# programımı yazmış oldum. Bir süredir C# ile haşır neşir olmadığım için C++ hala daha tanıdık/kolay gelse de güzel bir deneyim oldu.  
 
@@ -283,7 +282,7 @@ Böylelikle linux üzerinde ilk c# programımı yazmış oldum. Bir süredir C# 
 ---------
 Sevmek/sevmemek bir yana bizim meslek grubu için geçerli olmak üzere hiçbir teknolojiden tamamen kopmamak gerektiğine inanıyorum.
 Hiçbir zaman dil/kütüphane fanatikliliğini doğru bulmadım.  
-  
-Önemli olanın öğrenmeyi öğrenmek ve o an geliştirilecek projede karar verecek kişi siz iseniz projeye/ekibe/geliştiricilere en uygun dili/kütüphaneleri seçmek/seçebilmek olduğuna inanıyorum. 
+
+Önemli olanın öğrenmeyi öğrenmek ve o an geliştirilecek projede karar verecek kişi siz iseniz projeye/ekibe/geliştiricilere en uygun dili/kütüphaneleri seçmek/seçebilmek olduğuna inanıyorum.
 
 Son olarak Rider projesi ile tamamen sanal w7'ye mecbur kalmadığımı görmek sevindirici. Son sürümünün ücretsiz olması dileğiyle bu konudan şimdilik bu kadar.

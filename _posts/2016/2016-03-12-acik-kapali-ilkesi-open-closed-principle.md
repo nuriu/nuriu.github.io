@@ -7,8 +7,8 @@ tags:
 - solid ilkeleri
 - tasarım ilkeleri
 categories:
+- solid ilkeleri
 - mimari & tasarım
-series: mimari & tasarım
 ---
 
 # Açık/Kapalı İlkesi
@@ -62,7 +62,7 @@ Bu ilkeyi göz önünde bulundurmamızın bize çeşitli yararları olacaktır. 
 
 1. Uygulama daha stabil/güçlü olacaktır çünkü önceden test ettiğimiz varlığı (sınıflar, fonksiyonlar vb.) değiştirmiyoruz.
 2. Uygulama daha esnek olacaktır çünkü yeni gereksinimleri daha kolay karşılayabiliyoruz.
-3. Uygulamayı test etmek daha kolay olacaktır ve hata potansiyeli/eğilimi azalacaktır. 
+3. Uygulamayı test etmek daha kolay olacaktır ve hata potansiyeli/eğilimi azalacaktır.
 
 
 **Dipnot:** Basitçe anlaşılabilir/açıklanabilir olması için aynı basit örnek üzerinden açıklamalar yaptım.

@@ -7,8 +7,8 @@ tags:
 - solid ilkeleri
 - tasarım ilkeleri
 categories:
+- solid ilkeleri
 - mimari & tasarım
-series: mimari & tasarım
 ---
 
 # Bağımlılık Ters Çevirme İlkesi
@@ -17,7 +17,7 @@ series: mimari & tasarım
 Bu serimizdeki son ilkemiz (soli**D**) aşağıdaki iki temel düşünceyi savunur/belirtir;  
 
 > Yük seviyeli modüller düşük seviyeli modüllere bağımlı olmamalıdır. Her ikisi de soyutlamalara bağlı olmalıdır.
-  
+
 > Soyutlamalar detaylara bağlı olmamalıdır. Detaylar soyutlamalara bağlı olmalıdır.  
 
 Bu duruma gerçek hayattan şöyle bir örnek verebiliriz;

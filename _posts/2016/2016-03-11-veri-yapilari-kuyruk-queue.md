@@ -8,9 +8,8 @@ tags:
 - kuyruklar
 - queue
 categories:
-- java
 - veri yapıları
-series: veri yapıları
+- java
 ---
 
 # Giriş
@@ -36,8 +35,8 @@ Yığın yapımızda olduğu gibi kuyruk yapımızda da belli başlı metodları
 Yığın örneğimizde olduğu gibi bu örneğimizi de dizileri kullanarak gerçekleştireceğiz.
 Uygulamamız *kuyruk.java* ve *Main.java* olmak üzere iki dosyadan oluşan bir konsol uygulaması olacak.
 
-Sınıfımız; 
- 
+Sınıfımız;
+
 > kuyruk.java  
 
 {% highlight java %}

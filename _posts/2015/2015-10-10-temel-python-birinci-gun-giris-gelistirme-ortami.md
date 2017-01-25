@@ -7,7 +7,6 @@ tags:
 - geliştirme ortamı
 categories:
 - python
-series: python
 ---
 
 Giriş

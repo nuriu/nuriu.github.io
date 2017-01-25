@@ -6,8 +6,8 @@ tags:
 - solid ilkeleri
 - tasarım ilkeleri
 categories:
+- solid ilkeleri
 - mimari & tasarım
-series: mimari & tasarım
 ---
 
 # Giriş

@@ -6,7 +6,6 @@ tags:
 - arayüzler
 categories:
 - typescript
-series: typescript
 ---
 
 # Arayüzler
@@ -29,7 +28,7 @@ Arayüz kullanımını daha iyi açıklayabilmek için bu örneğimizi fonksiyon
 
 {% highlight ts %}
 function dortgenOlustur(d: Dortgen): {renk: string; alan: number} {
-	
+
     // geçici dortgen değişkenimiz
     let dortgen = {renk: "kırmızı", alan: 100};
 

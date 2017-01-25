@@ -7,7 +7,6 @@ tags:
 - nesneler
 categories:
 - python
-series: python
 ---
 
 Sınıf Oluşturma

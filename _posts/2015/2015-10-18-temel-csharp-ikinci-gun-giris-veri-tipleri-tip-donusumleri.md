@@ -8,7 +8,6 @@ tags:
 - tip dönüşümleri
 categories:
 - c#
-series: c#
 ---
 
 # **Giriş**  

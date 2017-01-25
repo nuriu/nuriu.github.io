@@ -7,8 +7,8 @@ tags:
 - solid ilkeleri
 - tasarım ilkeleri
 categories:
+- solid ilkeleri
 - mimari & tasarım
-series: mimari & tasarım
 ---
 
 # Giriş
@@ -22,14 +22,14 @@ Peki nedir bu ilkeler?
 2. (O) Açık/Kapalı İlkesi (Open/closed principle)  
 3. (L) Liskov'un Yer Değiştirme İlkesi (Liskov substitution principle)  
 4. (I) Arayüz Ayrımı İlkesi (Interface segregation principle)  
-5. (D) Bağımlılık Ters Çevirme İlkesi (Dependency inversion principle) 
+5. (D) Bağımlılık Ters Çevirme İlkesi (Dependency inversion principle)
 
 # Bu ilkeler niçin var?
 
 Yazılım projeleri büyüdükçe hem daha karmaşıklaşıyor hem de karmaşıklaşma potansiyeli artıyor.
 Bu karmaşıklıklar yüzünden hem proje üzerinde ilerlemek/yol bulmak zorlaşıyor hem de olası kod tekrarları yüzünden kaynak kullanımı artıyor, dolayısıyla performans da düşüyor.  
 
-İşte bu ilkeler hem bu konuda hem de genel olarak daha akılcı bir yol izlememizde bize yardımcı oluyorlar. 
+İşte bu ilkeler hem bu konuda hem de genel olarak daha akılcı bir yol izlememizde bize yardımcı oluyorlar.
 Sonuçta bunlar diğer alanların/konuların sahip olduğu gibi birer düşünce yapısı/şekli.
 
 # Nasıl kullanacağız / kullanmalıyız?
@@ -72,7 +72,7 @@ Böylece tasarımımız şu aşamaya gelmiş olur;
 
 Tasarımımız biraz daha mantıklı bir hal aldı.
 Fakat hala bir sorunumuz var. O da sınıflarımızın farklı bir iş olan *ciz* metodunu yapıyor olması.
-Eğer bu tasarımla devam edersek sekil sınıfından türeteceğimiz bu tür sınıflarda yine *ciz* metodunu benzer şekilde tekrar etmemiz gerekecek. 
+Eğer bu tasarımla devam edersek sekil sınıfından türeteceğimiz bu tür sınıflarda yine *ciz* metodunu benzer şekilde tekrar etmemiz gerekecek.
 Peki bu durumu nasıl daha iyi/mantıklı hale getirebiliriz?
 Çizme işi başlı başına ayrı bir iş olduğundan onu tamamen farklı bir sınıf yapabiliriz/yapmalıyız.
 Son tasarımımız bu hali aldı;  

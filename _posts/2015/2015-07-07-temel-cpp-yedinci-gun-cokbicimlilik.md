@@ -6,7 +6,6 @@ tags:
 - çokbiçimlilik
 categories:
 - c++
-series: c++
 ---
 
 Çokbiçimlilik

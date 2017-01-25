@@ -7,9 +7,8 @@ tags:
 - bağlı listeler
 - çift yönlü bağlı listeler
 categories:
-- c++
 - veri yapıları
-series: veri yapıları
+- c++
 ---
 
 **Çift Yönlü Bağlı Listeler**
@@ -25,7 +24,7 @@ Avantajları:
 Dezavantajları:  
 
 1. Önceki öğeyi gösteren fazladan bir işaretçimiz olduğu için öğe başına daha fazla hafıza alanı gerektirir.
-2. Ekleme ve silme işlemleri tek yönlü bağlı listelere göre daha fazla işaretçi işlemleri gerektirdiği için tek yönlü bağlı listelere göre daha uzun sürer. 
+2. Ekleme ve silme işlemleri tek yönlü bağlı listelere göre daha fazla işaretçi işlemleri gerektirdiği için tek yönlü bağlı listelere göre daha uzun sürer.
 
 Basitçe yapı şekildeki gibidir;
 
@@ -55,17 +54,17 @@ int main(int argc, char *argv[])
     // ilk eleman.
     ilk = (oge*) malloc(sizeof(oge));
     ilk -> sayi = 1;
-    
+
     // ilk eleman -> önceki = null
     ilk -> onceki = NULL;
 
     // ikinci eleman.
     ilk -> sonraki = (oge*) malloc(sizeof(oge));
     ilk -> sonraki -> sayi = 2;
-    
+
     // 2. eleman -> önceki = ilk eleman
     ilk -> sonraki -> onceki = ilk;
-    
+
     // son elemanımızın ikinci eleman olduğunu belirtiyoruz.
     ilk -> sonraki -> sonraki = NULL;
 
@@ -73,7 +72,7 @@ int main(int argc, char *argv[])
 }
 {% endhighlight %}
 
-Önceki iki yapıda bağlı listelerin genel mantığının üzerinden geçtiğimiz için bu yapıyı olabildiğince kod üzerinden açıklama satırları ile açıklamaya çalışacağım. 
+Önceki iki yapıda bağlı listelerin genel mantığının üzerinden geçtiğimiz için bu yapıyı olabildiğince kod üzerinden açıklama satırları ile açıklamaya çalışacağım.
 
 **Listeleme**  
 

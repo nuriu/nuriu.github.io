@@ -6,7 +6,6 @@ tags:
 - sınıflar
 categories:
 - typescript
-series: typescript
 ---
 
 # Sınıflar
@@ -24,11 +23,11 @@ class SinifIsmi {
     .
     .
     .
-    
+
     constructor(parametreIsmi: parametreTipi ...) {
         // yapıcı fonksiyon içeriği
     }
-    
+
     fonksiyonIsmi() {
         // fonksiyon içeriği
     }
@@ -47,7 +46,7 @@ Erişim belirteci belirtilmediği durumlarda varsayılan olarak *public* atanır
 
 - *private* erişim belirtecine sahip üyeler bulundukları sınıf dışarısında kullanılamazlar.
 - *public* erişim belirtecine sahip üyeler bulundukları sınıf dışarısından da erişilebilirler.
-- *protected* erişim belirtecine sahip üyeler bulundukları sınıfta ve o sınıftan türetilmiş sınıflarda kullanılabilirler. 
+- *protected* erişim belirtecine sahip üyeler bulundukları sınıfta ve o sınıftan türetilmiş sınıflarda kullanılabilirler.
 
 # Kalıtım
 ----------
@@ -58,12 +57,12 @@ Nesne tabanlı programlamanın yapı taşı olan sınıflar arasındaki kalıtı
 class Hayvan {
     // üye değişkenimiz (varsayılan olarak public)
     isim: string;
-    
+
     // yapıcı fonksiyonumuz
     constructor(ismi: string) {
         this.isim = ismi;
     }
-    
+
     hareketEt(metre: number = 0) {
         // metin ifadeleri içerisinde değişken kullanımı
         console.log(`${this.isim} ${metre} metre hareket etti.`);
@@ -77,7 +76,7 @@ class Kus extends Hayvan {
         // üst sınıfımızın yapıcı fonksiyonunu çağırıyoruz
         super(isim);
     }
-    
+
     hareketEt(metre = 8) {
         console.log(`${this.isim} Uçuyor...`);
         // üst sınıfımızdaki fonksiyonumuzu çağırıyoruz
@@ -92,7 +91,7 @@ class Kopek extends Hayvan {
         // üst sınıfımızın yapıcı fonksiyonunu çağırıyoruz
         super(isim);
     }
-    
+
     hareketEt(metre = 45) {
         console.log(`${this.isim} Koşuyor...`);
         // üst sınıfımızdaki fonksiyonumuzu çağırıyoruz

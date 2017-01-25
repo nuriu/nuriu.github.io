@@ -8,7 +8,6 @@ tags:
 - vektörler
 categories:
 - c++
-series: c++
 ---
 
 Temel C++ serisinin ilk bölümüne aşağıdaki linkten ulaşabilirsiniz:  

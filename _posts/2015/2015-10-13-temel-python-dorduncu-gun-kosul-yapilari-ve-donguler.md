@@ -7,7 +7,6 @@ tags:
 - döngüler
 categories:
 - python
-series: python
 ---
 
 If, Elif, Else

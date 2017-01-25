@@ -7,9 +7,8 @@ tags:
 - bağlı listeler
 - tek yönlü bağlı listeler
 categories:
-- c++
 - veri yapıları
-series: veri yapıları
+- c++
 ---
 
 **Giriş**  

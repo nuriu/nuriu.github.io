@@ -8,7 +8,6 @@ tags:
 - diziler
 categories:
 - c++
-series: c++
 ---
 
 Daha önce, programlama dünyasına iki bölümlük bir teorik giriş yapmıştık. Şimdi ise C++'ın ilk yazısıyla temel dil serilerine başlayacağız.  

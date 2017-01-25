@@ -6,7 +6,6 @@ tags:
 - kalıtım
 categories:
 - python
-series: python
 ---
 
 Kalıtım

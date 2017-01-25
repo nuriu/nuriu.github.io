@@ -7,7 +7,6 @@ tags:
 - nesneler
 categories:
 - java
-series: java
 ---
 
 # Sınıflar
@@ -44,7 +43,7 @@ erisimBelirteci class sinifIsmi {
     .
     .
     erisimBelirteci veriTipi degiskenAdi;
-    
+
     // üye metodlarımız (davranışlar)
     erisimBelirteci dondurecegiVeriTipi metodAdi(parametre listesi) {
         // metod içeriği
@@ -55,7 +54,7 @@ erisimBelirteci class sinifIsmi {
     erisimBelirteci dondurecegiVeriTipi metodAdi(parametre listesi) {
         // metod içeriği
     }
-    
+
     // yapıcı metodumuz
     erisimBelirteci sinifIsmi(){
         // yapıcı metodumuzun içeriği

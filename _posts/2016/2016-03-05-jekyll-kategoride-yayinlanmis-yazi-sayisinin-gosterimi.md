@@ -1,11 +1,10 @@
 ---
 layout: post
-title: "Jekyll: Kategoride Yayınlanmış Yazı Sayısın Gösterimi" 
+title: "Jekyll: Kategoride Yayınlanmış Yazı Sayısın Gösterimi"
 tags:
 - jekyll
 categories:
 - jekyll
-series: jekyll
 ---
 
 **Problem**

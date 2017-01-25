@@ -5,8 +5,8 @@ tags:
 - mimari & tasarım
 - tasarım kalıpları
 categories:
+- tasarım kalıpları
 - mimari & tasarım
-series: mimari & tasarım
 ---
 
 # Nedir?
@@ -36,7 +36,7 @@ Zamanla, yazıları ekledikçe aşağıdaki fihriste bağlantılarını ekleyece
    1. Fabrika & Soyut Fabrika (Factory & Abstract Factory)  
    1. Yapıcı (Builder)  
    1. Örnek (Prototype)  
-   
+
 
 - Yapısal (Structural)
    1. Uyarlayıcı (Adapter)  

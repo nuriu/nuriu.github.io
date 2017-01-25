@@ -8,7 +8,6 @@ tags:
 - işaretçiler
 categories:
 - c++
-series: c++
 ---
 
 **Fonksiyonlar**  
