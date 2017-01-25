@@ -13,7 +13,7 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 
 > PLANLANAN (2017)
 
-[java] - [mimari & tasarım] >> Tasarım Kalıpları: Yegâne (Singleton)  
+➟ [java] - [mimari & tasarım] >> Tasarım Kalıpları: Yegâne (Singleton)  
 [java] - [mimari & tasarım] >> Tasarım Kalıpları: Fabrika & Soyut Fabrika (Factory & Abstract Factory)  
 [java] - [mimari & tasarım] >> Tasarım Kalıpları: Yapıcı (Builder)  
 [java] - [mimari & tasarım] >> Tasarım Kalıpları: Örnek (Prototype)  
