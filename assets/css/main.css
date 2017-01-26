@@ -973,7 +973,8 @@ html, body {
 .tree-posts {
     padding-top: 43px;
     padding-left: 20px;
-    width: 450px;
+    padding-right: 0px;
+    width: 400px;
     height: 100%;
     position: fixed;
     background-color: #2f2f33;
@@ -1004,7 +1005,7 @@ html, body {
 
 .post-item {
     text-align: left;
-    padding: .313rem 1.25rem;
+    padding: .313rem 0rem;
     position: relative;
 }
 
@@ -1707,4 +1708,13 @@ footer p {
     color: #fff;
     text-align: center;
     margin: 0
+}
+
+.tree-item-post-title {
+  color: #c7b288;
+  margin: 0;
+  padding: 2.5px 0px;
+  font-size: 1rem;
+  text-align: left;
+  width: 145%;
 }
