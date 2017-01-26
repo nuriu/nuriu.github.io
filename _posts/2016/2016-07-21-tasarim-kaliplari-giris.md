@@ -31,7 +31,7 @@ Zamanla, yazıları ekledikçe aşağıdaki fihriste bağlantılarını ekleyece
 Üzerine yazmayı düşündüğüm tasarım kalıpları;
 
 - Oluşturuluşsal (Creational)
-   1. Yegâne (Singleton)  
+   1. [Yegâne (Singleton)][1]  
    1. Fabrika & Soyut Fabrika (Factory & Abstract Factory)  
    1. Yapıcı (Builder)  
    1. Örnek (Prototype)  
@@ -61,3 +61,4 @@ Zamanla, yazıları ekledikçe aşağıdaki fihriste bağlantılarını ekleyece
 
 [Kitap]: https://en.wikipedia.org/wiki/Design_Patterns
 [Wiki]: https://en.wikipedia.org/wiki/Software_design_pattern
+[1]: /tasarim-kaliplari-yegane-singleton/
