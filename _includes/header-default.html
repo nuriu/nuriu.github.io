@@ -50,8 +50,8 @@
         </div>
 
         <ul class="recent">
-            <p>Son 8 yazı:</p>
-            {% for post in site.posts limit:8%}
+            <p>Son 5 yazı:</p>
+            {% for post in site.posts limit:5 %}
             <li>
                 <a href="{{ post.url | prepend: site.baseurl }}">
                     <h2 class="post-title" itemprop="name">{{ post.title }}</h2>
@@ -61,8 +61,8 @@
         </ul>
 
         <ul class="recent">
-            <p>Son 10 proje:</p>
-            {% for project in site.projects limit:10%}
+            <p>Son 5 proje:</p>
+            {% for project in site.projects limit:5 %}
             <li>
                 <a href="{{ project.url}}">
                     <h2 class="post-title" itemprop="name">{{ project.name }}</h2>
