@@ -37,11 +37,9 @@ links:
     url: /hakkimda
 
 projects:
-  - name: (kod ad) Yavuz (2017 Ç4) (c++, urho3d, cmake)
-    url: https://github.com/nuriu/yavuz
-  - name: ajanda-web (2017 Ç2) (python, django, sqlite)
-    url: https://github.com/nuriu/ajanda-web
-  - name: ajanda (2017 Ç1) (typescript, angular 2, electron)
+  - name: oyun geliştirme yolu (2017 Ç3-Ç4) (c++, opengl, glfw, +)
+    url: https://github.com/nuriu/oyun-gelistirme-yolu
+  - name: ajanda (2017 Ç4) (typescript, angular, express, mongodb)
     url: https://github.com/nuriu/ajanda
   - name: hapicpp (2017 Ç1) (c++, jsoncpp, restclient-cpp, cmake)
     url: https://github.com/nuriu/hapicpp
