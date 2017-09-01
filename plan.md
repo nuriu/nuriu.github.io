@@ -15,7 +15,7 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 > PLANLANAN (2017)
 
  ☑ [java] - [mimari & tasarım] >> Tasarım Kalıpları: Yegâne (Singleton)  
-➟ [java] - [mimari & tasarım] >> Tasarım Kalıpları: Fabrika & Soyut Fabrika (Factory & Abstract Factory)  
+[java] - [mimari & tasarım] >> Tasarım Kalıpları: Fabrika & Soyut Fabrika (Factory & Abstract Factory)  
 [java] - [mimari & tasarım] >> Tasarım Kalıpları: Yapıcı (Builder)  
 [java] - [mimari & tasarım] >> Tasarım Kalıpları: Örnek (Prototype)  
 
@@ -42,5 +42,4 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 [java] - [mimari & tasarım] >> Tasarım Kalıpları: Şablon (Template)  
 [java] - [mimari & tasarım] >> Tasarım Kalıpları: Ziyaretçi (Visitor)  
 
-[python]] >> Django ile Kişisel Blog Geliştirme Serisi  
-[typescript] >> Uygulama Serisi (Ç2 2017)  
+[matematik] - [c++] >> Oyun Geliştirme İçin Matematik Serisi
