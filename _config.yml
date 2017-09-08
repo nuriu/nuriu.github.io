@@ -37,10 +37,12 @@ links:
     url: /hakkimda
 
 projects:
-  - name: oyun geliştirme yolu (2017 Ç3-Ç4) (c++, opengl, glfw, +)
-    url: https://github.com/nuriu/oyun-gelistirme-yolu
-  - name: ajanda (2017 Ç4) (typescript, angular, express, mongodb)
+  - name: iom (2018 Ç2) (c++, vulkan, glm, cmake)
+    url: https://github.com/nuriu/iom
+  - name: ajanda (2017 Ç4) (typescript, angular, .net core, postgresql)
     url: https://github.com/nuriu/ajanda
+  - name: oyun geliştirme yolu (2017 Ç3-Ç4)
+    url: https://github.com/nuriu/oyun-gelistirme-yolu
   - name: hapicpp (2017 Ç1) (c++, jsoncpp, restclient-cpp, cmake)
     url: https://github.com/nuriu/hapicpp
   - name: docendodiscimus (2016 Ç4) (c#, asp.net mvc, wcf)
