@@ -1,8 +1,8 @@
-_site
-.sass-cache
-.jekyll-metadata
-.directory
-_drafts
-.sh
-.vscode
-_mdwriter.cson
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+*.lock

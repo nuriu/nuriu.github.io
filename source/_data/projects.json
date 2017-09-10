@@ -1,0 +1,47 @@
+[
+    {
+       "name":"iom",
+       "url":"https://github.com/nuriu/iom",
+       "desc":"(2018 Ç2) (c++, vulkan, glm, cmake)"
+    },
+    {
+       "name":"ajanda",
+       "url":"https://github.com/nuriu/ajanda",
+       "desc":"(2017 Ç4) (typescript, angular, .net core, postgresql)"
+    },
+    {
+        "name":"oyun geliştirme yolu",
+        "url":"https://github.com/nuriu/oyun-gelistirme-yolu",
+        "desc":"(2017 Ç3-Ç4)"
+    },
+    {
+        "name":"hapicpp",
+        "url":"https://github.com/nuriu/hapicpp",
+        "desc":"(2017 Ç1) (c++, jsoncpp, restclient-cpp, cmake)"
+    },
+    {
+        "name":"docendodiscimus",
+        "url":"https://github.com/nuriu/docendodiscimus",
+        "desc":"(2016 Ç4) (c#, asp.net mvc, wcf)"
+    },
+    {
+        "name":"mezbele",
+        "url":"https://github.com/nuriu/mezbele",
+        "desc":"(2016 Ç4) (c#, asp.net mvc, materialize)"
+     },
+     {
+        "name":"filmoneri",
+        "url":"https://github.com/nuriu/filmoneri",
+        "desc":"(2016 Ç4) (typescript, electron, sqlite)"
+     },
+     {
+         "name":"haber",
+         "url":"https://github.com/nuriu/haber",
+         "desc":"(typescript, electron, semantic ui)"
+     },
+     {
+         "name":"blog",
+         "url":"https://github.com/nuriu/nuriu.github.io",
+         "desc":"(ruby, ruby on rails)"
+     }
+]

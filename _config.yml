@@ -1,57 +1,81 @@
-title: Blog - Nuri Uzunoğlu
-description: "Nuri Uzunoğlu // Yazılım Mühendisliği Öğrencisi Kişisel Web Sayfası."
-baseurl: ""
-url: "http://nuriuzunoglu.com"
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
 
-username: Nuri Uzunoğlu
-user_title: Yazılım Mühendisi
-email: dev@nuriuzunoglu.com
-github_username: nuriu
-hackerrank_username: nuriu
-linkedin_username: nuriuzunoglu
-stackoverflow_userid: 6423537
-disqus_username: Ezhoikam
+# Site
+title: Nuri Uzunoğlu
+subtitle: Yazılım Mühendisi
+description:
+author: Nuri UZUNOĞLU
+language: tr
+timezone: Europe/Istanbul
 
-google_analytics: UA-64801555-1
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://nuriuzunoglu.com
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
 
-markdown: kramdown
-highlighter: rouge
-permalink: /:title/
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
 
-compress_html:
-  clippings: all
-  comments: all
-  endings: []
-  profile: false
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+  
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 25
+  order_by: -date
+  
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
 
-links:
-  - title: anasayfa
-    url: /
-  - title: yazılar
-    url: /yazilar
-  - title: seriler
-    url: /seriler
-  - title: etiketler
-    url: /etiketler
-  - title: hakkımda
-    url: /hakkimda
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: DD-MMMM-YYYY
+time_format: HH:mm:ss
 
-projects:
-  - name: iom (2018 Ç2) (c++, vulkan, glm, cmake)
-    url: https://github.com/nuriu/iom
-  - name: ajanda (2017 Ç4) (typescript, angular, .net core, postgresql)
-    url: https://github.com/nuriu/ajanda
-  - name: oyun geliştirme yolu (2017 Ç3-Ç4)
-    url: https://github.com/nuriu/oyun-gelistirme-yolu
-  - name: hapicpp (2017 Ç1) (c++, jsoncpp, restclient-cpp, cmake)
-    url: https://github.com/nuriu/hapicpp
-  - name: docendodiscimus (2016 Ç4) (c#, asp.net mvc, wcf)
-    url: https://github.com/nuriu/docendodiscimus
-  - name: mezbele (2016 Ç4) (c#, asp.net mvc, materialize)
-    url: https://github.com/nuriu/mezbele
-  - name: filmoneri (2016 Ç4) (typescript, electron, sqlite)
-    url: https://github.com/nuriu/filmoneri
-  - name: haber (typescript, electron, semantic ui)
-    url: https://github.com/nuriu/haber
-  - name: blog (ruby, ruby on rails)
-    url: https://github.com/nuriu/nuriu.github.io
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 25
+pagination_dir: page
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: cactus-dark
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: https://github.com/nuriu/nuriu.github.io
