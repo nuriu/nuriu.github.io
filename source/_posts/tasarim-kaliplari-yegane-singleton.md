@@ -34,7 +34,7 @@ Daha sonrasında bu sınıfa bir dinamik olarak değiştireceğimiz mesaj ve o m
 
 ![Yegane uml sınıf diyagram örneği.](/resimler/yegane.png)
 
-``` java Yegane.java http://nuriuzunoglu.com/downloads/code/yegane/Yegane.java Yegane.java
+``` java Yegane.java
 public class Yegane {
 
     // geri döndüreceğimiz nesnemiz.
