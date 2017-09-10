@@ -79,3 +79,4 @@ theme: cactus-dark
 deploy:
   type: git
   repo: https://github.com/nuriu/nuriu.github.io
+  branch: master
