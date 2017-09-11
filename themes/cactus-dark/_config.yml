@@ -33,7 +33,7 @@ customize:
         stack-overflow: https://stackoverflow.com/users/6423537
         linkedin: https://www.linkedin.com/in/nuriuzunoglu
     show_all_posts: false
-    post_count: 25
+    post_count: 8
     highlight: rainbow
 
 # RSS
