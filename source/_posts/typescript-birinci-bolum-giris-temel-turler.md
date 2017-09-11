@@ -93,9 +93,10 @@ Belirtilen türde veri kümeleri/koleksiyonları oluşturmak için kullanılırl
 
 Tanımlanışları;  
 ``` typescript
-var degiskenAdi:veriTuru[] = [1, 2, 3]; // bu durumda veri türü number olmalıdır.
+// bu durumda veri türü number olmalıdır.
+var degiskenAdi: veriTuru[] = [1, 2, 3];
 // veya
-var degiskenAdi:Array<veriTuru> = [1, 2, 3];
+var degiskenAdi: Array<veriTuru> = [1, 2, 3];
 ```
 
 **Numaralandırmalar (Enum)**  
