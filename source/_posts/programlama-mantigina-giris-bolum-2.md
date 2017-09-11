@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Programlama Mantığına Giriş Bölüm 2"
 date: 2015.06.28
 tags:
