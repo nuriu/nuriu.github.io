@@ -1,5 +1,5 @@
 ---
-title: "Jekyll: Kategoride Yayınlanmış Yazı Sayısın Gösterimi"
+title: "Jekyll: Kategoride Yayınlanmış Yazı Sayısının Gösterimi"
 date: 2016.03.05
 tags:
 - jekyll
