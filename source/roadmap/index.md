@@ -14,7 +14,7 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 
 > PLANLANAN (2017)
 
-[java] - [mimari & tasarım] >> Tasarım Kalıpları: Yegâne (Singleton)
+☑ [java] - [mimari & tasarım] >> Tasarım Kalıpları: Yegâne (Singleton)
 
 [java] - [mimari & tasarım] >> Tasarım Kalıpları: Fabrika & Soyut Fabrika (Factory & Abstract Factory)
 
