@@ -316,13 +316,11 @@ eleman* sil(eleman* agac, int silinecekDeger)
         agac->sol = sil(agac->sol, silinecekDeger);
         return agac;
     }
+    
     // silinecek değer kökten büyük ise sağ alt ağaca geçiyoruz
-    else
-    {
-        // silinecek değeri sağ alt ağaçtan sil
-        // ve o ağacı yeni sağ alt ağaç yap
-        agac->sag = sil(agac->sag, silinecekDeger);
-    }
+    // silinecek değeri sağ alt ağaçtan sil
+    // ve o ağacı yeni sağ alt ağaç yap
+    agac->sag = sil(agac->sag, silinecekDeger);
 
     // ağacımızın son halini geriye döndürüyoruz
     return agac;

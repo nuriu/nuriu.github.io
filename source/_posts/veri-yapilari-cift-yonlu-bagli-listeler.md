@@ -259,7 +259,3 @@ Girdiğiniz değer listede bulunamadı.
 ```
 
 Görüldüğü üzere dört senaryomuz da testten başarı ile geçti.  
-
-Dipnot:
--------
-İlerleyen zamanlarda uygunluğu açısından bu veri yapısına listeyi ters çevirme işlevi üzerine eklemeler yapabilirim. Şimdilik bu kadar.

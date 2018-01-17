@@ -157,40 +157,40 @@ oge* Sil(oge* ilkEleman, int silinecekDeger)
             // geriye yeni ilk elemanımızı gönderiyoruz.
             return s;
         }
-        else // liste tek elemanlıysa
-        {
-            // elemanı siliyoruz
-            free(gecici);
-            // geriye boş liste döndürüyoruz.
-            return NULL;
-        }
+
+        // liste tek elemanlıysa
+        // elemanı siliyoruz
+        free(gecici);
+        
+        // geriye boş liste döndürüyoruz.
+        return NULL;
     }
-    else // ilk eleman değilse
+
+    // ilk eleman değilse
+    // listede aramaya başlıyoruz.
+    while(s -> sonraki != NULL)
     {
-        // listede aramaya başlıyoruz.
-        while(s -> sonraki != NULL)
+        // silinecek eleman bulunduysa
+        if(s -> sonraki -> sayi == silinecekDeger &&
+            s -> sonraki != NULL)
         {
-            // silinecek eleman bulunduysa
-            if(s -> sonraki -> sayi == silinecekDeger &&
-               s -> sonraki != NULL)
-            {
-                // burada, işlemleri bir eleman öncesinden
-                // yapmamızın sebebi önceki eleman ile olan bağı
-                // yani aradaki bağı kaybetmemek.
-                gecici = s -> sonraki;
-                s -> sonraki = s -> sonraki -> sonraki;
-                free(gecici);
-                return ilkEleman;
-            }
-            else // bulunamadıysa sonraki elemana geçiyoruz.
-            {
-                s = s -> sonraki;
-            }
+            // burada, işlemleri bir eleman öncesinden
+            // yapmamızın sebebi önceki eleman ile olan bağı
+            // yani aradaki bağı kaybetmemek.
+            gecici = s -> sonraki;
+            s -> sonraki = s -> sonraki -> sonraki;
+            free(gecici);
+            return ilkEleman;
         }
-        // silinecek eleman bulunamadıysa
-        cout << "Silinecek eleman bulunamadi." << endl;
-        return ilkEleman;
+        
+        // bulunamadıysa sonraki elemana geçiyoruz.
+        s = s -> sonraki;
     }
+
+    // silinecek eleman bulunamadıysa
+    cout << "Silinecek eleman bulunamadi." << endl;
+
+    return ilkEleman;
 }
 ```
 
@@ -213,36 +213,38 @@ oge* Ekle(oge* ilkEleman, int eklenecekDeger)
         s -> sonraki = NULL;
         return s;
     }
-    else // liste bir veya daha fazla elemana sahip ise
+    
+    // liste bir veya daha fazla elemana sahip ise
+    oge* gecici = (oge*) malloc(sizeof(oge));
+    
+    // eklenecek değer ilk elemandan küçükse
+    if(ilkEleman -> sayi > eklenecekDeger)
     {
-        oge* gecici = (oge*) malloc(sizeof(oge));
-        // eklenecek değer ilk elemandan küçükse
-        if(ilkEleman -> sayi > eklenecekDeger)
-        {
-            gecici -> sayi = eklenecekDeger;
-            gecici -> sonraki = ilkEleman;
-            return gecici;
-        }
-        else
-        {
-            // son eleman değilse ve
-            // sonraki eleman eklenecek sayidan küçükse
-            // eklenecek eleman için doğru aralığı bulmaya çalışıyoruz.
-            while(s -> sonraki != NULL &&
-                  s -> sonraki -> sayi <= eklenecekDeger)
-            {
-                s = s -> sonraki;
-            }
-            // aralığı bulduktan sonra
-            // büyük elemanı geçicinin sonraki işaretine atıyoruz.
-            gecici -> sonraki = s -> sonraki;
-            // sayimizi ekliyoruz.
-            gecici -> sayi = eklenecekDeger;
-            // sonraki işaretine elemanı atıyoruz.
-            s -> sonraki = gecici;
-            return ilkEleman;
-        }
+        gecici -> sayi = eklenecekDeger;
+        gecici -> sonraki = ilkEleman;
+        return gecici;
     }
+    
+    // son eleman değilse ve
+    // sonraki eleman eklenecek sayidan küçükse
+    // eklenecek eleman için doğru aralığı bulmaya çalışıyoruz.
+    while(s -> sonraki != NULL &&
+            s -> sonraki -> sayi <= eklenecekDeger)
+    {
+        s = s -> sonraki;
+    }
+    
+    // aralığı bulduktan sonra
+    // büyük elemanı geçicinin sonraki işaretine atıyoruz.
+    gecici -> sonraki = s -> sonraki;
+    
+    // sayimizi ekliyoruz.
+    gecici -> sayi = eklenecekDeger;
+    
+    // sonraki işaretine elemanı atıyoruz.
+    s -> sonraki = gecici;
+    
+    return ilkEleman;
 }
 ```
 
@@ -308,40 +310,40 @@ oge* Sil(oge* ilkEleman, int silinecekDeger)
             // geriye yeni ilk elemanımızı gönderiyoruz.
             return s;
         }
-        else // liste tek elemanlıysa
-        {
-            // elemanı siliyoruz
-            free(gecici);
-            // geriye boş liste döndürüyoruz.
-            return NULL;
-        }
+        
+        // liste tek elemanlıysa
+        // elemanı siliyoruz
+        free(gecici);
+        
+        // geriye boş liste döndürüyoruz.
+        return NULL;
     }
-    else // ilk eleman değilse
+    
+    // ilk eleman değilse
+    // listede aramaya başlıyoruz.
+    while(s -> sonraki != NULL)
     {
-        // listede aramaya başlıyoruz.
-        while(s -> sonraki != NULL)
+        // silinecek eleman bulunduysa
+        if(s -> sonraki -> sayi == silinecekDeger &&
+           s -> sonraki != NULL)
         {
-            // silinecek eleman bulunduysa
-            if(s -> sonraki -> sayi == silinecekDeger &&
-               s -> sonraki != NULL)
-            {
-                // burada işlemleri bir eleman öncesinden
-                // yapmamızın sebebi önceki eleman ile olan bağı
-                // yani aradaki bağı kaybetmemek.
-                gecici = s -> sonraki;
-                s -> sonraki = s -> sonraki -> sonraki;
-                free(gecici);
-                return ilkEleman;
-            }
-            else // bulunamadıysa sonraki elemana geçiyoruz.
-            {
-                s = s -> sonraki;
-            }
+            // burada işlemleri bir eleman öncesinden
+            // yapmamızın sebebi önceki eleman ile olan bağı
+            // yani aradaki bağı kaybetmemek.
+            gecici = s -> sonraki;
+            s -> sonraki = s -> sonraki -> sonraki;
+            free(gecici);
+            return ilkEleman;
         }
-        // silinecek eleman bulunamadıysa
-        cout << "Silinecek eleman bulunamadi." << endl;
-        return ilkEleman;
+        
+        // bulunamadıysa sonraki elemana geçiyoruz.
+        s = s -> sonraki;
     }
+
+    // silinecek eleman bulunamadıysa
+    cout << "Silinecek eleman bulunamadi." << endl;
+    
+    return ilkEleman;
 }
 
 oge* Ekle(oge* ilkEleman, int eklenecekDeger)
@@ -354,38 +356,39 @@ oge* Ekle(oge* ilkEleman, int eklenecekDeger)
         s = (oge*) malloc(sizeof(oge));
         s -> sayi = eklenecekDeger;
         s -> sonraki = NULL;
+
         return s;
     }
-    else // liste bir veya daha fazla elemana sahip ise
+    
+    // liste bir veya daha fazla elemana sahip ise
+    oge* gecici = (oge*) malloc(sizeof(oge));
+    // eklenecek değer ilk elemandan küçükse
+    if(ilkEleman -> sayi > eklenecekDeger)
     {
-        oge* gecici = (oge*) malloc(sizeof(oge));
-        // eklenecek değer ilk elemandan küçükse
-        if(ilkEleman -> sayi > eklenecekDeger)
-        {
-            gecici -> sayi = eklenecekDeger;
-            gecici -> sonraki = ilkEleman;
-            return gecici;
-        }
-        else
-        {
-            // son eleman değilse ve
-            // sonraki eleman eklenecek sayidan küçükse
-            // eklenecek eleman için doğru aralığı bulmaya çalışıyoruz.
-            while(s -> sonraki != NULL &&
-                  s -> sonraki -> sayi <= eklenecekDeger)
-            {
-                s = s -> sonraki;
-            }
-            // aralığı bulduktan sonra
-            // büyük elemanı geçicinin sonraki işaretine atıyoruz.
-            gecici -> sonraki = s -> sonraki;
-            // sayimizi ekliyoruz.
-            gecici -> sayi = eklenecekDeger;
-            // sonraki işaretine elemanı atıyoruz.
-            s -> sonraki = gecici;
-            return ilkEleman;
-        }
+        gecici -> sayi = eklenecekDeger;
+        gecici -> sonraki = ilkEleman;
+        return gecici;
     }
+
+    // son eleman değilse ve
+    // sonraki eleman eklenecek sayidan küçükse
+    // eklenecek eleman için doğru aralığı bulmaya çalışıyoruz.
+    while(s -> sonraki != NULL &&
+            s -> sonraki -> sayi <= eklenecekDeger)
+    {
+        s = s -> sonraki;
+    }
+
+    // aralığı bulduktan sonra
+    // büyük elemanı geçicinin sonraki işaretine atıyoruz.
+    gecici -> sonraki = s -> sonraki;
+    
+    // sayimizi ekliyoruz.
+    gecici -> sayi = eklenecekDeger;
+    
+    // sonraki işaretine elemanı atıyoruz.
+    s -> sonraki = gecici;
+    return ilkEleman;
 }
 
 int main(int argc, char *argv[])
