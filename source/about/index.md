@@ -15,22 +15,22 @@ Burada, fırsat buldukça, kendi iradem ile öğrenmekte fayda bulduğum, bu yü
 
 | Diller       | Kütüphaneler                                     | Diğer Teknolojiler |
 |--------------|--------------------------------------------------|--------------------|
-| C / C++      | wxWidgets, SFML                                  | Linux              |
+| C / C++      | wxWidgets, SFML, OpenGL, Vulkan                  | Linux              |
 | C#           | WPF, ASP.NET MVC, .NET Core                      | MSSQL              |
 | Java         | JavaFX, libGDX                                   | CMake              |
 | Python       | Django                                           | Jekyll             |
 | HTML5 / CSS3 | SASS, Bootstrap, Semantic UI, Materialize, UIKit |                    |
-| JavaScript   | jQuery, AngularJS, React                         |                    |
-| TypeScript   | Electron, Angular 4+                             |                    |
-| Haxe         | HaxeFlixel, luxe                                 |                    |
+| JavaScript   | jQuery, Moment                                   |                    |
+| TypeScript   | Electron, Angular 7+                             |                    |
+| Haxe         | HaxeFlixel                                       |                    |
 
 <br />
 
 ### Hedefler
 
-| Kısa (2017 Ç4) | Orta (2018 Ç2) |
+| Kısa (2019 Ç3) | Orta (2020 Ç2) |
 |----------------|----------------|
-| ➟ Vulkan       | Y.Z.           |
-| ➟ PostgreSQL   | A.G.           |
-| STL            | C++17          |
-| C++11 / C++14  |                |
+| ➟ OpenGL       | Y.Z.           |
+| ➟ Vulkan       | A.G.           |
+| ☑ STL           |➟ C++17        |
+| ☑ C++11 / C++14 |               |
