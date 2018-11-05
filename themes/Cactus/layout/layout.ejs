@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html<%= config.language ? " lang=" + config.language.substring(0, 2) : ""%>>
+<%- partial('_partial/head') %>
+<body class="max-width mx-auto px3 <%- theme.direction -%>">
+    <% if (is_post()) { %>
+      <%- partial('_partial/post/actions_desktop') %>
+    <% } %>
+    <div class="content index py4">
+        <% if (!is_post()) { %>
+          <%- partial('_partial/header') %>
+        <% } %>
+        <%- body %>
+        <% if (is_post()) { %>
+          <%- partial('_partial/post/actions_mobile') %>
+        <% } %>
+        <%- partial('_partial/footer') %>
+
+        <script type="text/javascript">
+            var birGun = 24*60*60*1000;
+            var ilkTarih = new Date("April 7, 2016 00:00:00");
+            var tarih = new Date();
+            var fark = Math.round(Math.abs((ilkTarih.getTime() - tarih.getTime())/(birGun)));
+            fark++;
+            document.getElementById("gun").append(fark + ". gün");
+        </script>
+    </div>
+</body>
+</html>
+<%- partial('_partial/styles') %>
+<%- partial('_partial/scripts') %>
