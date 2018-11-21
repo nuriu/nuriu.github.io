@@ -1,8 +1,8 @@
 [
   {
-    "name": "sfml-cmake-vscode",
-    "url": "https://github.com/nuriu/sfml-cmake-vscode",
-    "desc": "(2018 Ç4) (c++, sfml, cmake)"
+    "name": "sfml-engine",
+    "url": "https://github.com/nuriu/sfml-engine",
+    "desc": "(2018 Ç4) (c++, sfml, cmake, imgui, tmxlite)"
   },
   {
     "name": "ogy-oyunlar",
