@@ -16,8 +16,6 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 
 > PLANLANAN (2019 YAZ)
 
-☑ [c++] - [mimari & tasarım] >> Tasarım Kalıpları: Yegâne (Singleton)
-
 [c++] - [mimari & tasarım] >> Tasarım Kalıpları: Fabrika & Soyut Fabrika (Factory & Abstract Factory)
 
 [c++] - [mimari & tasarım] >> Tasarım Kalıpları: Yapıcı (Builder)
@@ -69,7 +67,7 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 [c++] - [sfml] >> SFML ile 2B Oyun Geliştirme Serisi
 
 
-[c++] - [opengl] >> OpenGL ile Oyun Geliştirme Serisi
+[c++] - [opengl] >> OpenGL ile Grafikleştirme Serisi
 
 
 [c++] - [vulkan] >> Vulkan Grafik Uygulama Arabirimi Serisi
