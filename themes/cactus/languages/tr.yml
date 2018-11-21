@@ -1,7 +1,7 @@
 nav:
   home: Ana Sayfa
   about: Hakkımda
-  articles: Yazılar
+  articles: Tüm Yazılar
   projects: Projeler
   roadmap: Yol Haritası
   search: Ara
@@ -13,7 +13,7 @@ index:
   find_me_on: Bana şuralardan ulaşabilirsiniz
   enum_comma: ','
   enum_and: ve
-  articles: Yazılar
+  articles: Son Yazılar
   projects: Projeler
 
 post:
