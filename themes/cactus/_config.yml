@@ -30,7 +30,7 @@ social_links:
   gitlab: https://gitlab.com/nuriu
   stack-overflow: https://stackoverflow.com/users/6423537
   linkedin: https://www.linkedin.com/in/nuriuzunoglu
-  mail: dev@nuriuzunoglu.com
+  mail: mailto:dev@nuriuzunoglu.com
 
 # Customize the overview with displaying a tagcloud on the index page.
 # Options: https://hexo.io/docs/helpers.html#tagcloud
