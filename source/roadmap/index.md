@@ -9,20 +9,19 @@ date: 2017-09-11 23:22:21
 
 Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıklar ve içerikler bazı değişiklikler gösterebilir.
 
-**NOT:** 2019 Yazına kadar askerlik görevimi yerine getireceğim için yazılar önümüzdeki yaz mevsimine kadar beklemede kalacak.
 
 ☑: Yazıldı.
 ➟: Yazılıyor.
 
 > PLANLANAN (2019 YAZ)
 
-[c++] - [mimari & tasarım] >> Tasarım Kalıpları: Fabrika & Soyut Fabrika (Factory & Abstract Factory)
+➟ [c++] - [mimari & tasarım] >> Tasarım Kalıpları: Fabrika & Soyut Fabrika (Factory & Abstract Factory)
 
-[c++] - [mimari & tasarım] >> Tasarım Kalıpları: Yapıcı (Builder)
+➟ [c++] - [mimari & tasarım] >> Tasarım Kalıpları: Yapıcı (Builder)
+
+➟ [c++] - [veri yapıları] >> Veri Yapıları: Hash Tablosu (Hash Table)
 
 [c++] - [mimari & tasarım] >> Tasarım Kalıpları: Örnek (Prototype)
-
-[c++] - [veri yapıları] >> Veri Yapıları: Hash Tablosu (Hash Table)
 
 [c++] - [mimari & tasarım] >> Tasarım Kalıpları: Uyarlayıcı (Adapter)
 
@@ -61,13 +60,19 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 [c++] - [mimari & tasarım] >> Tasarım Kalıpları: Ziyaretçi (Visitor)
 
 
-[matematik] - [c++] >> Oyun Geliştirme İçin Matematik Serisi
-
+> 2019 Sonbahar - Kış
 
 [c++] - [sfml] >> SFML ile 2B Oyun Geliştirme Serisi
 
 
-[c++] - [opengl] >> OpenGL ile Grafikleştirme Serisi
+[c++] - [opengl] >> OpenGL ile Grafik Sunumu Serisi
 
+
+> 2020 İlkbahar
+
+[matematik] - [c++] >> Oyun Geliştirme İçin Matematik Serisi
+
+
+> 2020 Yaz
 
 [c++] - [vulkan] >> Vulkan Grafik Uygulama Arabirimi Serisi
