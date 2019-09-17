@@ -13,13 +13,13 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 ☑: Yazıldı.
 ➟: Yazılıyor.
 
-> PLANLANAN (2019 YAZ)
+> PLANLANAN (2019)
+
+➟ [c++] - [veri yapıları] >> Veri Yapıları: Hash Tablosu (Hash Table)
 
 ➟ [c++] - [mimari & tasarım] >> Tasarım Kalıpları: Fabrika & Soyut Fabrika (Factory & Abstract Factory)
 
 ➟ [c++] - [mimari & tasarım] >> Tasarım Kalıpları: Yapıcı (Builder)
-
-➟ [c++] - [veri yapıları] >> Veri Yapıları: Hash Tablosu (Hash Table)
 
 [c++] - [mimari & tasarım] >> Tasarım Kalıpları: Örnek (Prototype)
 
@@ -59,20 +59,14 @@ Zamanla güncellenecek, yayınlanması planlanan yazıların listesi. Başlıkla
 
 [c++] - [mimari & tasarım] >> Tasarım Kalıpları: Ziyaretçi (Visitor)
 
-
-> 2019 Sonbahar - Kış
-
-[c++] - [sfml] >> SFML ile 2B Oyun Geliştirme Serisi
-
-
-[c++] - [opengl] >> OpenGL ile Grafik Sunumu Serisi
-
+[go] >> Temel Go Serisi
 
 > 2020 İlkbahar
 
+[c++] - [sfml] >> SFML ile 2B Oyun Geliştirme Serisi
+
+> 2020 Sonbahar
+
 [matematik] - [c++] >> Oyun Geliştirme İçin Matematik Serisi
 
-
-> 2020 Yaz
-
-[c++] - [vulkan] >> Vulkan Grafik Uygulama Arabirimi Serisi
+[c++] - [opengl] >> OpenGL ile Grafik Sunumu Serisi
