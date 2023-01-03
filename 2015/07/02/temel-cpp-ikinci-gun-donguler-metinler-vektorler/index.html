@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Temel C++ serisinin ilk bölümüne aşağıdaki linkten ulaşabilirsiniz:Temel C++ - 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler DöngülerDöngüler tekrarlanacak işlemler&#x2F;kod blokları için bir çözümd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Temel C++ 2. Gün: Döngüler, Metinler, Vektörler">
+<meta property="og:url" content="https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="Temel C++ serisinin ilk bölümüne aşağıdaki linkten ulaşabilirsiniz:Temel C++ - 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler DöngülerDöngüler tekrarlanacak işlemler&#x2F;kod blokları için bir çözümd">
+<meta property="og:locale" content="tr_TR">
+<meta property="article:published_time" content="2015-07-01T21:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.588Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="döngüler">
+<meta property="article:tag" content="metinler">
+<meta property="article:tag" content="vektörler">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Temel C++ 2. Gün: Döngüler, Metinler, Vektörler</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2015/07/03/temel-cpp-ucuncu-gun-fonksiyonlar-girdi-cikti-isaretciler/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2015/07/01/temel-cpp-birinci-gun-giris/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&text=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&title=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&is_video=false&description=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler&body=Check out this article: https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&title=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&title=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&title=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&title=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&name=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&t=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Donguler"><span class="toc-number">1.</span> <span class="toc-text">Döngüler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-For-Dongusu"><span class="toc-number">2.</span> <span class="toc-text">1- For Döngüsü</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-While-Dongusu"><span class="toc-number">3.</span> <span class="toc-text">2- While Döngüsü</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Do-While-Dongusu"><span class="toc-number">4.</span> <span class="toc-text">3- Do-While Döngüsü</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Metinler-Strings"><span class="toc-number">5.</span> <span class="toc-text">Metinler (Strings)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vektorler"><span class="toc-number">6.</span> <span class="toc-text">Vektörler</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Temel C++ 2. Gün: Döngüler, Metinler, Vektörler
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2015-07-01T21:00:00.000Z" itemprop="datePublished">02-Temmuz-2015</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.588Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/c/">c++</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/c/" rel="tag">c++</a>, <a class="tag-link-link" href="/tags/donguler/" rel="tag">döngüler</a>, <a class="tag-link-link" href="/tags/metinler/" rel="tag">metinler</a>, <a class="tag-link-link" href="/tags/vektorler/" rel="tag">vektörler</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Temel C++ serisinin ilk bölümüne aşağıdaki linkten ulaşabilirsiniz:<br><a href="/2015/07/01/temel-cpp-birinci-gun-giris/">Temel C++ - 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler</a></p>
+<h2 id="Donguler"><a href="#Donguler" class="headerlink" title="Döngüler"></a>Döngüler</h2><p>Döngüler tekrarlanacak işlemler&#x2F;kod blokları için bir çözümdür. Kod tekrarından ve okunabilirlik sorunlarından kurtulmamızı sağlar.  </p>
+<h2 id="1-For-Dongusu"><a href="#1-For-Dongusu" class="headerlink" title="1- For Döngüsü"></a>1- For Döngüsü</h2><p><code>for(karşılaştırılacak değer, koşul, döngü işlemi)</code> şeklinde tanımlanırlar.</p>
+<p>For örnek:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> yas=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">      <span class="comment">// yas degiskeni 18 olana kadar kodlari uygula</span></span><br><span class="line">      <span class="comment">// ve degisken degerini 1 arttir.</span></span><br><span class="line">      <span class="keyword">for</span>(yas = <span class="number">0</span>; yas &lt;= <span class="number">18</span>; yas++)</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="keyword">if</span>(yas != <span class="number">0</span>)</span><br><span class="line">            cout &lt;&lt; yas - <span class="number">1</span> &lt;&lt; <span class="string">&quot; degeri 1 artti: &quot;</span> &lt;&lt; yas &lt;&lt; endl;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-While-Dongusu"><a href="#2-While-Dongusu" class="headerlink" title="2- While Döngüsü"></a>2- While Döngüsü</h2><p>While ve Do-While döngülerinde tanımlama <code>while(koşul)</code> şeklinde yapılır. For örneği ile aynı işleve sahip olan While döngüsü aşağıdaki gibidir.  </p>
+<p>While örnek:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// yas degiskeni 18 olana kadar kodlari uygula.</span></span><br><span class="line"><span class="keyword">while</span>(yas &lt;= <span class="number">18</span>)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">if</span>(yas != <span class="number">0</span>)</span><br><span class="line">      cout &lt;&lt; yas - <span class="number">1</span> &lt;&lt; <span class="string">&quot; degeri 1 artti: &quot;</span> &lt;&lt; yas &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">   yas++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Do-While-Dongusu"><a href="#3-Do-While-Dongusu" class="headerlink" title="3- Do-While Döngüsü"></a>3- Do-While Döngüsü</h2><p>While döngüsünün tersi gibi düşünebilirsiniz. Her koşulda döngüye en az 1 kere girmesi istenilen durumlarda bu yapı kullanılır. Aşağıdaki örnekte yaş değişkenini 18’e eşitleyip döngü koşulunu 18’den küçük olduğu sürece geçerli olacak şekilde ayarladık. Fakat kodu derlediğinizde ekranda <code>yas degiskeninin yeni degeri: 18</code> yazısını göreceksiniz. Bunun sebebi daha önceden söylediğimiz gibi döngü içindeki kodların en az bir kez çalıştırılmasıdır.</p>
+<p><strong>Do-While örnek:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yas = <span class="number">18</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">   <span class="keyword">if</span>(yas != <span class="number">0</span>)</span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;yas degiskeninin yeni degeri: &quot;</span> &lt;&lt; yas &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">   yas++;</span><br><span class="line">&#125; <span class="keyword">while</span>(yas &lt; <span class="number">18</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Döngüler konusunu basit bir problem ve çözümü ile bitirelim.  </p>
+<p><strong>Problem:</strong> Kullanıcı 8 değerini girene kadar kullanıcıdan bir sayı tahmin etmesini isteyin. 8 değeri girildiğindeyse ekrana “Tebrikler” yazdırın.  </p>
+<p><strong>Çözümler;</strong></p>
+<p><strong>For döngüsüyle:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// int (sayi) tipinde bir degisken tanimladik ve sifira esitledik.</span></span><br><span class="line"><span class="type">int</span> girilenSayi = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// for dongusu ile</span></span><br><span class="line"><span class="keyword">for</span>( girilenSayi = <span class="number">0</span>; girilenSayi != <span class="number">8</span>; )</span><br><span class="line">&#123;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Bir sayi girin: &quot;</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// kullanicinin girdigi sayiyi girilenSayi degiskenine at.</span></span><br><span class="line">   cin &gt;&gt; girilenSayi;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// girilenSayi degiskeni 8 degilse:</span></span><br><span class="line">   <span class="keyword">if</span>(girilenSayi != <span class="number">8</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="comment">// Yanlis tahmin yazip alt satira gec.</span></span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;Yanlis tahmin.\n&quot;</span> &lt;&lt; endl;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span> <span class="comment">// 8 ise</span></span><br><span class="line">   &#123;</span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;Tebrikler. Dogru tahmin.&quot;</span> &lt;&lt; endl;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>While döngüsüyle:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// while dongusuyle</span></span><br><span class="line"><span class="comment">// degiskeni tekrar kullanacagimiz icin 0&#x27;a esitledik.</span></span><br><span class="line">girilenSayi = <span class="number">0</span>;</span><br><span class="line"><span class="comment">// girilenSayi 8&#x27;e esit olmadigi surece donguyu isle.</span></span><br><span class="line"><span class="keyword">while</span>(girilenSayi != <span class="number">8</span>)</span><br><span class="line">&#123;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Bir sayi girin: &quot;</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// kullanicinin girdigi sayiyi girilenSayi degiskenine at.</span></span><br><span class="line">   cin &gt;&gt; girilenSayi;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// girilenSayi degiskeni 8 degilse:</span></span><br><span class="line">   <span class="keyword">if</span>(girilenSayi != <span class="number">8</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="comment">// Yanlis tahmin yazip alt satira gec.</span></span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;Yanlis tahmin.\n&quot;</span> &lt;&lt; endl;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span> <span class="comment">// 8 ise</span></span><br><span class="line">   &#123;</span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;Tebrikler. Dogru tahmin.&quot;</span> &lt;&lt; endl;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Bu problem için en iyi seçim olan do-While döngüsüyle:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// do-while dongusuyle</span></span><br><span class="line"><span class="comment">// degiskeni tekrar kullanacagimiz icin 0&#x27;a esitledik.</span></span><br><span class="line">girilenSayi = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Bir sayi girin: &quot;</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// kullanicinin girdigi sayiyi girilenSayi degiskenine at.</span></span><br><span class="line">   cin &gt;&gt; girilenSayi;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// girilenSayi degiskeni 8 degilse:</span></span><br><span class="line">   <span class="keyword">if</span>(girilenSayi != <span class="number">8</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="comment">// Yanlis tahmin yazip alt satira gec.</span></span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;Yanlis tahmin.\n&quot;</span> &lt;&lt; endl;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span> <span class="comment">// 8 ise</span></span><br><span class="line">   &#123;</span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;Tebrikler. Dogru tahmin.&quot;</span> &lt;&lt; endl;</span><br><span class="line">   &#125;</span><br><span class="line">&#125; <span class="keyword">while</span>(girilenSayi != <span class="number">8</span>);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Metinler-Strings"><a href="#Metinler-Strings" class="headerlink" title="Metinler (Strings)"></a>Metinler (Strings)</h2><p>C dilinde metinleri kullanabilmek için <code>char</code> tipinde diziler tanımlamak zorundasınız. Fakat C dilinden etkilenerek oluşturulan C++ dilinde metinleri, değişken tanımlarmış gibi <code>string</code> tipiyle tanımlayıp kullanabilirsiniz. Küçük bir örnek vermek gerekirse:  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ad ve soyad adinda iki string tanimladik.</span></span><br><span class="line">string ad, soyad;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Adiniz: &quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// kullanicinin girdigi metni ad degiskenine at.</span></span><br><span class="line"><span class="built_in">getline</span>(cin, ad);</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Soyadiniz: &quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// kullanicinin girdigi metni soyad degiskenine at.</span></span><br><span class="line"><span class="built_in">getline</span>(cin, soyad);</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Merhaba &quot;</span> &lt;&lt; ad &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; soyad &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Vektorler"><a href="#Vektorler" class="headerlink" title="Vektörler"></a>Vektörler</h2><p>Vektörler aynı diziler gibidir. Basitçe farkı daha dinamik olmasıdır.  </p>
+<p><code>vector &lt;veri tipi&gt; vektör adı(boyutu)</code> şeklinde tanımlanırlar. Vektörleri kullanabilmek için dosyanızın başına <code>#include &lt;vector&gt;</code> komutunu eklemelisiniz.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dinamik boyutlu bir vektor tanimladik.</span></span><br><span class="line">vector &lt;<span class="type">int</span>&gt; sayilar;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> i=<span class="number">0</span>; <span class="comment">// for dongusu icin kullanacagimiz sayac.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//i 5 olana kadar don, her dondugunde i&#x27;yi 1 arttir.</span></span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//vektorun sonuna i&#x27;nin 1 fazlasini ekle.</span></span><br><span class="line">   sayilar.<span class="built_in">push_back</span>(i+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//i 5 olana kadar don, her dondugunde i&#x27;yi 1 arttir.</span></span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">// vektorun elemanlarini ekrana alt alta yaz.</span></span><br><span class="line">   cout &lt;&lt; sayilar[i] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Yukarıdaki örnekte dikkatinizi çektiyse vektör sınıfından <code>push_back</code> isimli fonksiyonu kullandık. Bu fonksiyon vektörün sonuna değer eklememizi sağlıyor.  </p>
+<p>Vektörler hakkında daha detaylı bilgiyi aşağıdaki linkten bulabilirsiniz: <a target="_blank" rel="noopener" href="http://sanalkurs.net/vektorleri-kullanmak-6551.html">Sanalkurs - Vektörleri Kullanmak</a></p>
+<p>Bu bölümde anlatacaklarım bu kadar, sonraki bölümde Fonksiyonlar, Girdi&#x2F;Çıktı, İşaretçiler konularıyla ilgileneceğiz.  </p>
+<p>Sonraki Bölüm: Fonksiyonlar, Girdi&#x2F;Çıktı, İşaretçiler:<br><a href="/2015/07/03/temel-cpp-ucuncu-gun-fonksiyonlar-girdi-cikti-isaretciler/">Temel C++ - 3. Gün: Fonksiyonlar, Girdi&#x2F;Çıktı, İşaretçiler</a></p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Donguler"><span class="toc-number">1.</span> <span class="toc-text">Döngüler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-For-Dongusu"><span class="toc-number">2.</span> <span class="toc-text">1- For Döngüsü</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-While-Dongusu"><span class="toc-number">3.</span> <span class="toc-text">2- While Döngüsü</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Do-While-Dongusu"><span class="toc-number">4.</span> <span class="toc-text">3- Do-While Döngüsü</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Metinler-Strings"><span class="toc-number">5.</span> <span class="toc-text">Metinler (Strings)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vektorler"><span class="toc-number">6.</span> <span class="toc-text">Vektörler</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&text=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&title=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&is_video=false&description=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler&body=Check out this article: https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&title=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&title=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&title=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&title=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&name=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/&t=Temel C++ 2. Gün: Döngüler, Metinler, Vektörler"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

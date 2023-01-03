@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="ÖbekÖbekler, eklemeleri soldan sağa doğru yapılan ve son seviyesi dışındaki tüm seviyeleri dolu olan bir ikili ağaç çeşididir. Öbeklerin ana özellikleri her ebeveyn değerin çocuklarından daha küçük &amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Veri Yapıları: Öbek (Heap)">
+<meta property="og:url" content="https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="ÖbekÖbekler, eklemeleri soldan sağa doğru yapılan ve son seviyesi dışındaki tüm seviyeleri dolu olan bir ikili ağaç çeşididir. Öbeklerin ana özellikleri her ebeveyn değerin çocuklarından daha küçük &amp;#">
+<meta property="og:locale" content="tr_TR">
+<meta property="article:published_time" content="2016-07-18T21:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.602Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="veri yapıları">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="öbekler">
+<meta property="article:tag" content="Heap">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Veri Yapıları: Öbek (Heap)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2016/07/21/tasarim-kaliplari-giris/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2016/06/22/jekyll-sosyal-paylasim-tuslarinin-eklenmesi/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&text=Veri Yapıları: Öbek (Heap)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&title=Veri Yapıları: Öbek (Heap)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&is_video=false&description=Veri Yapıları: Öbek (Heap)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Veri Yapıları: Öbek (Heap)&body=Check out this article: https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&title=Veri Yapıları: Öbek (Heap)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&title=Veri Yapıları: Öbek (Heap)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&title=Veri Yapıları: Öbek (Heap)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&title=Veri Yapıları: Öbek (Heap)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&name=Veri Yapıları: Öbek (Heap)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&t=Veri Yapıları: Öbek (Heap)"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Obek"><span class="toc-number">1.</span> <span class="toc-text">Öbek</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gerceklestirim"><span class="toc-number">2.</span> <span class="toc-text">Gerçekleştirim</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Veri Yapıları: Öbek (Heap)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2016-07-18T21:00:00.000Z" itemprop="datePublished">19-Temmuz-2016</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.602Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/veri-yapilari/">veri yapıları</a> › <a class="category-link" href="/categories/veri-yapilari/c/">c++</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Heap/" rel="tag">Heap</a>, <a class="tag-link-link" href="/tags/c/" rel="tag">c++</a>, <a class="tag-link-link" href="/tags/veri-yapilari/" rel="tag">veri yapıları</a>, <a class="tag-link-link" href="/tags/obekler/" rel="tag">öbekler</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Obek"><a href="#Obek" class="headerlink" title="Öbek"></a>Öbek</h2><p>Öbekler, eklemeleri soldan sağa doğru yapılan ve son seviyesi dışındaki tüm seviyeleri dolu olan bir ikili ağaç çeşididir.</p>
+<p>Öbeklerin ana özellikleri her ebeveyn değerin çocuklarından daha küçük &#x2F; büyük değere sahip olmasıdır.</p>
+<p>Yabancı kaynaklarda <em>Min Heap</em> ve <em>Max Heap</em> şeklinde adlandırılmaları bu sebepten dolayıdır.</p>
+<p>Öncelikli ikili ağaçlar olarak da düşünülebilirler.</p>
+<p>Öbekler genellikle ikili arama ağaçlarındakinin aksine dizi gibi yapılar ile gerçekleştirilirler.</p>
+<p>Bunun sağladığı avantajlardan birisi de ebeveyn ve çocuk düğümleri arasındaki ilişkiyi matematiksel basit bir ifade ile kurulabilmesidir.</p>
+<p>Bu ifadeler şu şekildedir;</p>
+<ul>
+<li>Ebeveynin indisi: 	(indis - 1) &#x2F; 2</li>
+<li>Sol çocuğun indisi: 	2 * indis + 1</li>
+<li>Sağ çocuğun indisi: 	2 * indis + 2</li>
+</ul>
+<p>Lafı fazla uzatmadan kod üzerinden gerçekleştirme yaparak aşama aşama ilerleyelim.</p>
+<h2 id="Gerceklestirim"><a href="#Gerceklestirim" class="headerlink" title="Gerçekleştirim"></a>Gerçekleştirim</h2><p>Öbek örneğimizi C++ dilinde vektörleri kullanarak gerçekleştireceğiz.</p>
+<p>Diğer nesne tabanlı dillerde (Java, C# vb.) diziyi tercih edebilirsiniz.</p>
+<p>Öncelikle örneğimizde bize gerekecek kütüphaneleri çağıralım;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br></pre></td></tr></table></figure>
+
+<p>Sıra geldi <em>Obek</em> sınıfımızı tanımlamaya;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Obek</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">// öbek boyutunu geri gönderecek fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">boyut</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> obek.<span class="built_in">size</span>(); &#125;</span><br><span class="line">	<span class="comment">// öbeğin en küçük değerini (kökü) gönderecek fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">enKucuguSil</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="comment">// öbeğe veri eklemek için kullanacağımız fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">ekle</span><span class="params">(<span class="type">int</span> veri)</span></span>;</span><br><span class="line">	<span class="comment">// öbeği yazdırmak için kullanacağımız fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">yazdir</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="comment">// ebeveyn indisine göre sağ çocuğu bulacak fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">sag</span><span class="params">(<span class="type">int</span> ebeveyn)</span></span>;</span><br><span class="line">	<span class="comment">// ebeveyn indisine göre sol çocuğu bulacak fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">sol</span><span class="params">(<span class="type">int</span> ebeveyn)</span></span>;</span><br><span class="line">	<span class="comment">// çocuğun indisine göre ebeveyni gönderecek fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">ebeveyn</span><span class="params">(<span class="type">int</span> cocuk)</span></span>;</span><br><span class="line">	<span class="comment">// elemanları yukarı taşımakta kullanılacak fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">yukariTasi</span><span class="params">(<span class="type">int</span> indis)</span></span>;</span><br><span class="line">	<span class="comment">// elemanları aşağı taşımakta kullanılacak fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">asagiTasi</span><span class="params">(<span class="type">int</span> indis)</span></span>;</span><br><span class="line"><span class="keyword">private</span>:	            </span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; obek; <span class="comment">// öbek vektörümüz</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Şimdi sırasıyla tanımlamalarını yaptığımız sınıf fonksiyonlarımızı gerçekleştirelim.</p>
+<p><em>int enKucuguSil()</em>;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// en küçük elemanı silip geri gönderen fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Obek::enKucuguSil</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> enKucuk = obek.<span class="built_in">front</span>();</span><br><span class="line"></span><br><span class="line">	obek[<span class="number">0</span>] = obek.<span class="built_in">at</span>(obek.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">	obek.<span class="built_in">pop_back</span>();</span><br><span class="line">	<span class="built_in">asagiTasi</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> enKucuk;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>int ekle(int veri)</em>;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// gönderdiğimiz veriyi öbeğe eleman olarak ekleyen fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Obek::ekle</span><span class="params">(<span class="type">int</span> veri)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// vektörümüzün sonuna elemanımızı ekliyoruz</span></span><br><span class="line">	obek.<span class="built_in">push_back</span>(veri);</span><br><span class="line">	<span class="comment">// son eklenen elemanı yukarıda uygun yere taşıyoruz</span></span><br><span class="line">	<span class="built_in">yukariTasi</span>(obek.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>void yazdir()</em>;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// öbeğimizi baştan sona yazdiran fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Obek::yazdir</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;::iterator yer = obek.<span class="built_in">begin</span>();</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Öbek: &quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// vektörü başından sonuna kadar dolaşıp sırayla yazdırıyoruz</span></span><br><span class="line">	<span class="keyword">while</span> (yer != obek.<span class="built_in">end</span>()) &#123;</span><br><span class="line">		cout &lt;&lt; *yer &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		++yer;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>int sag(int ebeveyn)</em>;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// gönderilen ebeveynin sağ çocuğunu bulan ve geriye gönderen fonksiyon</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Obek::sag</span><span class="params">(<span class="type">int</span> ebeveyn)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// sağ çocuğun olması gerektiği yerin indisini alıyoruz</span></span><br><span class="line">	<span class="type">int</span> i = <span class="number">2</span> * ebeveyn + <span class="number">2</span>;</span><br><span class="line">	<span class="comment">// indis öbek içindeyse indisi gönderiyoruz</span></span><br><span class="line">	<span class="keyword">return</span> (i &lt; obek.<span class="built_in">size</span>()) ? i : <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>int sol(int ebeveyn)</em>;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// gönderilen ebeveynin sol çocuğunu bulan ve geriye gönderen fonksiyon</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Obek::sol</span><span class="params">(<span class="type">int</span> ebeveyn)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// sol çocuğun olması gerektiği yerin indisini alıyoruz</span></span><br><span class="line">	<span class="type">int</span> i = <span class="number">2</span> * ebeveyn + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">// indis öbek içindeyse indisi gönderiyoruz</span></span><br><span class="line">	<span class="keyword">return</span> (i &lt; obek.<span class="built_in">size</span>()) ? i : <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>int ebeveyn(int cocuk)</em>;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// gönderilen çocuğun ebeveynini bulan ve geriye gönderen fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Obek::ebeveyn</span><span class="params">(<span class="type">int</span> cocuk)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (cocuk != <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// ebeveynin olması gerektiği yerin indisini alıyoruz</span></span><br><span class="line">		<span class="type">int</span> i = (cocuk - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">return</span> i; <span class="comment">// ve geriye indisi gönderiyoruz</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// çocuk mevcut değilse ebeveyni olmayacağı için -1 gönderiyoruz</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>void yukariTasi(int indis)</em>;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// elemanlarımızı yukarıya taşımamıza olanak sağlayan fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Obek::yukariTasi</span><span class="params">(<span class="type">int</span> indis)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// indisimizdeki değer ebeveyninden küçük olduğu sürece</span></span><br><span class="line">	<span class="keyword">while</span> ((indis &gt; <span class="number">0</span>) &amp;&amp; (<span class="built_in">ebeveyn</span>(indis) &gt;= <span class="number">0</span>) &amp;&amp;</span><br><span class="line">		   (obek[<span class="built_in">ebeveyn</span>(indis)] &gt; obek[indis]))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// ebeveyni ile takas işlemini gerçekleştiriyoruz</span></span><br><span class="line">		<span class="type">int</span> gecici = obek[<span class="built_in">ebeveyn</span>(indis)];</span><br><span class="line">		obek[<span class="built_in">ebeveyn</span>(indis)] = obek[indis];</span><br><span class="line">		obek[indis] = gecici;</span><br><span class="line">		indis = <span class="built_in">ebeveyn</span>(indis);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>void asagiTasi(int indis)</em>;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// elemanlarımızı aşağıya taşımamıza olanak sağlayan fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Obek::asagiTasi</span><span class="params">(<span class="type">int</span> indis)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// yerine taşınılacak uygun çocuğu buluyoruz</span></span><br><span class="line">	<span class="type">int</span> cocuk = <span class="built_in">sol</span>(indis);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ((cocuk &gt; <span class="number">0</span>) &amp;&amp; (<span class="built_in">sag</span>(indis) &gt; <span class="number">0</span>) &amp;&amp;</span><br><span class="line">		(obek[cocuk] &gt; obek[<span class="built_in">sag</span>(indis)]))</span><br><span class="line">	&#123;</span><br><span class="line">		cocuk = <span class="built_in">sag</span>(indis);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (cocuk &gt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// uygun çocuk ile takas işlemini gerçekleştiriyoruz</span></span><br><span class="line">		<span class="type">int</span> gecici = obek[indis];</span><br><span class="line">		obek[indis] = obek[cocuk];</span><br><span class="line">		obek[cocuk] = gecici;</span><br><span class="line">		<span class="built_in">asagiTasi</span>(cocuk);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Ve son olarak test senaryomuzu içeren <em>int main()</em> fonksiyonumuz;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// öbeğimizi oluşturuyoruz</span></span><br><span class="line">	Obek* kucukObek = <span class="keyword">new</span> <span class="built_in">Obek</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// oluşturduğumuz öbeğe sırayla çeşitli değerler ekliyoruz</span></span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">7</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">5</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">1</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">8</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">2</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">4</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">9</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">10</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">3</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">6</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// sırayla öbekteki en küçük değerleri yazdırıyoruz</span></span><br><span class="line">	<span class="type">int</span> obekBoyutu = kucukObek-&gt;<span class="built_in">boyut</span>();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; obekBoyutu; i++)</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;Öbekteki en küçük değer: &quot;</span> &lt;&lt; kucukObek-&gt;<span class="built_in">enKucuguSil</span>() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// oluşturduğumuz öbeği bellekten temizliyoruz</span></span><br><span class="line">	<span class="keyword">delete</span> kucukObek;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">getchar</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>Tamamlanmış öbek örneğimiz birleştirilmiş tam kodlarını da paylaşalım;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Obek</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">// öbek boyutunu geri gönderecek fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">boyut</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> obek.<span class="built_in">size</span>(); &#125;</span><br><span class="line">	<span class="comment">// öbeğin en küçük değerini (kökü) gönderecek fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">enKucuguSil</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="comment">// öbeğe veri eklemek için kullanacağımız fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">ekle</span><span class="params">(<span class="type">int</span> veri)</span></span>;</span><br><span class="line">	<span class="comment">// öbeği yazdırmak için kullanacağımız fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">yazdir</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="comment">// ebeveyn indisine göre sağ çocuğu bulacak fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">sag</span><span class="params">(<span class="type">int</span> ebeveyn)</span></span>;</span><br><span class="line">	<span class="comment">// ebeveyn indisine göre sol çocuğu bulacak fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">sol</span><span class="params">(<span class="type">int</span> ebeveyn)</span></span>;</span><br><span class="line">	<span class="comment">// çocuğun indisine göre ebeveyni gönderecek fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">ebeveyn</span><span class="params">(<span class="type">int</span> cocuk)</span></span>;</span><br><span class="line">	<span class="comment">// elemanları yukarı taşımakta kullanılacak fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">yukariTasi</span><span class="params">(<span class="type">int</span> indis)</span></span>;</span><br><span class="line">	<span class="comment">// elemanları aşağı taşımakta kullanılacak fonksiyonumuz</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">asagiTasi</span><span class="params">(<span class="type">int</span> indis)</span></span>;</span><br><span class="line"><span class="keyword">private</span>:	            </span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; obek; <span class="comment">// öbek vektörümüz</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// en küçük elemanı silip geri gönderen fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Obek::enKucuguSil</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> enKucuk = obek.<span class="built_in">front</span>();</span><br><span class="line"></span><br><span class="line">	obek[<span class="number">0</span>] = obek.<span class="built_in">at</span>(obek.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">	obek.<span class="built_in">pop_back</span>();</span><br><span class="line">	<span class="built_in">asagiTasi</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> enKucuk;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// gönderdiğimiz veriyi öbeğe eleman olarak ekleyen fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Obek::ekle</span><span class="params">(<span class="type">int</span> veri)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	obek.<span class="built_in">push_back</span>(veri);           <span class="comment">// vektörümüzün sonuna elemanımızı ekliyoruz ve</span></span><br><span class="line">	<span class="built_in">yukariTasi</span>(obek.<span class="built_in">size</span>() - <span class="number">1</span>);    <span class="comment">// son eklenen elemanı yukarıda uygun yere taşıyoruz</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// öbeğimizi baştan sona yazdiran fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Obek::yazdir</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;::iterator yer = obek.<span class="built_in">begin</span>();</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Öbek: &quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// vektörü başından sonuna kadar dolaşıp sırayla yazdırıyoruz</span></span><br><span class="line">	<span class="keyword">while</span> (yer != obek.<span class="built_in">end</span>()) &#123;</span><br><span class="line">		cout &lt;&lt; *yer &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		++yer;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// gönderilen ebeveynin sağ çocuğunu bulan ve geriye gönderen fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Obek::sag</span><span class="params">(<span class="type">int</span> ebeveyn)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">2</span> * ebeveyn + <span class="number">2</span>; <span class="comment">// sağ çocuğun olması gerektiği yerin indisini alıyoruz</span></span><br><span class="line">	<span class="keyword">return</span> (i &lt; obek.<span class="built_in">size</span>()) ? i : <span class="number">-1</span>; <span class="comment">// indis öbek içindeyse indisi gönderiyoruz</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// gönderilen ebeveynin sol çocuğunu bulan ve geriye gönderen fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Obek::sol</span><span class="params">(<span class="type">int</span> ebeveyn)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">2</span> * ebeveyn + <span class="number">1</span>; <span class="comment">// sol çocuğun olması gerektiği yerin indisini alıyoruz</span></span><br><span class="line">	<span class="keyword">return</span> (i &lt; obek.<span class="built_in">size</span>()) ? i : <span class="number">-1</span>; <span class="comment">// indis öbek içindeyse indisi gönderiyoruz</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// gönderilen çocuğun ebeveynini bulan ve geriye gönderen fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Obek::ebeveyn</span><span class="params">(<span class="type">int</span> cocuk)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (cocuk != <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> i = (cocuk - <span class="number">1</span>) / <span class="number">2</span>; <span class="comment">// ebeveynin olması gerektiği yerin indisini alıyoruz</span></span><br><span class="line">		<span class="keyword">return</span> i; <span class="comment">// ve geriye indisi gönderiyoruz</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// çocuk mevcut değilse ebeveyni olmayacağı için -1 gönderiyoruz</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// elemanlarımızı yukarıya taşımamıza olanak sağlayan fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Obek::yukariTasi</span><span class="params">(<span class="type">int</span> indis)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// indisimizdeki değer ebeveyninden küçük olduğu sürece</span></span><br><span class="line">	<span class="keyword">while</span> ((indis &gt; <span class="number">0</span>) &amp;&amp; (<span class="built_in">ebeveyn</span>(indis) &gt;= <span class="number">0</span>) &amp;&amp; (obek[<span class="built_in">ebeveyn</span>(indis)] &gt; obek[indis]))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// ebeveyni ile takas işlemini gerçekleştiriyoruz</span></span><br><span class="line">		<span class="type">int</span> gecici = obek[<span class="built_in">ebeveyn</span>(indis)];</span><br><span class="line">		obek[<span class="built_in">ebeveyn</span>(indis)] = obek[indis];</span><br><span class="line">		obek[indis] = gecici;</span><br><span class="line">		indis = <span class="built_in">ebeveyn</span>(indis);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// elemanlarımızı aşağıya taşımamıza olanak sağlayan fonksiyonumuz</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Obek::asagiTasi</span><span class="params">(<span class="type">int</span> indis)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// yerine taşınılacak uygun çocuğu buluyoruz</span></span><br><span class="line">	<span class="type">int</span> cocuk = <span class="built_in">sol</span>(indis);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ((cocuk &gt; <span class="number">0</span>) &amp;&amp; (<span class="built_in">sag</span>(indis) &gt; <span class="number">0</span>) &amp;&amp; (obek[cocuk] &gt; obek[<span class="built_in">sag</span>(indis)]))</span><br><span class="line">	&#123;</span><br><span class="line">		cocuk = <span class="built_in">sag</span>(indis);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (cocuk &gt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// uygun çocuk ile takas işlemini gerçekleştiriyoruz</span></span><br><span class="line">		<span class="type">int</span> gecici = obek[indis];</span><br><span class="line">		obek[indis] = obek[cocuk];</span><br><span class="line">		obek[cocuk] = gecici;</span><br><span class="line">		<span class="built_in">asagiTasi</span>(cocuk);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// öbeğimizi oluşturuyoruz</span></span><br><span class="line">	Obek* kucukObek = <span class="keyword">new</span> <span class="built_in">Obek</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// oluşturduğumuz öbeğe rastgele sırayla çeşitli değerler ekliyoruz</span></span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">7</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">5</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">1</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">8</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">2</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">4</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">9</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">10</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">3</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line">	kucukObek-&gt;<span class="built_in">ekle</span>(<span class="number">6</span>);</span><br><span class="line">	kucukObek-&gt;<span class="built_in">yazdir</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// sırayla öbekteki en küçük değerleri yazdırıyoruz</span></span><br><span class="line">	<span class="type">int</span> obekBoyutu = kucukObek-&gt;<span class="built_in">boyut</span>();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; obekBoyutu; i++)</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;Öbekteki en küçük değer: &quot;</span> &lt;&lt; kucukObek-&gt;<span class="built_in">enKucuguSil</span>() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// oluşturduğumuz öbeği bellekten temizliyoruz</span></span><br><span class="line">	<span class="keyword">delete</span> kucukObek;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">getchar</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Böylece Öbek yapısının üzerinden geçmiş olduk. Sonraki yazılarda görüşmek üzere.</p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Obek"><span class="toc-number">1.</span> <span class="toc-text">Öbek</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gerceklestirim"><span class="toc-number">2.</span> <span class="toc-text">Gerçekleştirim</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&text=Veri Yapıları: Öbek (Heap)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&title=Veri Yapıları: Öbek (Heap)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&is_video=false&description=Veri Yapıları: Öbek (Heap)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Veri Yapıları: Öbek (Heap)&body=Check out this article: https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&title=Veri Yapıları: Öbek (Heap)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&title=Veri Yapıları: Öbek (Heap)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&title=Veri Yapıları: Öbek (Heap)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&title=Veri Yapıları: Öbek (Heap)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&name=Veri Yapıları: Öbek (Heap)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/07/19/veri-yapilari-obek-heap/&t=Veri Yapıları: Öbek (Heap)"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

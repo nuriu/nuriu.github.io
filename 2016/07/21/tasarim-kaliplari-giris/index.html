@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Nedir?Tecrübeli, nesne-tabanlı yazılım geliştirenler tarafından yazılım geliştirme sürecinde ortaya çıkan genel problemleri çözme amacıyla geliştirilen&#x2F;düşünülen çözüm ve&#x2F;veya çözüm yöntemi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tasarım Kalıpları: Giriş">
+<meta property="og:url" content="https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="Nedir?Tecrübeli, nesne-tabanlı yazılım geliştirenler tarafından yazılım geliştirme sürecinde ortaya çıkan genel problemleri çözme amacıyla geliştirilen&#x2F;düşünülen çözüm ve&#x2F;veya çözüm yöntemi">
+<meta property="og:locale" content="tr_TR">
+<meta property="article:published_time" content="2016-07-20T21:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.585Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="mimari &amp; tasarım">
+<meta property="article:tag" content="tasarım kalıpları">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Tasarım Kalıpları: Giriş</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2017/01/26/tasarim-kaliplari-yegane-singleton/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2016/07/19/veri-yapilari-obek-heap/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&text=Tasarım Kalıpları: Giriş"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&title=Tasarım Kalıpları: Giriş"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&is_video=false&description=Tasarım Kalıpları: Giriş"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tasarım Kalıpları: Giriş&body=Check out this article: https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&title=Tasarım Kalıpları: Giriş"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&title=Tasarım Kalıpları: Giriş"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&title=Tasarım Kalıpları: Giriş"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&title=Tasarım Kalıpları: Giriş"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&name=Tasarım Kalıpları: Giriş&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&t=Tasarım Kalıpları: Giriş"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nedir"><span class="toc-number">1.</span> <span class="toc-text">Nedir?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fihrist"><span class="toc-number">2.</span> <span class="toc-text">Fihrist</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Tasarım Kalıpları: Giriş
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2016-07-20T21:00:00.000Z" itemprop="datePublished">21-Temmuz-2016</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.585Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/tasarim-kaliplari/">tasarım kalıpları</a> › <a class="category-link" href="/categories/tasarim-kaliplari/mimari-tasarim/">mimari & tasarım</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/mimari-tasarim/" rel="tag">mimari & tasarım</a>, <a class="tag-link-link" href="/tags/tasarim-kaliplari/" rel="tag">tasarım kalıpları</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Nedir"><a href="#Nedir" class="headerlink" title="Nedir?"></a>Nedir?</h2><p>Tecrübeli, nesne-tabanlı yazılım geliştirenler tarafından yazılım geliştirme sürecinde ortaya çıkan genel problemleri çözme amacıyla geliştirilen&#x2F;düşünülen çözüm ve&#x2F;veya çözüm yöntemi bütünleri tasarım kalıpları, tasarım desenleri, tasarım örüntüleri gibi isimler ile adlandırılır.</p>
+<p>Sözünü ettiğimiz kalıplar, <em>Gang of Four (GoF)</em> olarak bilinen dört yazar tarafından yazılan <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Design_Patterns"><em>“Design Patterns: Elements of Reusable Object-Oriented Software”</em></a> isimli kitabın yayınlanmasından sonra alanımızda popülerlik kazanmıştır.</p>
+<p>Tasarım kalıpları genellikle sınıflar, nesneler arası ilişkileri ve etkileşimleri gösterir&#x2F;açıklar. Dolayısıyla programlama, yazılım tasarımına yapısal bir yaklaşım olarak görülebilirler.</p>
+<p>Daha detaylı teorik bilgiyi <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Software_design_pattern"><em>Software design pattern</em></a> başlıklı wikipedia sayfasından edinebilirsiniz.</p>
+<p>Bağlantısını verdiğim sayfada bahsedildiği gibi tasarım kalıpları <em>Oluşturuluşsal (Creational)</em>, <em>Yapısal (Structural)</em>, <em>Davranışsal (Behavioral)</em> ve <em>Eşzamansal (Concurrency)</em> olmak üzere 4 ana kategoride incelenebilirler.</p>
+<p>Bunlardan sonuncusu olan eşzamansal kalıplar daha ileri düzey sayılabilecek çoklu kullanım (multithreading) ile ilgilidir. Bu yüzden ilk aşamada sadece ilk üç kategorideki bazı kalıplardan bahsetmeye çalışacağım.</p>
+<p>Zamanla, yazıları ekledikçe aşağıdaki fihriste bağlantılarını ekleyeceğim.</p>
+<h2 id="Fihrist"><a href="#Fihrist" class="headerlink" title="Fihrist"></a>Fihrist</h2><p>Üzerine yazmayı düşündüğüm tasarım kalıpları;</p>
+<ul>
+<li><p>Oluşturuluşsal (Creational)</p>
+<ol>
+<li><a href="/2017/01/26/tasarim-kaliplari-yegane-singleton/">Yegâne (Singleton)</a>  </li>
+<li>Fabrika &amp; Soyut Fabrika (Factory &amp; Abstract Factory)  </li>
+<li>Yapıcı (Builder)  </li>
+<li>Örnek (Prototype)</li>
+</ol>
+</li>
+<li><p>Yapısal (Structural)</p>
+<ol>
+<li>Uyarlayıcı (Adapter)  </li>
+<li>Köprü (Bridge)  </li>
+<li>Bileşik (Composite)  </li>
+<li>Dekoratör (Decorator)  </li>
+<li>Cephe (Facade)  </li>
+<li>Sineksiklet (Flyweight)  </li>
+<li>Vekil (Proxy)</li>
+</ol>
+</li>
+<li><p>Davranışsal (Behavioral)</p>
+<ol>
+<li>Komut (Command)  </li>
+<li>Yorumlayıcı (Interpreter)  </li>
+<li>Yineleyici (Iterator)  </li>
+<li>Arabulucu (Mediator)  </li>
+<li>Yadigâr (Memento)  </li>
+<li>Gözlemci (Observer)  </li>
+<li>Durum (State)  </li>
+<li>Strateji (Strategy)  </li>
+<li>Şablon (Template)  </li>
+<li>Ziyaretçi (Visitor)</li>
+</ol>
+</li>
+</ul>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nedir"><span class="toc-number">1.</span> <span class="toc-text">Nedir?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fihrist"><span class="toc-number">2.</span> <span class="toc-text">Fihrist</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&text=Tasarım Kalıpları: Giriş"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&title=Tasarım Kalıpları: Giriş"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&is_video=false&description=Tasarım Kalıpları: Giriş"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tasarım Kalıpları: Giriş&body=Check out this article: https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&title=Tasarım Kalıpları: Giriş"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&title=Tasarım Kalıpları: Giriş"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&title=Tasarım Kalıpları: Giriş"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&title=Tasarım Kalıpları: Giriş"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&name=Tasarım Kalıpları: Giriş&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/07/21/tasarim-kaliplari-giris/&t=Tasarım Kalıpları: Giriş"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

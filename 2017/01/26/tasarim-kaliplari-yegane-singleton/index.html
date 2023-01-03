@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Yegâne (Singleton) oluşturuluşsal tasarım kalıbı üzerine bir çalışma.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tasarım Kalıpları: Yegâne (Singleton)">
+<meta property="og:url" content="https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="Yegâne (Singleton) oluşturuluşsal tasarım kalıbı üzerine bir çalışma.">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://nuriu.github.io/resimler/yegane.png">
+<meta property="article:published_time" content="2017-01-25T21:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.586Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="mimari &amp; tasarım">
+<meta property="article:tag" content="tasarım kalıpları">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="oluşturuluşsal tasarım kalıpları">
+<meta property="article:tag" content="yegane">
+<meta property="article:tag" content="singleton">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nuriu.github.io/resimler/yegane.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Tasarım Kalıpları: Yegâne (Singleton)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2016/07/21/tasarim-kaliplari-giris/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&text=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&title=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&is_video=false&description=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tasarım Kalıpları: Yegâne (Singleton)&body=Check out this article: https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&title=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&title=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&title=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&title=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&name=Tasarım Kalıpları: Yegâne (Singleton)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&t=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nedir"><span class="toc-number">1.</span> <span class="toc-text">Nedir?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Uygulama"><span class="toc-number">2.</span> <span class="toc-text">Uygulama</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Tasarım Kalıpları: Yegâne (Singleton)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2017-01-25T21:00:00.000Z" itemprop="datePublished">26-Ocak-2017</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.586Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/tasarim-kaliplari/">tasarım kalıpları</a> › <a class="category-link" href="/categories/tasarim-kaliplari/mimari-tasarim/">mimari & tasarım</a> › <a class="category-link" href="/categories/tasarim-kaliplari/mimari-tasarim/java/">java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/java/" rel="tag">java</a>, <a class="tag-link-link" href="/tags/mimari-tasarim/" rel="tag">mimari & tasarım</a>, <a class="tag-link-link" href="/tags/olusturulussal-tasarim-kaliplari/" rel="tag">oluşturuluşsal tasarım kalıpları</a>, <a class="tag-link-link" href="/tags/singleton/" rel="tag">singleton</a>, <a class="tag-link-link" href="/tags/tasarim-kaliplari/" rel="tag">tasarım kalıpları</a>, <a class="tag-link-link" href="/tags/yegane/" rel="tag">yegane</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Nedir"><a href="#Nedir" class="headerlink" title="Nedir?"></a>Nedir?</h2><p>Yegâne tasarım kalıbı, diğer kalıplara göre en basit oluşturuluşsal tasarım kalıplarından birisidir.<br>Ayrıca nesne oluşturmak için en iyi yollardan biri olarak değerlendirilebilir.</p>
+<p>Bu tasarım, bir sınıfınızdan sisteminiz dahilinde sadece tek bir nesneye ihtiyaç duyduğunuzda yardımcı olacaktır. Yani, ilgili sınıftan doğrudan örnek oluşturmaksızın, sadece bir nesne oluşturulmasına ve onun oluşturulmuş tek nesnesine erişime olanak sağlar.</p>
+<h2 id="Uygulama"><a href="#Uygulama" class="headerlink" title="Uygulama"></a>Uygulama</h2><p>Uygulama olarak döndüreceği nesneye, nesneyi döndürecek fonksiyona ve ek olarak basit bir fonksiyona sahip<br> bir sınıf oluşturacağız.</p>
+<p>Daha sonrasında bu sınıfa bir dinamik olarak değiştireceğimiz mesaj ve o mesajı yazdıran bir fonksiyon ekleyeceğiz.</p>
+<p>Örneğimiz olarak işleyeceğimiz yegane sınıfın sınıf diyagramı aşağıdaki şekildedir;</p>
+<p><img src="/resimler/yegane.png" alt="Yegane uml sınıf diyagram örneği."></p>
+<figure class="highlight java"><figcaption><span>Yegane.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Yegane</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// geri döndüreceğimiz nesnemiz.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Yegane</span> <span class="variable">nesne</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// oluşturucumuzu özelleştirerek </span></span><br><span class="line">    <span class="comment">// doğrudan nesne oluşturmanın önüne geçiyoruz.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Yegane</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// nesnemizi geri döndürdüğümüz fonksiyonumuz.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Yegane <span class="title function_">NesneyiGetir</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nesne == <span class="literal">null</span>) &#123;      <span class="comment">// nesnemiz oluşturulmamış ise;</span></span><br><span class="line">            nesne = <span class="keyword">new</span> <span class="title class_">Yegane</span>(); <span class="comment">// nesnemizi oluşturuyoruz.</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> nesne;             <span class="comment">// nesnemizi döndürüyoruz.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">MerhabaDe</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Merhaba!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Sınıfımızın en basit uygulaması için iki nesne oluşturup örnek fonksiyonlarımızı çağırıyoruz;</p>
+<figure class="highlight java"><figcaption><span>TasarimDesenleri.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TasarimDesenleri</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">Yegane</span> <span class="variable">y</span> <span class="operator">=</span> Yegane.NesneyiGetir();</span><br><span class="line">        <span class="type">Yegane</span> <span class="variable">y2</span> <span class="operator">=</span> Yegane.NesneyiGetir();</span><br><span class="line"></span><br><span class="line">        y.MerhabaDe();</span><br><span class="line">        y2.MerhabaDe();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Böylece temel anlamda Yegâne tasarım kalıbını uygulamış olduk.</p>
+<p>Fakat örnek fonksiyonumuz tasarım kalıbının işlediğini anlamamız için yeterli değil.</p>
+<p>O yüzden sınıfımızı ve main fonksiyonumuzu aşağıdaki şekilde değiştirelim;</p>
+<figure class="highlight java"><figcaption><span>Yegane.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Yegane</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// geri döndüreceğimiz nesnemiz.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Yegane</span> <span class="variable">nesne</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// dinamik olarak değiştireceğimiz mesajımız.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">String</span> <span class="variable">mesaj</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// oluşturucumuzu özelleştirerek</span></span><br><span class="line">    <span class="comment">// doğrudan nesne oluşturmanın önüne geçiyoruz.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Yegane</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// nesnemizi geri döndürdüğümüz fonksiyonumuz.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Yegane <span class="title function_">NesneyiGetir</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nesne == <span class="literal">null</span>) &#123;      <span class="comment">// nesnemiz oluşturulmamış ise;</span></span><br><span class="line">            nesne = <span class="keyword">new</span> <span class="title class_">Yegane</span>(); <span class="comment">// nesnemizi oluşturuyoruz.</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> nesne;             <span class="comment">// nesnemizi döndürüyoruz.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// mesajımızı yazıdrmadan sorumlu fonksiyonumuz.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">MesajiYazdir</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(mesaj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><figcaption><span>TasarimDesenleri.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TasarimDesenleri</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">Yegane</span> <span class="variable">y</span> <span class="operator">=</span> Yegane.NesneyiGetir();</span><br><span class="line">        <span class="type">Yegane</span> <span class="variable">y2</span> <span class="operator">=</span> Yegane.NesneyiGetir();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// y nesnemizin mesajını Mesaj 1 olarak oluşturuyoruz.</span></span><br><span class="line">        y.mesaj = <span class="string">&quot;Mesaj 1&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// iki nesnenin de mesajlarını yazdırıyoruz.</span></span><br><span class="line">        y.MesajiYazdir();</span><br><span class="line">        y2.MesajiYazdir();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Normal şartlarda yukarıdaki kod bloğunun çıktısının</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mesaj 1</span><br><span class="line">null</span><br></pre></td></tr></table></figure>
+
+<p>gibi olması beklenebilir fakat kullandığımız tasarım kalıbı dolayısıyla çıktımız;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mesaj 1</span><br><span class="line">Mesaj 1</span><br></pre></td></tr></table></figure>
+
+<p>şeklinde olacaktır. Diğer bir deyişle sistemimizde sadece bir benzersiz Yegane nesnesi oluşacaktır.</p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nedir"><span class="toc-number">1.</span> <span class="toc-text">Nedir?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Uygulama"><span class="toc-number">2.</span> <span class="toc-text">Uygulama</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&text=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&title=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&is_video=false&description=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tasarım Kalıpları: Yegâne (Singleton)&body=Check out this article: https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&title=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&title=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&title=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&title=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&name=Tasarım Kalıpları: Yegâne (Singleton)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2017/01/26/tasarim-kaliplari-yegane-singleton/&t=Tasarım Kalıpları: Yegâne (Singleton)"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

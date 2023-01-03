@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="GirişÇoğu insanın vardır bir türlü sevemediği, ısınamadığı teknolojiler. Benim de Microsoft politikalarına ve teknolojilerine (şu an bunu yazmak için kullandığım VS Code ve TypeScript hariç) karşı büy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği">
+<meta property="og:url" content="https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="GirişÇoğu insanın vardır bir türlü sevemediği, ısınamadığı teknolojiler. Benim de Microsoft politikalarına ve teknolojilerine (şu an bunu yazmak için kullandığım VS Code ve TypeScript hariç) karşı büy">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://nuriu.github.io/resimler/rider.png">
+<meta property="og:image" content="https://nuriu.github.io/resimler/rider2.png">
+<meta property="article:published_time" content="2016-03-03T22:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.584Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="c#">
+<meta property="article:tag" content="genel">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="Rider RS">
+<meta property="article:tag" content="veri yapıları">
+<meta property="article:tag" content="bağlı listeler">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nuriu.github.io/resimler/rider.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2016/03/05/temel-java-birinci-gun-giris/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2016/03/04/veri-yapilari-cift-yonlu-bagli-listeler/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&text=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&title=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&is_video=false&description=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği&body=Check out this article: https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&title=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&title=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&title=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&title=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&name=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&t=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Giris"><span class="toc-number">1.</span> <span class="toc-text">Giriş</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Neden-Linux"><span class="toc-number">2.</span> <span class="toc-text">Neden Linux?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-amp-C"><span class="toc-number">3.</span> <span class="toc-text">Linux &amp; C#</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rider-RS-C-ile-Bagli-Liste-Ornegi"><span class="toc-number">4.</span> <span class="toc-text">Rider RS (C#) ile Bağlı Liste Örneği</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dipnot"><span class="toc-number">5.</span> <span class="toc-text">Dipnot:</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2016-03-03T22:00:00.000Z" itemprop="datePublished">04-Mart-2016</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.584Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/c/">c#</a> › <a class="category-link" href="/categories/c/genel/">genel</a> › <a class="category-link" href="/categories/c/genel/linux/">linux</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Rider-RS/" rel="tag">Rider RS</a>, <a class="tag-link-link" href="/tags/bagli-listeler/" rel="tag">bağlı listeler</a>, <a class="tag-link-link" href="/tags/c/" rel="tag">c#</a>, <a class="tag-link-link" href="/tags/genel/" rel="tag">genel</a>, <a class="tag-link-link" href="/tags/linux/" rel="tag">linux</a>, <a class="tag-link-link" href="/tags/veri-yapilari/" rel="tag">veri yapıları</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Giris"><a href="#Giris" class="headerlink" title="Giriş"></a>Giriş</h2><p>Çoğu insanın vardır bir türlü sevemediği, ısınamadığı teknolojiler.</p>
+<p>Benim de Microsoft politikalarına ve teknolojilerine (şu an bunu yazmak için kullandığım VS Code ve TypeScript hariç) karşı büyük bir alerjim (doğru bir kelime seçimi oldu mu bilmiyorum ama tam olarak anlatmak istediğimi temsil ediyor.) vardı.  </p>
+<p>Bu teknolojilerle ilk olarak yanlış hatırlamıyorsam orta okul zamanlarında hobi olarak dahil olduğum oyun sunucuları sayesinde tanışmıştım. Ms SQL Server 2003 üzerinde binlerce veriye sahip 20-30 tablodan oluşan veritabanı ve genel olarak kullanıcı yönetimi üzerine yoğunlaşmış prosedürler ile ilgileniyordum.</p>
+<p>Açıkçası uğraşım tamamen amatörce olduğundan ne yaptığımın tam olarak farkında değildim ama oldukça keyifliydi. Veritabanındaki birkaç sütun verisini değiştirip oyuna girdiğimde değişikliklerin daha görsel şeylere dönüştüğünü görmek mutlu etmişti.</p>
+<p>Öylesine mutlu etmiş olacak ki hayatım boyunca benzer şeyler ile uğraşmayı seçtim. Doğru bir seçim yapıp yapmadığımı son nefeste öğrenecek olsam da hala pişman olmadım.</p>
+<p>Neyse sonrasında anadolu teknik lisesinde bilişim teknolojileri bölümünde Visual Basic ve C# ile tanıştım. Veritabanı ve web (html, css, vbullettin, phpbb vb.) teknolojileri dışındaki teknolojilerle tanışmak güzeldi. Veri tabanlı windows form uygulamaları, raporlamaları vesaire ile uğraşıp mezun olduktan sonra üniversite dönemi başladı. İçimde her zaman bir oyun geliştirme isteği olduğundan dolayı kişisel araştırmalarım sonucunda bu dünyanın Windows&#x2F;Microsoft’tan ibaret olmadığını öğrendim.</p>
+<p>Üniversite eğitimiyse C ile başladı. Şu anda 4. dönemimdeyim (ezici bir “bilimsel” hazırlık sınıfı da sayılırsa 3. yılımın 2. dönemi oluyor.) Şu ana kadar C’ye ek olarak nesne tabanlı programlamayı öğretmek amacıyla C# gösterildi.</p>
+<p>İki dile de aşina olduğum için genel hatırlama ve güzel ipuçları dışında teknik yönden çok fazla yeni şey öğrenmedim. (İlk defa gördüğüm mühendislik teorik eğitiminden bahsetmiyorum.)</p>
+<p>Bu yüzden kendi zamanımda daha farklı konulara yöneldim. Önceki dönemdeki uygulamaların, ödevlerin, projelerin C# üzerinden yürümesi ve mono teknolojisinin iş görüp görmeyeceğinden emin olmamam gibi sebeplerden dolayı kalıcı olarak Linux’a geçememiştim.</p>
+<p>Şu anda dönem arasında deneme&#x2F;keşfetme amaçlı kurduğum arch tabanlı manjaro dağıtımını kullanıyorum.</p>
+<p>Her ne kadar konunun uzmanı olmasam da şu düşüncemi rahatlıkla söyleyebilirim ki linux politikaları açısından normal kullanıcılar için diğer tüm açılardan ise yazılım geliştiriciler için mükemmel.</p>
+<p>Gerek tasarımcılar gerek web tabanlı geliştirmeler yapan kişilerin unix tabanlı işletim sistemli bilgisayarları kullanmaları boşuna değilmiş.  </p>
+<h2 id="Neden-Linux"><a href="#Neden-Linux" class="headerlink" title="Neden Linux?"></a>Neden Linux?</h2><p>Bu soruya daha bilgili kişiler bir sürü maddeyle cevap verebilir.</p>
+<p>Bana göre açık kaynaklı olması yani şirketlerin tekelinde olmaması (ubuntu konusunda emin değilim.) ve bedava olması en önemli seçim sebepleridir.</p>
+<p>Peki Linux dağıtımları Windows’tan daha mı iyi? Kimi konularda evet kimi konularda hayır.</p>
+<p><em>Linux;</em>  </p>
+<ol>
+<li>Neredeyse tüm linux dağıtımları (muhtemelen hepsi) geliştirici araçlarıyla birlikte geliyor. Dolayısıyla normal bir yazılım geliştiricisinin ihtiyaç duyacağı teknolojilerin çoğu zaten kurulu.</li>
+<li>Sizi eğlenceden bir nebze uzaklaştırıyor. (Bu çoğu zaman gerekli. Fakat sadece oyun oynayan ve tüm oyunları oynamak isteyen biriyseniz linux dağıtımları size göre değil.)</li>
+<li>Çoğu dağıtım, şirket tabanlı olmadığı ve dünya genelinde çeşitli insanlar tarafından geliştirildiği için veri ticaretiyle haşır neşir olmadıkları söylenebilir.</li>
+</ol>
+<p><em>Windows;</em>  </p>
+<ol>
+<li>Neredeyse her bilgisayar oyunu windows merkezli üretiliyor. (ve bence bu windowsun artısından ziyade geliştiricilerin seçiminden kaynaklı.)</li>
+<li>Daha stabil olduğu düşünülüyor. (her ne kadar aylardır linux kullanıp bu tür bir sorun yaşamamış olsam da.)</li>
+<li>Son dönemlerde kalitesinden çok topladığı verilerle gündemde.</li>
+</ol>
+<h2 id="Linux-amp-C"><a href="#Linux-amp-C" class="headerlink" title="Linux &amp; C#"></a>Linux &amp; C#</h2><p>Peki linux üzerinde hiç sorun yaşamadım mı? Elbette yaşadım ve çoğu da benim bilgisizliğimden dolayıydı.  </p>
+<p>Benim için her ne kadar sorun olmasa da sorun olarak isimlendirilebilecek bir diğer konu ise c# ile windows üzerindeki gibi geliştirme yapmaktı.<br>C++ ile tanıştığım andan itibaren .net çatısını hiç sevememiş olsam da microsoft şaşırtıcı bir şekilde geçtiğimiz yıl içerisinde kütüphanenin çekirdeğinin kaynağını açmasına sevindim.</p>
+<p>Dolayısı ile c#, windowsa özel bir teknoloji olmaktan biraz daha kurtuldu.  </p>
+<p>Bu dönemde de c# üzerinden ödev&#x2F;proje ‘lendirileceğimizi öğrendiğim için istemeye istemeye (benim ne istediğimin elbette bir önemi yok) sanal makineye başvurdum, dolayısıyla yine windowsa, visual studio’ya yani microsoft teknolojilerine mecbur kalmıştım. (linux üzerinde monodevelop hakkında bilgim yoktu ki hala yok. o yüzden bu olasılık devre dışıydı.)</p>
+<p>Taa ki JetBrains’in Rider projesini görene kadar. Rider çoklu-platform destekli bir c# geliştirme aracı. (ide)</p>
+<p>C#’a olan yargımı biraz daha yıkmak için iyi bir fırsat olduğunu düşündüm ve hemen erken erişime dahil oldum.  </p>
+<p>Sanal makineye kurduğum windows 7 için toplam 100 gb’a yakın bir alan ayırmıştım. Visual Studio 2015 CE de bir ton şeyle birlikte geldiği için sanırım iki haneli bir yer kaplıyor. Her ne kadar en sevdiğim geliştirme aracı da olsa c# ile geliştirme yaparken sürekli yavaş olduğu hissine kapılıyordum. (belki benim önyargımdır veya belki gerçekten de iki microsoft teknolojisi kendi aralarında tam verimli anlaşamıyordur bilemiyorum.)  </p>
+<p>Rider’ı kurmak için yaptığım indirme ise sadece 200 küsür megabyte’tı. Aracı kurduktan sonra ilk fark ettiğim şey visual studio ile oluşturulmuş projeleri okuyabildiği ve üzerinde çalışabildiği idi. Yani bu araç da visual studio ile aynı (.sln uzantılı) proje yapısını destekliyor&#x2F;kullanıyordu.</p>
+<p>Hemen sonra fark ettiğim şey her ne kadar erken erişim ürünü olup stabil sayılmasa da oldukça hızlı olduğuydu. Henüz bu aşamada tam olarak destek sınırlarını bilmiyor olsam da şu an ki ödev üzerinde (c#, windows forms) birlikte çalıştığım arkadaşım windows&#x2F;vs üzerinde geliştirme yapmaktayken ben Rider kullanıyorum ve erken erişim ürünü olduğunu belli eden kapatma hataları dışında henüz herhangi bir sorun&#x2F;aksilik yaşanmadı. Aracın genel görünümü şu şekilde;  </p>
+<p><img src="/resimler/rider.png" alt="JetBrains Project Rider"></p>
+<h2 id="Rider-RS-C-ile-Bagli-Liste-Ornegi"><a href="#Rider-RS-C-ile-Bagli-Liste-Ornegi" class="headerlink" title="Rider RS (C#) ile Bağlı Liste Örneği"></a>Rider RS (C#) ile Bağlı Liste Örneği</h2><p>Şimdi hem ödeve hazırlık hem de sınıfları kullanarak basit bir veri yapısı geliştirmek için c# console projesi oluşturalım. Rider’ın proje oluşturma ekranı şu şekilde;  </p>
+<p><img src="/resimler/rider2.png" alt="JetBrains Project Rider - Proje Oluşturma Ekranı"></p>
+<p>Oluşturduğum projeye bu dosyaları ekledim&#x2F;düzenledim;  </p>
+<figure class="highlight csharp"><figcaption><span>BagliListe.cs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">BagliListeOrnek</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// yapımız için kullanacağımız soyut sınıfımız.</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">BagliListe</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Boyut = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> TekYonluBagliListe Ilk;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Ekle</span>(<span class="params"><span class="built_in">int</span> eklenecekDeger</span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Sil</span>(<span class="params"><span class="built_in">int</span> silinecekDeger</span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Listele</span>()</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><figcaption><span>TekYonluBagliListe.cs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">BagliListeOrnek</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ana sınıfımızdan ürettiğimiz yapı sınıfımız.</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TekYonluBagliListe</span> : <span class="title">BagliListe</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Veri &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> TekYonluBagliListe Sonraki &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ezeceğimiz fonksiyonlarımız.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Ekle</span>(<span class="params"><span class="built_in">int</span> eklenecekDeger</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Sil</span>(<span class="params"><span class="built_in">int</span> silinecekDeger</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Listele</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><figcaption><span>Program.cs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">BagliListeOrnek</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">      TekYonluBagliListe liste = <span class="keyword">new</span> TekYonluBagliListe();</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ekleme işlemi için testlerimiz.</span></span><br><span class="line">      liste.Ekle(<span class="number">3</span>);    <span class="comment">// liste boşsa</span></span><br><span class="line">      liste.Ekle(<span class="number">1</span>);    <span class="comment">// ilk elemandan küçük olma durumu</span></span><br><span class="line">      liste.Ekle(<span class="number">2</span>);    <span class="comment">// araya eleman ekleme işlemi</span></span><br><span class="line">      liste.Ekle(<span class="number">4</span>);    <span class="comment">// en büyük eleman olma durumu</span></span><br><span class="line">      liste.Listele();</span><br><span class="line"></span><br><span class="line">      <span class="comment">// silme işlemi için testlerimiz.</span></span><br><span class="line">      liste.Sil(<span class="number">1</span>);     <span class="comment">// ilk eleman olma senaryosu</span></span><br><span class="line">      liste.Listele();</span><br><span class="line">      liste.Sil(<span class="number">3</span>);     <span class="comment">// ara eleman olma senaryosu</span></span><br><span class="line">      liste.Listele();</span><br><span class="line">      liste.Sil(<span class="number">4</span>);     <span class="comment">// son eleman olma senaryosu</span></span><br><span class="line">      liste.Listele();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><figcaption><span>Listele()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Listele</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> sayac = Ilk;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (sayac != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        i++;</span><br><span class="line">        Console.WriteLine(i + <span class="string">&quot;. Eleman: &quot;</span> + sayac.Veri);</span><br><span class="line">        sayac = sayac.Sonraki;</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><figcaption><span>Ekle()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Ekle</span>(<span class="params"><span class="built_in">int</span> eklenecekDeger</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> sayac = <span class="keyword">new</span> TekYonluBagliListe();</span><br><span class="line">    <span class="comment">// liste boş ise</span></span><br><span class="line">    <span class="keyword">if</span> (Ilk == <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        sayac.Veri = eklenecekDeger;</span><br><span class="line">        sayac.Sonraki = <span class="literal">null</span>;</span><br><span class="line">        Ilk = sayac;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="comment">// bir veya daha fazla eleman mevcut ise</span></span><br><span class="line">    &#123;</span><br><span class="line">        sayac = Ilk;</span><br><span class="line">        <span class="keyword">var</span> gecici = <span class="keyword">new</span> TekYonluBagliListe();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ilk elemandan küçük olma durumu</span></span><br><span class="line">        <span class="keyword">if</span> (Ilk.Veri &gt; eklenecekDeger)</span><br><span class="line">        &#123;</span><br><span class="line">            gecici.Veri = eklenecekDeger;</span><br><span class="line">            gecici.Sonraki = Ilk;</span><br><span class="line">            Ilk = gecici;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// son eleman değilse ve</span></span><br><span class="line">            <span class="comment">// sonraki eleman eklenecek sayıdan küçükse</span></span><br><span class="line">            <span class="comment">// eklenecek eleman için doğru aralığı buluyoruz</span></span><br><span class="line">            <span class="keyword">while</span> (sayac.Sonraki != <span class="literal">null</span> &amp;&amp;</span><br><span class="line">                   sayac.Sonraki.Veri &lt; eklenecekDeger)</span><br><span class="line">            &#123;</span><br><span class="line">                sayac = sayac.Sonraki;</span><br><span class="line">            &#125;</span><br><span class="line">            gecici.Sonraki = sayac.Sonraki;</span><br><span class="line">            gecici.Veri = eklenecekDeger;</span><br><span class="line">            sayac.Sonraki = gecici;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Boyut++; <span class="comment">// bir eleman ekledik.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><figcaption><span>Sil()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Sil</span>(<span class="params"><span class="built_in">int</span> silinecekDeger</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> sayac = Ilk;</span><br><span class="line">    <span class="keyword">var</span> gecici = <span class="keyword">new</span> TekYonluBagliListe();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (Ilk.Veri == silinecekDeger)   <span class="comment">// ilk eleman olma durumu</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (Ilk.Sonraki != <span class="literal">null</span>) <span class="comment">// ikinci eleman var ise</span></span><br><span class="line">        &#123;</span><br><span class="line">            Ilk = Ilk.Sonraki;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="comment">// liste tek elemanlı ise</span></span><br><span class="line">        &#123;</span><br><span class="line">            Ilk = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="comment">// ilk eleman değilse</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// listede silinecek elemanı arıyoruz.</span></span><br><span class="line">        <span class="keyword">while</span> (sayac.Sonraki != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// elemanı bulduysak</span></span><br><span class="line">            <span class="keyword">if</span> (sayac.Sonraki.Veri == silinecekDeger &amp;&amp;</span><br><span class="line">                sayac.Sonraki != <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sayac.Sonraki = sayac.Sonraki.Sonraki;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="comment">// bulamadıysak sonraki elemana geçiyoruz.</span></span><br><span class="line">            &#123;</span><br><span class="line">                sayac = sayac.Sonraki;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Fonksiyonlarımızı yukarıdaki şekilde yazıp programımızı çalıştırdığımızda çıktımız şu şekilde olacaktır;  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1. Eleman: 1</span><br><span class="line">2. Eleman: 2</span><br><span class="line">3. Eleman: 3</span><br><span class="line">4. Eleman: 4</span><br><span class="line"></span><br><span class="line">1. Eleman: 2</span><br><span class="line">2. Eleman: 3</span><br><span class="line">3. Eleman: 4</span><br><span class="line"></span><br><span class="line">1. Eleman: 2</span><br><span class="line">2. Eleman: 4</span><br><span class="line"></span><br><span class="line">1. Eleman: 2</span><br></pre></td></tr></table></figure>
+
+<p>Böylelikle linux üzerinde ilk c# programımı yazmış oldum. Bir süredir C# ile haşır neşir olmadığım için C++ hala daha tanıdık&#x2F;kolay gelse de güzel bir deneyim oldu.  </p>
+<h2 id="Dipnot"><a href="#Dipnot" class="headerlink" title="Dipnot:"></a>Dipnot:</h2><p>Sevmek&#x2F;sevmemek bir yana bizim meslek grubu için geçerli olmak üzere hiçbir teknolojiden tamamen kopmamak gerektiğine inanıyorum.<br>Hiçbir zaman dil&#x2F;kütüphane fanatikliliğini doğru bulmadım.  </p>
+<p>Önemli olanın öğrenmeyi öğrenmek ve o an geliştirilecek projede karar verecek kişi siz iseniz projeye&#x2F;ekibe&#x2F;geliştiricilere en uygun dili&#x2F;kütüphaneleri seçmek&#x2F;seçebilmek olduğuna inanıyorum.</p>
+<p>Son olarak Rider projesi ile tamamen sanal w7’ye mecbur kalmadığımı görmek sevindirici. Son sürümünün ücretsiz olması dileğiyle bu konudan şimdilik bu kadar.</p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Giris"><span class="toc-number">1.</span> <span class="toc-text">Giriş</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Neden-Linux"><span class="toc-number">2.</span> <span class="toc-text">Neden Linux?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-amp-C"><span class="toc-number">3.</span> <span class="toc-text">Linux &amp; C#</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rider-RS-C-ile-Bagli-Liste-Ornegi"><span class="toc-number">4.</span> <span class="toc-text">Rider RS (C#) ile Bağlı Liste Örneği</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dipnot"><span class="toc-number">5.</span> <span class="toc-text">Dipnot:</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&text=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&title=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&is_video=false&description=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği&body=Check out this article: https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&title=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&title=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&title=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&title=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&name=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/04/linux-ve-c-sharp-uzerine-rider-rs-csharp-ile-bagli-liste-ornegi/&t=Linux &amp; C# Üzerine: Rider RS (C#) ile Bağlı Liste Örneği"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

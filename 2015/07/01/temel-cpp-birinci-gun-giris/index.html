@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Daha önce, programlama dünyasına iki bölümlük bir teorik giriş yapmıştık. Şimdi ise C++’ın ilk yazısıyla temel dil serilerine başlayacağız.   IDE SeçimiYeni bir dil veya teknolojiyle çalışacağınız zam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler">
+<meta property="og:url" content="https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="Daha önce, programlama dünyasına iki bölümlük bir teorik giriş yapmıştık. Şimdi ise C++’ın ilk yazısıyla temel dil serilerine başlayacağız.   IDE SeçimiYeni bir dil veya teknolojiyle çalışacağınız zam">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://i-msdn.sec.s-msft.com/dynimg/IC32056.gif">
+<meta property="article:published_time" content="2015-06-30T21:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.587Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="veri tipleri">
+<meta property="article:tag" content="kontrol yapıları">
+<meta property="article:tag" content="diziler">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i-msdn.sec.s-msft.com/dynimg/IC32056.gif">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2015/06/28/programlama-mantigina-giris-bolum-2/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&text=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&title=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&is_video=false&description=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler&body=Check out this article: https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&title=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&title=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&title=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&title=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&name=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&t=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#IDE-Secimi"><span class="toc-number">1.</span> <span class="toc-text">IDE Seçimi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Giris"><span class="toc-number">2.</span> <span class="toc-text">Giriş</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Degisken-Tanimlama"><span class="toc-number">3.</span> <span class="toc-text">Değişken Tanımlama</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Veri-Tipleri"><span class="toc-number">4.</span> <span class="toc-text">Veri Tipleri</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aritmetik-Operatorler"><span class="toc-number">5.</span> <span class="toc-text">Aritmetik Operatörler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kontrol-Yapilari"><span class="toc-number">6.</span> <span class="toc-text">Kontrol Yapıları</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diziler"><span class="toc-number">7.</span> <span class="toc-text">Diziler</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2015-06-30T21:00:00.000Z" itemprop="datePublished">01-Temmuz-2015</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.587Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/c/">c++</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/c/" rel="tag">c++</a>, <a class="tag-link-link" href="/tags/diziler/" rel="tag">diziler</a>, <a class="tag-link-link" href="/tags/kontrol-yapilari/" rel="tag">kontrol yapıları</a>, <a class="tag-link-link" href="/tags/veri-tipleri/" rel="tag">veri tipleri</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Daha önce, programlama dünyasına iki bölümlük bir teorik giriş yapmıştık. Şimdi ise C++’ın ilk yazısıyla temel dil serilerine başlayacağız.  </p>
+<h2 id="IDE-Secimi"><a href="#IDE-Secimi" class="headerlink" title="IDE Seçimi"></a>IDE Seçimi</h2><p>Yeni bir dil veya teknolojiyle çalışacağınız zaman genellikle ilk önce geliştirme ortamını oluşturursunuz. Biz de öğrenmeye C++ dili için kullanabileceğimiz bir IDE seçmekle başlayalım.  </p>
+<p><strong>C++ dili için IDE örnekleri:</strong>  </p>
+<ul>
+<li>Kdevelop</li>
+<li>Microsoft Visual Studio</li>
+<li>Anjuta</li>
+<li>Code::Blocks</li>
+<li>Eclipse CDT</li>
+<li>CodeLite</li>
+<li>NetBeans C++</li>
+<li>JetBrains CLion</li>
+</ul>
+<p>Yukarıdaki örneklerin yanı sıra, öğrenme amaçlı olan web tabanlı derleyiciler de mevcut fakat bir IDE ile çalışmaya bir an önce alışmak için yukarıdaki örneklerden birini seçmek daha doğru olur.  </p>
+<p>Açık kaynaklı ve ücretsiz olmasının yanı sıra şu anlık sadece C++ diliyle uğraşacağımız için <strong>CodeLite</strong>‘ı kullanmayı tercih edebilirsiniz. Diğer bir ücretsiz seçenek ise <strong>Code::Blocks</strong>.  </p>
+<p>CodeLite’ı aşağıdaki adresten indirebilirsiniz:<br><a target="_blank" rel="noopener" href="http://downloads.codelite.org/">download.codelite.org</a></p>
+<p>Code::Blocks’u aşağıdaki adresten indirebilirsiniz:<br><a target="_blank" rel="noopener" href="http://www.codeblocks.org/downloads/26">codeblocks.org&#x2F;downloads&#x2F;26</a></p>
+<p>CodeLite’ı kurduktan sonra çeşitli ayarlar yapmanız istenecek. Bunlardan en önemlisi derleyici seçimi. <em>scan</em> seçeneği ile bilgisayarınızda hali hazırda uygun bir derleyici olup olmadığını tarar. Eğer bilgisayarınızda bir derleyici yoksa <em>install</em> seçeneğini seçip derleyiciyi kurabilirsiniz. Eğer bu tip ayarlarla uğraşmak istemiyorsanız Code::Blocks’u tercih edin. Kendisi tüm gerekli kurulumları yapıyor. Daha detaylı bilgileri&#x2F;anlatımları google veya youtube üzerinden bulabilirsiniz.  </p>
+<p>IDE seçimi de yapıldığına göre C++’a giriş yapabiliriz. Bundan sonraki tüm anlatımlarım tamamen kod tabanlı olacak. Eğer daha önceden başka bir programlama dili ile uğraştıysanız daha şanslısınız, yabancılık çekmeyeceksiniz.  </p>
+<h2 id="Giris"><a href="#Giris" class="headerlink" title="Giriş"></a>Giriş</h2><p>İlk teori yazımızdaki örneğimize geri dönelim:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;Merhaba!&quot;</span> &lt;&lt; endl;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Örneğimizin ilk satırında <code>#include</code> komutunu kullanarak standart kütüphanelerden <code>iostream</code>‘i programımıza dahil ediyoruz. Bu kütüphane bizim <code>cout</code> komutunu kullanmamızı sağlıyor.<br>İkinci satırdaysa <code>using namespace</code> komutuyla kodlarımızda, ekrana yazmak, kullanıcı girişi almak gibi durumlarda kullanacağımız <code>cin</code> ve <code>cout</code> gibi komutlarda sürekli <code>std::</code> ön ekini kullanmaktan kurtuluyoruz. Eğer bunu yazmasaydık <code>main</code> fonksiyonu içindeki ilk satırımız şöyle olmalıydı:  </p>
+<p><code>std::cout &lt;&lt; &quot;Merhaba!&quot; &lt;&lt; std::endl;</code></p>
+<p>Örneğimizin ilk iki satırı standart olarak programımızda olacağı için ne işe yaradıklarını bilmemiz gerek. Bundan sonraki ek örnekler haricindeki tüm anlatımımız tek bir kaynak kod üzerinden gidecek.</p>
+<h2 id="Degisken-Tanimlama"><a href="#Degisken-Tanimlama" class="headerlink" title="Değişken Tanımlama"></a>Değişken Tanımlama</h2><p>Değişkenler global ve lokal olmak üzere genellikle iki şekilde tanımlanabilir. Global değişkenler fonksiyonların dışında tanımlanır ve programın her yerinde kullanılabilir. Lokal değişkenler ise fonksiyonların içinde tanımlanır ve sadece tanımlandığı fonksiyonun içinde kullanılabilir.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// int tipindeki global değişkenimiz.</span></span><br><span class="line"><span class="type">int</span> globalDegisken;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">      <span class="comment">// char tipindeki lokal değişkenimiz.</span></span><br><span class="line">      <span class="type">char</span> lokalDegisken;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Yukarıdaki örnekte <code>//</code> ile başlayan satırlar açıklama&#x2F;yorum satırlarıdır ve iki tip kullanımı vardır.</p>
+<p>Yorum kullanımı:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Tek satır yorum</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Çoklu satır</span></span><br><span class="line"><span class="comment"> * yorum</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>Önceki örnekte gözüktüğü gibi değişkenler <code>VeriTipi DeğişkenAdı</code> olacak şekilde tanımlanır ve bunun çeşitli kuralları vardır. Bu kurallar hemen hemen tüm dillerde geçerlidir. Bunlar:</p>
+<ul>
+<li>Değişken isimlerinde boşluk kullanılamaz.</li>
+<li>Değişken isimleri sayı veya özel karakter ile başlayamaz.</li>
+<li>Programlama dili tarafından kullanılan anahtar kelimeler değişken ismi olarak kullanılamaz.</li>
+<li>Değişken isimleri !, ?, {, ] gibi karakterler içeremezler.</li>
+<li>C++ harf duyarlıdır. Yani abc ve ABC farklı olarak algılanır.</li>
+<li>Türkçe karakter kullanılamaz.</li>
+</ul>
+<p>Belli başlı değişken tanımlama kuralları bunlardır. Derleyicilere göre ufak değişiklikler gösterebilirler.</p>
+<h2 id="Veri-Tipleri"><a href="#Veri-Tipleri" class="headerlink" title="Veri Tipleri"></a>Veri Tipleri</h2><p>Değişkenler ve sonraki bölümde göreceğimiz fonksiyonlar veri tipleriyle tanımlanırlar. Bu veri tipleri değişken tanımlama için kullanılıyorsa değişkenin saklayacağı verinin tipini, fonksiyon tanımlama için kullanılıyorsa fonksiyonun çağrıldığı yere döndüreceği verinin tipini belirtir.  </p>
+<p>Belli başlı veri tipleri şunlardır ve çoğu dilde ortaktır;</p>
+<table>
+<thead>
+<tr>
+<th>Veri Tipi</th>
+<th>Hafıza Boyutu</th>
+<th>Açıklaması</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>1</td>
+<td>karakter</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2</td>
+<td>16 bit uzunluğunda tamsayı</td>
+</tr>
+<tr>
+<td>long</td>
+<td>4</td>
+<td>32 bit uzunluğunda tamsayı</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+<td>tamsayı</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+<td>ondalıklı sayı</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>duyarlıklı ondalıklı sayı</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>1</td>
+<td>doğru veya yanlış</td>
+</tr>
+</tbody></table>
+<p><strong>Örnek Tanımlamalar:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> pi = <span class="number">3.14</span>;</span><br><span class="line"><span class="type">char</span> a = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">string isim = <span class="string">&quot;Yavuz&quot;</span>;</span><br><span class="line"><span class="type">bool</span> durum = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Aritmetik-Operatorler"><a href="#Aritmetik-Operatorler" class="headerlink" title="Aritmetik Operatörler"></a>Aritmetik Operatörler</h2><p>Aritmetik işlemleri yapmakta kullanılan basit operatörlerdir. *(çarpma) ve &#x2F;(bölme) işlemleri +(toplama) ve -(çıkarma) işlemlerine göre daha önceliklidirler. Uzun işlemlerde işlem sırasını kontrol edebilmek için ( ve ) kullanılır. Bu parantezler içinde yazılan işlemler daha önceliklidir.  </p>
+<p><strong>Operatör kullanım örnekleri:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// aritmetik operatorler: +, -, *, /, %, ++, --, +=, -=</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;8 + 2 = &quot;</span> &lt;&lt; <span class="number">8</span> + <span class="number">2</span> &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;8 - 2 = &quot;</span> &lt;&lt; <span class="number">8</span> - <span class="number">2</span> &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;8 * 2 = &quot;</span> &lt;&lt; <span class="number">8</span> * <span class="number">2</span> &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;8 / 2 = &quot;</span> &lt;&lt; <span class="number">8</span> / <span class="number">2</span> &lt;&lt; endl;</span><br><span class="line"><span class="comment">// 8&#x27;in 2 ile bolumunden kalan:</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;8 % 2 = &quot;</span> &lt;&lt; <span class="number">8</span> % <span class="number">2</span> &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<p><strong>çift + ve çift - kullanımı:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> sayi = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sayi degiskeni su anki degerini alir, sonra bir arttirilir.</span></span><br><span class="line">sayi++;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sayi degiskeni bir arttirilir.</span></span><br><span class="line">++sayi;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sayi degiskeni su anki degerini alir, sonra bir azaltilir.</span></span><br><span class="line">sayi--;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sayi degiskeni bir azaltilir.</span></span><br><span class="line">--sayi;</span><br></pre></td></tr></table></figure>
+
+<p>+&#x3D; kullanımı: <code>a = a + b</code> yerine <code>a += b</code><br>-&#x3D; kullanımı: <code>a = a - b</code> yerine <code>a -= b</code>  </p>
+<h2 id="Kontrol-Yapilari"><a href="#Kontrol-Yapilari" class="headerlink" title="Kontrol Yapıları"></a>Kontrol Yapıları</h2><p>If-else ve Switch-case olarak adlandırılan iki yaygın türü vardır.</p>
+<p><strong>If-else örnek:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> yas = <span class="number">21</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(yas &lt; <span class="number">18</span>) <span class="comment">// yas 18&#x27;den kucukse alttaki kodlari uygula</span></span><br><span class="line">&#123;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Uzgunum.&quot;</span> &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Ehliyet alamazsiniz.&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="comment">// yas 18&#x27;e esit veya 18&#x27;den buyukse alttaki kodlari uygula</span></span><br><span class="line">&#123;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Tebrikler.&quot;</span> &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Ehliyet alabilirsiniz.&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Bu yapıda dikkat edilecek yer <code>yas &lt; 18</code> kontrolü. Kullanılabilecek çeşitli mantıksal operatörler:</p>
+<table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Görevi</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;</td>
+<td>&amp;nbsp;&amp;nbsp;küçükse</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;</td>
+<td>&amp;nbsp;&amp;nbsp;küçük veya eşitse</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>&amp;nbsp;&amp;nbsp;büyükse</td>
+</tr>
+<tr>
+<td>&gt;&#x3D;</td>
+<td>&amp;nbsp;&amp;nbsp;büyük veya eşitse</td>
+</tr>
+<tr>
+<td>!&#x3D;</td>
+<td>&amp;nbsp;&amp;nbsp;eşit değilse</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;</td>
+<td>&amp;nbsp;&amp;nbsp;eşitse</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>&amp;nbsp;&amp;nbsp;ve</td>
+</tr>
+<tr>
+<td>çift çizgi&amp;nbsp;</td>
+<td>&amp;nbsp;&amp;nbsp;veya</td>
+</tr>
+</tbody></table>
+<br/>
+
+<p><strong>Switch-case örnek:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(yas) <span class="comment">// yas degiskenine gore</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">case</span> <span class="number">1</span>: <span class="comment">// deger 1 ise</span></span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;Dunyaya hosgeldiniz.&quot;</span> &lt;&lt; endl;</span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">case</span> <span class="number">2</span>: <span class="comment">// deger 2 ise</span></span><br><span class="line"> 	  cout &lt;&lt; <span class="string">&quot;Tebrikler. Ilk adiminizi attiniz.&quot;</span> &lt;&lt; endl;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">case</span> <span class="number">6</span>: <span class="comment">// deger 6 ise</span></span><br><span class="line">       cout &lt;&lt; <span class="string">&quot;Okul cagina geldiniz.&quot;</span> &lt;&lt; endl;</span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">case</span> <span class="number">18</span>: <span class="comment">// deger 18 ise</span></span><br><span class="line">       cout &lt;&lt; <span class="string">&quot;Artik yetiskin bir bireysiniz.&quot;</span> &lt;&lt; endl;</span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">default</span>: <span class="comment">// deger yukaridakilerden farkliysa</span></span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Diziler"><a href="#Diziler" class="headerlink" title="Diziler"></a>Diziler</h2><p>Dizileri birden fazla değer taşıyan değişkenler gibi düşünebilirsiniz. Tek boyutlu ve çok boyutlu olmak üzere ikiye ayrılırlar. Şöyle tanımlanırlar:<br><code>veriTipi diziAdi[1. Boyut Eleman Sayısı][2. Boyut Eleman Sayısı][n. Boyut Eleman Sayısı]</code></p>
+<p>Genel olarak tek ve çift boyutlu diziler ihtiyaçları karşılar.</p>
+<p>Çok boyutlu dizi gösterimi:<br><img src="https://i-msdn.sec.s-msft.com/dynimg/IC32056.gif" /></p>
+<p>Tek boyutlu dizileri yukarıdaki tablonun ilk sütunu olarak düşünebilirsiniz.  </p>
+<p><strong>Tanımlama örneği:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DIZILER</span></span><br><span class="line">  <span class="type">int</span> dizi[<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">  <span class="type">int</span> ikiBoyutluDizi[<span class="number">3</span>][<span class="number">3</span>] = &#123;<span class="number">01</span>,<span class="number">02</span>,<span class="number">03</span>,</span><br><span class="line">                              <span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Yukarıdaki örneğe göre eleman değerleri:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DIZILER</span></span><br><span class="line">cout &lt;&lt; dizi[<span class="number">0</span>] &lt;&lt; endl; <span class="comment">// 1. eleman: 1</span></span><br><span class="line">cout &lt;&lt; dizi[<span class="number">1</span>] &lt;&lt; endl; <span class="comment">// 2. eleman: 2</span></span><br><span class="line">cout &lt;&lt; dizi[<span class="number">2</span>] &lt;&lt; endl; <span class="comment">// 3. eleman: 3</span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; ikiBoyutluDizi[<span class="number">0</span>][<span class="number">0</span>] &lt;&lt; endl; <span class="comment">// 1. satır 1. sütun: 1</span></span><br><span class="line">cout &lt;&lt; ikiBoyutluDizi[<span class="number">0</span>][<span class="number">1</span>] &lt;&lt; endl; <span class="comment">// 1. satır 2. sütun: 2</span></span><br><span class="line">cout &lt;&lt; ikiBoyutluDizi[<span class="number">0</span>][<span class="number">2</span>] &lt;&lt; endl; <span class="comment">// 1. satır 3. sütun: 3</span></span><br><span class="line">cout &lt;&lt; ikiBoyutluDizi[<span class="number">1</span>][<span class="number">0</span>] &lt;&lt; endl; <span class="comment">// 2. satır 1. sütun: 11</span></span><br><span class="line">cout &lt;&lt; ikiBoyutluDizi[<span class="number">1</span>][<span class="number">1</span>] &lt;&lt; endl; <span class="comment">// 2. satır 2. sütun: 12</span></span><br><span class="line">cout &lt;&lt; ikiBoyutluDizi[<span class="number">1</span>][<span class="number">2</span>] &lt;&lt; endl; <span class="comment">// 2. satır 3. sütun: 13</span></span><br></pre></td></tr></table></figure>
+
+<p>İlk bölümden bu kadar. Anlamadığınız yerler hakkında detaylı bilgiyi google ve youtube üzerinden bulabilirsiniz.  </p>
+<p>İkinci bölümde döngülerle, metin veri tipi ve vektörler ile ilgileneceğiz.</p>
+<p>Sonraki Bölüm: Döngüler, Metinler, Vektörler:<br><a href="/2015/07/02/temel-cpp-ikinci-gun-donguler-metinler-vektorler/">Temel C++ - 2. Gün: Döngüler, Metinler, Vektörler</a></p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#IDE-Secimi"><span class="toc-number">1.</span> <span class="toc-text">IDE Seçimi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Giris"><span class="toc-number">2.</span> <span class="toc-text">Giriş</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Degisken-Tanimlama"><span class="toc-number">3.</span> <span class="toc-text">Değişken Tanımlama</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Veri-Tipleri"><span class="toc-number">4.</span> <span class="toc-text">Veri Tipleri</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aritmetik-Operatorler"><span class="toc-number">5.</span> <span class="toc-text">Aritmetik Operatörler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kontrol-Yapilari"><span class="toc-number">6.</span> <span class="toc-text">Kontrol Yapıları</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diziler"><span class="toc-number">7.</span> <span class="toc-text">Diziler</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&text=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&title=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&is_video=false&description=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler&body=Check out this article: https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&title=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&title=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&title=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&title=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&name=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2015/07/01/temel-cpp-birinci-gun-giris/&t=Temel C++ 1. Gün: Veri Tipleri, Kontrol Yapıları, Diziler"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

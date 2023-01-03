@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Veri Tipleri (devamı)SayılarTüm sayı tipleri soyut Number sınıfından şekildeki gibi türemiş alt sınıflardır;    Sayı MetodlarıNumber sınıfının alt sınıflarının sahip olduğu bazı metodlar şu şekildedir">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler">
+<meta property="og:url" content="https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="Veri Tipleri (devamı)SayılarTüm sayı tipleri soyut Number sınıfından şekildeki gibi türemiş alt sınıflardır;    Sayı MetodlarıNumber sınıfının alt sınıflarının sahip olduğu bazı metodlar şu şekildedir">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://nuriu.github.io/resimler/sayilar.png">
+<meta property="article:published_time" content="2016-03-05T22:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.594Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="veri tipleri">
+<meta property="article:tag" content="diziler">
+<meta property="article:tag" content="operatörler">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nuriu.github.io/resimler/sayilar.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2016/03/07/temel-java-ucuncu-gun-karar-yapilari-donguler-metodlar/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2016/03/05/jekyll-kategoride-yayinlanmis-yazi-sayisinin-gosterimi/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&text=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&title=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&is_video=false&description=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler&body=Check out this article: https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&title=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&title=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&title=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&title=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&name=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&t=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Veri-Tipleri-devami"><span class="toc-number">1.</span> <span class="toc-text">Veri Tipleri (devamı)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sayilar"><span class="toc-number">1.1.</span> <span class="toc-text">Sayılar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sayi-Metodlari"><span class="toc-number">1.2.</span> <span class="toc-text">Sayı Metodları</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Karakter-Metodlari"><span class="toc-number">1.3.</span> <span class="toc-text">Karakter Metodları</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Metinler"><span class="toc-number">1.4.</span> <span class="toc-text">Metinler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Metinleri-Birlestirmek"><span class="toc-number">1.5.</span> <span class="toc-text">Metinleri Birleştirmek</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Operatorler"><span class="toc-number">1.6.</span> <span class="toc-text">Operatörler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aritmetik-Operatorler"><span class="toc-number">1.7.</span> <span class="toc-text">Aritmetik Operatörler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iliskisel-Operatorler"><span class="toc-number">1.8.</span> <span class="toc-text">İlişkisel Operatörler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mantiksal-Operatorler"><span class="toc-number">1.9.</span> <span class="toc-text">Mantıksal Operatörler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Atama-Operatorleri"><span class="toc-number">1.10.</span> <span class="toc-text">Atama Operatörleri</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diziler"><span class="toc-number">1.11.</span> <span class="toc-text">Diziler</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2016-03-05T22:00:00.000Z" itemprop="datePublished">06-Mart-2016</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.594Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/java/">java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/diziler/" rel="tag">diziler</a>, <a class="tag-link-link" href="/tags/java/" rel="tag">java</a>, <a class="tag-link-link" href="/tags/operatorler/" rel="tag">operatörler</a>, <a class="tag-link-link" href="/tags/veri-tipleri/" rel="tag">veri tipleri</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Veri-Tipleri-devami"><a href="#Veri-Tipleri-devami" class="headerlink" title="Veri Tipleri (devamı)"></a>Veri Tipleri (devamı)</h1><h2 id="Sayilar"><a href="#Sayilar" class="headerlink" title="Sayılar"></a>Sayılar</h2><p>Tüm sayı tipleri soyut Number sınıfından şekildeki gibi türemiş alt sınıflardır;  </p>
+<p><img src="/resimler/sayilar.png" alt="Sayilar"></p>
+<h2 id="Sayi-Metodlari"><a href="#Sayi-Metodlari" class="headerlink" title="Sayı Metodları"></a>Sayı Metodları</h2><p>Number sınıfının alt sınıflarının sahip olduğu bazı metodlar şu şekildedir;  </p>
+<table>
+<thead>
+<tr>
+<th>Metod</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>xValue()</td>
+<td>bu Number nesnesini x tipine dönüştürür ve geri gönderir.</td>
+</tr>
+<tr>
+<td>compareTo()</td>
+<td>bu Number nesnesini parametre olarak girilen değerle karşılaştırır.</td>
+</tr>
+<tr>
+<td>equals()</td>
+<td>bu Number nesnesinin parametre olarak gönderilen değere eşit olup olmadığını bulur.</td>
+</tr>
+<tr>
+<td>toString()</td>
+<td>bu Number nesnesinin metin tipini geri gönderir.</td>
+</tr>
+<tr>
+<td>min()</td>
+<td>gönderilen iki parametreden küçük olanı geriye gönderir.</td>
+</tr>
+<tr>
+<td>max()</td>
+<td>gönderilen iki parametreden büyük olanı geriye gönderir.</td>
+</tr>
+</tbody></table>
+<h2 id="Karakter-Metodlari"><a href="#Karakter-Metodlari" class="headerlink" title="Karakter Metodları"></a>Karakter Metodları</h2><p>Character sınıfının alt sınıflarının sahip olduğu bazı metodlar şu şekildedir;  </p>
+<table>
+<thead>
+<tr>
+<th>Metod</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>isLetter()</td>
+<td>gönderilen karakterin harf olup olmadığını kontrol eder.</td>
+</tr>
+<tr>
+<td>isDigit()</td>
+<td>gönderilen karkaterin rakam olup olmadığını kontrol eder.</td>
+</tr>
+<tr>
+<td>isWhitespace()</td>
+<td>gönderilen karakterin boşluk olup olmadığını kontrol eder. (kaçış dizeleri de dahil olmak üzere.)</td>
+</tr>
+<tr>
+<td>isUpperCase()</td>
+<td>gönderilen karakterin büyük olup olmadığını kontrol eder.</td>
+</tr>
+<tr>
+<td>isLowerCase()</td>
+<td>gönderilen karakterin küçük olup olmadığını kontrol eder.</td>
+</tr>
+<tr>
+<td>toUpperCase()</td>
+<td>gönderilen karakter küçükse büyük karaktere çevirir.</td>
+</tr>
+<tr>
+<td>toLowerCase()</td>
+<td>gönderilen karakter büyükse küçük karaktere çevirir.</td>
+</tr>
+<tr>
+<td>toString()</td>
+<td>geriye gönderilen karakterli bir metin nesnesi döndürür.</td>
+</tr>
+</tbody></table>
+<h2 id="Metinler"><a href="#Metinler" class="headerlink" title="Metinler"></a>Metinler</h2><p>Metinler karakter dizelerinden oluşan nesnelerdir. Birçok metoda sahiptirler. Basit metin örneği;  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">ad</span> <span class="operator">=</span> <span class="string">&quot;Kadir&quot;</span>;</span><br><span class="line"><span class="comment">// length() metodumuz ad değişkeninin uzunluğunu gönderir.</span></span><br><span class="line"><span class="type">int</span> <span class="variable">adUzunluk</span> <span class="operator">=</span> ad.length();</span><br><span class="line">System.out.println(ad + <span class="string">&quot; ismi &quot;</span> + adUzunluk + <span class="string">&quot; karakterden oluşur.&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Örnekteki kodu Java konsol uygulamamızda yazıp çalıştırdığımızda çıktımış şöyle olacaktır;  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kadir ismi 5 karakterden oluşur.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Metinleri-Birlestirmek"><a href="#Metinleri-Birlestirmek" class="headerlink" title="Metinleri Birleştirmek"></a>Metinleri Birleştirmek</h2><p>String sınıfında metinleri birleştirmeye yarayan concat isimli bir metod bulunur.</p>
+<p>Basit örnek;  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">ad</span> <span class="operator">=</span> <span class="string">&quot;Kadir&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">ikinciAd</span> <span class="operator">=</span> <span class="string">&quot;Sefa&quot;</span>, soyad = <span class="string">&quot;ÜNAL&quot;</span>;</span><br><span class="line">System.out.println(ad.concat(ikinciAd).concat(soyad));</span><br></pre></td></tr></table></figure>
+
+<p>Çıktı;  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KadirSefaÜNAL</span><br></pre></td></tr></table></figure>
+
+<p>concat metodundan ziyade birleştirme işlemi için genelde + operatörü kullanılır.</p>
+<p>Örnek;  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">ad</span> <span class="operator">=</span> <span class="string">&quot;Kadir&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">ikinciAd</span> <span class="operator">=</span> <span class="string">&quot;Sefa&quot;</span>, soyad = <span class="string">&quot;ÜNAL&quot;</span>;</span><br><span class="line">System.out.println(ad + <span class="string">&quot; &quot;</span> + ikinciAd + <span class="string">&quot; &quot;</span> + soyad);</span><br></pre></td></tr></table></figure>
+
+<p>Çıktı;  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kadir Sefa ÜNAL</span><br></pre></td></tr></table></figure>
+
+<h2 id="Operatorler"><a href="#Operatorler" class="headerlink" title="Operatörler"></a>Operatörler</h2><p>Operatörler verileri işlemek için kullanılan araçlardır.<br>Temel operatörleri aritmetik, mantıksal ve atama olarak dört grup içerisinde inceleyebiliriz.  </p>
+<h2 id="Aritmetik-Operatorler"><a href="#Aritmetik-Operatorler" class="headerlink" title="Aritmetik Operatörler"></a>Aritmetik Operatörler</h2><table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+ (Ekleme)</td>
+<td>Operatörün iki tarafındaki verileri toplar.</td>
+</tr>
+<tr>
+<td>- (Çıkarma)</td>
+<td>Operatörün sağındaki veriyi solundaki veriden çıkarır.</td>
+</tr>
+<tr>
+<td>++ (Arttırma)</td>
+<td>Veriyi bir arttırır.</td>
+</tr>
+<tr>
+<td>– (Azaltma)</td>
+<td>Veriyi bir azaltır.</td>
+</tr>
+<tr>
+<td>* (Çarpma)</td>
+<td>Operatörün iki tarafındaki verileri çarpar.</td>
+</tr>
+<tr>
+<td>&#x2F; (Bölüm)</td>
+<td>Operatörün solundaki veriyi sağındaki veriye böler.</td>
+</tr>
+<tr>
+<td>% (Mod)</td>
+<td>Operatörün solundaki veriyi sağındaki veriye bölümünden kalanı verir.</td>
+</tr>
+</tbody></table>
+<h2 id="Iliskisel-Operatorler"><a href="#Iliskisel-Operatorler" class="headerlink" title="İlişkisel Operatörler"></a>İlişkisel Operatörler</h2><table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;&#x3D;</td>
+<td>İki verinin eşit olup olmadığını kontrol eder. Eşitse true değerini döndürür.</td>
+</tr>
+<tr>
+<td>!&#x3D;</td>
+<td>İki verinin eşit olup olmadığını kontrol eder. Eşit değilse true değerini döndürür.</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>Soldaki verinin sağdaki veriden büyük olup olmadığını kontrol eder. Büyükse true döndürür.</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>Soldaki verinin sağdaki veriden küçük olup olmadığını kontrol eder. Küçükse true döndürür.</td>
+</tr>
+<tr>
+<td>&gt;&#x3D;</td>
+<td>Soldaki verinin sağdaki veriden büyük veya ona eşit olup olmadığını kontrol eder. Büyükse veya eşitse true döndürür.</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;</td>
+<td>Soldaki verinin sağdaki veriden küçük veya ona eşit olup olmadığını kontrol eder. Küçükse veya eşitse true döndürür.</td>
+</tr>
+</tbody></table>
+<h2 id="Mantiksal-Operatorler"><a href="#Mantiksal-Operatorler" class="headerlink" title="Mantıksal Operatörler"></a>Mantıksal Operatörler</h2><table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;&amp;</td>
+<td>eğer solundaki ve sağındaki işlemler doğruysa (0 değilse) true döndürür.</td>
+</tr>
+<tr>
+<td>!</td>
+<td>eğer karşılaştırma (işlem) doğruysa false döndürür.</td>
+</tr>
+</tbody></table>
+<p>Bunlara ek olarak veya (||) işareti eğer solundaki veya sağındaki işlemlerden biri doğruysa (0 değilse) true döndürür.</p>
+<h2 id="Atama-Operatorleri"><a href="#Atama-Operatorleri" class="headerlink" title="Atama Operatörleri"></a>Atama Operatörleri</h2><table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;</td>
+<td>Sağdaki veriyi soldaki veriye atar. ( a &#x3D; b )</td>
+</tr>
+<tr>
+<td>+&#x3D;</td>
+<td>Sağdaki veriyi soldakiyle toplar ve soldaki veriye atar. ( a &#x3D; a + b )</td>
+</tr>
+<tr>
+<td>-&#x3D;</td>
+<td>Sağdaki veriyi soldakinden çıkarır ve soldaki veriye atar. ( a &#x3D; a - b )</td>
+</tr>
+<tr>
+<td>*&#x3D;</td>
+<td>Sağdaki veriyi soldakiyle çarpar ve soldaki veriye atar. ( a &#x3D; a * b )</td>
+</tr>
+<tr>
+<td>&#x2F;&#x3D;</td>
+<td>Soldaki veriyi sağdakine böler ve soldaki veriye atar. ( a &#x3D; a &#x2F; b )</td>
+</tr>
+<tr>
+<td>%&#x3D;</td>
+<td>Soldaki verinin sağdakine bölümünden kalanı soldaki veriye atar. ( a &#x3D; a % b)</td>
+</tr>
+</tbody></table>
+<p>Yarın yazmayı düşündüğüm karar verme yapıları konusundaki basit hesap makinesi örneği ile birlikte operatörlerin görevleri&#x2F;işlevleri daha iyi anlaşılacaktır.  </p>
+<h2 id="Diziler"><a href="#Diziler" class="headerlink" title="Diziler"></a>Diziler</h2><p>Diziler, daha önceden belirlenmiş bir boyutta aynı tip verileri saklamaya yarar. Aynı tip verilerin koleksiyonu olarak da açıklanabilir.</p>
+<p>Tanımlanışları;  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">veriTipi[] diziAdi;</span><br><span class="line"></span><br><span class="line"><span class="comment">// örnek tanımlama</span></span><br><span class="line"><span class="type">int</span>[] sayilar = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">8</span>];</span><br><span class="line"><span class="comment">//int tipinde bir dizi oluşturduk ve 10 elemanlık yer ayırdık.</span></span><br></pre></td></tr></table></figure>
+
+<p>Elemanlara erişim;  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String[] doksanAltililar =  &#123; <span class="string">&quot;Mehmet Emekli&quot;</span>,</span><br><span class="line">                              <span class="string">&quot;Ahmet Urgancı&quot;</span>,</span><br><span class="line">                              <span class="string">&quot;Şevket Keyifsiz&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// indis değerlerimizin 0&#x27;dan başladığını gözden kaçırmayalım.</span></span><br><span class="line">System.out.println(doksanAltililar[<span class="number">0</span>]);</span><br><span class="line">System.out.println(doksanAltililar[<span class="number">1</span>]);</span><br><span class="line">System.out.println(doksanAltililar[<span class="number">2</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>Çıktımız;  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mehmet Emekli</span><br><span class="line">Ahmet Urgancı</span><br><span class="line">Şevket Keyifsiz</span><br></pre></td></tr></table></figure>
+
+<p>İlerleyen günlerde değineceğimiz kontrol &amp; döngü yapıları ile birlikte diziler üzerinde işlemler yapacağız. Bugünlük bu kadar.</p>
+<p>Sonraki Bölüm: Karar Yapıları, Döngüler, Metodlar:<br><a href="/2016/03/07/temel-java-ucuncu-gun-karar-yapilari-donguler-metodlar/">Temel Java - 3. Gün: Karar Yapıları, Döngüler, Metodlar</a>  </p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Veri-Tipleri-devami"><span class="toc-number">1.</span> <span class="toc-text">Veri Tipleri (devamı)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sayilar"><span class="toc-number">1.1.</span> <span class="toc-text">Sayılar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sayi-Metodlari"><span class="toc-number">1.2.</span> <span class="toc-text">Sayı Metodları</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Karakter-Metodlari"><span class="toc-number">1.3.</span> <span class="toc-text">Karakter Metodları</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Metinler"><span class="toc-number">1.4.</span> <span class="toc-text">Metinler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Metinleri-Birlestirmek"><span class="toc-number">1.5.</span> <span class="toc-text">Metinleri Birleştirmek</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Operatorler"><span class="toc-number">1.6.</span> <span class="toc-text">Operatörler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aritmetik-Operatorler"><span class="toc-number">1.7.</span> <span class="toc-text">Aritmetik Operatörler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iliskisel-Operatorler"><span class="toc-number">1.8.</span> <span class="toc-text">İlişkisel Operatörler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mantiksal-Operatorler"><span class="toc-number">1.9.</span> <span class="toc-text">Mantıksal Operatörler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Atama-Operatorleri"><span class="toc-number">1.10.</span> <span class="toc-text">Atama Operatörleri</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diziler"><span class="toc-number">1.11.</span> <span class="toc-text">Diziler</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&text=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&title=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&is_video=false&description=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler&body=Check out this article: https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&title=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&title=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&title=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&title=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&name=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/06/temel-java-ikinci-gun-veri-tipleri-operatorler-diziler/&t=Temel Java 2. Gün: Veri Tipleri, Operatörler, Diziler"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

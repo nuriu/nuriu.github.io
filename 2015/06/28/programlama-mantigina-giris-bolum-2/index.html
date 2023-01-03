@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Programlar Nelerden Oluşur?Kaba tabirle programlar modüllerden, modüller algoritmalardan, algoritmalar ise kod bloklarından oluşur. Modülleri kabaca kaynak kod doslayarı olarak düşünebilirsiniz. Algor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programlama Mantığına Giriş Bölüm 2">
+<meta property="og:url" content="https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="Programlar Nelerden Oluşur?Kaba tabirle programlar modüllerden, modüller algoritmalardan, algoritmalar ise kod bloklarından oluşur. Modülleri kabaca kaynak kod doslayarı olarak düşünebilirsiniz. Algor">
+<meta property="og:locale" content="tr_TR">
+<meta property="article:published_time" content="2015-06-27T21:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.585Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="genel">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Programlama Mantığına Giriş Bölüm 2</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2015/07/01/temel-cpp-birinci-gun-giris/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2015/06/27/programlama-mantigina-giris-bolum-1/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&text=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&title=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&is_video=false&description=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Programlama Mantığına Giriş Bölüm 2&body=Check out this article: https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&title=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&title=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&title=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&title=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&name=Programlama Mantığına Giriş Bölüm 2&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&t=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Programlar-Nelerden-Olusur"><span class="toc-number">1.</span> <span class="toc-text">Programlar Nelerden Oluşur?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Programlar-Nasil-Olusur"><span class="toc-number">2.</span> <span class="toc-text">Programlar Nasıl Oluşur?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IDE-nedir"><span class="toc-number">3.</span> <span class="toc-text">IDE nedir?</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Programlama Mantığına Giriş Bölüm 2
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2015-06-27T21:00:00.000Z" itemprop="datePublished">28-Haziran-2015</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.585Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/genel/">genel</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/genel/" rel="tag">genel</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Programlar-Nelerden-Olusur"><a href="#Programlar-Nelerden-Olusur" class="headerlink" title="Programlar Nelerden Oluşur?"></a>Programlar Nelerden Oluşur?</h2><p>Kaba tabirle programlar modüllerden, modüller algoritmalardan, algoritmalar ise kod bloklarından oluşur. Modülleri kabaca kaynak kod doslayarı olarak düşünebilirsiniz. Algoritmalar ise hepimizin farkında olmadan kullandığı şeydir; sıralanmış iş adımları.</p>
+<p>Lafı daha fazla uzatmayıp örnek üzerinden gidelim. Aşağıda kullanıcı tarafından girilen iki sayının karelerinin toplamını bulup ekrana yazan basit programın C dilindeki kaynak kodu verilmiştir.</p>
+<figure class="highlight c"><figcaption><span>main.c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n1 = <span class="number">0</span>, n2 = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> toplam = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Arada bosluk olacak sekilde iki sayi girin: &quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;n1, &amp;n2);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Girilen sayilarin karelerinin toplami:\n&quot;</span>);</span><br><span class="line">	toplam = (n1*n1) + (n2*n2);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,toplam);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Yukarıdaki kaynak kodu üç parçaya bölebiliriz;  </p>
+<ul>
+<li>Başlık dosyaları<br>  İlk iki satır programımıza <code>stdio.h</code> ve <code>stdlib.h</code> olmak üzere iki başlık (header) dosyası çağırır. Bu başlık dosyaları kullanılmak üzere hazır fonksiyonları içerir.  </li>
+<li>Değişken tanımlamaları<br>  4-5. satırlarda <code>int</code> tipinde üç değişken tanımlanmıştır. Değişkenler programlarda veri kullanımını kolaylaştırır.</li>
+<li>Main fonksiyonunun kod bloğu<br>  Sonraki 7. satırda  <code>int</code> tipinde tanımlanan <code>main</code> fonksiyonunu görüyoruz.  Alt satırlarda ise <code>&#123;</code> ile başlayıp <code>&#125;</code> ile sonlanan, fonksiyonun kod bloğu bulunmakta.</li>
+</ul>
+<p>Programın yaptıkları sırasıyla şunlar;  </p>
+<ul>
+<li>Ekrana <code>Arada bosluk olacak sekilde iki sayi girin: </code> yazar.  </li>
+<li>Kullanıcının girdiği sayıları, daha önceden <code>int</code> tipinde tanımlanmış olan <code>n1</code> ve <code>n2</code> değişkenlerine atar.  </li>
+<li>Ekrana <code>Girilen sayilarin karelerinin toplami:</code> yazıp bir alt satıra geçer.  </li>
+<li>Yine <code>int</code> tipinde tanımlanmış olan <code>toplam</code> değişkenine <code>(n1*n1) + (n2*n2)</code> işleminin sonucunu atar.  </li>
+<li>Ve son olarak ekrana <code>toplam</code> değişkenini yazdırır.</li>
+</ul>
+<p>Basit bir programın nelerden oluştuğunu gösterdiğimize göre bu kodların nereye yazıldığını ve nasıl programa dönüştüğünden bahsedebiliriz.  </p>
+<h2 id="Programlar-Nasil-Olusur"><a href="#Programlar-Nasil-Olusur" class="headerlink" title="Programlar Nasıl Oluşur?"></a>Programlar Nasıl Oluşur?</h2><p>Yukarıdaki örnekteki kaynak kodu bir metin belgesine yazıp dosya uzantısını <code>.c</code> yapıp kaydetseniz bile tek başına bir işe yaramaz.  </p>
+<p>Kodların programa dönüşebilmesi için kodların bir derleyici tarafından derlenmesi gerekir. Bu konuyu anlatmak için genelde derleyici, bağlayıcı gibi unsurlar ayrı ayrı anlatılır fakat konu oldukça uzamaya ve karışıklaşmaya müsait olduğundan ben sadece, bunların birleştirilmiş halleri olaran IDE (integrated development environment) ‘nin tanımını yapacağım.  </p>
+<h2 id="IDE-nedir"><a href="#IDE-nedir" class="headerlink" title="IDE nedir?"></a>IDE nedir?</h2><p>IDE, kodların yazıldığı ve derlendiği yazılımlardır. Visual Studio (C++, C#, F#, Python), Eclipse(Java, C, C++), Code::Blocks(C, C++, D) gibi bir çok örnekleri vardır. Bu yazılımlar hakkında daha detaylı bilgiyi ve ekran görüntülerini internetten bulabilirsiniz.  </p>
+<p>Bu ve önceki bölümde programlama dünyasına ufak bir pencere açtık. Bundan sonraki yazılarım genelde programlama dilleri ve kütüphaneleri üzerine teknik yoğunluklu olacak. Doğrudan uygulamayla başlamak istiyorsanız gelecekteki yazılarım sizin için daha uygun olacaktır. Fakat kafanızın karıştığını düşünüyor ve giriş konusunda daha fazla bilgi istiyorsanız aşağıdaki kaynaktan veya googledan yararlanabilirsiniz.  </p>
+<p><a target="_blank" rel="noopener" href="http://holowczak.com/programming-concepts-tutorial-programmers/">Programming Concepts: A Brief Tutorial for New Programmers</a></p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Programlar-Nelerden-Olusur"><span class="toc-number">1.</span> <span class="toc-text">Programlar Nelerden Oluşur?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Programlar-Nasil-Olusur"><span class="toc-number">2.</span> <span class="toc-text">Programlar Nasıl Oluşur?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IDE-nedir"><span class="toc-number">3.</span> <span class="toc-text">IDE nedir?</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&text=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&title=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&is_video=false&description=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Programlama Mantığına Giriş Bölüm 2&body=Check out this article: https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&title=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&title=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&title=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&title=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&name=Programlama Mantığına Giriş Bölüm 2&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2015/06/28/programlama-mantigina-giris-bolum-2/&t=Programlama Mantığına Giriş Bölüm 2"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

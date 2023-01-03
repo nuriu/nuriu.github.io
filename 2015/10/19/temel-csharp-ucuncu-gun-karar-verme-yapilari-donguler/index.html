@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Karar Verme YapılarıKarar verme yapıları adından da anlaşılacağı üzere belirli durumların gerçekleşmesi durumunda program akışını değiştirmek için kullanılan yapılardır.   If YapısıBelirli bir durumu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler">
+<meta property="og:url" content="https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="Karar Verme YapılarıKarar verme yapıları adından da anlaşılacağı üzere belirli durumların gerçekleşmesi durumunda program akışını değiştirmek için kullanılan yapılardır.   If YapısıBelirli bir durumu">
+<meta property="og:locale" content="tr_TR">
+<meta property="article:published_time" content="2015-10-18T21:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.592Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="c#">
+<meta property="article:tag" content="döngüler">
+<meta property="article:tag" content="karar verme yapıları">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2015/10/20/temel-csharp-dorduncu-gun-metodlar/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2015/10/18/temel-csharp-ikinci-gun-giris-veri-tipleri-tip-donusumleri/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&text=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&title=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&is_video=false&description=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler&body=Check out this article: https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&title=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&title=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&title=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&title=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&name=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&t=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Karar-Verme-Yapilari"><span class="toc-number">1.</span> <span class="toc-text">Karar Verme Yapıları</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#If-Yapisi"><span class="toc-number">2.</span> <span class="toc-text">If Yapısı</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Switch-Yapisi"><span class="toc-number">3.</span> <span class="toc-text">Switch Yapısı</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Donguler"><span class="toc-number">4.</span> <span class="toc-text">Döngüler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#While"><span class="toc-number">5.</span> <span class="toc-text">While</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#For"><span class="toc-number">6.</span> <span class="toc-text">For</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Do-While"><span class="toc-number">7.</span> <span class="toc-text">Do While</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2015-10-18T21:00:00.000Z" itemprop="datePublished">19-Ekim-2015</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.592Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/c/">c#</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/c/" rel="tag">c#</a>, <a class="tag-link-link" href="/tags/donguler/" rel="tag">döngüler</a>, <a class="tag-link-link" href="/tags/karar-verme-yapilari/" rel="tag">karar verme yapıları</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Karar-Verme-Yapilari"><a href="#Karar-Verme-Yapilari" class="headerlink" title="Karar Verme Yapıları"></a>Karar Verme Yapıları</h2><p>Karar verme yapıları adından da anlaşılacağı üzere belirli durumların gerçekleşmesi durumunda program akışını değiştirmek için kullanılan yapılardır.  </p>
+<h2 id="If-Yapisi"><a href="#If-Yapisi" class="headerlink" title="If Yapısı"></a>If Yapısı</h2><p>Belirli bir durumu kontrol eder, durum kontrolden geçerse kod bloğunu işler, durum kontrolden geçmezse varsa diğer durumları yoksa else kod bloğunu çalıştırır. Else bloğu yoksa program akışına kaldığı yerden devam eder. Basitçe if yapısı şu şekilde tanımlanır;  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">KararYapilari</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">   &#123;</span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">      &#123;</span><br><span class="line">         <span class="keyword">if</span> (değerlendirilecek durum)</span><br><span class="line">         &#123;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">if</span>(durum yanlışsa değerlendirilecek durum <span class="number">1</span>)</span><br><span class="line">         &#123;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">if</span>(durum ve durum <span class="number">1</span> yanlışsa değerlendirilecek durum <span class="number">2</span>)</span><br><span class="line">         &#123;</span><br><span class="line">         &#125;</span><br><span class="line">         .</span><br><span class="line">         .</span><br><span class="line">         .</span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">if</span>(durum, durum <span class="number">1</span>, durum <span class="number">2</span>, ..., durum n<span class="number">-1</span> yanlışsa değerlendirilecek durum n)</span><br><span class="line">         &#123;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span></span><br><span class="line">         &#123;</span><br><span class="line">             <span class="comment">/*Tüm durumlar yanlışsa işlenecek kod bloğu*/</span></span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Basit örnek;  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">KararYapilari</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">   &#123;</span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">      &#123;</span><br><span class="line">         <span class="comment">/*lokal değişkenimiz*/</span></span><br><span class="line">         <span class="built_in">int</span> yas = <span class="number">18</span>;</span><br><span class="line"></span><br><span class="line">         <span class="comment">/*yas değişkeninin 18&#x27;den büyük olup olmadığını denetle*/</span></span><br><span class="line">         <span class="keyword">if</span> (yas &gt; <span class="number">18</span>)</span><br><span class="line">         &#123;</span><br><span class="line">            <span class="comment">/*denetlenen durum doğruysa işlenecek kod bloğu*/</span></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Yaş değişkeni 18&#x27;den büyük.&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">/*yas değişkeniyle ilgili ek durum değerlendirmesi*/</span></span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">if</span>(yas == <span class="number">18</span>)</span><br><span class="line">         &#123;</span><br><span class="line">            <span class="comment">/*yaş değişkenin 18&#x27;den büyük olmaması fakat</span></span><br><span class="line"><span class="comment">               18&#x27;e eşit olması durumunda işlenecek kod bloğu*/</span></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Yaş değişkeni 18&#x27;e eşit.&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span></span><br><span class="line">         &#123;</span><br><span class="line">            <span class="comment">/*denetlenen durum yanlışsa işlenecek kod bloğu*/</span></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Yaş değişkeni 18&#x27;den küçük.&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Switch-Yapisi"><a href="#Switch-Yapisi" class="headerlink" title="Switch Yapısı"></a>Switch Yapısı</h2><p>Fazla uzayan ve karmaşıklaşan if yapılarına çözüm olarak geliştirilmiş yapıdır. Birden fazla koşul karşında programın akışını değiştirmeye yarar. Tanımlanış şekli;  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">KararYapilari</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">   &#123;</span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">      &#123;</span><br><span class="line">         <span class="keyword">switch</span> (degerlendirilecek durum)</span><br><span class="line">         &#123;</span><br><span class="line">            <span class="keyword">case</span> olabilecek sonuc <span class="number">1</span>:</span><br><span class="line">               kodlar</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> olabilecek sonuc <span class="number">2</span>:</span><br><span class="line">                kodlar</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> olabilecek sonuc <span class="number">3</span>:</span><br><span class="line">                kodlar</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            .</span><br><span class="line">            .</span><br><span class="line">            .</span><br><span class="line">            <span class="keyword">case</span> olabilecek sonuc n:</span><br><span class="line">                kodlar</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="literal">default</span>:</span><br><span class="line">                diğer sonuçlarda çalışacak kodlar</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>if yapısını kullandığımız örneği switch yapısı ile farklı bir şekilde gerçekleştirelim;  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">KararYapilari</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">   &#123;</span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">switch</span> (yas)</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">case</span> <span class="number">18</span>:</span><br><span class="line">                    Console.WriteLine(<span class="string">&quot;Yaş = 18.&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">              <span class="keyword">case</span> <span class="number">19</span>:</span><br><span class="line">                    Console.WriteLine(<span class="string">&quot;Yaş = 19.&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">              <span class="keyword">case</span> <span class="number">20</span>:</span><br><span class="line">                    Console.WriteLine(<span class="string">&quot;Yaş = 20.&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">              <span class="literal">default</span>:</span><br><span class="line">                    Console.WriteLine(<span class="string">&quot;Yaş değişkeni 18&#x27;den küçük veya 20&#x27;den büyük.&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Donguler"><a href="#Donguler" class="headerlink" title="Döngüler"></a>Döngüler</h2><p>Döngüler, belirli bir koşulun sağlandığı sürece tekrar tekrar gerçekleştirilecek işlemler için kullanılırlar. 3 şekli şöyledir;  </p>
+<h2 id="While"><a href="#While" class="headerlink" title="While"></a>While</h2><p>Belirtilen koşul gerçekleştiği sürece kod bloğunu işleyen döngü çeşididir. Tanımlanış şekli;  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Donguler</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">   &#123;</span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">while</span>(kosul)</span><br><span class="line">          &#123;</span><br><span class="line">              kosul gerçekleştiği sürece işlenecek kodlar</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Basit while örneği;  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Donguler</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">   &#123;</span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="built_in">int</span> yas = <span class="number">0</span>;</span><br><span class="line">          <span class="keyword">while</span>(yas &lt; <span class="number">18</span>)</span><br><span class="line">          &#123;</span><br><span class="line">              yas += <span class="number">1</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          Console.WriteLine(<span class="string">&quot;Yas = 18 oldu.&quot;</span>);</span><br><span class="line">          Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="For"><a href="#For" class="headerlink" title="For"></a>For</h2><p>for yapısı while döngüsünün biraz süslenmiş hali gibidir. Tanımlanış şekli;  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Donguler</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">   &#123;</span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">for</span>(sayac degiskeni; kosul; sayac işlemi)</span><br><span class="line">          &#123;</span><br><span class="line">              kosul gerçekleştiği sürece işlenecek kodlar</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Basit for örneği;  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Donguler</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">int</span> yas = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(yas = <span class="number">0</span>; yas &lt; <span class="number">18</span>; yas++)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(yas);</span><br><span class="line">            &#125;</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Do-While"><a href="#Do-While" class="headerlink" title="Do While"></a>Do While</h2><p>while döngüsünün ters çevrilmiş hali gibidir. Program döngü içine her koşulda en az 1 kez girip kod bloğunu işler. Tanımlanış şekli;  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Donguler</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">do</span></span><br><span class="line">            &#123;</span><br><span class="line">                kosul gerçekleşene kadar işlenecek kodlar</span><br><span class="line">            &#125;<span class="keyword">while</span>(kosul)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Basit örnek;  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Donguler</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">int</span> yas = <span class="number">18</span>;</span><br><span class="line">            <span class="keyword">do</span></span><br><span class="line">            &#123;</span><br><span class="line">                yas+=<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">while</span>(yas &lt; <span class="number">18</span>)</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Yas = 19.&quot;</span>);</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Sonraki Bölüm: Metodlar:<br><a href="/2015/10/20/temel-csharp-dorduncu-gun-metodlar/">Temel C# - 4. Gün: Metodlar</a>  </p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Karar-Verme-Yapilari"><span class="toc-number">1.</span> <span class="toc-text">Karar Verme Yapıları</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#If-Yapisi"><span class="toc-number">2.</span> <span class="toc-text">If Yapısı</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Switch-Yapisi"><span class="toc-number">3.</span> <span class="toc-text">Switch Yapısı</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Donguler"><span class="toc-number">4.</span> <span class="toc-text">Döngüler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#While"><span class="toc-number">5.</span> <span class="toc-text">While</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#For"><span class="toc-number">6.</span> <span class="toc-text">For</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Do-While"><span class="toc-number">7.</span> <span class="toc-text">Do While</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&text=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&title=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&is_video=false&description=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler&body=Check out this article: https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&title=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&title=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&title=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&title=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&name=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2015/10/19/temel-csharp-ucuncu-gun-karar-verme-yapilari-donguler/&t=Temel C# 3. Gün: Karar Verme Yapıları &amp; Döngüler"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

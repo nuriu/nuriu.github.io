@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Arayüz Ayrımı İlkesi many client-specific interfaces are better than one general-purpose interface.  Türkçe;    istemciye özel çok arayüz, genel amaçlı tek bir arayüzden daha iyidir.  veya farklı bir">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(I) Arayüz Ayrımı İlkesi (Interface segregation principle)">
+<meta property="og:url" content="https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="Arayüz Ayrımı İlkesi many client-specific interfaces are better than one general-purpose interface.  Türkçe;    istemciye özel çok arayüz, genel amaçlı tek bir arayüzden daha iyidir.  veya farklı bir">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://nuriu.github.io/resimler/solid/ilkeler7.png">
+<meta property="og:image" content="https://nuriu.github.io/resimler/solid/ilkeler8.png">
+<meta property="og:image" content="https://nuriu.github.io/resimler/solid/ilkeler9.png">
+<meta property="article:published_time" content="2016-03-16T22:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.581Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="mimari &amp; tasarım">
+<meta property="article:tag" content="solid ilkeleri">
+<meta property="article:tag" content="tasarım ilkeleri">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nuriu.github.io/resimler/solid/ilkeler7.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>(I) Arayüz Ayrımı İlkesi (Interface segregation principle)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2016/03/18/bagimlilik-ters-cevirme-ilkesi-dependency-inversion-principle/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2016/03/16/liskovun-yer-degistirme-ilkesi-liskov-substitution-principle/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&text=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&title=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&is_video=false&description=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)&body=Check out this article: https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&title=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&title=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&title=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&title=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&name=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&t=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Arayuz-Ayrimi-Ilkesi"><span class="toc-number">1.</span> <span class="toc-text">Arayüz Ayrımı İlkesi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sorun"><span class="toc-number">2.</span> <span class="toc-text">Sorun</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cozum"><span class="toc-number">3.</span> <span class="toc-text">Çözüm</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        (I) Arayüz Ayrımı İlkesi (Interface segregation principle)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2016-03-16T22:00:00.000Z" itemprop="datePublished">17-Mart-2016</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.581Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/solid-ilkeleri/">solid ilkeleri</a> › <a class="category-link" href="/categories/solid-ilkeleri/mimari-tasarim/">mimari & tasarım</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/mimari-tasarim/" rel="tag">mimari & tasarım</a>, <a class="tag-link-link" href="/tags/solid-ilkeleri/" rel="tag">solid ilkeleri</a>, <a class="tag-link-link" href="/tags/tasarim-ilkeleri/" rel="tag">tasarım ilkeleri</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Arayuz-Ayrimi-Ilkesi"><a href="#Arayuz-Ayrimi-Ilkesi" class="headerlink" title="Arayüz Ayrımı İlkesi"></a>Arayüz Ayrımı İlkesi</h2><blockquote>
+<p>many client-specific interfaces are better than one general-purpose interface.</p>
+</blockquote>
+<p>Türkçe;  </p>
+<blockquote>
+<p>istemciye özel çok arayüz, genel amaçlı tek bir arayüzden daha iyidir.</p>
+</blockquote>
+<p>veya farklı bir deyiş ile “hiçbir istemci (nesne) kullanmadığı metodlara bağlı olmamalıdır.”</p>
+<p>Bu ilke, arayüzleri şişmanlatmak yerine, onları daha özelleştirilmiş biçimde kullanmayı hedefler.  </p>
+<p>Hem bağlantılı hem de daha mantıklı ve basit olması açısından bir önceki ilkemizdeki verdiğimiz örnekten devam edelim;  </p>
+<p><img src="/resimler/solid/ilkeler7.png" alt="Yedinci Adım"></p>
+<p>Şimdi projemizin büyüdüğünü ve yeni gereksinimlerin eklendiğini düşünerek bu tasarımı biraz daha büyütelim&#x2F;genelleyelim;  </p>
+<p><img src="/resimler/solid/ilkeler8.png" alt="Sekizinci Adım"></p>
+<p>Projemizin taşıtlar ile ilgili olduğunu varsayarak üst sınıflar ekledik ve var olan sınıflarımızı kategorize ettik.<br><em>luks</em> sınıfımızı soyut yaptık ve ondan <em>suv</em> ile <em>spor</em> sınıflarını türettik.</p>
+<p>Ek olarak üstü açılabilen araçlar olacağını düşünerek arayüzümüze bu yeteneği ekleyerek arayüzümüzü genellemiş olduk.</p>
+<p>Peki iyi mi yaptık? Buradaki sorun nerede?  </p>
+<h2 id="Sorun"><a href="#Sorun" class="headerlink" title="Sorun"></a>Sorun</h2><p>Dikkat ederseniz arayüzümüz doğrudan <em>luks</em> sınıfına bağlı.</p>
+<p>Yani <em>luks</em> sınıfından türetilen her sınıfa ait tüm nesneler bu yeteneklere sahip olacak&#x2F;olmalı. <em>spor</em> sınıfına ait tüm araçların üstü açılabilen olduğunu varsayalım.</p>
+<p>Peki ya <em>suv</em> sınıfına ait olanlar? Sorunumuz işte burada başlıyor.</p>
+<h2 id="Cozum"><a href="#Cozum" class="headerlink" title="Çözüm"></a>Çözüm</h2><p>Bu sorunu çözmek için yapmamız gereken şey çok basit.<br>Eğer arayüzümüzü şişirmek&#x2F;genellemek yerine daha özel arayüzler oluşturursak, onları daha uygun kullanabiliriz. Yani;  </p>
+<p><img src="/resimler/solid/ilkeler9.png" alt="Dokuzuncu Adım"></p>
+<p>Bu basit ama önemli ilkeyi aklımızda bulundurup tasarımımızı özelleştirdiğimizde genişlemeye daha müsait&#x2F;uygun bir yapı elde etmiş olduk.</p>
+<p>Sonraki bölüm: <a href="/2016/03/18/bagimlilik-ters-cevirme-ilkesi-dependency-inversion-principle/">Bağımlılık Ters Çevirme İlkesi</a></p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Arayuz-Ayrimi-Ilkesi"><span class="toc-number">1.</span> <span class="toc-text">Arayüz Ayrımı İlkesi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sorun"><span class="toc-number">2.</span> <span class="toc-text">Sorun</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cozum"><span class="toc-number">3.</span> <span class="toc-text">Çözüm</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&text=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&title=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&is_video=false&description=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)&body=Check out this article: https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&title=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&title=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&title=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&title=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&name=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/17/arayuz-ayrimi-ilkesi-interface-segregation-principle/&t=(I) Arayüz Ayrımı İlkesi (Interface segregation principle)"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="GirişMimari &amp; Tasarım kategorimize giriş yapma zamanımız geldi. Bu kategorideki ilk serimiz solid olarak kısaltılan&#x2F;bilinen nesne tabanlı yazılım tasarımı ilkeleri üzerine olacak. Peki nedir">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(S) Tek Sorumluluk İlkesi (Single responsibility principle)">
+<meta property="og:url" content="https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="GirişMimari &amp; Tasarım kategorimize giriş yapma zamanımız geldi. Bu kategorideki ilk serimiz solid olarak kısaltılan&#x2F;bilinen nesne tabanlı yazılım tasarımı ilkeleri üzerine olacak. Peki nedir">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://nuriu.github.io/resimler/solid/ilkeler1.png">
+<meta property="og:image" content="https://nuriu.github.io/resimler/solid/ilkeler2.png">
+<meta property="og:image" content="https://nuriu.github.io/resimler/solid/ilkeler3.png">
+<meta property="article:published_time" content="2016-03-13T22:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.586Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="mimari &amp; tasarım">
+<meta property="article:tag" content="solid ilkeleri">
+<meta property="article:tag" content="tasarım ilkeleri">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nuriu.github.io/resimler/solid/ilkeler1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>(S) Tek Sorumluluk İlkesi (Single responsibility principle)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2016/03/15/acik-kapali-ilkesi-open-closed-principle/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2016/03/13/veri-yapilari-yigin-stack/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&text=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&title=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&is_video=false&description=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=(S) Tek Sorumluluk İlkesi (Single responsibility principle)&body=Check out this article: https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&title=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&title=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&title=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&title=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&name=(S) Tek Sorumluluk İlkesi (Single responsibility principle)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&t=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Giris"><span class="toc-number">1.</span> <span class="toc-text">Giriş</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bu-ilkeler-nicin-var"><span class="toc-number">2.</span> <span class="toc-text">Bu ilkeler niçin var?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nasil-kullanacagiz-x2F-kullanmaliyiz"><span class="toc-number">3.</span> <span class="toc-text">Nasıl kullanacağız &#x2F; kullanmalıyız?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tek-Sorumluluk-Ilkesi"><span class="toc-number">4.</span> <span class="toc-text">Tek Sorumluluk İlkesi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bu-tasarim-x2F-ilke-neden-mantikli-x2F-gerekli"><span class="toc-number">5.</span> <span class="toc-text">Bu tasarım&#x2F;ilke neden mantıklı&#x2F;gerekli?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bu-tasarimi-x2F-ilkeyi-ne-zaman-dusunmeli-x2F-uygulamaliyiz"><span class="toc-number">6.</span> <span class="toc-text">Bu tasarımı&#x2F;ilkeyi ne zaman düşünmeli&#x2F;uygulamalıyız?</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        (S) Tek Sorumluluk İlkesi (Single responsibility principle)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2016-03-13T22:00:00.000Z" itemprop="datePublished">14-Mart-2016</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.586Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/solid-ilkeleri/">solid ilkeleri</a> › <a class="category-link" href="/categories/solid-ilkeleri/mimari-tasarim/">mimari & tasarım</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/mimari-tasarim/" rel="tag">mimari & tasarım</a>, <a class="tag-link-link" href="/tags/solid-ilkeleri/" rel="tag">solid ilkeleri</a>, <a class="tag-link-link" href="/tags/tasarim-ilkeleri/" rel="tag">tasarım ilkeleri</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Giris"><a href="#Giris" class="headerlink" title="Giriş"></a>Giriş</h2><p>Mimari &amp; Tasarım kategorimize giriş yapma zamanımız geldi.</p>
+<p>Bu kategorideki ilk serimiz solid olarak kısaltılan&#x2F;bilinen nesne tabanlı yazılım tasarımı ilkeleri üzerine olacak.</p>
+<p>Peki nedir bu ilkeler?</p>
+<ol>
+<li>(S) Tek Sorumluluk İlkesi (Single responsibility principle)  </li>
+<li>(O) Açık&#x2F;Kapalı İlkesi (Open&#x2F;closed principle)  </li>
+<li>(L) Liskov’un Yer Değiştirme İlkesi (Liskov substitution principle)  </li>
+<li>(I) Arayüz Ayrımı İlkesi (Interface segregation principle)  </li>
+<li>(D) Bağımlılık Ters Çevirme İlkesi (Dependency inversion principle)</li>
+</ol>
+<h2 id="Bu-ilkeler-nicin-var"><a href="#Bu-ilkeler-nicin-var" class="headerlink" title="Bu ilkeler niçin var?"></a>Bu ilkeler niçin var?</h2><p>Yazılım projeleri büyüdükçe hem daha karmaşıklaşıyor hem de karmaşıklaşma potansiyeli artıyor.</p>
+<p>Bu karmaşıklıklar yüzünden hem proje üzerinde ilerlemek&#x2F;yol bulmak zorlaşıyor hem de olası kod tekrarları yüzünden kaynak kullanımı artıyor, dolayısıyla performans da düşüyor.  </p>
+<p>İşte bu ilkeler hem bu konuda hem de genel olarak daha akılcı bir yol izlememizde bize yardımcı oluyorlar.</p>
+<p>Sonuçta bunlar diğer alanların&#x2F;konuların sahip olduğu gibi birer düşünce yapısı&#x2F;şekli.</p>
+<h2 id="Nasil-kullanacagiz-x2F-kullanmaliyiz"><a href="#Nasil-kullanacagiz-x2F-kullanmaliyiz" class="headerlink" title="Nasıl kullanacağız &#x2F; kullanmalıyız?"></a>Nasıl kullanacağız &#x2F; kullanmalıyız?</h2><p>Ben bu ilkelerin kalıplar olarak düşünülmesindense ilkeler olarak düşünülmesinin daha doğru olduğunu düşünüyorum.</p>
+<p>Yani; yazdığımız kodları bu kalıplara uydurmaya çalışmaktansa kod yazarken bu ilkeleri aklımızda bulundurmanın ve ona göre akılcı hareket etmenin daha mantıklı olduğu kanaatindeyim.  </p>
+<p>Uygulamaların teorik olarak gereğinden fazla uzatılmasından hoşlanmadığım için lafı daha fazla uzatmadan ilk ilkemiz üzerinde konuşmaya geçelim.  </p>
+<h2 id="Tek-Sorumluluk-Ilkesi"><a href="#Tek-Sorumluluk-Ilkesi" class="headerlink" title="Tek Sorumluluk İlkesi"></a>Tek Sorumluluk İlkesi</h2><p>Orijinal;</p>
+<blockquote>
+<p>A class should have only one reason to change.</p>
+</blockquote>
+<p>Türkçe;</p>
+<blockquote>
+<p>Bir sınıf değişmek için yalnızca bir nedene sahip olmalıdır.</p>
+</blockquote>
+<blockquote>
+<p>-Robert C. Martin.</p>
+</blockquote>
+<p>Bu ilke Robert C. Martin tarafından “Agile Software Development, Principles, Patterns, and Practices” isimli kitabının “Principles of Object Oriented Design” bölümünde tanıtıldı.</p>
+<p>Bu ilkeyi özetleyen cümleyi anlayabileceğimiz bir dile çevirelim; “Her sınıfın tek bir işi&#x2F;sorumluluğu olmalıdır.”</p>
+<p>Yani eğer bir sınıf birden fazla sorumluluğa sahipse hem bu ilkeye uymuyor hem de iyi bir tasarıma sahip değildir denilebilir. Nasıl mı?  </p>
+<p>Şöyle bir örnek ile açıklamaya çalışayım;  </p>
+<p>Diyelim ki bir oyun prototipi üzerinde çalışıyoruz ve temel şekiller için <em>dortgen</em>, <em>ucgen</em> gibi sınıflarımız var ve bu sınıflar aracılığı ile oluşturacağımız nesneleri ekranda çizme işlemi yapacağız.</p>
+<p>Şöyle bir sınıf tasarımı yaptığımızı düşünelim;  </p>
+<p><img src="/resimler/solid/ilkeler1.png" alt="Birinci Adım"></p>
+<p>İlk tasarım aşamamızda benzer metodlar olduğu keşfettik.</p>
+<p>Bu sınıflarımız birer şekil ve bu iki şeklin de (olası diğer şekillerimizin de) alan ve çevre metodları olduğuna göre kalıtım&#x2F;soyutlama konusundaki bilgilerimizi kullanarak bu iki sınıfı <em>sekil</em> isimli alan ve cevre metodlarına sahip bir sınıftan türetebiliriz.</p>
+<p>Böylece tasarımımız şu aşamaya gelmiş olur;  </p>
+<p><img src="/resimler/solid/ilkeler2.png" alt="İkinci Adım"></p>
+<p>Tasarımımız biraz daha mantıklı bir hal aldı.</p>
+<p>Fakat hala bir sorunumuz var. O da sınıflarımızın farklı bir iş olan <em>ciz</em> metodunu yapıyor olması.</p>
+<p>Eğer bu tasarımla devam edersek sekil sınıfından türeteceğimiz bu tür sınıflarda yine <em>ciz</em> metodunu benzer şekilde tekrar etmemiz gerekecek.</p>
+<p>Peki bu durumu nasıl daha iyi&#x2F;mantıklı hale getirebiliriz?</p>
+<p>Çizme işi başlı başına ayrı bir iş olduğundan onu tamamen farklı bir sınıf yapabiliriz&#x2F;yapmalıyız.</p>
+<p>Son tasarımımız bu hali aldı;  </p>
+<p><img src="/../resimler/solid/ilkeler3.png" alt="Üçüncü Adım"></p>
+<h2 id="Bu-tasarim-x2F-ilke-neden-mantikli-x2F-gerekli"><a href="#Bu-tasarim-x2F-ilke-neden-mantikli-x2F-gerekli" class="headerlink" title="Bu tasarım&#x2F;ilke neden mantıklı&#x2F;gerekli?"></a>Bu tasarım&#x2F;ilke neden mantıklı&#x2F;gerekli?</h2><p>Yukarıdaki senaryomuza bir <em>daire</em> sınıfı eklediğimizi düşünelim.</p>
+<p>İlk tasarım aşamamıza göre bu sınıfın nesnelerini çizebilmek için de bu sınıfa ait bir metodumuz olmalıydı.</p>
+<p>Son tasarımımızı uygulayacak olursak yapmamız gereken tek şey cizer sınıfına daire nesnesini parametre olarak alan bir ciz metodu eklemek.</p>
+<p>Böylece hem sınıflarımıza ek sorumluluklar yüklememiş olacağız hem de daha sağlam&#x2F;mantıklı bir yapı inşa etmiş olacağız.  </p>
+<p>Çizme işinin daire, dortgen veya ucgen hatta ve hatta herhangi bir sekil alt sınıfının kendisi ile hiçbir alakası yok.</p>
+<p>Yani gerçek hayattki nesne mantığıyla düşünürsek; bir üçgen kendi kendisini çizebilir mi? hayır, onu çizmek için bir çizerin olması gerekli değil mi?  </p>
+<p>İşte bu yüzden çizme işini cizer isimli bambaşka bir sınıfa taşıdık. Elbette unutmamalı ki bunu farklı şekillerde de uygulayabilirdik. (arayüz kullanarak vesaire.)</p>
+<p>Yani benim burada izlediğim ve kolay anlaşılabilir olmayı amaçlayan yöntem bu işi gerçekleştirmenin&#x2F;ilkeyi açıklamaya çalışmanın sadece bir yolu.</p>
+<p>Dolayısıyla daha iyi yöntemleri bulmak&#x2F;uygulamak mümkün.</p>
+<h2 id="Bu-tasarimi-x2F-ilkeyi-ne-zaman-dusunmeli-x2F-uygulamaliyiz"><a href="#Bu-tasarimi-x2F-ilkeyi-ne-zaman-dusunmeli-x2F-uygulamaliyiz" class="headerlink" title="Bu tasarımı&#x2F;ilkeyi ne zaman düşünmeli&#x2F;uygulamalıyız?"></a>Bu tasarımı&#x2F;ilkeyi ne zaman düşünmeli&#x2F;uygulamalıyız?</h2><p>En başından. Sınıfları düşünmeye başladığınız an bu ilkeyi de düşünmelisiniz.</p>
+<p>Bu projenize ölçeklendirilebilir bir yapı ve temiz bir tasarım kazandırmakla kalmayıp takım çalışması sırasında olası bir işlem çakışmasının da önüne geçecektir. (her şeye rağmen bu büyük ölçüde size yani kodları yazan&#x2F;tasarlayan kişilere bağlıdır.)</p>
+<p>İlk ve en kolay ilkemizden bu kadar.</p>
+<p>Umarım anlaşılabilir&#x2F;yeterli düzeyde bir anlatım&#x2F;açıklama yapabilmişimdir.</p>
+<p>Sonraki bölüm: <a href="/2016/03/15/acik-kapali-ilkesi-open-closed-principle/">Açık&#x2F;Kapalı İlkesi</a></p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Giris"><span class="toc-number">1.</span> <span class="toc-text">Giriş</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bu-ilkeler-nicin-var"><span class="toc-number">2.</span> <span class="toc-text">Bu ilkeler niçin var?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nasil-kullanacagiz-x2F-kullanmaliyiz"><span class="toc-number">3.</span> <span class="toc-text">Nasıl kullanacağız &#x2F; kullanmalıyız?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tek-Sorumluluk-Ilkesi"><span class="toc-number">4.</span> <span class="toc-text">Tek Sorumluluk İlkesi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bu-tasarim-x2F-ilke-neden-mantikli-x2F-gerekli"><span class="toc-number">5.</span> <span class="toc-text">Bu tasarım&#x2F;ilke neden mantıklı&#x2F;gerekli?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bu-tasarimi-x2F-ilkeyi-ne-zaman-dusunmeli-x2F-uygulamaliyiz"><span class="toc-number">6.</span> <span class="toc-text">Bu tasarımı&#x2F;ilkeyi ne zaman düşünmeli&#x2F;uygulamalıyız?</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&text=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&title=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&is_video=false&description=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=(S) Tek Sorumluluk İlkesi (Single responsibility principle)&body=Check out this article: https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&title=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&title=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&title=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&title=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&name=(S) Tek Sorumluluk İlkesi (Single responsibility principle)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/14/tek-sorumluluk-ilkesi-single-responsibility-principle/&t=(S) Tek Sorumluluk İlkesi (Single responsibility principle)"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

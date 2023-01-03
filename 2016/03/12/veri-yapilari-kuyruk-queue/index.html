@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="GirişKuyruklar her ne kadar çok benzese de yığınların aksine ilk giren ilk çıkar (fifo) diye adlandırılan bir işleyişe sahiptirler. Şu an yetişen nesillerin pek bilmediği &#x2F; görmediği vakti zamanı">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Veri Yapıları: Kuyruk (Queue)">
+<meta property="og:url" content="https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="GirişKuyruklar her ne kadar çok benzese de yığınların aksine ilk giren ilk çıkar (fifo) diye adlandırılan bir işleyişe sahiptirler. Şu an yetişen nesillerin pek bilmediği &#x2F; görmediği vakti zamanı">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://nuriu.github.io/resimler/veri-yapilari/kuyrukYapisi.png">
+<meta property="article:published_time" content="2016-03-11T22:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.601Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="veri yapıları">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="kuyruklar">
+<meta property="article:tag" content="queue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nuriu.github.io/resimler/veri-yapilari/kuyrukYapisi.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Veri Yapıları: Kuyruk (Queue)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2016/03/13/veri-yapilari-yigin-stack/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2016/03/11/temel-java-yedinci-gun-lambda-ifadeleri/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&text=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&title=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&is_video=false&description=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Veri Yapıları: Kuyruk (Queue)&body=Check out this article: https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&title=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&title=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&title=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&title=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&name=Veri Yapıları: Kuyruk (Queue)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&t=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Giris"><span class="toc-number">1.</span> <span class="toc-text">Giriş</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Uygulama"><span class="toc-number">2.</span> <span class="toc-text">Uygulama</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Veri Yapıları: Kuyruk (Queue)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2016-03-11T22:00:00.000Z" itemprop="datePublished">12-Mart-2016</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.601Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/veri-yapilari/">veri yapıları</a> › <a class="category-link" href="/categories/veri-yapilari/java/">java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/java/" rel="tag">java</a>, <a class="tag-link-link" href="/tags/kuyruklar/" rel="tag">kuyruklar</a>, <a class="tag-link-link" href="/tags/queue/" rel="tag">queue</a>, <a class="tag-link-link" href="/tags/veri-yapilari/" rel="tag">veri yapıları</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Giris"><a href="#Giris" class="headerlink" title="Giriş"></a>Giriş</h2><p>Kuyruklar her ne kadar çok benzese de yığınların aksine ilk giren ilk çıkar (fifo) diye adlandırılan bir işleyişe sahiptirler.</p>
+<p>Şu an yetişen nesillerin pek bilmediği &#x2F; görmediği vakti zamanında az bekletmeyen ekmek kuyrukları bu yapıya en güzel örneklerdendir.</p>
+<p>Bunun dışında araç kuyrukları ve fabrikalardaki bant yapıları da yapının gözümüzde daha iyi canlanması için örnek olarak verilebilir.</p>
+<p>Kuyruk yapısını şu şekilde modelleyerek gösterebiliriz;  </p>
+<p><img src="/resimler/veri-yapilari/kuyrukYapisi.png" alt="Kuyruk Yapısı"></p>
+<p>Yığın yapımızda olduğu gibi kuyruk yapımızda da belli başlı metodlarımız mevcut. Bunlar;  </p>
+<ul>
+<li>ekle() (enqueue()) − kuyruğa eleman eklemek için kullanılacak fonksiyon.  </li>
+<li>cikart() (dequeue()) − kuyruktan önündeki elemanı kuyruktan çıkartmak için kullanılacak fonksiyon.  </li>
+<li>gozat() (peek()) − kuyruğun önündeki elemanı gönderen fonksiyon.</li>
+</ul>
+<h2 id="Uygulama"><a href="#Uygulama" class="headerlink" title="Uygulama"></a>Uygulama</h2><p>Yığın örneğimizde olduğu gibi bu örneğimizi de dizileri kullanarak gerçekleştireceğiz.</p>
+<p>Uygulamamız <em>kuyruk.java</em> ve <em>Main.java</em> olmak üzere iki dosyadan oluşan bir konsol uygulaması olacak.</p>
+<p>Sınıfımız;</p>
+<figure class="highlight java"><figcaption><span>kuyruk.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.isiksistem;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">kuyruk</span> &#123;</span><br><span class="line">    <span class="comment">// dizimizin önü ve arkası (kuyruğa göre ters işler)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> on, arka;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] veriler; <span class="comment">// verilerimiz</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> kapasite; <span class="comment">// kuyruk kapasitemiz</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">kuyruk</span><span class="params">(<span class="type">int</span> boyut)</span> &#123;</span><br><span class="line">        <span class="comment">// kuyruğu oluşturacağımız metod</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">ekle</span><span class="params">(<span class="type">int</span> deger)</span> &#123;</span><br><span class="line">        <span class="comment">// kuyruğa eleman ekleyeceğimiz metod</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">cikart</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// kuyruktan eleman çıkaracağımız metod</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">gozat</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// kuyruğun en önündeki elemanı gönderecek metod</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// yığın sınıfımızda da kullandığımız</span></span><br><span class="line">    <span class="comment">// hata sınıfımız ve yapıcı metodumuz.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">kuyrukHatasi</span> <span class="keyword">extends</span> <span class="title class_">RuntimeException</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">kuyrukHatasi</span><span class="params">(String bilgi)</span> &#123;</span><br><span class="line">            <span class="built_in">super</span>(bilgi);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Buradan itibaren metod-metod ilerleyelim.<br>Öncelikle kuyruğumuzu oluşturduğumuz yapıcı metodumuz;  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">kuyruk</span><span class="params">(<span class="type">int</span> boyut)</span> &#123;</span><br><span class="line">    on = -<span class="number">1</span>;</span><br><span class="line">    arka = <span class="number">0</span>;</span><br><span class="line">    kapasite = boyut;</span><br><span class="line">    veriler = <span class="keyword">new</span> <span class="title class_">int</span>[boyut];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Ekleme metodumuz;   </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">ekle</span><span class="params">(<span class="type">int</span> deger)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (on &lt;= kapasite - <span class="number">1</span>) &#123; <span class="comment">// kuyruk dolu değilse</span></span><br><span class="line">        on++; <span class="comment">// dizinin önü bir artıyor.</span></span><br><span class="line">        veriler[on] = deger; <span class="comment">// elemanı kuyruğa ekliyoruz.</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">kuyrukHatasi</span>(<span class="string">&quot;Kuyruk dolu.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Çıkartma metodumuz;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">cikart</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (on &gt;= arka) &#123; <span class="comment">// kuyruk bitmediyse</span></span><br><span class="line">        <span class="comment">// çıkartılacak değeri geçici değişkenimize atıyoruz.</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">d</span> <span class="operator">=</span> veriler[arka++];</span><br><span class="line">        <span class="comment">// çıkartılacak değerin yerini 0&#x27;a eşitliyoruz.</span></span><br><span class="line">        veriler[arka - <span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(arka &gt; on) <span class="comment">// son elemana kadar çıkarttığımızda</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// yeni eleman ekleyebilmemiz için</span></span><br><span class="line">            <span class="comment">// ön ve arkayı sıfırlıyoruz.</span></span><br><span class="line">            arka = <span class="number">0</span>;</span><br><span class="line">            on = -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> d; <span class="comment">// geçici değişkenimizi gönderiyoruz.</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">kuyrukHatasi</span>(<span class="string">&quot;Kuyruk boş.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Gözatma metodumuz;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">gozat</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (on &gt;= arka) &#123; <span class="comment">// kuyruk boş değilse</span></span><br><span class="line">        <span class="comment">// kuyruğun önündeki (dizinin değil)</span></span><br><span class="line">        <span class="comment">// elemanımızı gönderiyoruz.</span></span><br><span class="line">        <span class="keyword">return</span> veriler[arka];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">kuyrukHatasi</span>(<span class="string">&quot;Kuyruk boş.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Son olarak kuyruk nesnemizi oluşturduğumuz ve testlerimizi yaptığımız ana dosyamız;  </p>
+<figure class="highlight java"><figcaption><span>Main.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.isiksistem;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 3 elemanlık kuyruğumuz</span></span><br><span class="line">        <span class="type">kuyruk</span> <span class="variable">kuyrugumuz</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">kuyruk</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ekleme ve gözatma testleri</span></span><br><span class="line">        kuyrugumuz.ekle(<span class="number">1</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Öndeki eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.gozat());</span><br><span class="line">        kuyrugumuz.ekle(<span class="number">2</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Öndeki eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.gozat());</span><br><span class="line">        kuyrugumuz.ekle(<span class="number">3</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Öndeki eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.gozat());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// çıkarma ve gözatma testleri</span></span><br><span class="line">        System.out.println(<span class="string">&quot;\nÇıkan eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.cikart());</span><br><span class="line">        System.out.println(<span class="string">&quot;Öndeki eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.gozat());</span><br><span class="line">        System.out.println(<span class="string">&quot;Çıkan eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.cikart());</span><br><span class="line">        System.out.println(<span class="string">&quot;Öndeki eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.gozat());</span><br><span class="line">        System.out.println(<span class="string">&quot;Çıkan eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.cikart());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ekleme ve gözatma testleri 2</span></span><br><span class="line">        kuyrugumuz.ekle(<span class="number">1</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;\nÖndeki eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.gozat());</span><br><span class="line">        kuyrugumuz.ekle(<span class="number">2</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Öndeki eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.gozat());</span><br><span class="line">        kuyrugumuz.ekle(<span class="number">3</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Öndeki eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.gozat());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// çıkarma ve gözatma testleri 2</span></span><br><span class="line">        System.out.println(<span class="string">&quot;\nÇıkan eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.cikart());</span><br><span class="line">        System.out.println(<span class="string">&quot;Öndeki eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.gozat());</span><br><span class="line">        System.out.println(<span class="string">&quot;Çıkan eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.cikart());</span><br><span class="line">        System.out.println(<span class="string">&quot;Öndeki eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.gozat());</span><br><span class="line">        System.out.println(<span class="string">&quot;Çıkan eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.cikart());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Bu aşamaya geldiğimizde kuyruğumuz boş olduğu için</span></span><br><span class="line">        <span class="comment">// kuyruk boş hatasını gösterecek.</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Öndeki eleman: &quot;</span> +</span><br><span class="line">                            kuyrugumuz.gozat());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Nihai çıktımız şu şekilde oluyor;  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Öndeki eleman: 1</span><br><span class="line">Öndeki eleman: 1</span><br><span class="line">Öndeki eleman: 1</span><br><span class="line"></span><br><span class="line">Çıkan eleman: 1</span><br><span class="line">Öndeki eleman: 2</span><br><span class="line">Çıkan eleman: 2</span><br><span class="line">Öndeki eleman: 3</span><br><span class="line">Çıkan eleman: 3</span><br><span class="line"></span><br><span class="line">Öndeki eleman: 1</span><br><span class="line">Öndeki eleman: 1</span><br><span class="line">Öndeki eleman: 1</span><br><span class="line"></span><br><span class="line">Çıkan eleman: 1</span><br><span class="line">Öndeki eleman: 2</span><br><span class="line">Çıkan eleman: 2</span><br><span class="line">Öndeki eleman: 3</span><br><span class="line">Çıkan eleman: 3</span><br><span class="line"></span><br><span class="line">Exception <span class="keyword">in</span> thread <span class="string">&quot;main&quot;</span> com.isiksistem.kuyruk<span class="variable">$kuyrukHatasi</span>: Kuyruk boş.</span><br></pre></td></tr></table></figure>
+
+<p>Böylece yığın ile oldukça benzer olan kuyruk yapısını da incelemiş olduk.</p>
+<p>Sıradaki seri; Nesne tabanlı tasarım, bilinen adıyla SOLID prensiplerinde görüşmek üzere.</p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Giris"><span class="toc-number">1.</span> <span class="toc-text">Giriş</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Uygulama"><span class="toc-number">2.</span> <span class="toc-text">Uygulama</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&text=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&title=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&is_video=false&description=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Veri Yapıları: Kuyruk (Queue)&body=Check out this article: https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&title=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&title=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&title=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&title=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&name=Veri Yapıları: Kuyruk (Queue)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/12/veri-yapilari-kuyruk-queue/&t=Veri Yapıları: Kuyruk (Queue)"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

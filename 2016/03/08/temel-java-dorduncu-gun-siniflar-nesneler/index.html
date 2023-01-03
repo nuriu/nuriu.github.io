@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="SınıflarSınıfları nesneler tasarlamaya&#x2F;oluşturmaya yarayan planlar gibi düşünebiliriz.Bir bina için teknik proje (farklı bir ismi varsa bilmiyorum.) ne ise, nesnelerimiz hatta genel yazılım tasar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Temel Java 4. Gün: Sınıflar, Nesneler">
+<meta property="og:url" content="https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="SınıflarSınıfları nesneler tasarlamaya&#x2F;oluşturmaya yarayan planlar gibi düşünebiliriz.Bir bina için teknik proje (farklı bir ismi varsa bilmiyorum.) ne ise, nesnelerimiz hatta genel yazılım tasar">
+<meta property="og:locale" content="tr_TR">
+<meta property="article:published_time" content="2016-03-07T22:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.593Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="sınıflar">
+<meta property="article:tag" content="nesneler">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Temel Java 4. Gün: Sınıflar, Nesneler</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2016/03/07/temel-java-ucuncu-gun-karar-yapilari-donguler-metodlar/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&text=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&title=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&is_video=false&description=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel Java 4. Gün: Sınıflar, Nesneler&body=Check out this article: https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&title=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&title=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&title=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&title=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&name=Temel Java 4. Gün: Sınıflar, Nesneler&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&t=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Siniflar"><span class="toc-number">1.</span> <span class="toc-text">Sınıflar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nesneler"><span class="toc-number">2.</span> <span class="toc-text">Nesneler</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Temel Java 4. Gün: Sınıflar, Nesneler
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2016-03-07T22:00:00.000Z" itemprop="datePublished">08-Mart-2016</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.593Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/java/">java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/java/" rel="tag">java</a>, <a class="tag-link-link" href="/tags/nesneler/" rel="tag">nesneler</a>, <a class="tag-link-link" href="/tags/siniflar/" rel="tag">sınıflar</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Siniflar"><a href="#Siniflar" class="headerlink" title="Sınıflar"></a>Sınıflar</h2><p>Sınıfları nesneler tasarlamaya&#x2F;oluşturmaya yarayan planlar gibi düşünebiliriz.<br>Bir bina için teknik proje (farklı bir ismi varsa bilmiyorum.) ne ise, nesnelerimiz hatta genel yazılım tasarımımız için sınıflar da o derece önemlidir.  </p>
+<p>Eğer sınıflar hakkında daha fazla teorik bilgi&#x2F;örneğe ihtiyaç duyarsanız önceki serilerden sınıflar ve nesneler kısımlarına bakabiliriz.<br>Böylelikle diller arasındaki benzerliği de keşfetmiş olursunuz. Bağlantılar;  </p>
+<p><a href="/2015/07/04/temel-cpp-dorduncu-gun-siniflar-nesneler/">Temel C++ - 4. Gün: Sınıflar, Nesneler</a><br><a href="/2015/10/15/temel-python-altinci-gun-nesneler-ve-siniflar/">Temel Python - 6. Gün: Nesneler ve Sınıflar</a><br><a href="/2015/10/21/temel-csharp-besinci-gun-siniflar/">Temel C# - 5. Gün: Sınıflar</a>  </p>
+<p>Özetlemek gerekirse temel olarak sınıfları dört ana parçaya ayırabiliriz. Bunlar;  </p>
+<ol>
+<li>Üye değişkenler (özellikler olarak da adlandırılabilir.)</li>
+<li>Üye metodlar (davranışlar olarak da adlandırılabilir.)</li>
+<li>Yapıcı metod (constructor)</li>
+</ol>
+<p>Son madde olan yapıcı metodu üye metodlar içinde de sınıflayabiliriz.</p>
+<p>Bu metodu özetle nesne oluşturulduğunda çağrılan metod olarak tanımlayabiliriz.  </p>
+<p><strong>Not:</strong> Java nesnelerin tam olarak ne zaman yok edildiğini&#x2F;edileceğini tam olarak kestiremediğimiz çöpçü (garbage collector) altyapısına sahip bir dil olduğu için yıkıcı metod veya tam olarak eş değeri bildiğim kadarıyla bu dilde bulunmuyor.</p>
+<p>(finalize, dispose gibi metodlar mevcut fakat aynı işi gördüğünden veya aynı mantığa sahip olduğundan emin olmadığım için onlardan bahsedemiyorum.)</p>
+<p>Temel sınıf tanımlanışı;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">erisimBelirteci <span class="keyword">class</span> <span class="title class_">sinifIsmi</span> &#123;</span><br><span class="line">    <span class="comment">// üye değişkenlerimiz (özellikler)</span></span><br><span class="line">    erisimBelirteci veriTipi degiskenAdi;</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">    erisimBelirteci veriTipi degiskenAdi;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// üye metodlarımız (davranışlar)</span></span><br><span class="line">    erisimBelirteci dondurecegiVeriTipi <span class="title function_">metodAdi</span><span class="params">(parametre listesi)</span> &#123;</span><br><span class="line">        <span class="comment">// metod içeriği</span></span><br><span class="line">    &#125;</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">    erisimBelirteci dondurecegiVeriTipi <span class="title function_">metodAdi</span><span class="params">(parametre listesi)</span> &#123;</span><br><span class="line">        <span class="comment">// metod içeriği</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// yapıcı metodumuz</span></span><br><span class="line">    erisimBelirteci <span class="title function_">sinifIsmi</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">// yapıcı metodumuzun içeriği</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Şimdi yukarıdaki tanımlanışı örnek alarak basit bir kedi sınıfı oluşturalım;  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.isiksistem;</span><br><span class="line"></span><br><span class="line"><span class="comment">// public erişim belirteçli Kedi isimli sınıfımız</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Kedi</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// üye değişkenlerimiz (özellikler)</span></span><br><span class="line">    <span class="comment">// private olduğu için sadece bu sınıfın metodları</span></span><br><span class="line">    <span class="comment">// tarafından erişilebilirler.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> agirlik;</span><br><span class="line">    <span class="keyword">private</span> String isim;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// üye metodlarımız (davranışlar)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">agirligiBelirle</span><span class="params">(<span class="type">int</span> kg)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.agirlik = kg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">ismiBelirle</span><span class="params">(String isim)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.isim = isim;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">agirligiGetir</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.agirlik;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">ismiGetir</span> <span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.isim;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// yapıcı metodumuz</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Kedi</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Bir kedi nesnesi oluşturuldu.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Nesneler"><a href="#Nesneler" class="headerlink" title="Nesneler"></a>Nesneler</h2><p>Nesneleri sınıflar aracılığı ile oluşturulan özelliklere (değişkenlere) ve davranışlara (metodlara) sahip yapılar olarak düşünebiliriz.  </p>
+<p>Örneğin yukarıdaki Kedi sınıfımızdan bir nesne oluşturalım;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.isiksistem;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// Tekir adında Kedi nesnemiz</span></span><br><span class="line">        <span class="type">Kedi</span> <span class="variable">Tekir</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Kedi</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// nesnemizin özelliklerini</span></span><br><span class="line">        <span class="comment">// yine nesnemizin metodları aracılığı ile belirledik.</span></span><br><span class="line">        Tekir.ismiBelirle(<span class="string">&quot;Tekir&quot;</span>);</span><br><span class="line">        Tekir.agirligiBelirle(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// bilgilerimizi yazdırıyoruz.</span></span><br><span class="line">        System.out.print(Tekir.ismiGetir() + <span class="string">&quot; isimli &quot;</span> +</span><br><span class="line">                         Tekir.agirligiGetir() +</span><br><span class="line">                         <span class="string">&quot; kg ağırlığında bir kedi nesnemiz mevcut.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Çıktımız şu şekilde olacaktır;  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Bir kedi nesnesi oluşturuldu.</span><br><span class="line"></span><br><span class="line">Tekir isimli 10 kg ağırlığında bir kedi nesnemiz mevcut.</span><br></pre></td></tr></table></figure>
+
+<p>Sınıflar ve nesnelerden şimdilik bu kadar. Sonraki bölümde görüşmek üzere.  </p>
+<p>Sonraki Bölüm: Paketler, Kalıtım, Arayüzler:<br><a href="/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/">Temel Java - 5. Gün: Paketler, Kalıtım, Arayüzler</a>  </p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Siniflar"><span class="toc-number">1.</span> <span class="toc-text">Sınıflar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nesneler"><span class="toc-number">2.</span> <span class="toc-text">Nesneler</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&text=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&title=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&is_video=false&description=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel Java 4. Gün: Sınıflar, Nesneler&body=Check out this article: https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&title=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&title=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&title=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&title=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&name=Temel Java 4. Gün: Sınıflar, Nesneler&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/&t=Temel Java 4. Gün: Sınıflar, Nesneler"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

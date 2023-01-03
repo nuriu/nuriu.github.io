@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="GirişBelirli veri kümelerini saklamak için kullandığımız diziler statik yapılardı. Bu yapılarda boyutlar sonradan tam olarak kontrol edilemediği için her yerde kullanılması uygun ve verimli olmuyor. V">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Veri Yapıları: Tek Yönlü Bağlı Listeler">
+<meta property="og:url" content="https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="GirişBelirli veri kümelerini saklamak için kullandığımız diziler statik yapılardı. Bu yapılarda boyutlar sonradan tam olarak kontrol edilemediği için her yerde kullanılması uygun ve verimli olmuyor. V">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://nuriu.github.io/resimler/veri-yapilari/bagliListeYapisi.png">
+<meta property="article:published_time" content="2016-03-01T22:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.602Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="veri yapıları">
+<meta property="article:tag" content="bağlı listeler">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="tek yönlü bağlı listeler">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nuriu.github.io/resimler/veri-yapilari/bagliListeYapisi.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Veri Yapıları: Tek Yönlü Bağlı Listeler</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2016/03/03/veri-yapilari-dairesel-bagli-listeler/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2015/10/22/temel-csharp-altinci-gun-kalitim-cokbicimlilik/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&text=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&title=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&is_video=false&description=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Veri Yapıları: Tek Yönlü Bağlı Listeler&body=Check out this article: https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&title=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&title=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&title=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&title=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&name=Veri Yapıları: Tek Yönlü Bağlı Listeler&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&t=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Giris"><span class="toc-number">1.</span> <span class="toc-text">Giriş</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bagli-Listeler"><span class="toc-number">2.</span> <span class="toc-text">Bağlı Listeler</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Veri Yapıları: Tek Yönlü Bağlı Listeler
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2016-03-01T22:00:00.000Z" itemprop="datePublished">02-Mart-2016</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.602Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/veri-yapilari/">veri yapıları</a> › <a class="category-link" href="/categories/veri-yapilari/c/">c++</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/bagli-listeler/" rel="tag">bağlı listeler</a>, <a class="tag-link-link" href="/tags/c/" rel="tag">c++</a>, <a class="tag-link-link" href="/tags/tek-yonlu-bagli-listeler/" rel="tag">tek yönlü bağlı listeler</a>, <a class="tag-link-link" href="/tags/veri-yapilari/" rel="tag">veri yapıları</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Giris"><a href="#Giris" class="headerlink" title="Giriş"></a>Giriş</h2><p>Belirli veri kümelerini saklamak için kullandığımız diziler statik yapılardı. Bu yapılarda boyutlar sonradan tam olarak kontrol edilemediği için her yerde kullanılması uygun ve verimli olmuyor. Verimliliğin ön planda olduğu bazı durumlarda bağlı listeleri kullanmak daha mantıklı olabiliyor. Bağlı listeler ise tek yönlü ve çift yönlü olmak üzere iki ana grupta incelenebilir. Bu yazımda tek yönlü bağlı listeler üzerine basit örnekler göstermeye çalışacağım.</p>
+<h2 id="Bagli-Listeler"><a href="#Bagli-Listeler" class="headerlink" title="Bağlı Listeler"></a>Bağlı Listeler</h2><p>Tek yönlü bağlı listelerde her veri öğesinde sonraki öğeyi işaret eden bir işaretçi bulunur. Böylelikle liste elemanları arasında doğrusal tek yönlü bir bağ oluşturulmuş olunur. Basitçe yapı şekildeki gibidir;</p>
+<p><img src="/resimler/veri-yapilari/bagliListeYapisi.png" alt="Bağlı Liste Yapısı"></p>
+<p>Şimdi bu yapıyı basitçe kodlayalım;  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// liste eleman şablonumuzu oluşturmak için struct yapısını kullanıyoruz.</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">v</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> sayi;</span><br><span class="line">    v* sonraki;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> v oge;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// her zaman ilk elemanı gosterecek olan ilk isaretcimiz.</span></span><br><span class="line">    oge* ilk;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ilk isaretcimize bellekte yer ayırıyoruz.</span></span><br><span class="line">    <span class="comment">// (ilk elemanımızı oluşturuyoruz)</span></span><br><span class="line">    ilk = (oge*) <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(oge));</span><br><span class="line">    ilk -&gt; sayi = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ikinci elemanımızı oluşturuyoruz.</span></span><br><span class="line">    ilk -&gt; sonraki = (oge*) <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(oge));</span><br><span class="line">    ilk -&gt; sonraki -&gt; sayi = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// üçüncü elemanımızı oluşturuyoruz.</span></span><br><span class="line">    ilk -&gt; sonraki -&gt; sonraki = (oge*) <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(oge));</span><br><span class="line">    ilk -&gt; sonraki -&gt; sonraki -&gt; sayi = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// son elemanımızın üçüncü eleman olduğunu belirtiyoruz.</span></span><br><span class="line">    ilk -&gt; sonraki -&gt; sonraki -&gt; sonraki = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// sayacımız/gezicimiz</span></span><br><span class="line">    oge* sayac;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ilk elemandan başlayacağımız için sayacımızı ilke eşitliyoruz.</span></span><br><span class="line">    sayac = ilk;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;İlk eleman: &quot;</span> &lt;&lt; sayac -&gt; sayi &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;İkinci eleman: &quot;</span> &lt;&lt; sayac -&gt; sonraki -&gt; sayi &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Üçüncü eleman: &quot;</span> &lt;&lt; sayac-&gt;sonraki-&gt;sonraki-&gt;sayi &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Yukarıdaki kodu yazıp çalıştırdığımızda konsola şu çıktıları yazdıracaktır;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">İlk eleman: 1</span><br><span class="line">İkinci eleman: 2</span><br><span class="line">Üçüncü eleman: 3</span><br></pre></td></tr></table></figure>
+
+<p>Bağlı liste yapısını kullanarak dizilerde yapması oldukça maliyetli olan araya eleman ekleme gibi işlemleri de daha verimli şekilde gerçekleştirebiliriz.  </p>
+<p>Bu arada benim gerçekleştirme yöntemim bu işlemleri gerçekleştirmenin sadece bir yolu. Kullanılabilecek ve&#x2F;veya izlenebilecek birçok yol&#x2F;yöntem mevcut. Bunların benim yöntemlerimden daha mantıklı&#x2F;verimli olabileceğini de söylemeliyim. O yüzden tek bir kaynağa bağlı kalmamakta fayda görüyorum ve size de aynısını öneriyorum.  </p>
+<p>Şimdi yukarıdaki örneğimize, elemanları listelemeye yarayan bir <em>void Listele(oge</em> ilkEleman)* fonksiyonu ekleyelim;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Listele</span><span class="params">(oge* ilkEleman)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// elemanın sırasını göstermek için kullanacağımız değişkenimiz.</span></span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// gezici sayacımız.</span></span><br><span class="line">    oge* s;</span><br><span class="line">    s = ilkEleman;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// eleman boş olana kadar</span></span><br><span class="line">    <span class="keyword">while</span>(s != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// elemanın sayi değişkenini ekrana yaz.</span></span><br><span class="line">        cout &lt;&lt; i &lt;&lt; <span class="string">&quot;. eleman: &quot;</span> &lt;&lt; s -&gt; sayi &lt;&lt; endl;</span><br><span class="line">        i++;</span><br><span class="line">        <span class="comment">// elemanı sonraki elemana eşitle.</span></span><br><span class="line">        s = s -&gt; sonraki;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Bu fonksiyonu ekleyip, <em>main</em> fonksiyonu içerisindeki aşağıdaki satırları silip <em>Listele(ilk);</em> satırını ekleyerek fonksiyonumuzu çağırdığımızda yine aynı işlevin tekrarlandığını göreceksiniz.  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sayacımız/gezicimiz</span></span><br><span class="line">oge* sayac;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ilk elemandan başlayacağımız için sayacımızı ilke eşitliyoruz.</span></span><br><span class="line">sayac = ilk;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;İlk eleman: &quot;</span> &lt;&lt; sayac -&gt; sayi &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;İkinci eleman: &quot;</span> &lt;&lt; sayac -&gt; sonraki -&gt; sayi &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Üçüncü eleman: &quot;</span> &lt;&lt; sayac -&gt; sonraki -&gt; sonraki -&gt; sayi &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<p>Bu fonksiyon ile birlikte kaç elemanlı olduğundan bağımsız bir şekilde listemizin başından sonuna kadar tüm elemanları yazdırabiliyoruz.  </p>
+<p>Ekleme işlemine geçmeden önce silme işlemi yapan <em>oge* Sil(oge* ilkEleman, int silinecekDeger)</em> fonksiyonumuzu yazalım. Bu işlem için üç olasılığımız olduğunu varsayalım;  </p>
+<ol>
+<li>Silinecek eleman ilk elemanımız olabilir. (ve listemiz tek elemanlı olabilir.)  </li>
+<li>Silinecek eleman son elemanımız olabilir.  </li>
+<li>Silinecek eleman aradaki bir eleman olabilir.</li>
+</ol>
+<p>İlk olasılığımızın gerçekleşmesi ihtimaline karşı ilk elemanın değişebilecek olmasından dolayı fonksiyonumuz oge* tipinde yeni ilk elemanı işaret eden bir işaretçi yollamalı. Benim yöntemim şu şekilde oldu;  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">oge* <span class="title">Sil</span><span class="params">(oge* ilkEleman, <span class="type">int</span> silinecekDeger)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// gezici sayacımız.</span></span><br><span class="line">    oge* s = ilkEleman;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// bağı korumak için kullanacağımız geçici işaretçimiz.</span></span><br><span class="line">    oge* gecici;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// silinecek olan eleman ilk elemansa</span></span><br><span class="line">    <span class="keyword">if</span>(s -&gt; sayi == silinecekDeger)</span><br><span class="line">    &#123;</span><br><span class="line">        gecici = s;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(s -&gt; sonraki != <span class="literal">NULL</span>) <span class="comment">// ikinci bir eleman varsa</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// ilk elemanı sonraki elemana eşitliyoruz.</span></span><br><span class="line">            s = s -&gt; sonraki;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// ilk elemanı siliyoruz.</span></span><br><span class="line">            <span class="built_in">free</span>(gecici);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// geriye yeni ilk elemanımızı gönderiyoruz.</span></span><br><span class="line">            <span class="keyword">return</span> s;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// liste tek elemanlıysa</span></span><br><span class="line">        <span class="comment">// elemanı siliyoruz</span></span><br><span class="line">        <span class="built_in">free</span>(gecici);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// geriye boş liste döndürüyoruz.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ilk eleman değilse</span></span><br><span class="line">    <span class="comment">// listede aramaya başlıyoruz.</span></span><br><span class="line">    <span class="keyword">while</span>(s -&gt; sonraki != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// silinecek eleman bulunduysa</span></span><br><span class="line">        <span class="keyword">if</span>(s -&gt; sonraki -&gt; sayi == silinecekDeger &amp;&amp;</span><br><span class="line">            s -&gt; sonraki != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// burada, işlemleri bir eleman öncesinden</span></span><br><span class="line">            <span class="comment">// yapmamızın sebebi önceki eleman ile olan bağı</span></span><br><span class="line">            <span class="comment">// yani aradaki bağı kaybetmemek.</span></span><br><span class="line">            gecici = s -&gt; sonraki;</span><br><span class="line">            s -&gt; sonraki = s -&gt; sonraki -&gt; sonraki;</span><br><span class="line">            <span class="built_in">free</span>(gecici);</span><br><span class="line">            <span class="keyword">return</span> ilkEleman;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// bulunamadıysa sonraki elemana geçiyoruz.</span></span><br><span class="line">        s = s -&gt; sonraki;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// silinecek eleman bulunamadıysa</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Silinecek eleman bulunamadi.&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ilkEleman;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Şimdi ise listeye eleman ekleme işlemine geçelim. Burada da dört ana olasılığımız olsun. Bunlar;  </p>
+<ol>
+<li>Liste boş olabilir. (Eleman listenin ilk elemanı olacaktır.)  </li>
+<li>Eklenecek eleman ilk elemandan küçüktür. (Eleman listenin yeni ilk elemanı olacaktır.)  </li>
+<li>Eklenecek eleman ilk elemandan büyük ama son elemandan küçüktür. (Yani listenin ara elemanı olacaktır.)  </li>
+<li>Eklenecek eleman listedeki tüm elemanlardan büyüktür. (Yani listenin yeni son elemanı olacaktır.)</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">oge* <span class="title">Ekle</span><span class="params">(oge* ilkEleman, <span class="type">int</span> eklenecekDeger)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    oge* s = ilkEleman;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// liste boş ise</span></span><br><span class="line">    <span class="keyword">if</span>(s == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        s = (oge*) <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(oge));</span><br><span class="line">        s -&gt; sayi = eklenecekDeger;</span><br><span class="line">        s -&gt; sonraki = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// liste bir veya daha fazla elemana sahip ise</span></span><br><span class="line">    oge* gecici = (oge*) <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(oge));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// eklenecek değer ilk elemandan küçükse</span></span><br><span class="line">    <span class="keyword">if</span>(ilkEleman -&gt; sayi &gt; eklenecekDeger)</span><br><span class="line">    &#123;</span><br><span class="line">        gecici -&gt; sayi = eklenecekDeger;</span><br><span class="line">        gecici -&gt; sonraki = ilkEleman;</span><br><span class="line">        <span class="keyword">return</span> gecici;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// son eleman değilse ve</span></span><br><span class="line">    <span class="comment">// sonraki eleman eklenecek sayidan küçükse</span></span><br><span class="line">    <span class="comment">// eklenecek eleman için doğru aralığı bulmaya çalışıyoruz.</span></span><br><span class="line">    <span class="keyword">while</span>(s -&gt; sonraki != <span class="literal">NULL</span> &amp;&amp;</span><br><span class="line">            s -&gt; sonraki -&gt; sayi &lt;= eklenecekDeger)</span><br><span class="line">    &#123;</span><br><span class="line">        s = s -&gt; sonraki;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// aralığı bulduktan sonra</span></span><br><span class="line">    <span class="comment">// büyük elemanı geçicinin sonraki işaretine atıyoruz.</span></span><br><span class="line">    gecici -&gt; sonraki = s -&gt; sonraki;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// sayimizi ekliyoruz.</span></span><br><span class="line">    gecici -&gt; sayi = eklenecekDeger;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// sonraki işaretine elemanı atıyoruz.</span></span><br><span class="line">    s -&gt; sonraki = gecici;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> ilkEleman;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Böylelikte tek yönlü bağlı listelerin üzerinden geçmiş bulunuyoruz. Programın son hali aşağıdaki gibidir;  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// liste eleman şablonumuzu oluşturmak için</span></span><br><span class="line"><span class="comment">// struct yapısını kullanıyoruz.</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">v</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> sayi;</span><br><span class="line">    v* sonraki;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> v oge;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Listele</span><span class="params">(oge* ilkEleman)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// elemanın sırasını göstermek için kullanacağımız değişkenimiz.</span></span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// gezici sayacımız.</span></span><br><span class="line">    oge* s = ilkEleman;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// eleman boş olana kadar</span></span><br><span class="line">    <span class="keyword">while</span>(s != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// elemanın sayi değişkenini ekrana yaz.</span></span><br><span class="line">        cout &lt;&lt; i &lt;&lt; <span class="string">&quot;. eleman: &quot;</span> &lt;&lt; s -&gt; sayi &lt;&lt; endl;</span><br><span class="line">        i++;</span><br><span class="line">        <span class="comment">// elemanı sonraki elemana eşitle.</span></span><br><span class="line">        s = s -&gt; sonraki;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">oge* <span class="title">Sil</span><span class="params">(oge* ilkEleman, <span class="type">int</span> silinecekDeger)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// gezici sayacımız.</span></span><br><span class="line">    oge* s = ilkEleman;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// bağı korumak için kullanacağımız geçici işaretçimiz.</span></span><br><span class="line">    oge* gecici;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// silinecek olan eleman ilk elemansa</span></span><br><span class="line">    <span class="keyword">if</span>(s -&gt; sayi == silinecekDeger)</span><br><span class="line">    &#123;</span><br><span class="line">        gecici = s;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(s -&gt; sonraki != <span class="literal">NULL</span>) <span class="comment">// ikinci bir eleman varsa</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// ilk elemanı sonraki elemana eşitliyoruz.</span></span><br><span class="line">            s = s -&gt; sonraki;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// ilk elemanı siliyoruz.</span></span><br><span class="line">            <span class="built_in">free</span>(gecici);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// geriye yeni ilk elemanımızı gönderiyoruz.</span></span><br><span class="line">            <span class="keyword">return</span> s;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// liste tek elemanlıysa</span></span><br><span class="line">        <span class="comment">// elemanı siliyoruz</span></span><br><span class="line">        <span class="built_in">free</span>(gecici);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// geriye boş liste döndürüyoruz.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ilk eleman değilse</span></span><br><span class="line">    <span class="comment">// listede aramaya başlıyoruz.</span></span><br><span class="line">    <span class="keyword">while</span>(s -&gt; sonraki != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// silinecek eleman bulunduysa</span></span><br><span class="line">        <span class="keyword">if</span>(s -&gt; sonraki -&gt; sayi == silinecekDeger &amp;&amp;</span><br><span class="line">           s -&gt; sonraki != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// burada işlemleri bir eleman öncesinden</span></span><br><span class="line">            <span class="comment">// yapmamızın sebebi önceki eleman ile olan bağı</span></span><br><span class="line">            <span class="comment">// yani aradaki bağı kaybetmemek.</span></span><br><span class="line">            gecici = s -&gt; sonraki;</span><br><span class="line">            s -&gt; sonraki = s -&gt; sonraki -&gt; sonraki;</span><br><span class="line">            <span class="built_in">free</span>(gecici);</span><br><span class="line">            <span class="keyword">return</span> ilkEleman;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// bulunamadıysa sonraki elemana geçiyoruz.</span></span><br><span class="line">        s = s -&gt; sonraki;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// silinecek eleman bulunamadıysa</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Silinecek eleman bulunamadi.&quot;</span> &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> ilkEleman;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">oge* <span class="title">Ekle</span><span class="params">(oge* ilkEleman, <span class="type">int</span> eklenecekDeger)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    oge* s = ilkEleman;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// liste boş ise</span></span><br><span class="line">    <span class="keyword">if</span>(s == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        s = (oge*) <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(oge));</span><br><span class="line">        s -&gt; sayi = eklenecekDeger;</span><br><span class="line">        s -&gt; sonraki = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// liste bir veya daha fazla elemana sahip ise</span></span><br><span class="line">    oge* gecici = (oge*) <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(oge));</span><br><span class="line">    <span class="comment">// eklenecek değer ilk elemandan küçükse</span></span><br><span class="line">    <span class="keyword">if</span>(ilkEleman -&gt; sayi &gt; eklenecekDeger)</span><br><span class="line">    &#123;</span><br><span class="line">        gecici -&gt; sayi = eklenecekDeger;</span><br><span class="line">        gecici -&gt; sonraki = ilkEleman;</span><br><span class="line">        <span class="keyword">return</span> gecici;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// son eleman değilse ve</span></span><br><span class="line">    <span class="comment">// sonraki eleman eklenecek sayidan küçükse</span></span><br><span class="line">    <span class="comment">// eklenecek eleman için doğru aralığı bulmaya çalışıyoruz.</span></span><br><span class="line">    <span class="keyword">while</span>(s -&gt; sonraki != <span class="literal">NULL</span> &amp;&amp;</span><br><span class="line">            s -&gt; sonraki -&gt; sayi &lt;= eklenecekDeger)</span><br><span class="line">    &#123;</span><br><span class="line">        s = s -&gt; sonraki;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// aralığı bulduktan sonra</span></span><br><span class="line">    <span class="comment">// büyük elemanı geçicinin sonraki işaretine atıyoruz.</span></span><br><span class="line">    gecici -&gt; sonraki = s -&gt; sonraki;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// sayimizi ekliyoruz.</span></span><br><span class="line">    gecici -&gt; sayi = eklenecekDeger;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// sonraki işaretine elemanı atıyoruz.</span></span><br><span class="line">    s -&gt; sonraki = gecici;</span><br><span class="line">    <span class="keyword">return</span> ilkEleman;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// her zaman ilk elemanı gosterecek olan ilk isaretcimiz.</span></span><br><span class="line">    oge* ilk;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ilk isaretcimize bellekte yer ayırıyoruz.</span></span><br><span class="line">    <span class="comment">// (ilk elemanımızı oluşturuyoruz)</span></span><br><span class="line">    ilk = (oge*) <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(oge));</span><br><span class="line">    ilk -&gt; sayi = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ikinci elemanımızı oluşturuyoruz.</span></span><br><span class="line">    ilk -&gt; sonraki = (oge*) <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(oge));</span><br><span class="line">    ilk -&gt; sonraki -&gt; sayi = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// üçüncü elemanımızı oluşturuyoruz.</span></span><br><span class="line">    ilk -&gt; sonraki -&gt; sonraki = (oge*) <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(oge));</span><br><span class="line">    ilk -&gt; sonraki -&gt; sonraki -&gt; sayi = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// testler için dördüncü elemanımızı oluşturuyoruz.</span></span><br><span class="line">    ilk -&gt; sonraki -&gt; sonraki -&gt; sonraki= (oge*) <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(oge));</span><br><span class="line">    ilk -&gt; sonraki -&gt; sonraki -&gt; sonraki -&gt; sayi = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// son elemanımızın dördüncü eleman olduğunu belirtiyoruz.</span></span><br><span class="line">    ilk -&gt; sonraki -&gt; sonraki -&gt; sonraki -&gt; sonraki = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Listele</span>(ilk);</span><br><span class="line">    ilk = <span class="built_in">Ekle</span>(ilk, <span class="number">3</span>);</span><br><span class="line">    <span class="built_in">Listele</span>(ilk);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>NOT:</strong> Testlerde bir sorun yaşamadım fakat gözden kaçırmış olduğum şeyler olabilir. Bu yüzden herhangi bir hata, geliştirme vb. hakkında öneri&#x2F;sorularınız olursa bana GitHub veyahut Twitter üzerinden ulaşabilirsiniz.  </p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Giris"><span class="toc-number">1.</span> <span class="toc-text">Giriş</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bagli-Listeler"><span class="toc-number">2.</span> <span class="toc-text">Bağlı Listeler</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&text=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&title=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&is_video=false&description=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Veri Yapıları: Tek Yönlü Bağlı Listeler&body=Check out this article: https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&title=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&title=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&title=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&title=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&name=Veri Yapıları: Tek Yönlü Bağlı Listeler&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/02/veri-yapilari-tek-yonlu-bagli-listeler/&t=Veri Yapıları: Tek Yönlü Bağlı Listeler"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

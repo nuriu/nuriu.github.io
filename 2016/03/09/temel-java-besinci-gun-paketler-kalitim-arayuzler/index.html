@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="PaketlerPaketler Java’da genellikle isim çatışmalarını engellemek ve sınıfların, arayüzlerin ve benzeri yapıların aranmasını &#x2F; bulunmasını yani organizasyonunu kolaylaştırmak &#x2F; iyileştirmek">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler">
+<meta property="og:url" content="https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="PaketlerPaketler Java’da genellikle isim çatışmalarını engellemek ve sınıfların, arayüzlerin ve benzeri yapıların aranmasını &#x2F; bulunmasını yani organizasyonunu kolaylaştırmak &#x2F; iyileştirmek">
+<meta property="og:locale" content="tr_TR">
+<meta property="article:published_time" content="2016-03-08T22:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.593Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="kalıtım">
+<meta property="article:tag" content="paketler">
+<meta property="article:tag" content="arayüzler">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2016/03/10/temel-java-altinci-gun-siradisi-durum-istisna-isleme/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2016/03/08/temel-java-dorduncu-gun-siniflar-nesneler/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&text=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&title=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&is_video=false&description=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler&body=Check out this article: https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&title=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&title=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&title=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&title=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&name=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&t=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Paketler"><span class="toc-number">1.</span> <span class="toc-text">Paketler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Paket-Olusturmak"><span class="toc-number">2.</span> <span class="toc-text">Paket Oluşturmak</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kalitim"><span class="toc-number">3.</span> <span class="toc-text">Kalıtım</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arayuzler"><span class="toc-number">4.</span> <span class="toc-text">Arayüzler</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2016-03-08T22:00:00.000Z" itemprop="datePublished">09-Mart-2016</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.593Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/java/">java</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/arayuzler/" rel="tag">arayüzler</a>, <a class="tag-link-link" href="/tags/java/" rel="tag">java</a>, <a class="tag-link-link" href="/tags/kalitim/" rel="tag">kalıtım</a>, <a class="tag-link-link" href="/tags/paketler/" rel="tag">paketler</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Paketler"><a href="#Paketler" class="headerlink" title="Paketler"></a>Paketler</h2><p>Paketler Java’da genellikle isim çatışmalarını engellemek ve sınıfların, arayüzlerin ve benzeri yapıların aranmasını &#x2F; bulunmasını yani organizasyonunu kolaylaştırmak &#x2F; iyileştirmek için kullanılırlar.</p>
+<p>Uzun lafın kısası; paket ilişkili yapıların (ki bunlar sınıflar, arayüzler vb. yapılar) kümelendirilmesi&#x2F;gruplandırılması olarak tanımlanabilir. Bu kümelendirme&#x2F;gruplandırma ile birlikte bir nevi erişim üzerinde koruma da sağlanmış olur.  </p>
+<h2 id="Paket-Olusturmak"><a href="#Paket-Olusturmak" class="headerlink" title="Paket Oluşturmak"></a>Paket Oluşturmak</h2><p>Geliştirme aracı (IDE) kullanmasaydık paket oluşturma işlemi için komut satırına;  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac -d hedefKlasor dosyaAdi.java</span><br></pre></td></tr></table></figure>
+<p>bu koda uygun bir komut yazıp çalıştırıyoruz demem gerekiyordu fakat aksi söz konusu olduğu için buna gerek kalmadı.</p>
+<p>Kullandığınız geliştirme aracında (IDEA, Eclipse vb.) kaynak kod dosyalarınızın olduğu kısımda uygun yere sağ tıkladığınızda yeni sınıf (class), paket (package) ekleme imkanı veren seçenekler göreceksiniz.</p>
+<p>Paketlerini oluşturmak için bu seçenekleri kullanabilirsiniz.</p>
+<p>Örnek olarak dünkü Kedi sınıfımızın kaynak kod dosyasını yeni oluşturduğumuz hayvan isimli bir paketin içine atacak olursak, bu sınıftan nesne oluşturabilmemiz için o paketi nesneyi oluşturacağımız kaynak koda dahil etmemiz gerekiyor.</p>
+<p>Benim örneğime göre yapacak olursam şu satırı ilk satırlara eklemem gerekiyor (ki çoğu geliştirme aracı bu işlemi oldukça kolaylaştırıyor, örneğin benim kullandığım araç, sınıfı pakedin içine taşır taşımaz gerekli düzenlemeleri otomatik olarak yaptı.);  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.isiksistem.hayvan.Kedi;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Kalitim"><a href="#Kalitim" class="headerlink" title="Kalıtım"></a>Kalıtım</h2><p>Kalıtım basitçe anlatmak gerekirse bir sınıfın özelliklerini ve davranışlarını kullanacak başka bir sınıf türetme işlemidir. Bunu babanın çocuğuna bıraktığı miras gibi de düşünebilirsiniz.</p>
+<p>(Örneğin alt sınıflar hakkında konuşulur iken miras alınan özellik&#x2F;değişken&#x2F;metod&#x2F;fonksiyon gibi terimler&#x2F;deyimler duyabilir&#x2F;görebilirsiniz.)</p>
+<p>Örnek olarak dün verdiğimiz örneği geliştireceğiz. Kalıtımı temel olarak anlamamız için 1 ana sınıfımızın (Hayvan) ve 2 türemiş sınıfımızın (Kedi, Kopek) olması bu aşamada bizim için yeterli.</p>
+<p>Öyleyse örneğe geçelim;  </p>
+<figure class="highlight java"><figcaption><span>Hayvan.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.isiksistem;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sınıflar türeteceğimiz soyut sınıfımız</span></span><br><span class="line"><span class="comment">// soyut (abstract) sınıflar doğrudan nesnesi oluşturulamayan sınıflardır</span></span><br><span class="line"><span class="comment">// nesne tabanlı tasarımda genelleme mantığı üzerine büyük öneme sahiptir</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Hayvan</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// üye değişkenlerimiz (özellikler)</span></span><br><span class="line">    <span class="comment">// private olduğu için sadece bu sınıfın metodları</span></span><br><span class="line">    <span class="comment">// tarafından erişilebilirler.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> agirlik;</span><br><span class="line">    <span class="keyword">private</span> String isim;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// üye metodlarımız (davranışlar)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">agirligiBelirle</span><span class="params">(<span class="type">int</span> kg)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.agirlik = kg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">ismiBelirle</span><span class="params">(String isim)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.isim = isim;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">agirligiGetir</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.agirlik;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">ismiGetir</span> <span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.isim;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// yapıcı metodumuz</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Hayvan</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Bir hayvan nesnesi oluşturuldu.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><figcaption><span>Kedi.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.isiksistem;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Kedi isimli sınıfımızı Hayvan isimli sınıfımızdan türettik.</span></span><br><span class="line"><span class="comment">// (extends mirasAlinacakSinifinAdi kuralına göre)</span></span><br><span class="line"><span class="comment">// Not: Hayvan isimli sınıfımız soyut olmasaydı</span></span><br><span class="line"><span class="comment">// burada değişen bir şey olmayacaktı.</span></span><br><span class="line"><span class="comment">// Yani eğer soyut kavramına takıldıysanız serimiz adı üstünde</span></span><br><span class="line"><span class="comment">// temel java olduğu şimdilik bu konuya takılmanıza gerek yok.</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Kedi</span> <span class="keyword">extends</span> <span class="title class_">Hayvan</span> &#123;</span><br><span class="line">    <span class="comment">// sınıfımıza ek içerik ekleme özgürlüğüne hala sahibiz</span></span><br><span class="line">    <span class="comment">// fakat basitliğin sürmesi açısından</span></span><br><span class="line">    <span class="comment">// sadece kedi sınıfından bir nesne oluşturulduğu</span></span><br><span class="line">    <span class="comment">// mesajını yazdırmak şimdilik bizim için yeterli</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// yapıcı metodumuz</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Kedi</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Bir kedi nesnesi oluşturuldu.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><figcaption><span>Kopek.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.isiksistem;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Kopek isimli sınıfımızı Hayvan isimli sınıfımızdan türettik.</span></span><br><span class="line"><span class="comment">// (extends mirasAlinacakSinifinAdi kuralına göre)</span></span><br><span class="line"><span class="comment">// Not: Hayvan isimli sınıfımız soyut olmasaydı</span></span><br><span class="line"><span class="comment">// burada değişen bir şey olmayacaktı.</span></span><br><span class="line"><span class="comment">// Yani eğer soyut kavramına takıldıysanız serimiz adı üstünde</span></span><br><span class="line"><span class="comment">// temel java olduğu şimdilik bu konuya takılmanıza gerek yok.</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Kopek</span> <span class="keyword">extends</span> <span class="title class_">Hayvan</span> &#123;</span><br><span class="line">    <span class="comment">// sınıfımıza ek içerik ekleme özgürlüğüne hala sahibiz</span></span><br><span class="line">    <span class="comment">// fakat basitliğin sürmesi açısından</span></span><br><span class="line">    <span class="comment">// sadece köpek sınıfından bir nesne oluşturulduğu</span></span><br><span class="line">    <span class="comment">// mesajını yazdırmak şimdilik bizim için yeterli</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// yapıcı metodumuz</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Kopek</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Bir köpek nesnesi oluşturuldu.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><figcaption><span>Main.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ana pakedimiz (projeyi oluştururken seçtiğimiz pakedimiz)</span></span><br><span class="line"><span class="keyword">package</span> com.isiksistem; <span class="comment">// dolayısı ile sizde farklı olacaktır.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// bu örnekte ana paket dışında bir paket kullanmadık.</span></span><br><span class="line"><span class="comment">// dolayısı ile Hayvan sınıfı ile paketler başlığı altında</span></span><br><span class="line"><span class="comment">// örneğini verdiğim hayvan pakedini karıştırmamaya çalışın.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Tekir adında Kedi nesnemiz</span></span><br><span class="line">        <span class="type">Kedi</span> <span class="variable">Tekir</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Kedi</span>();</span><br><span class="line">        Tekir.ismiBelirle(<span class="string">&quot;Tekir&quot;</span>);</span><br><span class="line">        Tekir.agirligiBelirle(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Karabaş adında Kopek nesnemiz</span></span><br><span class="line">        <span class="type">Kopek</span> <span class="variable">Karabas</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Kopek</span>();</span><br><span class="line">        Karabas.ismiBelirle(<span class="string">&quot;Karabaş&quot;</span>);</span><br><span class="line">        Karabas.agirligiBelirle(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// bilgilerimizi yazdırıyoruz.</span></span><br><span class="line">        System.out.println(Tekir.ismiGetir() + <span class="string">&quot; isimli &quot;</span> +</span><br><span class="line">                           Tekir.agirligiGetir() +</span><br><span class="line">                           <span class="string">&quot;kg ağırlığında kedi nesnemiz mevcut.&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(Karabas.ismiGetir() + <span class="string">&quot; isimli &quot;</span> +</span><br><span class="line">                           Karabas.agirligiGetir() +</span><br><span class="line">                           <span class="string">&quot;kg ağırlığında köpek nesnemiz mevcut.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Örneği tamamlayıp çalıştırdığımızda çıktımız şu şekilde olacak;  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Bir hayvan nesnesi oluşturuldu.</span><br><span class="line">Bir kedi nesnesi oluşturuldu.</span><br><span class="line"></span><br><span class="line">Bir hayvan nesnesi oluşturuldu.</span><br><span class="line">Bir köpek nesnesi oluşturuldu.</span><br><span class="line"></span><br><span class="line">Tekir isimli 2 kg ağırlığında bir kedi nesnemiz mevcut.</span><br><span class="line">Karabaş isimli 5 kg ağırlığında bir köpek nesnemiz mevcut.</span><br></pre></td></tr></table></figure>
+
+<p>Gördüğünüz üzere Hayvan sınıfından türetilmiş sınıfların herhangi birinden nesne yarattığımızda o sınıfın yapıcı metodundan önce miras alınan üst sınıfın yapıcı metodu çağrılır.<br>Bu yüzden “Bir kedi nesnesi oluşturuldu.” ve “Bir köpek nesnesi oluşturuldu.” mesajlarından önce “Bir hayvan nesnesi oluşturuldu.” mesajımız gelmekte.  </p>
+<h2 id="Arayuzler"><a href="#Arayuzler" class="headerlink" title="Arayüzler"></a>Arayüzler</h2><p>Yukarıdaki örnekte bir sınıfın özelliklerini ve davranışlarını kullanmak için başka sınıflar türetmeyi ve türetilen sınıflardan ana sınıfın sahip olduğu (teknik olarak türetilmiş sınıflar da aynı özellik ve metodlara sahip olmuş oluyor.) özelliklere ve davranışlara erişmeyi gördük.</p>
+<p>Peki ya yeni sınıfımıza sadece yeni davranışlar (ki buna yetenekler de denilir) kazandırmak istersek?  </p>
+<p>İşte burada devreye arayüzler giriyor. Arayüzler sınıflara oldukça benzerler. Tanımlanışları şu şekildedir;  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">erisimBelirteci <span class="keyword">interface</span> <span class="title class_">arayuzAdi</span> &#123;</span><br><span class="line">    <span class="comment">// arayuz icerigi</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Kullanılma mantığını göstermek üzere yukarıdaki örneğimize basit bir arayüz ekliyorum;  </p>
+<figure class="highlight java"><figcaption><span>hareketEdebilen.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.isiksistem;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">hareketEdebilen</span> &#123;</span><br><span class="line">    <span class="comment">// arayüzümüze istediğimiz kadar metod ekleyebiliriz.</span></span><br><span class="line">    <span class="comment">// sınıflardan farklı olarak burada</span></span><br><span class="line">    <span class="comment">// fonksiyonun içeriğini tanımlamıyoruz.</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">hareketEt</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Diğer kaynak kodlarımızı da şu şekilde düzenliyorum ve sadeleştiriyorum;  </p>
+<figure class="highlight java"><figcaption><span>Hayvan.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.isiksistem;</span><br><span class="line"></span><br><span class="line"><span class="comment">// implements arayuzAdi ile sınıfımıza</span></span><br><span class="line"><span class="comment">// hareketEt davranışını (metodunu) kazandırmış olduk.</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Hayvan</span> <span class="keyword">implements</span> <span class="title class_">hareketEdebilen</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// üye değişkenlerimiz (özellikler)</span></span><br><span class="line">    <span class="comment">// private olduğu için sadece bu sınıfın metodları</span></span><br><span class="line">    <span class="comment">// tarafından erişilebilirler.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> agirlik;</span><br><span class="line">    <span class="keyword">private</span> String isim;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// üye metodlarımız (davranışlar)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">agirligiBelirle</span><span class="params">(<span class="type">int</span> kg)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.agirlik = kg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">ismiBelirle</span><span class="params">(String isim)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.isim = isim;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">agirligiGetir</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.agirlik;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">ismiGetir</span> <span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.isim;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// yapıcı metodumuz</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Hayvan</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Bir hayvan nesnesi oluşturuldu.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><figcaption><span>Kedi.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.isiksistem;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Kedi isimli sınıfımızı Hayvan isimli sınıfımızdan türettik.</span></span><br><span class="line"><span class="comment">// (extends mirasAlinacakSinifinAdi kuralına göre)</span></span><br><span class="line"><span class="comment">// Not: Hayvan isimli sınıfımız soyut olmasaydı</span></span><br><span class="line"><span class="comment">// burada değişen bir şey olmayacaktı.</span></span><br><span class="line"><span class="comment">// Yani eğer soyut kavramına takıldıysanız serimiz adı üstünde</span></span><br><span class="line"><span class="comment">// temel java olduğu şimdilik bu konuya takılmanıza gerek yok.</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Kedi</span> <span class="keyword">extends</span> <span class="title class_">Hayvan</span> &#123;</span><br><span class="line">    <span class="comment">// sınıfımıza ek içerik ekleme özgürlüğüne hala sahibiz</span></span><br><span class="line">    <span class="comment">// fakat basitliğin sürmesi açısından</span></span><br><span class="line">    <span class="comment">// sadece kedi sınıfından bir nesne oluşturulduğu</span></span><br><span class="line">    <span class="comment">// mesajını yazdırmak şimdilik bizim için yeterli</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// yapıcı metodumuz</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Kedi</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Bir kedi nesnesi oluşturuldu.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hareketEt</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Bir kedi nesnesi hareket etti.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><figcaption><span>Kopek.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.isiksistem;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Kopek isimli sınıfımızı Hayvan isimli sınıfımızdan türettik.</span></span><br><span class="line"><span class="comment">// (extends mirasAlinacakSinifinAdi kuralına göre)</span></span><br><span class="line"><span class="comment">// Not: Hayvan isimli sınıfımız soyut olmasaydı</span></span><br><span class="line"><span class="comment">// burada değişen bir şey olmayacaktı.</span></span><br><span class="line"><span class="comment">// Yani eğer soyut kavramına takıldıysanız serimiz adı üstünde</span></span><br><span class="line"><span class="comment">// temel java olduğu şimdilik bu konuya takılmanıza gerek yok.</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Kopek</span> <span class="keyword">extends</span> <span class="title class_">Hayvan</span> &#123;</span><br><span class="line">    <span class="comment">// sınıfımıza ek içerik ekleme özgürlüğüne hala sahibiz</span></span><br><span class="line">    <span class="comment">// fakat basitliğin sürmesi açısından</span></span><br><span class="line">    <span class="comment">// sadece köpek sınıfından bir nesne oluşturulduğu</span></span><br><span class="line">    <span class="comment">// mesajını yazdırmak şimdilik bizim için yeterli</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// yapıcı metodumuz</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Kopek</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Bir köpek nesnesi oluşturuldu.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hareketEt</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Bir köpek nesnesi hareket etti.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><figcaption><span>Main.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ana pakedimiz (projeyi oluştururken belirttiğimiz pakedimiz)</span></span><br><span class="line"><span class="keyword">package</span> com.isiksistem; <span class="comment">// dolayısı ile sizde farklı olacaktır.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">Kedi</span> <span class="variable">Tekir</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Kedi</span>();</span><br><span class="line">        <span class="type">Kopek</span> <span class="variable">Karabas</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Kopek</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// arayüz ile kazandığımız davranışlara (metodlara) erişiyoruz.</span></span><br><span class="line">        Tekir.hareketEt();</span><br><span class="line">        Karabas.hareketEt();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Ve son çıktımız;  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Bir hayvan nesnesi oluşturuldu.</span><br><span class="line">Bir kedi nesnesi oluşturuldu.</span><br><span class="line"></span><br><span class="line">Bir hayvan nesnesi oluşturuldu.</span><br><span class="line">Bir köpek nesnesi oluşturuldu.</span><br><span class="line"></span><br><span class="line">Bir kedi nesnesi hareket etti.</span><br><span class="line"></span><br><span class="line">Bir köpek nesnesi hareket etti.</span><br></pre></td></tr></table></figure>
+
+<p>Bu bölümle birlikte temel java serimizdeki ağır konuları bitirmiş sayılırız. Şimdilik bu kadar.</p>
+<p><strong>Dipnot:</strong> Bir sınıftan başka bir sınıf türetilebildiği (diğer bir deyişle bir sınıf başka bir sınıfı genişletebildiği gibi) arayüzler arasında da bu işlem mümkündür ve yine extends ifadesi ile gerçekleştirilir.  </p>
+<p>Sonraki Bölüm: Sıradışı Durum (İstisna) İşleme:<br><a href="/2016/03/10/temel-java-altinci-gun-siradisi-durum-istisna-isleme/">Temel Java - 6. Gün: Sıradışı Durum (İstisna) İşleme</a>  </p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Paketler"><span class="toc-number">1.</span> <span class="toc-text">Paketler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Paket-Olusturmak"><span class="toc-number">2.</span> <span class="toc-text">Paket Oluşturmak</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kalitim"><span class="toc-number">3.</span> <span class="toc-text">Kalıtım</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arayuzler"><span class="toc-number">4.</span> <span class="toc-text">Arayüzler</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&text=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&title=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&is_video=false&description=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler&body=Check out this article: https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&title=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&title=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&title=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&title=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&name=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2016/03/09/temel-java-besinci-gun-paketler-kalitim-arayuzler/&t=Temel Java 5. Gün: Paketler, Kalıtım, Arayüzler"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

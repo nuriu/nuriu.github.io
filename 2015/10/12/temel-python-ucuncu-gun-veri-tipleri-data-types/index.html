@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang=tr>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="ListelerListeleri temel olarak veri kümeleri olarak açıklamak mümkün. C ailesindeki dizilere benzemelerine rağmen listelerdeki verilerin aynı türde olmasına gerek yoktur. Yani metinlerle sayıları aynı">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Temel Python 3. Gün: Veri Tipleri">
+<meta property="og:url" content="https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/index.html">
+<meta property="og:site_name" content="Nuri Uzunoğlu">
+<meta property="og:description" content="ListelerListeleri temel olarak veri kümeleri olarak açıklamak mümkün. C ailesindeki dizilere benzemelerine rağmen listelerdeki verilerin aynı türde olmasına gerek yoktur. Yani metinlerle sayıları aynı">
+<meta property="og:locale" content="tr_TR">
+<meta property="article:published_time" content="2015-10-11T21:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T12:32:22.597Z">
+<meta property="article:author" content="Nuri UZUNOĞLU">
+<meta property="article:tag" content="veri tipleri">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Temel Python 3. Gün: Veri Tipleri</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Önceki gönderi" href="/2015/10/13/temel-python-dorduncu-gun-kosul-yapilari-ve-donguler/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Sonraki gönderi" href="/2015/10/11/temel-python-ikinci-gun-sozdizimi-veri-tiplerine-giris/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Başa dön" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Gönderiyi paylaş" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Önceki gönderi</span>
+      <span id="i-next" class="info" style="display:none;">Sonraki gönderi</span>
+      <span id="i-top" class="info" style="display:none;">Başa dön</span>
+      <span id="i-share" class="info" style="display:none;">Gönderiyi paylaş</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&text=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&title=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&is_video=false&description=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel Python 3. Gün: Veri Tipleri&body=Check out this article: https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&title=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&title=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&title=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&title=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&name=Temel Python 3. Gün: Veri Tipleri&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&t=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Listeler"><span class="toc-number">1.</span> <span class="toc-text">Listeler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Verilere-Erisim"><span class="toc-number">2.</span> <span class="toc-text">Verilere Erişim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Verileri-Guncellemek"><span class="toc-number">3.</span> <span class="toc-text">Verileri Güncellemek</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Verileri-Silmek"><span class="toc-number">4.</span> <span class="toc-text">Verileri Silmek</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Veri-Eklemek"><span class="toc-number">5.</span> <span class="toc-text">Veri Eklemek</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diger-Hazir-Fonksiyonlar"><span class="toc-number">6.</span> <span class="toc-text">Diğer Hazır Fonksiyonlar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demetler-Degiskenler-Grubu-Tuples"><span class="toc-number">7.</span> <span class="toc-text">Demetler (Değişkenler Grubu) (Tuples)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sozlukler-Dictionary"><span class="toc-number">8.</span> <span class="toc-text">Sözlükler (Dictionary)</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Temel Python 3. Gün: Veri Tipleri
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nuri UZUNOĞLU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2015-10-11T21:00:00.000Z" itemprop="datePublished">12-Ekim-2015</time>
+        
+        (Son Güncelleme: <time datetime="2022-02-27T12:32:22.597Z" itemprop="dateModified">27-Şubat-2022</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/python/">python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="tag-link-link" href="/tags/veri-tipleri/" rel="tag">veri tipleri</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Listeler"><a href="#Listeler" class="headerlink" title="Listeler"></a>Listeler</h2><p>Listeleri temel olarak veri kümeleri olarak açıklamak mümkün. C ailesindeki dizilere benzemelerine rağmen listelerdeki verilerin aynı türde olmasına gerek yoktur. Yani metinlerle sayıları aynı listede tutmak istiyorsanız, bunu yapabilirsiniz. Örnek tanımlamalar;  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">karisikListe = [<span class="string">&#x27;ahmet&#x27;</span>, <span class="string">&#x27;kadir&#x27;</span>, <span class="number">1996</span>, <span class="number">1994</span>]</span><br><span class="line">sayiListesi = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span> ]</span><br><span class="line">tekElemanliListe = [<span class="string">&quot;a&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>Yukarıda gördüğünüz gibi karisikListe, ahmet ve kadir isimlerinin yanı sıra 1996 ve 1994 sayılarını da içermektedir.  </p>
+<h2 id="Verilere-Erisim"><a href="#Verilere-Erisim" class="headerlink" title="Verilere Erişim"></a>Verilere Erişim</h2><p>Listelerde verilere erişim dizi mantığındaki gibidir. Yani 0’dan başlayan indis numaraları kullanılır. Örneğin yukardaki örnekteki karisikListe’nin elemanlarına aşağıdaki gibi ulaşabiliriz;  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> karisikListe[<span class="number">0</span>] <span class="comment"># ekrana ahmet yazar</span></span><br><span class="line"><span class="built_in">print</span> karisikListe[<span class="number">1</span>] <span class="comment"># ekrana kadir yazar</span></span><br><span class="line"><span class="built_in">print</span> karisikListe[<span class="number">2</span>] <span class="comment"># ekrana 1996 yazar</span></span><br><span class="line"><span class="built_in">print</span> karisikListe[<span class="number">3</span>] <span class="comment"># ekrana 1994 yazar</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Verileri-Guncellemek"><a href="#Verileri-Guncellemek" class="headerlink" title="Verileri Güncellemek"></a>Verileri Güncellemek</h2><p>Liste verilerini güncellemek dizilerle aynı mantık ile gerçekleştirilebilir. Örneğin;  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sayiListesi = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span> ]</span><br><span class="line">sayiListesi[<span class="number">0</span>] = <span class="number">9</span> <span class="comment"># yeni liste [9, 2, 3, 4, 5, 6, 7, 8]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Verileri-Silmek"><a href="#Verileri-Silmek" class="headerlink" title="Verileri Silmek"></a>Verileri Silmek</h2><p>del veya remove komutları ile gerçekleştirilebilir. Örnek;  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">karisikListe = [<span class="string">&#x27;ahmet&#x27;</span>, <span class="string">&#x27;kadir&#x27;</span>, <span class="number">1996</span>, <span class="number">1994</span>]</span><br><span class="line">karisikListe.remove(<span class="string">&quot;ahmet&quot;</span>) <span class="comment"># yeni liste [&#x27;kadir&#x27;, 1996, 1994]</span></span><br><span class="line"><span class="keyword">del</span> karisikListe[<span class="number">1</span>] <span class="comment"># yeni liste [&#x27;kadir&#x27;, 1994]</span></span><br></pre></td></tr></table></figure>
+
+<p>Görüldüğü gibi remove listedeki içeriğe göre, del ise indis numarasına göre silme işlemini gerçekleştirir.  </p>
+<h2 id="Veri-Eklemek"><a href="#Veri-Eklemek" class="headerlink" title="Veri Eklemek"></a>Veri Eklemek</h2><p>append fonksiyonu ile listeye eleman eklemek mümkünleştirilmiştir. Bu fonksiyon, gönderilen elemanı listenin sonuna ekler. Örneğin;  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tekElemanliListe = [<span class="string">&quot;a&quot;</span>]</span><br><span class="line">tekElemanliListe.append(<span class="string">&quot;b&quot;</span>) <span class="comment"># yeni liste [&quot;a&quot;, &quot;b&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Diger-Hazir-Fonksiyonlar"><a href="#Diger-Hazir-Fonksiyonlar" class="headerlink" title="Diğer Hazır Fonksiyonlar"></a>Diğer Hazır Fonksiyonlar</h2><p>Listeler ile kullanılmak üzere, append ve remove fonksiyonları gibi birçok hazır fonksiyon önceden yazılıp geliştirici kullanımına sunulmuştur. Bunlardan bazıları şunlardır;  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># liste1 ve liste2 olarak tanimlanmis iki listemiz oldugunu dusunelim</span></span><br><span class="line"></span><br><span class="line">cmp(liste1, liste2)  <span class="comment"># iki listeyi karsilastirir</span></span><br><span class="line"><span class="built_in">len</span>(liste1)          <span class="comment"># liste1&#x27;in toplam uzunluğunu verir</span></span><br><span class="line"><span class="built_in">max</span>(liste1)          <span class="comment"># liste1&#x27;deki en yuksek degerli veriyi gonderir</span></span><br><span class="line"><span class="built_in">min</span>(liste1)          <span class="comment"># liste1&#x27;deki en dusuk degerli veriyi gonderir</span></span><br><span class="line"></span><br><span class="line">liste1.count(<span class="number">3</span>)      <span class="comment"># 3 sayisinin liste1&#x27;deki adedini gonderir</span></span><br><span class="line">liste1.sort()        <span class="comment"># liste1&#x27;i siralar</span></span><br><span class="line">liste1.reverse()     <span class="comment"># liste1&#x27;i tersten siralar</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Demetler-Degiskenler-Grubu-Tuples"><a href="#Demetler-Degiskenler-Grubu-Tuples" class="headerlink" title="Demetler (Değişkenler Grubu) (Tuples)"></a>Demetler (Değişkenler Grubu) (Tuples)</h2><p>Demetleri verileri değiştirilemeyen listeler gibi düşünebiliriz. Demetler listelere listeler de demetlere dönüştürülebilirler. Örneğin;  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># demet1 ve demet2 olarak tanimlanmis iki degiskenimiz oldugunu dusunelim</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># demet1 degiskenini liste tipine donusturerek liste2&#x27;yi olusturur.</span></span><br><span class="line">liste2 = <span class="built_in">list</span>(demet1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># liste1 degiskenini demet tipine donusturerek demet2&#x27;yi olusturur.</span></span><br><span class="line">demet2 = <span class="built_in">tuple</span>(liste1)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Sozlukler-Dictionary"><a href="#Sozlukler-Dictionary" class="headerlink" title="Sözlükler (Dictionary)"></a>Sözlükler (Dictionary)</h2><p>Anahtarlar ve değerler olmak üzere ikili veri kümelerinden oluşan veri yapılarıdır. Örnek;  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">adaletBirligi = &#123;<span class="string">&#x27;Batman&#x27;</span>: <span class="string">&#x27;Bruce Wayne&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;Superman&#x27;</span>: <span class="string">&#x27;Clark Kent&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;Flash&#x27;</span>: <span class="string">&#x27;Barry Allen&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">intikamcilar = &#123;<span class="string">&#x27;Iron Man&#x27;</span>: <span class="string">&#x27;Tony Stark&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;Hulk&#x27;</span>: <span class="string">&#x27;Bruce Banner&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;Captain America&#x27;</span>: <span class="string">&#x27;Steve Rogers&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># ekrana Flash&#x27;ın karsisindaki degiskeni yazar yani Barry Allen.</span></span><br><span class="line"><span class="built_in">print</span>(adaletBirligi[<span class="string">&#x27;Flash&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># intikamcilar&#x27;dan Captain America anahtarli veri kumesini siler.</span></span><br><span class="line"><span class="keyword">del</span> intikamcilar[<span class="string">&#x27;Captain America&#x27;</span>]</span><br><span class="line"></span><br><span class="line">intikamcilar.keys() <span class="comment"># sozlukteki anahtar degiskenleri gonderir.</span></span><br><span class="line">adaletBirligi.values() <span class="comment"># sozlukteki degerleri gonderir.</span></span><br><span class="line">intikamcilar.clear() <span class="comment"># sozlugu temizler.</span></span><br></pre></td></tr></table></figure>
+
+<p>Sonraki Bölüm: Koşul Yapıları ve Döngüler:<br><a href="/2015/10/13/temel-python-dorduncu-gun-kosul-yapilari-ve-donguler/">Temel Python - 4. Gün: Koşul Yapıları ve Döngüler</a>  </p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Yorumları görebilmek için lütfen JavaScripte izin verin.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Ana Sayfa</a></li>
+         
+          <li><a href="/about/">Hakkımda</a></li>
+         
+          <li><a href="/archives/">Tüm Yazılar</a></li>
+         
+          <li><a href="/roadmap/">Yol Haritası</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Listeler"><span class="toc-number">1.</span> <span class="toc-text">Listeler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Verilere-Erisim"><span class="toc-number">2.</span> <span class="toc-text">Verilere Erişim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Verileri-Guncellemek"><span class="toc-number">3.</span> <span class="toc-text">Verileri Güncellemek</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Verileri-Silmek"><span class="toc-number">4.</span> <span class="toc-text">Verileri Silmek</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Veri-Eklemek"><span class="toc-number">5.</span> <span class="toc-text">Veri Eklemek</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diger-Hazir-Fonksiyonlar"><span class="toc-number">6.</span> <span class="toc-text">Diğer Hazır Fonksiyonlar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demetler-Degiskenler-Grubu-Tuples"><span class="toc-number">7.</span> <span class="toc-text">Demetler (Değişkenler Grubu) (Tuples)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sozlukler-Dictionary"><span class="toc-number">8.</span> <span class="toc-text">Sözlükler (Dictionary)</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&text=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&title=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&is_video=false&description=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Temel Python 3. Gün: Veri Tipleri&body=Check out this article: https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&title=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&title=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&title=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&title=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&name=Temel Python 3. Gün: Veri Tipleri&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://nuriu.github.io/2015/10/12/temel-python-ucuncu-gun-veri-tipleri-data-types/&t=Temel Python 3. Gün: Veri Tipleri"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menü</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> İçindekiler</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Paylaş</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Başa dön</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Tüm Hakları Saklıdır &copy;
+    
+    
+    2016-2023
+    Nuri UZUNOĞLU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Ana Sayfa</a></li><!--
+     --><!--
+       --><li><a href="/about/">Hakkımda</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Tüm Yazılar</a></li><!--
+     --><!--
+       --><li><a href="/roadmap/">Yol Haritası</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/nuriu">Projeler</a></li><!--
+     -->
+      </ul>
+    </nav>
+    <div style="position: absolute; right:0; bottom: 0rem;">
+        <p id="days"><span id="heart">💜💜 </span>ile </p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    var oneDay = 24 * 60 * 60 * 1000;
+    var beginning = new Date("April 14, 2016 00:00:00");
+    var today = new Date();
+    var diff = Math.round(Math.abs((beginning.getTime() - today.getTime()) / oneDay));
+    document.getElementById("days").append(++diff + ". gün");
+</script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"In die Zwischenablage kopiert!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Kopiert!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'nuriu/nuriu.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>
