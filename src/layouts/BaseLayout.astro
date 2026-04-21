@@ -1,0 +1,59 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Nuri Uzunoğlu - Software Engineer | Mobile Application Enthusiast" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ClientRouter />
+	</head>
+	<body class="bg-black text-white antialiased">
+		<Header />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+
+		<script>
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: '0px 0px -50px 0px'
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('revealed');
+					}
+				});
+			}, observerOptions);
+
+			const setupReveal = () => {
+				const revealElements = document.querySelectorAll('[data-reveal]');
+				revealElements.forEach(el => observer.observe(el));
+			};
+
+			// Run on initial load
+			setupReveal();
+
+			// Run after view transitions
+			document.addEventListener('astro:after-swap', setupReveal);
+		</script>
+	</body>
+</html>

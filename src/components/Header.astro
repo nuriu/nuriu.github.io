@@ -1,0 +1,35 @@
+---
+const navLinks = [
+  { href: '/numera', label: 'Numera' },
+  { href: '/notio', label: 'Notio' },
+  { href: '/blog', label: 'Blog' },
+];
+---
+
+<header class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
+  <nav class="glass px-6 py-3 flex items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-2 group">
+      <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center font-bold text-black transition-transform group-hover:scale-105">
+        N
+      </div>
+      <span class="font-display font-bold text-lg tracking-tighter hidden sm:block">NURI U.</span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-8">
+      {navLinks.map(link => (
+        <li>
+          <a 
+            href={link.href} 
+            class="text-sm font-medium text-white/60 hover:text-white transition-colors"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <a href="/get-in-touch" class="btn-primary py-2 px-5 text-sm">
+      Get in touch
+    </a>
+  </nav>
+</header>

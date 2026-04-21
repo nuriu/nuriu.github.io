@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+---
+
+<section class="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden">
+  <!-- liquid backgrounds -->
+  <div class="liquid-blur w-[500px] h-[500px] bg-primary top-[-100px] right-[-100px] rounded-full"></div>
+  <div class="liquid-blur w-[400px] h-[400px] bg-accent bottom-[-50px] left-[-50px] rounded-full"></div>
+
+  <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div class="max-w-xl" data-reveal>
+      <span class="tag mb-6 inline-block">Available now</span>
+      <h1 class="text-6xl md:text-8xl font-bold leading-[0.9] mb-8">
+        Crafting <span class="text-primary">Sleek</span> <br />
+        Digital Tools.
+      </h1>
+      <p class="text-white/60 text-lg md:text-xl leading-relaxed mb-10 max-w-md">
+        I'm Nuri, a developer and designer building high-performance, human-centric software with a sophisticated dark aesthetic.
+      </p>
+      
+      <a href="#projects" class="btn-secondary group px-6 py-4 rounded-2xl text-lg">
+        Explore Projects
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-y-1 transition-transform">
+          <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="relative group" data-reveal style="animation-delay: 0.2s;">
+      <div class="absolute inset-0 bg-primary/20 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+      <div class="relative glass p-4 rounded-[3rem] border-white/10 overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-700">
+        <img 
+          src="/assets/hero-mockup.png" 
+          alt="Digital Tool Mockup" 
+          class="rounded-[2rem] w-full h-auto object-cover"
+        />
+      </div>
+      
+      <!-- floating element -->
+      <div class="absolute -top-6 -right-6 glass p-4 rounded-2xl animate-bounce shadow-xl border-white/20">
+         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+    </div>
+  </div>
+</section>

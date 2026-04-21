@@ -1,1 +1,100 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap');
+
+@theme {
+  --color-primary: #22C55E;
+  --color-accent: #34D399;
+  --color-background: #000000;
+  --color-surface: rgba(25, 25, 25, 0.6);
+  --color-border: rgba(255, 255, 255, 0.08);
+  
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    background-color: var(--color-background);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply selection:bg-primary/30 selection:text-white;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    @apply tracking-tight;
+  }
+}
+
+@utility glass {
+  @apply bg-surface backdrop-blur-xl border border-border rounded-3xl shadow-glass;
+}
+
+@utility glass-card {
+  @apply glass hover:border-white/20 transition-all duration-300;
+}
+
+@utility btn-primary {
+  @apply px-6 py-3 bg-white text-black rounded-full font-medium hover:bg-white/90 transition-all active:scale-95 flex items-center gap-2;
+}
+
+@utility btn-secondary {
+  @apply px-4 py-2 glass hover:bg-white/5 transition-all text-sm font-medium flex items-center gap-2;
+}
+
+@utility tag {
+  @apply px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold bg-primary/20 text-primary border border-primary/20;
+}
+
+
+/* Custom Utilities */
+.liquid-blur {
+  @apply absolute blur-[120px] -z-10 opacity-20 pointer-events-none;
+  background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+}
+
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-reveal] {
+  opacity: 0;
+}
+
+[data-reveal].revealed {
+  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
