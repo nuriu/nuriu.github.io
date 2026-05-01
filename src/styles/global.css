@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap');
+
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #22C55E;
-  --color-accent: #34D399;
+  --color-primary: #C96442;
+  --color-accent: #FF9500;
   --color-background: #0A0A0A;
   --color-surface: rgba(25, 25, 25, 0.6);
   --color-border: rgba(255, 255, 255, 0.08);
