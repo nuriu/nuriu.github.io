@@ -10,7 +10,7 @@ const sortedProducts = products.sort((a, b) => b.data.order - a.data.order);
 
 <BaseLayout title="Nuri Uzunoğlu — Crafting Sleek Digital Tools">
 	<Hero />
-	<div id="projects" class="space-y-0">
+	<div id="products" class="space-y-0">
 		{sortedProducts.map((product, index) => (
 			<ProductSection 
 				product={product} 

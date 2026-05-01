@@ -19,14 +19,14 @@ const imageSrc = data.title.toLowerCase() === 'numera'
       <!-- Content Column -->
       <div class={`${reverse ? 'md:order-2' : ''}`} data-reveal>
         <div class="flex items-center gap-4 mb-6">
-          <div class="h-[px] w-12 bg-white/20"></div>
-          <span class="text-xs uppercase tracking-widest text-white/40 font-bold">{data.label}</span>
+          <div class="h-[2px] w-24 bg-white/20"></div>
+          <span class="tag text-xs uppercase tracking-widest font-bold">{data.label}</span>
         </div>
         
         <h2 class="text-5xl md:text-7xl font-bold mb-4">{data.title}</h2>
-        <p class="text-primary text-xl md:text-2xl font-medium mb-8 italic">"{data.tagline}"</p>
+        <p class="text-primary text-xl md:text-2xl font-medium mb-8 italic pulse">"{data.tagline}"</p>
         
-        <p class="text-white/60 text-lg leading-relaxed mb-10">
+        <p class="text-white/60 text-lg leading-relaxed mb-10 whitespace-pre-line">
           {data.description}
         </p>
 
