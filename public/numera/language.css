@@ -1,0 +1,35 @@
+html:not([lang="tr"]) [data-localized][lang="tr"],
+html[lang="tr"] [data-localized][lang="en"] {
+  display: none;
+}
+
+.language-switcher {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.language-switcher a {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+}
+
+.language-switcher a[aria-current="true"] {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.language-switcher a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .updated,
+  .subtitle {
+    color: #aaa;
+  }
+}
